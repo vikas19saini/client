@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="500px" height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="104.6496" y1="249.7183" x2="393.6357" y2="249.7183">
+	<stop  offset="0.0056" style="stop-color:#EBC17D"/>
+	<stop  offset="0.1854" style="stop-color:#DFB77C"/>
+	<stop  offset="0.5955" style="stop-color:#C08329"/>
+	<stop  offset="0.8708" style="stop-color:#EABE81"/>
+	<stop  offset="1" style="stop-color:#EEDCC3"/>
+</linearGradient>
+<path fill="#FFFFFF" stroke="url(#SVGID_1_)" stroke-width="10" stroke-miterlimit="10" d="M388.636,377.622
+	c0,6.627-4.851,12-10.835,12H120.485c-5.984,0-10.835-5.373-10.835-12V121.814c0-6.627,4.851-12,10.835-12h257.316
+	c5.984,0,10.835,5.373,10.835,12V377.622z"/>
+<g>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="178.4872" y1="251.3297" x2="322.3073" y2="251.3297">
+		<stop  offset="0.0056" style="stop-color:#EBC17D"/>
+		<stop  offset="0.1854" style="stop-color:#DFB77C"/>
+		<stop  offset="0.5955" style="stop-color:#C08329"/>
+		<stop  offset="0.8708" style="stop-color:#EABE81"/>
+		<stop  offset="1" style="stop-color:#EEDCC3"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M294.382,194.898c-0.032,0,0.096,0.264-9.677-25.797c-6.514,0-59.513,0-68.614,0l-9.674,25.797
+		c-5.177,0-22.749,0-27.929,0v138.661h143.82V194.898H294.382z M263.444,304.069l-13.047,16.775l-13.047-16.775l7.091-68.54h11.912
+		L263.444,304.069z M221.333,182.67l20.899,20.899l-16.588,8.294l-10.932-11.541L221.333,182.67z M257.022,225.855h-13.249
+		l-2.937-10.77c0.924-0.49-3.4,1.7,9.562-4.783c13.018,6.511,8.65,4.298,9.562,4.783L257.022,225.855z M258.562,203.569
+		l20.899-20.899l6.62,17.652l-10.932,11.541L258.562,203.569z M269.678,178.775l-19.28,19.28l-19.28-19.28H269.678z
+		 M188.161,323.885V204.572h17.252l18.142,19.151l8.455-4.228c0.032-0.017-0.068-0.253,3.164,11.597
+		c-0.059,0.603,0.66-6.38-7.846,75.847l13.179,16.945H188.161z M312.633,323.885h-52.346l13.179-16.946
+		c-8.351-80.731-7.825-75.631-7.846-75.847c3.229-11.838,3.131-11.614,3.164-11.597l8.455,4.228l18.142-19.151h17.252V323.885z"/>
+</g>
+</svg>
