@@ -52,3 +52,7 @@ export function formatAddress(address) {
 
     return addressArr.join(", ");
 }
+
+export default function ABC() {
+    return ("");
+}
