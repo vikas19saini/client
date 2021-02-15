@@ -30,6 +30,7 @@ export default function Footer() {
                                 <div className="inner_ftt">
                                     <img src="/images/logo.png" alt="" />
                                     <p>The Finest Fabrics from all over the world</p>
+
                                     {
                                         data &&
                                         <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
@@ -45,18 +46,15 @@ export default function Footer() {
                             <div className="col-md-6">
                                 <div className="ftt_menu">
                                     <ul>
-                                        <li><a href="#">Contact</a></li>
-                                        <li><a href="#">Our Stores</a></li>
-                                        <li><a href="#">Careers</a></li>
-                                        <li><a href="#">Faq</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="about.html">Our Stores</a></li>
+                                        <li><a href="faq.html">Faq</a></li>
                                     </ul>
                                 </div>
                                 <div className="ftt_menu">
                                     <ul>
-                                        <li><a href="#">Partnership</a></li>
-                                        <li><a href="#">Delivery</a></li>
-                                        <li><a href="#">Payment</a></li>
-                                        <li><a href="#">Sale</a></li>
+                                        <li><a href="terms.html">Terms and conditions</a></li>
+                                        <li><a href="returnpolicy.html">Privacy Policy</a></li>
                                     </ul>
                                 </div>
                                 <div className="ftt_menu flt_inhrit">
@@ -75,11 +73,9 @@ export default function Footer() {
                                     <div className="copy_txt desk_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>
                                     </div>
-
                                     <div className="pay_icon">
-                                        <img src="/images/paypallogo.png" alt="paypallogo" />
-                                        <img src="/images/visalogo.png" alt="visalogo" />
-                                        <img src="/images/mastercardlogo.png" alt="mastercard" />
+                                        <a href="#"><img src="/images/paypallogo.svg" alt="" /></a>
+                                        <a href="#"><img src="/images/visalogo.svg" alt="" /></a>
                                     </div>
                                     <div className="copy_txt mob_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>

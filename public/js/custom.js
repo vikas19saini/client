@@ -403,7 +403,7 @@ $(window).scroll(function () {
               .on(c, function () {
                 r.hideSubmenu(this, r.settings.effect)
               })
-          //r.settings.hideSubWhenGoOut && b()
+        //r.settings.hideSubWhenGoOut && b()
       },
       S = function () {
         w(),
@@ -907,8 +907,6 @@ $(document).ready(function () {
   }
 
 });
-
-
 
 
 

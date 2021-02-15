@@ -70,13 +70,13 @@ export default function CartButton(props) {
             dispatch({ type: "ADD_TO_CART", payload: cartData })
 
             /* Saving cart to databas if user is logged in */
-            if(auth){
-                await axios.post(`${process.env.API_URL}cart/add`, {productId: parseInt(product.id), quantity: item.quantity});
+            if (auth) {
+                await axios.post(`${process.env.API_URL}cart/add`, { productId: parseInt(product.id), quantity: item.quantity });
             }
 
             toast.notify(`${props.iscartpage ? "Cart updated" : "Added to cart"}`, {
                 type: "success",
-                title: "Success!!!"
+                title: "Success!!!",
             })
 
             props.iscartpage && props.setReload(props.reload + 1)
@@ -145,7 +145,7 @@ export default function CartButton(props) {
                                 product.stockStatus !== 0 &&
                                 <Fragment>
                                     <button type="button" className="bag_bttn" onClick={addProductToCart}>Add to Bag</button>
-                                    <button className="hard_icon" onClick={addToWishlist}><i className="fa fa-heart" aria-hidden="true"></i></button>
+                                    <button className="hard_icon" onClick={addToWishlist}><img src="/images/address_icon/heart.svg" alt="heart" /></button>
                                 </Fragment>
                             }
                         </Fragment>

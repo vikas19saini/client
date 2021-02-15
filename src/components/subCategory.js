@@ -37,7 +37,7 @@ export default function SubCategory(props) {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid subcategory_mob mob_view" style={{ background: `url(${category.mobileMedia ? category.mobileMedia.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
+            <div className="container-fluid subcategory_mob mob_view" style={{ background: `url(${category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
                 <div className="row">
                     <div className="col-md-12">
                         <div id="top_banner_1" className="owl-carousel wow fadeInUp">
@@ -86,7 +86,7 @@ export default function SubCategory(props) {
                                             <div className="cotton_fabric_sec tp_border wow fadeInUp">
                                                 <Link href={"/category/" + c.slug}>
                                                     <a>
-                                                        <Image src={c.media ? c.media.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" />
+                                                        <Image src={c.subCategory ? c.subCategory.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" />
                                                     </a>
                                                 </Link>
                                                 <h5>{c.name}</h5>
@@ -111,7 +111,7 @@ export default function SubCategory(props) {
                                 <div className="">
                                     <Link href={"/category/" + secondSection[0].slug}>
                                         <a>
-                                            <img src={secondSection[0].media ? secondSection[0].media.fullUrl : "/images/placeholder.png"} alt={secondSection[0].name} className="img-fluid" />
+                                            <img src={secondSection[0].subCategory ? secondSection[0].subCategory.fullUrl : "/images/placeholder.png"} alt={secondSection[0].name} className="img-fluid" />
                                         </a>
                                     </Link>
                                 </div>
@@ -146,7 +146,7 @@ export default function SubCategory(props) {
                                             <div className="cotton_fabric_sec tp_border">
                                                 <Link href={"/category/" + ra.slug}>
                                                     <a>
-                                                        <Image src={ra.media ? ra.media.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" />
+                                                        <Image src={ra.subCategory ? ra.subCategory.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" />
                                                     </a>
                                                 </Link>
                                                 <h5>{ra.name} </h5>
@@ -172,7 +172,7 @@ export default function SubCategory(props) {
                                         <div className="row">
                                             <div className="col-md-7">
                                                 <div className="">
-                                                    <img src={tc.media ? tc.media.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
+                                                    <img src={tc.subCategory ? tc.subCategory.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
                                                 </div>
                                             </div>
                                             <div className="col-md-5">

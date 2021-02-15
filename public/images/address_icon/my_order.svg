@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 221.6 279.5" style="enable-background:new 0 0 221.6 279.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);}
+</style>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="109.377" x2="221.5695" y2="109.377" gradientTransform="matrix(1 0 0 -1 0 276.666)">
+			<stop  offset="5.600000e-03" style="stop-color:#EBC17D"/>
+			<stop  offset="0.1854" style="stop-color:#DFB77C"/>
+			<stop  offset="0.5955" style="stop-color:#C08329"/>
+			<stop  offset="0.8708" style="stop-color:#EABE81"/>
+			<stop  offset="1" style="stop-color:#EEDCC3"/>
+		</linearGradient>
+		<path class="st0" d="M221.4,230.4L209,73.2c-0.8-10.1-9.3-18.1-19.5-18.1h-24.7v36.5c0,4.5-3.7,8.2-8.2,8.2
+			c-4.5,0-8.2-3.7-8.2-8.2V55.1H73.1v36.5c0,4.5-3.7,8.2-8.2,8.2c-4.5,0-8.2-3.7-8.2-8.2V55.1H32.1c-10.2,0-18.7,7.9-19.5,18
+			L0.1,230.5c-1,12.6,3.4,25.1,12,34.4c8.6,9.3,20.7,14.6,33.4,14.6h130.6c12.6,0,24.8-5.3,33.4-14.6
+			C218,255.6,222.4,243.1,221.4,230.4z M147.7,150.4l-42.3,42.3c-1.6,1.6-3.7,2.4-5.8,2.4s-4.2-0.8-5.8-2.4l-19.8-19.8
+			c-3.2-3.2-3.2-8.4,0-11.6c3.2-3.2,8.4-3.2,11.6,0l14.1,14l36.5-36.5c3.2-3.2,8.4-3.2,11.6,0C150.9,142,150.9,147.2,147.7,150.4z"
+			/>
+	</g>
+</g>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="56.772" y1="249.102" x2="164.803" y2="249.102" gradientTransform="matrix(1 0 0 -1 0 276.666)">
+			<stop  offset="5.600000e-03" style="stop-color:#EBC17D"/>
+			<stop  offset="0.1854" style="stop-color:#DFB77C"/>
+			<stop  offset="0.5955" style="stop-color:#C08329"/>
+			<stop  offset="0.8708" style="stop-color:#EABE81"/>
+			<stop  offset="1" style="stop-color:#EEDCC3"/>
+		</linearGradient>
+		<path class="st1" d="M110.8,0c-29.8,0-54,24.2-54,54v1.1h16.4V54c0-20.8,16.9-37.7,37.6-37.7s37.6,16.9,37.6,37.7v1.1h16.4V54
+			C164.8,24.2,140.6,0,110.8,0z"/>
+	</g>
+</g>
+</svg>

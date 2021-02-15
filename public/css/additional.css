@@ -1,6 +1,13 @@
 #toast-container{
     z-index: 999999999999999;
 }
+#toast-container #toast-message{
+  background-color: #000000 !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    font-size: 13px !important;
+    font-family: 'Montserrat' !important;
+}
 
 .loader {
     border: 3px solid #f3f3f3;
@@ -183,4 +190,15 @@ span.shipingCost {
 span.eat {
   margin-left: 10px;
   font-size: 13px;
+}
+.catImage{
+  cursor: pointer;
+}
+.filtersMobile button.nav-link{
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+}
+.relativeProducts .item a div{
+  width: 100%;
 }

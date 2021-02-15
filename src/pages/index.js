@@ -519,7 +519,7 @@ export default function Home(props) {
         <div className="container">
           <div className="row wow fadeInUp">
             <div className="col-md-12">
-              <div id="arrivals" className="owl-carousel">
+              <div id="arrivals" className="owl-carousel relativeProducts">
                 <Products products={props.products} />
               </div>
             </div>

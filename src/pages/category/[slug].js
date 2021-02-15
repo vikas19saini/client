@@ -33,7 +33,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     try {
         let category = await axios.get(`${process.env.API_URL}category/${context.params.slug}`)
         category = category.data;
-
+        
         return {
             props: category
         }
