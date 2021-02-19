@@ -202,3 +202,36 @@ span.eat {
 .relativeProducts .item a div{
   width: 100%;
 }
+.sub-menu.active{
+  display: block !important;
+}
+.divRegistration{
+  width: 80%;
+  margin: 0 auto;
+}
+.emptyCart{
+  text-align: center;
+  margin: 0 auto;
+}
+.emptyCart img{
+  width: 100px;
+}
+.emptyCart h1{
+  font-size: 16px;
+    margin-top: 20px;
+    font-family: inherit;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.emptyCart a{
+  background: #917343;
+    border: 1px solid #917343;
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 3px;
+    margin-top: 18px;
+    display: block;
+    width: 115px;
+    margin: 0 auto;
+}

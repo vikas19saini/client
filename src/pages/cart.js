@@ -107,7 +107,16 @@ export default function Cart() {
                         </div>
                         :
                         <div className="container">
-                            <h1>Empty cart</h1>
+                            <div className="emptyCart">
+                                <img src="/images/emptyCart.svg" alt="emptyCart" />
+                                <h1>Your cart is empty</h1>
+                                <p>You have no items in your shopping cart let's go buy something!</p>
+                                <Link href="/">
+                                    <a>
+                                        Shop Now!
+                                    </a>
+                                </Link>
+                            </div>
                         </div>
                 }
             </section>

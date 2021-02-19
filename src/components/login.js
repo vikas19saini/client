@@ -34,7 +34,7 @@ export default function Login() {
             setIsLoggingIn(false)
             toast.notify(err.response.data.message, {
                 type: "error",
-                title: "OTP Error!"
+                title: "Login Error!"
             })
         })
     }
@@ -113,7 +113,6 @@ export default function Login() {
                         <div className="container-fluid ld_bg">
                             <div className="row">
                                 <div className="inner_main_ld">
-                                    <img src="/images/logo.png" alt="" />
                                     <h4>Personalize your style from the fabric</h4>
                                     <h6>Welcome to Gandhi Fabric</h6>
                                     <form onSubmit={login}>
@@ -134,24 +133,37 @@ export default function Login() {
                         </div>
                     ) : (
                         <div className="container-fluid ld_bg">
-                            <div className="row">
+                            <div className="divRegistration row">
                                 <div className="inner_main_ld">
-                                    <img src="/images/logo.png" alt="" />
-                                    <h4>Personalize your style from the fabric</h4>
+                                    <h4 style={{ textAlign: "center" }}>Personalize your style from the fabric</h4>
                                     <h6>Welcome to Gandhi Fabric</h6>
                                     {
                                         !otpSent ? (
                                             <form onSubmit={onSubmit} >
                                                 <div className="form_login">
-                                                    <input type="text" name="name" placeholder="Name" required />
-                                                    <input type="text" name="phone" placeholder="Mobile number" required />
-                                                    <input name="email" placeholder="Email address" type="email" required />
-                                                    <input type="password" name="password" placeholder="Password" required />
-                                                    <input type="password" name="confirmPassword" placeholder="Confirm assword" required />
+                                                    <div className="row">
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <input type="text" name="name" placeholder="Name" required />
+                                                        </div>
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <input type="text" name="phone" placeholder="Mobile number" required />
+                                                        </div>
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <input name="email" placeholder="Email address" type="email" required />
+                                                        </div>
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <input type="password" name="password" placeholder="Password" required />
+                                                        </div>
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <input type="password" name="confirmPassword" placeholder="Confirm assword" required />
+                                                        </div>
+                                                        <div className="col-md-6 col-sm-12">
+                                                            <button type="submit" className="login_bttn go_bttn" disabled={isLoading}>{
+                                                                isLoading ? (<div className="loader"></div>) : "SIGNUP"
+                                                            }</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <button type="submit" className="login_bttn go_bttn" disabled={isLoading}>{
-                                                    isLoading ? (<div className="loader"></div>) : "SIGNUP"
-                                                }</button>
                                                 <p className="mass_tx">
                                                     <a href="#login" onClick={() => setShowLoginPage(true)}>Already have an account? Login</a>
                                                 </p>

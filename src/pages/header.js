@@ -105,7 +105,7 @@ export default function Header(props) {
                                                                                     </a>
                                                                                     {
                                                                                         cat.children && cat.children.length > 0 &&
-                                                                                        <div id="some-element" className="sub-menu" key={cat.id} style={{ display: (openCategory === cat.id) ? "block" : "none" }}>
+                                                                                        <div id="some-element" className={(openCategory === cat.id) ? "sub-menu active" : "sub-menu"}>
                                                                                             <ul>
                                                                                                 {
                                                                                                     cat.children.map((subCat) => {

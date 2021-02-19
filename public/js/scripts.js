@@ -880,7 +880,7 @@ function navigation() {
         // The viewport is less than 768 pixels wide
         //alert("This is a mobile device.");
         $('.ac-list > .expanded').on('click', function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             $(".expanded").removeAttr("style");
             if ($(this).find('.sub-menu').is(':visible')) {
                 $(this).removeClass('megaopen');
@@ -892,12 +892,12 @@ function navigation() {
                 var newHeight = $(this).find('.sub-menu').height();
                 $(this).height(newHeight + 100);
                 $('.ac-list > .expanded').find('.sub-menu').slideUp();
-                $(this).find('.sub-menu').slideToggle();
+                //$(this).find('.sub-menu').slideToggle();
             }
         });
     } else {
         $('.ac-list > .expanded').on('click', function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             $(".sub-menu").removeAttr("style");
             $('.expanded').removeAttr("style");
             if ($(this).find('.sub-menu').is(':visible')) {
@@ -912,7 +912,7 @@ function navigation() {
                 $(this).find('.sub-menu').height(newHeight);
                 $(this).before().height(newHeight + 100);
                 $('.ac-list > .expanded').find('.sub-menu').slideUp();
-                $(this).find('.sub-menu').slideToggle();
+                //$(this).find('.sub-menu').slideToggle();
             }
         });
     }
