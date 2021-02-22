@@ -30,7 +30,7 @@ export default function SubCategory(props) {
                         <div className="col-md-6">
                             <div className="inner_sub_txt inner_txt wow fadeInUp">
                                 <h1>{category.name}</h1>
-                                <p>Explore More {category.descendents.length} Type {category.name}</p>
+                                <p>{category.description}</p>
                                 <button type="button" className="view_slide_bttn learn_bttn cttn_coll">View Collection</button>
                             </div>
                         </div>
