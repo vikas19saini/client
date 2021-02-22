@@ -24,7 +24,7 @@ export default function SubCategory(props) {
 
     return (
         <Fragment>
-            <div className="container-fluid subcategory_desk mob_view" style={{ background: `url(${category.media ? category.media.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
+            <div className="container-fluid subcategory_desk desk_view" style={{ background: `url(${category.media ? category.media.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">
@@ -37,7 +37,7 @@ export default function SubCategory(props) {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid subcategory_mob desk_view" style={{ background: `url(${category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
+            <div className="container-fluid subcategory_mob mob_view" style={{ background: `url(${category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
                 <div className="row">
                     <div className="col-md-12">
                         <div id="top_banner_1" className="owl-carousel wow fadeInUp">
