@@ -1351,27 +1351,20 @@ function subCategory() {
         autoplay: false,
         dots: true,
         nav: false,
-        margin: 30,
         responsive: {
             0: {
-
                 items: 1.2,
                 nav: false,
-
                 margin: 20,
             },
-
             568: {
                 items: 3,
                 nav: false,
             },
-
             667: {
                 items: 3,
             },
-
             1170: {
-
                 items: 3,
             }
         }

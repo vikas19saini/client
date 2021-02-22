@@ -217,7 +217,7 @@ export default function SubCategory(props) {
                                         </div>
                                         <div className="col-md-7">
                                             <div>
-                                                <img src={tc.media ? tc.media.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
+                                                <img src={tc.subCategory ? tc.subCategory.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
                                             </div>
                                         </div>
                                     </div>
