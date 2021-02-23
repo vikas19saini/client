@@ -41,20 +41,19 @@ export default function Products(props) {
     const [total, setTotal] = useState();
     const [totalPages, setTotalPages] = useState(0);
     const [openFilter, setOpenFilter] = useState(-1);
-    const [params, setParams] = useState(router.query);
     const limit = 10
     const [reload, setReload] = useState(props.reload ? props.reload : 1);
-    let page = params.page ? parseInt(params.page) : 1;
+    let page = router.query.page ? parseInt(router.query.page) : 1;
     const currency = useSelector(state => state.config.currency);
 
-    useEffect(() => {
-        let queryParams = params;
+    useEffect(async () => {
+        let queryParams = router.query;
         let offset = (page - 1) * limit
 
         queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
         queryParams = new URLSearchParams(queryParams)
 
-        axios.get(`${process.env.API_URL}category/products/${category.slug}?${queryParams}`).then((response) => {
+        await axios.get(`${process.env.API_URL}category/products/${category.slug}?${queryParams}`).then((response) => {
             setProducts(response.data.rows)
             setTotal(response.data.count)
             setTotalPages(Math.ceil(response.data.count / limit));
@@ -87,8 +86,8 @@ export default function Products(props) {
     }
 
     const setPage = (pageNo) => {
-        let appliedFiltersTemp = params
-        appliedFiltersTemp.page = pageNo
+        let appliedFiltersTemp = router.query;
+        appliedFiltersTemp.page = pageNo;
 
         let queryParams = new URLSearchParams(appliedFiltersTemp)
         router.push(`/category/${category.slug}?${queryParams}`)
@@ -112,18 +111,15 @@ export default function Products(props) {
                             products.length === 0 ?
                                 <div className="emptyCart">
                                     <img src="/images/emptyCart.svg" alt="emptyCart" />
-                                    <h1>Your cart is empty</h1>
-                                    <p>You have no items in your shopping cart let's go buy something!</p>
+                                    <h1>No product found!</h1>
                                     <Link href="/">
-                                        <a>
-                                            Shop Now!
-                                    </a>
+                                        <a>Shop Now!</a>
                                     </Link>
                                 </div>
                                 :
                                 <>
                                     <div className="col-md-4">
-                                        <div className="left_fittr wow fadeInUp">
+                                        <div className="left_fittr">
                                             <h4>Filter</h4>
                                             <div className="inner_boxs">
                                                 <div>
@@ -133,8 +129,8 @@ export default function Products(props) {
                                                                 priceFilters.map((pf, index) => {
                                                                     return (
                                                                         <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
-                                                                            <input type="radio" defaultValue={pf.start} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
-                                                                            <label for="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
+                                                                            <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
+                                                                            <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
                                                                         </div>
                                                                     )
                                                                 })
@@ -155,7 +151,7 @@ export default function Products(props) {
                                                                                     filter.filterValues.map(fv => {
                                                                                         return (
                                                                                             <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
-                                                                                                <input type="checkbox" defaultValue={fv.id} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
+                                                                                                <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
                                                                                                 <span className="checkmark"></span>
                                                                                             </label>
                                                                                         );
@@ -167,14 +163,13 @@ export default function Products(props) {
                                                                 }
                                                             })
                                                         }
-
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-8">
-                                        <div className="inner_right_prodct wow fadeInUp">
+                                        <div className="inner_right_prodct">
                                             <div className="mob_view filter_cs">
                                                 <div className="col_6">
                                                     <h6><img src="/images/sort.jpg" alt="" /><span>Sort</span></h6>
@@ -184,7 +179,7 @@ export default function Products(props) {
                                                         alt="" /><span>Filter</span></h6>
                                                 </div>
                                             </div>
-                                            <div className="inner_right_prodct wow fadeInUp">
+                                            <div className="inner_right_prodct">
                                                 <p>{category.name} - {total}</p>
                                                 <div className="row custom_col">
                                                     {
@@ -249,6 +244,9 @@ export default function Products(props) {
                         <div className="modal-body main_filter_pop filtersMobile">
                             <div className="d-flex flex-row mt-2">
                                 <ul className="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
+                                    <li className="nav-item">
+                                        <button className={openFilter === -1 ? "nav-link active" : "nav-link"} onClick={() => setOpenFilter(-1)}>Price</button>
+                                    </li>
                                     {
                                         filters.map(filter => {
                                             return (
@@ -260,6 +258,22 @@ export default function Products(props) {
                                     }
                                 </ul>
                                 <div className="tab-content">
+                                    <div className={openFilter === -1 ? "tab-pane fade show active" : "tab-pane fade show"}>
+                                        <div className="main_tag priceFilterModal">
+                                            <ul>
+                                                {
+                                                    priceFilters.map((pf, index) => {
+                                                        return (
+                                                            <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
+                                                                <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
+                                                                <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
                                     {
                                         filters.map(filter => {
                                             return (
@@ -269,7 +283,7 @@ export default function Products(props) {
                                                             {
                                                                 filter.filterValues.map(fv => {
                                                                     return (
-                                                                        <li className="normalValueContainer selectedOption" key={fv.id}>
+                                                                        <li className="normalValueContainer selectedOption" onClick={() => applyFilter(fv.id)} key={fv.id}>
                                                                             <label className="customCheckbox">
                                                                                 <div className="filterValue">{fv.name}</div>
                                                                                 <input type="checkbox" name="filterValues" />
@@ -289,8 +303,7 @@ export default function Products(props) {
                             </div>
                         </div>
                         <div className="modal-footer ft_btn_lft">
-                            <button type="button" className="btn btn-danger frst clse_bttn" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Apply</button>
+                            <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

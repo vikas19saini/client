@@ -235,3 +235,6 @@ span.eat {
     width: 115px;
     margin: 0 auto;
 }
+.priceFilterModal ul div input{
+  width: auto;
+}
