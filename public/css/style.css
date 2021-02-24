@@ -3414,7 +3414,8 @@ button:focus {
 	width: 100px;
 	margin: 0 20px 0 0;
 	font-family: Montserrat;
-	font-size: 14px
+	font-size: 14px;
+	border: 1px solid #ba8c37;
 }
 
 #luggage option {
@@ -6485,7 +6486,7 @@ section.empty-cart {
 	content: '';
 	position: absolute;
 	height: 48px;
-	background: url(../images/attch.png) no-repeat right;
+	background: url('../images/attch.png') no-repeat right;
 	z-index: 25;
 	width: 100%;
 	background-size: contain;
@@ -6550,6 +6551,3 @@ section.empty-cart {
 		width: 85%
 	}
 }
-
-
-/* header Css closed */
