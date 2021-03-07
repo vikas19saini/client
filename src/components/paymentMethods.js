@@ -16,6 +16,10 @@ export default function PaymentMethod(props) {
                 behavior: "smooth"
             })
         }
+
+        /* setTimeout(() => {
+            setPaymentMethod(null);
+        }, 10000) */
     }, [paymentMethod]);
 
     useEffect(() => {
@@ -25,15 +29,9 @@ export default function PaymentMethod(props) {
     }, [])
 
     const onSuccess = (payment) => {
-        //console.log(payment)
-    }
-
-    const onError = (err) => {
-        //console.log(err)
-    }
-
-    const onCancel = (data) => {
-        //console.log(data)
+        axios.patch(`${process.env.API_URL}orders/${orderId}`, {status: 1}).then((res) => {
+            console.log(res);
+        })
     }
 
     return (
@@ -50,7 +48,7 @@ export default function PaymentMethod(props) {
                                 return (
                                     <div className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
                                         <span className="radio-item">
-                                            <input type="radio" name="ritem" onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
+                                            <input type="radio" onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
                                             <label>{pm.title}</label>
                                         </span>
                                     </div>
@@ -92,7 +90,7 @@ export default function PaymentMethod(props) {
                                 label: 'pay',
                                 tagline: true,
                                 fundingicons: true
-                            }} onCancel={onCancel} onError={onError} onSuccess={onSuccess} />)
+                            }} onSuccess={onSuccess} />)
                         }
                     </div>
                 </div>

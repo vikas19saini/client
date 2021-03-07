@@ -80,64 +80,131 @@ export default function Header(props) {
                         <div className="nav-menus-wrapper">
                             <ul className="nav-menu categoery_menu align-to-right wt_tx">
                                 <li>
-                                    <a className="show_sub" href="#">All Fabric</a>
+                                    <a className="show_sub desk_view" href="#">All Fabric</a>
                                     <div className="megamenu-panel" id="close_menu">
-                                        <div className="container nav_head">
+                                        <div className="nav_head">
                                             <div id="closeButton"><img src="/images/close.png" /></div>
-                                            <div className="row">
-                                                <div className="col-md-2 col-xs-12">
-                                                    <Link href="/">
-                                                        <a><img className="desk_view" src="/images/logo.png" alt="logo" /></a>
-                                                    </Link>
-                                                </div>
-                                                <div className="col-md-10 col-xs-12">
-                                                    <div className="megamenu-lists">
-                                                        <ul className="megamenu-list list-col-4">
-                                                            <div className="cus_nv ac-menu">
-                                                                <div className="row cus_nv_m ac-list">
-                                                                    {
-                                                                        categories.map((cat) => {
-                                                                            return (
-                                                                                <div id="some-div" className="expanded" key={cat.id}>
-                                                                                    <a onClick={() => setOpenCategory(cat.id)}>
-                                                                                        <img className="catImage" src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
-                                                                                        <span>{cat.name}</span>
-                                                                                    </a>
-                                                                                    {
-                                                                                        cat.children && cat.children.length > 0 &&
-                                                                                        <div id="some-element" className={(openCategory === cat.id) ? "sub-menu active" : "sub-menu"}>
-                                                                                            <ul>
-                                                                                                {
-                                                                                                    cat.children.map((subCat) => {
-                                                                                                        return (
-                                                                                                            <li key={subCat.id}>
-                                                                                                                <Link href={`/category/${subCat.slug}`}>
-                                                                                                                    <a>{subCat.name}</a>
-                                                                                                                </Link>
-                                                                                                            </li>
-                                                                                                        );
-                                                                                                    })
-                                                                                                }
-                                                                                            </ul>
-                                                                                        </div>
-
-                                                                                    }
-
-                                                                                </div>
-                                                                            );
-                                                                        })
-                                                                    }
-
-                                                                </div>
-                                                            </div>
-                                                        </ul>
+                                            <div className="desk_view">
+                                                <div className="row">
+                                                    <div className="col-md-2 col-xs-12">
+                                                        <Link href="/">
+                                                            <a><img className="desk_view" src="/images/logo.png" alt="logo" /></a>
+                                                        </Link>
                                                     </div>
+                                                    <div className="col-md-10 col-xs-12">
+                                                        <div className="megamenu-lists">
+                                                            <ul className="megamenu-list list-col-4">
+                                                                <div className="cus_nv ac-menu">
+                                                                    <div className="row cus_nv_m ac-list">
+                                                                        {
+                                                                            categories.map((cat) => {
+                                                                                return (
+                                                                                    <div id="some-div" className="expanded" key={cat.id}>
+                                                                                        <a onClick={() => setOpenCategory(cat.id)}>
+                                                                                            <img className="catImage" src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
+                                                                                            <span>{cat.name}</span>
+                                                                                        </a>
+                                                                                        {
+                                                                                            cat.children && cat.children.length > 0 &&
+                                                                                            <div id="some-element" className={(openCategory === cat.id) ? "sub-menu active" : "sub-menu"}>
+                                                                                                <ul>
+                                                                                                    {
+                                                                                                        cat.children.map((subCat) => {
+                                                                                                            return (
+                                                                                                                <li key={subCat.id}>
+                                                                                                                    <Link href={`/category/${subCat.slug}`}>
+                                                                                                                        <a>{subCat.name}</a>
+                                                                                                                    </Link>
+                                                                                                                </li>
+                                                                                                            );
+                                                                                                        })
+                                                                                                    }
+                                                                                                </ul>
+                                                                                            </div>
+
+                                                                                        }
+
+                                                                                    </div>
+                                                                                );
+                                                                            })
+                                                                        }
+
+                                                                    </div>
+                                                                </div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="bs-example mob_view">
+                                                <div className="accordion acco_after" id="accordionExample">
+                                                    <div className="card">
+                                                        <div className="card-header" id="headingfor">
+                                                            <h2 className="mb-0">
+                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefor"><p>My Accounts</p> <i className="fa fa-plus"></i></button>
+                                                            </h2>
+                                                        </div>
+                                                        <div id="collapsefor" className="collapse" aria-labelledby="headingfor" data-parent="#accordionExample">
+                                                            <div className="card-body">
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/account">
+                                                                            <a>Login</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account">
+                                                                            <a>Register</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {
+                                                        categories.map((cat) => {
+                                                            return (
+                                                                <div className="card" key={cat.id}>
+                                                                    <div className="card-header" id="headingOne">
+                                                                        <h2 className="mb-0">
+                                                                            <Link href={`/category/${cat.slug}`}>
+                                                                                <a>
+                                                                                    <img className="catImage" src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
+                                                                                    {cat.name}
+                                                                                </a>
+                                                                            </Link>
+                                                                            <button type="button" className="btn btn-link" data-toggle="collapse" data-target={`#collapse${cat.id}`}><i className="fa fa-plus"></i></button>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div id={`collapse${cat.id}`} className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                        <div className="card-body">
+                                                                            <ul>
+                                                                                {
+                                                                                    cat.children && cat.children.length > 0 &&
+                                                                                    cat.children.map((subCat) => {
+                                                                                        return (
+                                                                                            <li key={subCat.id}>
+                                                                                                <Link href={`/category/${subCat.slug}`}>
+                                                                                                    <a>{subCat.name}</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                        );
+                                                                                    })
+                                                                                }
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                        })
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" target="_blank">Shop By Categories</a></li>
+                                {/* <li><a href="#" target="_blank">Shop By Categories</a></li> */}
                                 <div className="nav-search">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
                                     <form>
