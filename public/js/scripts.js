@@ -106,12 +106,12 @@ $(window).scroll(function () {
                     s !== a && r.callback("onInit")
             })
         var h = function () {
-            n(t)
+            /* n(t)
                 .find(".nav-submenu")
                 .hide(0),
                 n(t)
                     .find("li")
-                    .removeClass("focus")
+                    .removeClass("focus") */
         },
             v = function () {
                 n(t)
@@ -1370,6 +1370,26 @@ function subCategory() {
         }
     });
 }
+
+$(document).ready(function () {
+    // Add minus icon for collapse element which is open by default
+    setTimeout(() => {
+        $(".collapse.show").each(function () {
+            $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        });
+
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        }).on('hide.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        });
+    }, 5000);
+
+    $(document).on('click', '#mobileMenu a', function () {
+        $(".nav-menus-wrapper-close-button").trigger('click');
+    });
+});
 
 var wow = new WOW();
 wow.init();

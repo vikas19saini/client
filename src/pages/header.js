@@ -81,7 +81,7 @@ export default function Header(props) {
                             <ul className="nav-menu categoery_menu align-to-right wt_tx">
                                 <li>
                                     <a className="show_sub desk_view" href="#">All Fabric</a>
-                                    <div className="megamenu-panel" id="close_menu">
+                                    <div className="megamenu-panel" id="mobileMenu">
                                         <div className="nav_head">
                                             <div id="closeButton"><img src="/images/close.png" /></div>
                                             <div className="desk_view">
