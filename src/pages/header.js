@@ -1,7 +1,7 @@
 import axios from "axios"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
@@ -9,6 +9,8 @@ export default function Header(props) {
     const [showSearchMenu, setShowSearchMenu] = useState(false);
     const [categories, setCategories] = useState([]);
     const [openCategory, setOpenCategory] = useState(-1);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         navigation() // written in script.js
@@ -148,14 +150,29 @@ export default function Header(props) {
                                                             <div className="card-body">
                                                                 <ul>
                                                                     <li>
-                                                                        <Link href="/account">
-                                                                            <a>Login</a>
+                                                                        <Link href="/account?tab=profile">
+                                                                            <a>Profile</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
-                                                                        <Link href="/account">
-                                                                            <a>Register</a>
+                                                                        <Link href="/account?tab=orders">
+                                                                            <a>Orders</a>
                                                                         </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=addresses">
+                                                                            <a>Address</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=wishlist">
+                                                                            <a>Wishlist</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+
+                                                                        <a onClick={() => dispatch({ type: "SIGN_OUT" })}>Log Out</a>
+
                                                                     </li>
                                                                 </ul>
                                                             </div>
