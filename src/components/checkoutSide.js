@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
 import { formatPrice, getProductPrice } from "../pages/helpers";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 
 export default function CheckoutSidebar(props) {
     let totalAmount = 0, discount = 0, couponDiscount = 0, totalPay = 0;
@@ -10,8 +9,8 @@ export default function CheckoutSidebar(props) {
     const router = useRouter();
 
     props.cart.forEach(pro => {
-        totalAmount += pro.ragularPrice * pro.cartQuantity
-        totalPay += getProductPrice(pro) * pro.cartQuantity
+        totalAmount += pro.ragularPrice * pro.cartProducts.quantity;
+        totalPay += getProductPrice(pro) * pro.cartProducts.quantity;
         discount = totalAmount - totalPay
     })
 

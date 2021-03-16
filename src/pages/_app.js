@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     <Fragment>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
         <link type="text/css" rel="stylesheet" href="/css/style.css" />

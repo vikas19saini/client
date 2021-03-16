@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { toast, ToastContainer } from 'react-nextjs-toast';
+import { useRouter } from 'next/router'
 
 export default function PaymentMethod(props) {
     let currency = useSelector(state => state.config.currency);
@@ -9,6 +11,7 @@ export default function PaymentMethod(props) {
     const [paymentMethod, setPaymentMethod] = useState(null);
     const amountToPay = parseFloat((props.amount * currency.value).toFixed(2));
     const [allPaymentMethods, setAllPaymentMethods] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
@@ -28,14 +31,29 @@ export default function PaymentMethod(props) {
         });
     }, [])
 
-    const onSuccess = (payment) => {
-        axios.patch(`${process.env.API_URL}orders/${orderId}`, {status: 1}).then((res) => {
-            console.log(res);
-        })
+    const onSuccess = async (payment) => {
+        try {
+            await axios.patch(`${process.env.API_URL}orders/updateStatus`, { status: 1, orderId: orderId });
+            await axios.post(`${process.env.API_URL}orders/payment`, {
+                orderId: orderId,
+                transactionNo: payment.paymentID,
+                amount: amountToPay,
+                currency: currency.code,
+                status: payment.paid ? "SUCCESS" : "FAILED",
+                method: "paypal"
+            });
+            router.push(`thankyou?orderId=${orderId}`)
+        } catch (err) {
+            toast.notify("Unable to place order please contact us!", {
+                type: "error",
+                title: "Order Failed"
+            })
+        }
     }
 
     return (
         <div className="dis_detail blockBorder" id="paymentMethods">
+            <ToastContainer />
             <div>
                 <h4 className="p0">Payment Method</h4>
             </div>
@@ -44,9 +62,9 @@ export default function PaymentMethod(props) {
                 <div className="row">
                     <div className="col-md-12 col-12">
                         {
-                            allPaymentMethods.map((pm) => {
+                            allPaymentMethods.map((pm, index) => {
                                 return (
-                                    <div className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
+                                    <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
                                         <span className="radio-item">
                                             <input type="radio" onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
                                             <label>{pm.title}</label>
@@ -81,8 +99,8 @@ export default function PaymentMethod(props) {
                                 paymentMethod.mode === "production" ? {
                                     production: paymentMethod.key
                                 } : {
-                                        sandbox: paymentMethod.key
-                                    }
+                                    sandbox: paymentMethod.key
+                                }
                             } currency={currency.code} total={amountToPay} style={{
                                 size: 'responsive',
                                 color: 'gold',

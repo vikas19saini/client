@@ -14,32 +14,23 @@ export default function Cart() {
     const dispatch = useDispatch()
     const [reload, setReload] = useState(1)
     const [cartProductDetails, setCartProductDetails] = useState([])
-    const productsInCart = useSelector(state => state.config.cart ? state.config.cart : [])
-    const auth = useSelector(state => state.config.auth ? state.config.auth : false);
+    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const [disableCheckout, setDisableCheckout] = useState(false)
 
     useEffect(async () => {
-        let cartData = []
-        for (let ci of productsInCart) {
-            let product = await axios.get(`${process.env.API_URL}products/${ci.slug}`)
-            product = product.data
-            product.cartQuantity = ci.quantity
-            cartData = [...cartData, ...[product]]
-
-            if (!stockStatus(product)) {
-                setDisableCheckout(true)
+        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+            for (let product of res.data.products) {
+                if (!stockStatus(product)) {
+                    setDisableCheckout(true)
+                }
             }
-        }
-        setCartProductDetails(cartData)
+            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+            setCartProductDetails(res.data.products || []);
+        })
     }, [reload])
 
-    const removeProduct = async (pid) => {
-        let filteredCart = productsInCart.filter(c => c.id !== pid)
-        dispatch({ type: "ADD_TO_CART", payload: filteredCart });
-        /* Remove cart from db if user is logged in */
-        if (auth) {
-            await axios.delete(`${process.env.API_URL}cart/remove/${pid}`)
-        }
+    const removeProduct = async (cartProductId) => {
+        await axios.delete(`${process.env.API_URL}cart/remove/${cartProductId}`)
         setDisableCheckout(false)
         setReload(reload + 1)
     }
@@ -52,7 +43,7 @@ export default function Cart() {
             <Header shadow />
             <section className="inner_product product_info">
                 {
-                    productsInCart.length > 0 ?
+                    cartProductDetails.length > 0 ?
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">
@@ -86,11 +77,11 @@ export default function Cart() {
                                                                     <CartButton product={cp} iscartpage reload={reload} setReload={setReload} />
                                                                 </div>
                                                                 <div className="right_icon">
-                                                                    <i onClick={() => removeProduct(cp.id)} className="fa fa-trash" aria-hidden="true"></i>
-                                                                    <i className="fa fa-heart" aria-hidden="true"></i>
+                                                                    <i onClick={() => removeProduct(cp.cartProducts.id)} className="fa fa-trash" aria-hidden="true"></i>
+                                                                    {/* <i className="fa fa-heart" aria-hidden="true"></i> */}
                                                                 </div>
                                                                 <div className="right_content_1">
-                                                                    <p><GetPriceHtml product={cp} quantity={cp.cartQuantity} /></p>
+                                                                    <p><GetPriceHtml product={cp} quantity={cp.cartProducts.quantity} /></p>
                                                                 </div>
                                                             </div>
                                                         </div>

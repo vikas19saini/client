@@ -15,8 +15,8 @@ export default function Header(props) {
     useEffect(() => {
         navigation() // written in script.js
 
-        if (config.cart) {
-            setCartItemCount(config.cart.length)
+        if (config.cartItems) {
+            setCartItemCount(config.cartItems);
         }
     })
 

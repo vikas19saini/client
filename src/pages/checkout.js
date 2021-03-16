@@ -14,7 +14,6 @@ import { toast, ToastContainer } from 'react-nextjs-toast';
 export default function Cart() {
     const [reload, setReload] = useState(1)
     const [cartProductDetails, setCartProductDetails] = useState([])
-    const productsInCart = useSelector(state => state.config.cart ? state.config.cart : [])
     const [disableCheckout, setDisableCheckout] = useState(false)
     const [addNew, setAddNew] = useState(false);
     const [addresses, setAddresses] = useState([]);
@@ -26,6 +25,7 @@ export default function Cart() {
     let currency = useSelector(state => state.config.currency);
     const dispatch = useDispatch();
     const [isError, setIsError] = useState(false);
+    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}address`).then(res => {
@@ -40,18 +40,15 @@ export default function Cart() {
     }
 
     useEffect(async () => {
-        let cartData = []
-        for (let ci of productsInCart) {
-            let product = await axios.get(`${process.env.API_URL}products/${ci.slug}`)
-            product = product.data
-            product.cartQuantity = ci.quantity
-            cartData = [...cartData, ...[product]]
-
-            if (!stockStatus(product)) {
-                setDisableCheckout(true)
+        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+            for (let product of res.data.products) {
+                if (!stockStatus(product)) {
+                    setDisableCheckout(true)
+                }
             }
-        }
-        setCartProductDetails(cartData)
+            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+            setCartProductDetails(res.data.products || []);
+        });
     }, [reload])
 
     useEffect(() => {
@@ -163,10 +160,10 @@ export default function Cart() {
                                         </div>
                                     </div>
                                 ) : (
-                                        <div className="dis_detail wow fadeInUp">
-                                            <h4>Select delivery address</h4>
-                                        </div>
-                                    )
+                                    <div className="dis_detail wow fadeInUp">
+                                        <h4>Select delivery address</h4>
+                                    </div>
+                                )
                             }
 
                             {

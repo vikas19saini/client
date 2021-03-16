@@ -5,18 +5,17 @@ import { GetPriceHtml, stockStatus } from "../pages/helpers";
 import axios from "axios";
 
 export default function CartButton(props) {
-    const product = props.product
-    const cart = useSelector(state => state.config.cart ? state.config.cart : []);
-    const auth = useSelector(state => state.config.auth ? state.config.auth : false);
-    const dispatch = useDispatch()
-    const [qty, setQty] = useState()
-    const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1)
-    const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200)
-    const [step] = useState(product.step ? product.step : 1)
+    const product = props.product;
+    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
+    const dispatch = useDispatch();
+    const [qty, setQty] = useState();
+    const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1);
+    const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200);
+    const [step] = useState(product.step ? product.step : 1);
 
     useEffect(() => {
-        setQty(props.product.cartQuantity ? props.product.cartQuantity : props.product.minOrderQuantity);
-    }, [props.product])
+        setQty(props.product.cartProducts ? props.product.cartProducts.quantity : props.product.minOrderQuantity);
+    }, [props.product]);
 
     const setQuantity = (val) => {
 
@@ -42,49 +41,60 @@ export default function CartButton(props) {
         setQty(val)
     }
 
-    useEffect(() => {
-        if (props.iscartpage) {
-            addProductToCart()
-        }
-    }, [qty])
-
-    const addProductToCart = async () => {
-        if (qty < minQty) {
+    const addProductToCart = async (quantity) => {
+        let pqty = quantity;
+        if (pqty < minQty) {
             toast.notify(`Invalid quantity, min order quantity is : ${minQty}`, {
                 type: "error",
                 title: "Error!!!"
             })
-        } else if (qty > maxQty) {
+        } else if (pqty > maxQty) {
             toast.notify(`Invalid quantity, max order quantity is : ${maxQty}`, {
                 type: "error",
                 title: "Error!!!"
             })
         } else {
-            let item = { id: product.id, quantity: qty, slug: product.slug }
-            let cartData = [...cart]
-
-            let productsInCartIds = cartData.map(cid => cid.id)
-            if (productsInCartIds.includes(item.id)) {
-                let index = productsInCartIds.indexOf(item.id)
-                cartData[index].quantity = item.quantity
+            if (cartId) {
+                console.log(pqty);
+                await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty, cartId: cartId }).then((res) => {
+                    toast.notify("Cart updated", {
+                        type: "success",
+                        title: "Success!!!",
+                    });
+                    setCartItems(cartId);
+                }).catch(e => {
+                    console.log(e)
+                    toast.notify("Couldn't be Updated", {
+                        type: "error",
+                        title: "Error!!!",
+                    })
+                });
             } else {
-                cartData.push(item)
+                await axios.post(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty }).then((res) => {
+                    toast.notify(`${props.iscartpage ? "Cart updated" : "Added to cart"}`, {
+                        type: "success",
+                        title: "Success!!!",
+                    });
+                    setCartItems(res.data.id);
+                    dispatch({ type: "ADD_TO_CART", payload: res.data.id });
+                }).catch(e => {
+                    toast.notify("Couldn't be added", {
+                        type: "error",
+                        title: "Error!!!",
+                    })
+                });
             }
-
-            dispatch({ type: "ADD_TO_CART", payload: cartData })
-
-            /* Saving cart to databas if user is logged in */
-            if (auth) {
-                await axios.post(`${process.env.API_URL}cart/add`, { productId: parseInt(product.id), quantity: item.quantity });
-            }
-
-            toast.notify(`${props.iscartpage ? "Cart updated" : "Added to cart"}`, {
-                type: "success",
-                title: "Success!!!",
-            })
-
-            props.iscartpage && props.setReload(props.reload + 1)
         }
+
+        props.iscartpage && props.setReload(props.reload + 1);
+    }
+
+    const setCartItems = (cartId) => {
+        !props.iscartpage &&
+            axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+                console.log(res.data);
+                dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+            });
     }
 
     const addToWishlist = () => {
@@ -113,9 +123,9 @@ export default function CartButton(props) {
                                     stockStatus(product) ?
                                         <Fragment>
                                             <p>Quantity</p>
-                                            <button className="minus" onClick={() => setQuantity(qty - step)}></button>
+                                            <button className="minus" onClick={() => addProductToCart(qty - step)}></button>
                                             <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                            <button className="plus" onClick={() => setQuantity(qty + step)}></button>
+                                            <button className="plus" onClick={() => addProductToCart(qty + step)}></button>
                                         </Fragment>
                                         :
                                         <Fragment>
@@ -140,15 +150,15 @@ export default function CartButton(props) {
                                     <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
                                     <button className="plus" onClick={() => setQuantity(qty + step)}></button>
                                 </div>) : (
-                                        <div className="number-input md-number-input">
-                                            <h2>Out of Stock</h2>
-                                        </div>
-                                    )
+                                    <div className="number-input md-number-input">
+                                        <h2>Out of Stock</h2>
+                                    </div>
+                                )
                             }
                             {
                                 product.stockStatus !== 0 &&
                                 <Fragment>
-                                    <button type="button" className="bag_bttn" onClick={addProductToCart}>Add to Bag</button>
+                                    <button type="button" className="bag_bttn" onClick={() => addProductToCart(qty)}>Add to Bag</button>
                                     <button className="hard_icon" onClick={addToWishlist}><img src="/images/address_icon/heart.svg" alt="heart" /></button>
                                 </Fragment>
                             }

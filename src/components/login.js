@@ -16,7 +16,7 @@ export default function Login() {
     const [showLoginPage, setShowLoginPage] = useState(true)
     const router = useRouter()
     const redirect = router.query.redirect || null;
-    let cart = useSelector(state => state.config.cart ? state.config.cart : []);
+    let cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
 
     const login = (e) => {
         e.preventDefault()
@@ -25,11 +25,11 @@ export default function Login() {
         axios.post(`${process.env.API_URL}user/login`, { email: e.target.email.value, password: e.target.password.value }).then(res => {
             setIsLoggingIn(false)
             dispatch({ type: "USER_LOGIN", payload: res.data });
-            axios.post(`${process.env.API_URL}cart/sync`, { cartItems: cart }).then((response) => {
-                console.log(response.data);
-                dispatch({ type: "ADD_TO_CART", payload: response.data });
-            })
-            redirect && router.push(redirect)
+
+            // Sync cart
+            cartId && axios.post(`${process.env.API_URL}cart/sync`, { cartId: cartId });
+
+            redirect && router.push(redirect);
         }).catch(err => {
             setIsLoggingIn(false)
             toast.notify(err.response.data.message, {
@@ -169,20 +169,20 @@ export default function Login() {
                                                 </p>
                                             </form>
                                         ) : (
-                                                <form onSubmit={verifyOtp}>
-                                                    <div className="form_login">
-                                                        <div>
-                                                            <input name="otp" aria-label="Otp" placeholder="OTP" type="text" required />
-                                                        </div>
+                                            <form onSubmit={verifyOtp}>
+                                                <div className="form_login">
+                                                    <div>
+                                                        <input name="otp" aria-label="Otp" placeholder="OTP" type="text" required />
                                                     </div>
-                                                    <button type="submit" className="login_bttn go_bttn" disabled={verifyingOtp}>{
-                                                        verifyingOtp ? (<div className="loader"></div>) : "VERIFY"
-                                                    }</button>
-                                                    <p className="mass_tx">
-                                                        <a href="#login" onClick={() => setShowLoginPage(true)}>Already have an account? Login</a>
-                                                    </p>
-                                                </form>
-                                            )
+                                                </div>
+                                                <button type="submit" className="login_bttn go_bttn" disabled={verifyingOtp}>{
+                                                    verifyingOtp ? (<div className="loader"></div>) : "VERIFY"
+                                                }</button>
+                                                <p className="mass_tx">
+                                                    <a href="#login" onClick={() => setShowLoginPage(true)}>Already have an account? Login</a>
+                                                </p>
+                                            </form>
+                                        )
                                     }
 
                                 </div>

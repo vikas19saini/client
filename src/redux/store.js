@@ -21,10 +21,10 @@ const reducer = (state = initState, action) => {
             let nextStateup = { ...state, ...{ currency: action.payload } }
             return nextStateup
         case 'ADD_TO_CART':
-            let cartAfterAdd = { ...state, ...{ cart: action.payload } }
+            let cartAfterAdd = { ...state, ...{ cartId: action.payload } }
             return cartAfterAdd
-        case 'REMOVE_FROM_CART':
-            let cartAfterRemove = { ...state, ...{ cart: action.payload } }
+        case 'SET_CART_ITEMS':
+            let cartAfterRemove = { ...state, ...{ cartItems: action.payload } }
             return cartAfterRemove
         case 'USER_LOGIN':
             let afterLogin = { ...state, ...{ auth: action.payload } }
