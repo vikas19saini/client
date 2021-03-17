@@ -73,7 +73,7 @@ export default function Cart() {
             axios.get(`${process.env.API_URL}cart/calculateShipping/${shippingAddress.id}`).then((res) => {
                 setShippingMethods(res.data);
             }).catch(err => {
-                disableCheckout(true)
+                setDisableCheckout(true)
             })
         }
     }, [shippingAddress])

@@ -5,7 +5,7 @@ import axios from "axios";
 import Head from 'next/head'
 import { wrapper } from "../../redux/store";
 import Products from "../../components/productCrousel"
-import { GetPriceHtml, stockStatus } from "../helpers";
+import { stockStatus } from "../helpers";
 import CartButton from "../../components/cartButon";
 import OwlCarousel from 'react-owl-carousel2';
 import Image from "next/image"

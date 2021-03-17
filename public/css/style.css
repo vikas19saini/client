@@ -1205,13 +1205,15 @@
 .dele_add p {
 	font-family: 'Montserrat';
 	font-size: 12px;
+	margin: 0px;
+	margin-top: 5px;
 }
 
 .or_placed {
-	position: absolute;
 	width: 100%;
 	background: #F3F3F3;
 	padding: 1.6rem 4rem 0;
+	text-align: center;
 }
 
 .or_placed .check_dis h4 {
@@ -1429,7 +1431,6 @@
 .main_inner_check {
 	border-bottom: 1px solid #D8D8D8;
 	width: 100%;
-	position: absolute
 }
 
 .main_a_bdr {

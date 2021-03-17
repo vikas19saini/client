@@ -32,6 +32,11 @@ const reducer = (state = initState, action) => {
         case 'SET_ORDER':
             let afterOrder = { ...state, ...{ order: action.payload } };
             return afterOrder;
+        case 'CLEART_CART':
+            let beforeClearCart = { ...state, ...{ cartItems: 0 } };
+            delete beforeClearCart.cartId;
+            delete beforeClearCart.order;
+            return beforeClearCart;
         case 'SIGN_OUT':
             let afterLogout = { ...state }
             delete afterLogout.auth;

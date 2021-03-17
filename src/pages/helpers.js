@@ -43,12 +43,19 @@ export function stockStatus(product) {
     return product.currentStockStatus
 }
 
-export function formatAddress(address) {
+export function formatAddress(address, isOrder = false) {
     let addressArr = []
-    address.address && addressArr.push(address.address)
-    address.zone.name && addressArr.push(address.zone.name)
-    address.country.name && addressArr.push(address.country.name)
-    address.postcode && addressArr.push(address.postcode)
+    if (isOrder) {
+        address.address && addressArr.push(address.address)
+        address.zone && addressArr.push(address.zone)
+        address.country && addressArr.push(address.country)
+        address.postcode && addressArr.push(address.postcode)
+    } else {
+        address.address && addressArr.push(address.address)
+        address.zone.name && addressArr.push(address.zone.name)
+        address.country.name && addressArr.push(address.country.name)
+        address.postcode && addressArr.push(address.postcode)
+    }
 
     return addressArr.join(", ");
 }

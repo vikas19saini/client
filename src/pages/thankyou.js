@@ -4,20 +4,33 @@ import Header from "./header";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { formatAddress, formatCurrency } from "./helpers";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function About() {
     const router = useRouter();
     const orderId = router.query.orderId;
     const [order, setOrder] = useState(null);
-    
+    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
+    const dispatch = useDispatch();
+
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (orderId)
             axios.get(`${process.env.API_URL}orders/${orderId}`)
                 .then((res) => {
                     setOrder(res.data);
                 });
 
-    }, [orderId])
+    }, [orderId]);
+
+    useEffect(() => {
+        if (cartId) {
+            axios.delete(`${process.env.API_URL}cart/${cartId}`).then(d => {
+                dispatch({ type: "CLEART_CART", payload: 0 });
+            });
+        }
+    }, []);
 
     return (
         <>
@@ -25,64 +38,40 @@ export default function About() {
                 <title>Order Placed - Gandhi</title>
             </Head>
             <Header shadow />
-            <section class="inner_product">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="mrg_12 mrg_desk wow fadeInUp">
-                                        <div class="or_placed">
-                                            <div class="check_img"><img src="/images/place_img.png" /></div>
-                                            <div class="check_dis">
-                                                <h4>Order Placed</h4>
-                                                <p>Your order was placed successfully and will be delivered by <strong>19 Apr,
-                                    19.</strong></p>
-                                                <h6 class="mob_view">Track Order</h6>
+            <section style={{ marginTop: "20px", marginBottom: "20px" }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="mrg_desk">
+                                <div className="or_placed">
+                                    <img src="/images/place_img.png" style={{ marginBottom: "20px" }} />
+                                    <h4>Order Placed</h4>
+                                    <p>Your Gandhi order was placed successfully & will be delivered shortly!</p>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="dele_add">
+                                                <h4>Order Details</h4>
+                                                <p>Order Value: {order && formatCurrency(order.total, { code: order.currencyCode, value: order.currencyValue })}</p>
+                                                <p>Shipping Method: {order && order.shippingMethod}</p>
+                                                <p>Payment Method: {order && order.payments.length > 0 && order.payments[0].method}</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="dele_add">
+                                                <h4>Delivery Address</h4>
+                                                <p>{order && formatAddress(order.shippingAddress, true)}</p>
+                                                {
+                                                    order && order.shippingAddress.phone &&
+                                                    <p>Phone: {order.shippingAddress.phone}</p>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mrg_12">
-                                <div class="main_inner_check main_placed wow fadeInUp">
-                                    <div class="check_img"><img src="/images/placed_img.png" /></div>
-                                    <div class="check_dis">
-                                        <p><strong>Multi colour cotton knit - 7239995</strong></p>
-                                        <p>Qnty: 1</p>
-                                        <p>Price: USD 4499.00</p>
-                                        <p>Expected Delivery: 16 Sep, 19</p>
-                                    </div>
-                                    <div class="right_icon desk_view">
-                                        <p>Track Order</p>
-                                    </div>
-                                    <div class="right_content_1 desk_view">
-                                        <p>View order details</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="dele_add wow fadeInUp">
-                                        <h4>Delivery Address</h4>
-                                        <p>Mathi <span>7th Main Rd, Old Madiwala, Cashier Layout, 1st</span> Stage, BTM Layout,
-                           Bengaluru, Karnataka 560029</p>
-                                        <p>Phone: 9876543210</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="col-md-12">
+
                         </div>
                     </div>
                 </div>
