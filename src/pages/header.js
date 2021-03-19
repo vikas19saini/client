@@ -35,7 +35,7 @@ export default function Header(props) {
                             <div className="icon_r_12 mob_view">
                                 <div className="inner_po_right">
                                     <form className="searchbox">
-                                        <input type="search" placeholder="Search......" name="search" className="searchbox-input" onKeyUp={buttonUp()} />
+                                        <input type="search" placeholder="Search......" name="search" className="searchbox-input" />
                                         <input type="submit" className="searchbox-submit" value="" />
                                         <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" alt="" /></span>
                                     </form>

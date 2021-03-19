@@ -66,7 +66,7 @@ export default function Product(product) {
                                     dots: true,
                                     nav: false,
                                     rewind: true,
-                                }} className="owl-carousel wow fadeInUp" >
+                                }} id="product_slide" className="owl-carousel wow fadeInUp" >
                                     {
                                         productImages.map((t) => {
                                             return (
@@ -88,21 +88,23 @@ export default function Product(product) {
                                 <div className="main_pd_dis wow fadeInUp">
 
                                     <CartButton product={product} />
-
-                                    <div className="inner_fabric_1">
-                                        <div className="main_fab_12">
+                                    <div className="product_details_right">
+                                        <p className="product_details_right_p5">Product Specification / Details</p>
+                                        <ul className="product_details_right_p6">
                                             {
                                                 product.attributes.map((a) => {
                                                     return (
-                                                        <div className="fab_12" key={a.id}>
-                                                            <p>{a.productsAttributeValues.attributeDescription} <span>{a.name}</span></p>
-                                                        </div>
+                                                        <Fragment key={a.id}>
+                                                            <li>{a.productsAttributeValues.attributeDescription} </li>
+                                                            <li>{a.name}</li>
+
+                                                        </Fragment>
                                                     )
                                                 })
                                             }
-
-                                        </div>
+                                        </ul>
                                     </div>
+
                                     <div className="clearfix" />
                                     <div className="tp_bttm desk_view">
                                         <div className="row">

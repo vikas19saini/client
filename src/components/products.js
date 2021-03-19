@@ -57,10 +57,10 @@ export default function Products(props) {
             setProducts(response.data.rows)
             setTotal(response.data.count)
             setTotalPages(Math.ceil(response.data.count / limit));
-            window.scroll({
+            /* window.scroll({
                 top: 0,
                 behavior: "smooth"
-            });
+            }); */
         })
     }, [router])
 
