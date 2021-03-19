@@ -36,24 +36,24 @@ const priceFilters = [
 export default function Products(props) {
     const router = useRouter();
     let category = props.category;
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState(null);
     const [filters, setFilters] = useState([]);
     const [total, setTotal] = useState();
     const [totalPages, setTotalPages] = useState(0);
     const [openFilter, setOpenFilter] = useState(-1);
-    const limit = 10
+    const limit = 30
     const [reload, setReload] = useState(props.reload ? props.reload : 1);
     let page = router.query.page ? parseInt(router.query.page) : 1;
     const currency = useSelector(state => state.config.currency);
 
-    useEffect(async () => {
+    useEffect(() => {
         let queryParams = router.query;
         let offset = (page - 1) * limit
 
         queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
         queryParams = new URLSearchParams(queryParams)
 
-        await axios.get(`${process.env.API_URL}category/products/${category.slug}?${queryParams}`).then((response) => {
+        axios.get(`${process.env.API_URL}category/products/${category.slug}?${queryParams}`).then((response) => {
             setProducts(response.data.rows)
             setTotal(response.data.count)
             setTotalPages(Math.ceil(response.data.count / limit));
@@ -62,7 +62,7 @@ export default function Products(props) {
                 behavior: "smooth"
             });
         })
-    }, [router.query.start, router.query.filters, router.query.slug])
+    }, [router])
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/filters`).then((res) => {
@@ -108,7 +108,7 @@ export default function Products(props) {
                 <div className="container">
                     <div className="row">
                         {
-                            products.length === 0 ?
+                            products && products.length === 0 ?
                                 <div className="emptyCart">
                                     <img src="/images/emptyCart.svg" alt="emptyCart" />
                                     <h1>No product found!</h1>
@@ -183,7 +183,7 @@ export default function Products(props) {
                                                 <p>{category.name} - {total}</p>
                                                 <div className="row custom_col">
                                                     {
-                                                        products.map(p => {
+                                                        products && products.map(p => {
                                                             return (
                                                                 <div className="col-md-6 col-6" key={p.id}>
                                                                     <div className="cotton_fabric_sec">
