@@ -95,9 +95,8 @@ export default function Product(product) {
                                                 product.attributes.map((a) => {
                                                     return (
                                                         <Fragment key={a.id}>
-                                                            <li>{a.productsAttributeValues.attributeDescription} </li>
                                                             <li>{a.name}</li>
-
+                                                            <li>{a.productsAttributeValues.attributeDescription} </li>
                                                         </Fragment>
                                                     )
                                                 })
