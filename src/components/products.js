@@ -36,14 +36,14 @@ const priceFilters = [
 export default function Products(props) {
     const router = useRouter();
     let category = props.category;
-    const [products, setProducts] = useState(null);
+    const [products, setProducts] = useState(props.category.products || null);
     const [filters, setFilters] = useState([]);
-    const [total, setTotal] = useState();
-    const [totalPages, setTotalPages] = useState(0);
+    const [total, setTotal] = useState(props.category.totalCount || 0);
+    const [totalPages, setTotalPages] = useState(props.category.totalPages || 0);
     const [openFilter, setOpenFilter] = useState(-1);
-    const limit = 30
     const [reload, setReload] = useState(props.reload ? props.reload : 1);
-    let page = router.query.page ? parseInt(router.query.page) : 1;
+    let page = category.page;
+    let limit = category.limit;
     const currency = useSelector(state => state.config.currency);
 
     useEffect(() => {
@@ -53,15 +53,11 @@ export default function Products(props) {
         queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
         queryParams = new URLSearchParams(queryParams)
 
-        axios.get(`${process.env.API_URL}category/products/${category.slug}?${queryParams}`).then((response) => {
+        axios.get(`${process.env.API_URL}category/products/${category.isSearch ? "search" : category.slug}?${queryParams}`).then((response) => {
             setProducts(response.data.rows)
             setTotal(response.data.count)
             setTotalPages(Math.ceil(response.data.count / limit));
-            /* window.scroll({
-                top: 0,
-                behavior: "smooth"
-            }); */
-        })
+        });
     }, [router])
 
     useEffect(() => {
@@ -81,6 +77,7 @@ export default function Products(props) {
         }
 
         let appliedFiltersTemp = { ...router.query, ...{ filters: currentFilters.join("|") } };
+        delete appliedFiltersTemp.page;
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         router.push(`/category/${category.slug}?${queryParams}`)
     }
@@ -98,6 +95,7 @@ export default function Products(props) {
         let appliedFiltersTemp = router.query;
         appliedFiltersTemp['start'] = start;
         appliedFiltersTemp['end'] = end;
+        delete appliedFiltersTemp.page;
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         router.push(`/category/${category.slug}?${queryParams}`);
     }

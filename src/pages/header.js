@@ -2,6 +2,7 @@ import axios from "axios"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useRouter } from "next/router";
 
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
@@ -9,6 +10,7 @@ export default function Header(props) {
     const [showSearchMenu, setShowSearchMenu] = useState(false);
     const [categories, setCategories] = useState([]);
     const [openCategory, setOpenCategory] = useState(-1);
+    const router = useRouter();
 
     const dispatch = useDispatch();
 
@@ -34,8 +36,8 @@ export default function Header(props) {
                         <div className="nav-header">
                             <div className="icon_r_12 mob_view">
                                 <div className="inner_po_right">
-                                    <form className="searchbox">
-                                        <input type="search" placeholder="Search......" name="search" className="searchbox-input" />
+                                    <form className="searchbox" action="search">
+                                        <input type="search" placeholder="Search......" name="query" defaultValue={router.query.query ? router.query.query : ""} className="searchbox-input" />
                                         <input type="submit" className="searchbox-submit" value="" />
                                         <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" alt="" /></span>
                                     </form>
@@ -224,9 +226,9 @@ export default function Header(props) {
                                 {/* <li><a href="#" target="_blank">Shop By Categories</a></li> */}
                                 <div className="nav-search">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
-                                    <form>
+                                    <form action="search" autoComplete="off">
                                         <div className="nav-search-inner">
-                                            <input type="search" name="search" placeholder="Search..." />
+                                            <input type="search" name="query" defaultValue={router.query.query ? router.query.query : ""} placeholder="Search..." />
                                         </div>
                                     </form>
 
