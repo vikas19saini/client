@@ -45,6 +45,7 @@ export default function Products(props) {
     let page = category.page;
     let limit = category.limit;
     const currency = useSelector(state => state.config.currency);
+    const [scroll, setScroll] = useState(1);
 
     useEffect(() => {
         let queryParams = router.query;
@@ -100,6 +101,12 @@ export default function Products(props) {
         router.push(`/category/${category.slug}?${queryParams}`);
     }
 
+    /* useEffect(() => {
+        $(window).on('scroll', function () {
+            
+        });
+    }, []) */
+
     return (
         <section className="inner_listing">
             <div className="inner_sec_tp">
@@ -116,57 +123,84 @@ export default function Products(props) {
                                 </div>
                                 :
                                 <>
-                                    <div className="col-md-4">
-                                        <div className="left_fittr">
-                                            <h4>Filter</h4>
+                                    <div className="col-md-3">
+                                        <div className="left_fittr mrg_01">
+                                            {/* <h4>Filters</h4> */}
                                             <div className="inner_boxs">
                                                 <div>
                                                     <form>
-                                                        <div className="radio_cus">
-                                                            {
-                                                                priceFilters.map((pf, index) => {
-                                                                    return (
-                                                                        <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
-                                                                            <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
-                                                                            <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
-                                                                        </div>
-                                                                    )
-                                                                })
-                                                            }
-
-                                                        </div>
-
-                                                        {
-                                                            filters.map(filter => {
-                                                                if (filter.filterValues.length > 0) {
-                                                                    return (
-                                                                        <div className="categories_bx" key={filter.id}>
-                                                                            <div className="cate_tx">
-                                                                                <h3>{filter.name}</h3>
-                                                                            </div>
-                                                                            <div className="searchbar search_t_1 collapsed">
+                                                        <div className="bs-example">
+                                                            <div className="accordion main_aco acco_after" id="accordionExample">
+                                                                <div className="card">
+                                                                    <div className="card-header" id="priceFilterCard">
+                                                                        <h2 className="mb-0 left_fittr">
+                                                                            <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#priceFilter">
+                                                                                <p>Price</p>
+                                                                                <i className="fa fa-plus"></i>
+                                                                            </button>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div id="priceFilter" className="collapse show" aria-labelledby="priceFilterCard" data-parent="#accordionExample">
+                                                                        <div className="card-body">
+                                                                            <div className="radio_cus">
                                                                                 {
-                                                                                    filter.filterValues.map(fv => {
+                                                                                    priceFilters.map((pf, index) => {
                                                                                         return (
-                                                                                            <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
-                                                                                                <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
-                                                                                                <span className="checkmark"></span>
-                                                                                            </label>
-                                                                                        );
+                                                                                            <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
+                                                                                                <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
+                                                                                                <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
+                                                                                            </div>
+                                                                                        )
                                                                                     })
                                                                                 }
                                                                             </div>
                                                                         </div>
-                                                                    )
+                                                                    </div>
+                                                                </div>
+
+
+                                                                {
+                                                                    filters.map(filter => {
+                                                                        if (filter.filterValues.length > 0) {
+                                                                            return (
+                                                                                <div className="card" key={filter.id} id={`${filter.name}FilterCard_${filter.id}`}>
+                                                                                    <div className="card-header">
+                                                                                        <h2 className="mb-0 left_fittr">
+                                                                                            <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target={`#filter_${filter.name}_${filter.id}`}>
+                                                                                                <p>{filter.name}</p>
+                                                                                                <i className="fa fa-plus"></i>
+                                                                                            </button>
+                                                                                        </h2>
+                                                                                    </div>
+                                                                                    <div id={`filter_${filter.name}_${filter.id}`} className="collapse" aria-labelledby={`${filter.name}FilterCard_${filter.id}`} data-parent="#accordionExample">
+                                                                                        <div className="card-body">
+                                                                                            <div className="categories_bx">
+                                                                                                {
+                                                                                                    filter.filterValues.map(fv => {
+                                                                                                        return (
+                                                                                                            <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
+                                                                                                                <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
+                                                                                                                <span className="checkmark"></span>
+                                                                                                            </label>
+                                                                                                        );
+                                                                                                    })
+                                                                                                }
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            )
+                                                                        }
+                                                                    })
                                                                 }
-                                                            })
-                                                        }
+                                                            </div>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-8">
+                                    <div className="col-md-9">
                                         <div className="inner_right_prodct">
                                             <div className="mob_view filter_cs">
                                                 <div className="col_6">
@@ -191,7 +225,7 @@ export default function Products(props) {
                                                                             </a>
                                                                         </Link>
                                                                         <h5>{p.name}</h5>
-                                                                        <p><GetPriceHtml product={p} /></p>
+                                                                        <p><strong><GetPriceHtml product={p} /></strong></p>
                                                                     </div>
                                                                 </div>
                                                             )

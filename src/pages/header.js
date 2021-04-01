@@ -36,7 +36,7 @@ export default function Header(props) {
                         <div className="nav-header">
                             <div className="icon_r_12 mob_view">
                                 <div className="inner_po_right">
-                                    <form className="searchbox" action="search">
+                                    <form className="searchbox" action="search" autoComplete="off">
                                         <input type="search" placeholder="Search......" name="query" defaultValue={router.query.query ? router.query.query : ""} className="searchbox-input" />
                                         <input type="submit" className="searchbox-submit" value="" />
                                         <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" alt="" /></span>
@@ -84,11 +84,11 @@ export default function Header(props) {
                         <div className="nav-menus-wrapper">
                             <ul className="nav-menu categoery_menu align-to-right wt_tx">
                                 <li>
-                                    <a className="show_sub desk_view" href="#">All Fabric</a>
+                                    <a className="show_sub tabs_veiw_s" href="#">All Fabric</a>
                                     <div className="megamenu-panel" id="mobileMenu">
                                         <div className="nav_head">
-                                            <div id="closeButton"><img src="/images/close.png" /></div>
-                                            <div className="desk_view">
+                                            <div id="closeButton" className="tabs_veiw_s"><img src="/images/close.png" /></div>
+                                            <div className="tabs_veiw_s">
                                                 <div className="row">
                                                     <div className="col-md-2 col-xs-12">
                                                         <Link href="/">
@@ -140,7 +140,7 @@ export default function Header(props) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="bs-example mob_view">
+                                            <div className="bs-example tabs_veiw">
                                                 <div className="accordion acco_after" id="accordionExample">
                                                     <div className="card">
                                                         <div className="card-header" id="headingfor">
@@ -224,7 +224,7 @@ export default function Header(props) {
                                     </div>
                                 </li>
                                 {/* <li><a href="#" target="_blank">Shop By Categories</a></li> */}
-                                <div className="nav-search">
+                                <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
                                     <form action="search" autoComplete="off">
                                         <div className="nav-search-inner">

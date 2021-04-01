@@ -12,12 +12,12 @@ export function getProductPrice(product) {
 export function formatPrice(price) {
     const storeConfig = useSelector(state => state.config);
     price = parseFloat((price * storeConfig.currency.value).toFixed(2))
-    return new Intl.NumberFormat('en-IN', { style: "currency", currency: storeConfig.currency.code }).format(price)
+    return new Intl.NumberFormat('en-IN', { style: "currency", currency: storeConfig.currency.code }).format(price).replace("THB", "฿");
 }
 
 export function formatCurrency(val, currency) {
     val = parseFloat((val * currency.value).toFixed(2));
-    return new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(val)
+    return new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(val).replace("THB", "฿")
 }
 
 export function GetPriceHtml(props) {
