@@ -36,7 +36,7 @@ export default function Header(props) {
                         <div className="nav-header">
                             <div className="icon_r_12 mob_view">
                                 <div className="inner_po_right">
-                                    <form className="searchbox" action="search" autoComplete="off">
+                                    <form className="searchbox" action="/search" autoComplete="off">
                                         <input type="search" placeholder="Search......" name="query" defaultValue={router.query.query ? router.query.query : ""} className="searchbox-input" />
                                         <input type="submit" className="searchbox-submit" value="" />
                                         <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" alt="" /></span>
@@ -226,7 +226,7 @@ export default function Header(props) {
                                 {/* <li><a href="#" target="_blank">Shop By Categories</a></li> */}
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
-                                    <form action="search" autoComplete="off">
+                                    <form action="/search" autoComplete="off">
                                         <div className="nav-search-inner">
                                             <input type="search" name="query" defaultValue={router.query.query ? router.query.query : ""} placeholder="Search..." />
                                         </div>
