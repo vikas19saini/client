@@ -1,4 +1,16 @@
+import axios from "axios";
+import { useEffect, useState } from "react"
+
 export default function Orders() {
+
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${process.env.API_URL}orders`).then((res) => {
+            console.log(res.data);
+        });
+    }, [])
+
     return (
         <div className="tabcontent" style={{ display: 'block', left: '0px' }}>
             <h3>My Orders</h3>

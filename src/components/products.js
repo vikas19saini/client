@@ -41,11 +41,9 @@ export default function Products(props) {
     const [total, setTotal] = useState(props.category.totalCount || 0);
     const [totalPages, setTotalPages] = useState(props.category.totalPages || 0);
     const [openFilter, setOpenFilter] = useState(-1);
-    const [reload, setReload] = useState(props.reload ? props.reload : 1);
-    let page = category.page;
+    const [page, setPage] = useState(category.page || 1);
     let limit = category.limit;
     const currency = useSelector(state => state.config.currency);
-    const [scroll, setScroll] = useState(1);
 
     useEffect(() => {
         let queryParams = router.query;
@@ -55,11 +53,15 @@ export default function Products(props) {
         queryParams = new URLSearchParams(queryParams)
 
         axios.get(`${process.env.API_URL}category/products/${category.isSearch ? "search" : category.slug}?${queryParams}`).then((response) => {
-            setProducts(response.data.rows)
-            setTotal(response.data.count)
+            if (page === 1) {
+                setProducts(response.data.rows);
+            } else {
+                setProducts([...products, ...response.data.rows]);
+            }
+            setTotal(response.data.count);
             setTotalPages(Math.ceil(response.data.count / limit));
         });
-    }, [router])
+    }, [router, page])
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/filters`).then((res) => {
@@ -83,15 +85,6 @@ export default function Products(props) {
         router.push(`/category/${category.slug}?${queryParams}`)
     }
 
-    const setPage = (pageNo) => {
-        let appliedFiltersTemp = router.query;
-        appliedFiltersTemp.page = pageNo;
-
-        let queryParams = new URLSearchParams(appliedFiltersTemp)
-        router.push(`/category/${category.slug}?${queryParams}`)
-        setReload(reload + 1)
-    }
-
     const setPrice = (start, end) => {
         let appliedFiltersTemp = router.query;
         appliedFiltersTemp['start'] = start;
@@ -100,12 +93,6 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         router.push(`/category/${category.slug}?${queryParams}`);
     }
-
-    /* useEffect(() => {
-        $(window).on('scroll', function () {
-            
-        });
-    }, []) */
 
     return (
         <section className="inner_listing">
@@ -233,33 +220,9 @@ export default function Products(props) {
                                                     }
                                                 </div>
                                             </div>
-                                            <div className="center wow fadeInUp">
-                                                {/* <ul className="pagination pagination-md justify-content-end">
-                                                    <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                                                </ul> */}
-                                                <ul className="pagination">
-                                                    {
-                                                        page > 1 &&
-                                                        <li>
-                                                            <a onClick={() => setPage(page - 1)}>
-                                                                <img src="/images/left.png" alt="prev" />
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    {
-                                                        page < totalPages &&
-                                                        <li>
-                                                            <a onClick={() => setPage(page + 1)}>
-                                                                <img src="/images/right.png" alt="arrow" />
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
+                                            {
+                                                (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More</button>
+                                            }
                                         </div>
                                     </div>
                                 </>

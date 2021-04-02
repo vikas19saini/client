@@ -365,6 +365,7 @@
 
 
 @media only screen and (max-width:767px) {
+	.category>a{color: #000000}
 	.check_dis>a{font-size: 11px;color: #000000;font-weight:600;margin: 0}
 	.main_tag>ul>div label{font-size: 12.6px}
 	.icon_up a {padding: 0 0 0 14px;}
@@ -538,7 +539,6 @@
     .inner_left p {
         padding: 0;
 		font-size: 12px;
-		margin: 0
     }
     .inner_left {
         padding: 60px 0;
@@ -1082,7 +1082,7 @@ padding: 0 3.6rem;
 	.inner_main_ld h6{font-size: 15px}
 	.login_bttn{padding: 1rem}
 	.form_login input[type="text"], .form_login input[type="password"], .form_login input[type="email"]{padding: 1rem}
-	.social_i{padding: .5rem 1rem}
+	.social_i{padding:.5rem .8rem}
 	.categoery_menu .submenu-indicator-chevron{border-color: transparent #000000 #000000 transparent;}
 	#product_slide{padding: 0}
 	.check_img img{width: 95px;

@@ -264,7 +264,7 @@ transform: translateY(-45%);}
 
 
 a>img.desk_view{width: 140px}
-.view_bttn.view_co{color: #fff;border: 1px solid #fff}
+.view_bttn.view_co{color: #fff;border: 1px solid #fff;display: inline-block}
 
 .cotton_fabric_sec{margin: 5px;
     transition: 700ms ease-in-out;
@@ -999,6 +999,8 @@ a>img.desk_view{width: 140px}
 .check_img{float: left;
     padding: 0 25px 0 0;
 }
+.check_dis>a{color: #000000;
+    font-weight: 600;}
 
 .dis_detail .check_dis>p{color: #38383A;font-size: 14px;font-family: 'Montserrat'}
 .check_dis{float: left}
@@ -1037,7 +1039,7 @@ ul{list-style: none;
 .align_right{text-align: right}
 .mrg_12{margin: 0 0 13rem;position: relative}
 .fa-trash:hover, .fa-heart:hover{color: #BE8F45}
-.check_dis>a>p{font-size: 14px;font-family: 'Montserrat'}
+.check_dis>a>p{font-size: 14px;font-family: 'Montserrat';margin: 0}
 .check_dis>p>span{color: #A0A0A0}
 .check_dis>p>strong{padding:0;font-weight: 400}
 .check_dis>p>strong>span{color: #A0A0A0}
@@ -1824,6 +1826,7 @@ button:focus {
     font-size: 14px;
     font-family: 'Montserrat';
     padding: 0 125px 0 0;
+	margin: 0 0 2rem
 }
 
 .inner_left {
@@ -1866,7 +1869,7 @@ button:focus {
 .drop_bg {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background: #fff;
-    margin: 15px 0 0
+    margin:28px 0 0
 }
 
 .inner_txt span {
@@ -4595,7 +4598,10 @@ header {
 
 .main_filter_pop{padding: 0}
 .filter_mrg{margin: 0;position: fixed;
-    width: 100%;height: 100vh}
+    width: 100%;}
+
+.md_bg_filter{position: fixed;height: 100vh;top: 0}
+
 
 .filter_mrg h4{font-size: 16px;width: 100%;font-family: 'Montserrat';color: #1D1D1D}
 .filter_mrg h3{font-size: 16px;white-space: nowrap;color: #E08927;font-family: 'Montserrat';}

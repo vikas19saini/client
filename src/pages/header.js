@@ -152,22 +152,22 @@ export default function Header(props) {
                                                             <div className="card-body">
                                                                 <ul>
                                                                     <li>
-                                                                        <Link href="/account?tab=profile">
+                                                                        <Link href="/account?tab=1">
                                                                             <a>Profile</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
-                                                                        <Link href="/account?tab=orders">
+                                                                        <Link href="/account?tab=2">
                                                                             <a>Orders</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
-                                                                        <Link href="/account?tab=addresses">
+                                                                        <Link href="/account?tab=4">
                                                                             <a>Address</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
-                                                                        <Link href="/account?tab=wishlist">
+                                                                        <Link href="/account?tab=5">
                                                                             <a>Wishlist</a>
                                                                         </Link>
                                                                     </li>
