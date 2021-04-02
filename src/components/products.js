@@ -271,7 +271,7 @@ export default function Products(props) {
 
                                 </div>
                                 {
-                                    (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More</button>
+                                    (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More Products</button>
                                 }
                             </div>
                         </div>
