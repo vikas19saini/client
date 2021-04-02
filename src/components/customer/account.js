@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Addresses from "./addresses";
 import Orders from "./orders";
 import Profile from "./profile";
@@ -6,13 +7,18 @@ import Tabs from "./tabs";
 import Wishlist from "./wishlist";
 
 export default function MyAccount() {
-    const [tabValue, setTabValue] = useState(1)
+    const router = useRouter();
+    const [tabValue, setTabValue] = useState(router.query.tab ? parseInt(router.query.tab) : 1);
+
+    useEffect(() => {
+        setTabValue(router.query.tab ? parseInt(router.query.tab) : 1);
+    }, [router])
 
     return (
         <section className="inner_product">
             <div className="container">
                 <div className="row">
-                    <Tabs switchTab={setTabValue} activeTab={tabValue} />
+                    <Tabs activeTab={tabValue} />
                     {
                         tabValue === 1 && <Profile />
                     }

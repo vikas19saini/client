@@ -5,6 +5,7 @@ import Footer from "./footer";
 import axios from "axios";
 import { wrapper } from '../redux/store';
 import Products from "../components/productCrousel"
+import Link from 'next/link';
 
 export default function Home(props) {
 
@@ -85,24 +86,19 @@ export default function Home(props) {
                 <h3>Our Natural Fabrics</h3>
                 <p>Beautiful Fabrics made from 100% Natural Fibres.</p>
                 <div className="dropdown">
-                  <button className="view_bttn dropbtn">View Collection</button>
+                  <Link href="/category/natural">
+                    <a className="view_bttn dropbtn">View Collection</a></Link>
                   <div className="drop_bg desk_view">
                     <div className="dropdown-content">
                       <div className="row">
                         <div className="col-md-12">
                           <div className="drop_list">
-                            <a href="#">Cotton</a>
-                            <a href="#">Silk</a>
-                            <a href="#">Viscose</a>
-                            <a href="#">Linen</a>
+                            <Link href="/category/cotton-natural"><a>Cotton</a></Link>
+                            <Link href="/category/silk-natural"><a>Silk</a></Link>
+                            <Link href="/category/viscose-natural"><a>Viscose</a></Link>
+                            <Link href="/category/linen-natural"><a>Linen</a></Link>
+                            <Link href="/category/wool-natural"><a>Wool</a></Link>
                           </div>
-                          <div className="drop_list">
-                            <a href="#">Wool</a>
-                            <a href="#">Hemp</a>
-                            <a href="#">Flax</a>
-                            <a href="#">Cashmere</a>
-                          </div>
-
                         </div>
                       </div>
                     </div>
@@ -124,22 +120,18 @@ export default function Home(props) {
                 <h3>Our Lace Fabric Collection</h3>
                 <p>Delicate and Intricate Lace fabrics From all over the world</p>
                 <div className="dropdown">
-                  <button className="view_bttn dropbtn">View Collection</button>
+                  <Link href="/category/lace">
+                    <a className="view_bttn dropbtn">View Collection</a></Link>
                   <div className="drop_bg desk_view">
                     <div className="dropdown-content">
                       <div className="row">
                         <div className="col-md-12">
                           <div className="drop_list">
-                            <a href="#">Cotton</a>
-                            <a href="#">Polyester</a>
-                            <a href="#">Nylon</a>
-                            <a href="#">Blend </a>
-                          </div>
-                          <div className="drop_list">
-                            <a href="#">3D</a>
-                            <a href="#">Italian</a>
-                            <a href="#">French</a>
-                            <a href="#">Lurex</a>
+                            <Link href="/category/sequin-laces"><a>Sequin Laces</a></Link>
+                            <Link href="/category/french-laces"><a>French Laces</a></Link>
+                            <Link href="/category/3d-laces"><a>3D Laces</a></Link>
+                            <Link href="/category/cotton-laces"><a>Cotton Laces</a></Link>
+                            <Link href="/category/metallic-laces"><a>Metallic Laces</a></Link>
                           </div>
                         </div>
                       </div>
@@ -188,8 +180,9 @@ export default function Home(props) {
                 <h3>Our Plain Dyed Fabric Collection</h3>
                 <p>A Vast Selection Of Solid, Plain Dyed Fabrics In Cotton,Silk and Blends</p>
                 <div className="dropdown">
-                  <button className="view_bttn dropbtn">View Collection</button>
-                  <div className="drop_bg desk_view">
+                  <Link href="/category/plain-dyed-best">
+                    <a className="view_bttn dropbtn">View Collection</a></Link>
+                  {/* <div className="drop_bg desk_view">
                     <div className="dropdown-content">
                       <div className="row">
                         <div className="col-md-12">
@@ -208,7 +201,7 @@ export default function Home(props) {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -227,21 +220,17 @@ export default function Home(props) {
                 <h3>Our Printed Fabric Collection</h3>
                 <p>A Collection Of Printed Fabrics, Featuring International Trends and classNameic Patterns.</p>
                 <div className="dropdown">
-                  <button className="view_bttn dropbtn">View Collection</button>
+                  <Link href="category/prints">
+                    <a className="view_bttn dropbtn">View Collection</a></Link>
                   <div className="drop_bg desk_view">
                     <div className="dropdown-content">
                       <div className="row">
                         <div className="col-md-12">
                           <div className="drop_list">
-                            <a href="#">Cotton</a>
-                            <a href="#">Silk</a>
-                            <a href="#">Linen</a>
-                            <a href="#">Viscose</a>
-                          </div>
-                          <div className="drop_list">
-                            <a href="#">Satin</a>
-                            <a href="#">Jersey</a>
-                            <a href="#">Glitter</a>
+                            <Link href="/category/cotton-prints"><a>Cotton</a></Link>
+                            <Link href="/category/silk-prints"><a>Silk</a></Link>
+                            <Link href="/category/chiffon-prints"><a>Chiffon</a></Link>
+                            <Link href="/category/linen-prints"><a>Linen</a></Link>
                           </div>
                         </div>
                       </div>
@@ -315,7 +304,8 @@ export default function Home(props) {
                   very latest in fashionable jacquards and textured fabrics as well as other luxurious and
                         exclusive fabrics. All these and much more.</p>
                   <div className="dropdown">
-                    <button className="view_bttn dropbtn lern_bttn">learn more</button>
+                    <Link href="/search?query=Autumn+Winter">
+                      <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
                   </div>
                 </div>
               </div>
@@ -332,7 +322,8 @@ export default function Home(props) {
                   collection of cotton and other natural fabrics is unsurpassed. We bring to you the best in
                         innovative and trending fabrics from all over the world.</p>
                   <div className="dropdown">
-                    <button className="view_bttn dropbtn lern_bttn">learn more</button>
+                    <Link href="/search?query=Spring+Summer">
+                      <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
                   </div>
                 </div>
               </div>
@@ -383,7 +374,8 @@ export default function Home(props) {
                 <div className="over_txt">
                   <h4>Our Cotton Collection</h4>
                   <p>We have a vast variety of your favourite cotton fabrics.</p>
-                  <button className="view_bttn view_co dropbtn">View Collection</button>
+                  <Link href="/category/cotton">
+                    <a className="view_bttn view_co dropbtn">View Collection</a></Link>
                 </div>
               </div>
               <div className="item">
@@ -392,7 +384,8 @@ export default function Home(props) {
                 <div className="over_txt">
                   <h4>Our silk collection</h4>
                   <p>We have a vast variety of your favourite silk fabrics.</p>
-                  <button className="view_bttn view_co dropbtn">View Collection</button>
+                  <Link href="/category/silk">
+                    <a className="view_bttn view_co dropbtn">View Collection</a></Link>
                 </div>
               </div>
               <div className="item">
@@ -401,7 +394,8 @@ export default function Home(props) {
                 <div className="over_txt">
                   <h4>Our wool collection</h4>
                   <p>We have a vast variety of your favourite wool fabrics.</p>
-                  <button className="view_bttn view_co dropbtn">View Collection</button>
+                  <Link href="/category/wool">
+                    <a className="view_bttn view_co dropbtn">View Collection</a></Link>
                 </div>
               </div>
               <div className="item">
@@ -410,7 +404,8 @@ export default function Home(props) {
                 <div className="over_txt">
                   <h4>Our linen collection</h4>
                   <p>We have a vast variety of your favourite linen fabrics.</p>
-                  <button className="view_bttn view_co dropbtn">View Collection</button>
+                  <Link href="/category/linen">
+                    <a className="view_bttn view_co dropbtn">View Collection</a></Link>
                 </div>
               </div>
             </div>
@@ -448,35 +443,12 @@ export default function Home(props) {
           <div className="desk_view">
             <div className="row">
               <div className="col-md-6 padd_0">
-                <div id="luxury" className="owl-carousel">
-                  <div className="item">
-                    <img src="images/lux_sd.jpg" alt="" className="img-fluid" />
-                    <div className="luxury_txt">
-                      <h1>LUXURY <span>Collection</span></h1>
-                      <button type="button" className="view_slide_bttn learn_bttn">View collection</button>
-                    </div>
-                  </div>
-
-                  <div className="item">
-                    <img src="images/lux_sd.jpg" alt="" className="img-fluid" />
-                    <div className="luxury_txt">
-                      <h1>LUXURY <span>Collection</span></h1>
-                      <button type="button" className="view_slide_bttn learn_bttn">View collection</button>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <img src="images/lux_sd.jpg" alt="" className="img-fluid" />
-                    <div className="luxury_txt">
-                      <h1>LUXURY <span>Collection</span></h1>
-                      <button type="button" className="view_slide_bttn learn_bttn">View collection</button>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <img src="images/lux_sd.jpg" alt="" className="img-fluid" />
-                    <div className="luxury_txt">
-                      <h1>LUXURY <span>Collection</span></h1>
-                      <button type="button" className="view_slide_bttn learn_bttn">View collection</button>
-                    </div>
+                <div className="item">
+                  <img src="images/lux_sd.jpg" alt="" className="img-fluid" />
+                  <div className="luxury_txt">
+                    <h1>LUXURY <span>Collection</span></h1>
+                    <Link href="/search?query=luxury">
+                      <a type="button" className="view_slide_bttn learn_bttn">View collection</a></Link>
                   </div>
                 </div>
               </div>
@@ -498,7 +470,8 @@ export default function Home(props) {
                 <div className="inner_suiting">
                   <h4>The Suiting Collection</h4>
                   <p>Our Collection of the world's finest fabrics<span> For suiting and shirting</span></p>
-                  <button type="button" className="view_slide_bttn learn_bttn">View collection</button>
+                  <Link href="/category/suiting">
+                    <a className="view_slide_bttn learn_bttn">View collection</a></Link>
                 </div>
               </div>
             </div>
