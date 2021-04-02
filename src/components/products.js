@@ -82,7 +82,11 @@ export default function Products(props) {
         let appliedFiltersTemp = { ...router.query, ...{ filters: currentFilters.join("|") } };
         delete appliedFiltersTemp.page;
         let queryParams = new URLSearchParams(appliedFiltersTemp);
-        router.push(`/category/${category.slug}?${queryParams}`)
+        if (router.pathname === "/search") {
+            router.push(`/search?${queryParams}`);
+        } else {
+            router.push(`/category/${category.slug}?${queryParams}`);
+        }
     }
 
     const setPrice = (start, end) => {
@@ -91,7 +95,31 @@ export default function Products(props) {
         appliedFiltersTemp['end'] = end;
         delete appliedFiltersTemp.page;
         let queryParams = new URLSearchParams(appliedFiltersTemp);
-        router.push(`/category/${category.slug}?${queryParams}`);
+        if (router.pathname === "/search") {
+            router.push(`/search?${queryParams}`);
+        } else {
+            router.push(`/category/${category.slug}?${queryParams}`);
+        }
+    }
+
+    const removeFilter = (type, val) => {
+        let appliedFiltersTemp = { ...router.query };
+        if (type === "price") {
+            delete appliedFiltersTemp.start;
+            delete appliedFiltersTemp.end;
+        } else {
+            let currentFilters = appliedFiltersTemp.filters.split("|");
+            currentFilters = currentFilters.filter(f => parseInt(f) !== val);
+            currentFilters.length > 0 ? appliedFiltersTemp.filters = currentFilters.join("|") : delete appliedFiltersTemp.filters
+        }
+
+        delete appliedFiltersTemp.page;
+        let queryParams = new URLSearchParams(appliedFiltersTemp);
+        if (router.pathname === "/search") {
+            router.push(`/search?${queryParams}`);
+        } else {
+            router.push(`/category/${category.slug}?${queryParams}`);
+        }
     }
 
     return (
@@ -99,134 +127,154 @@ export default function Products(props) {
             <div className="inner_sec_tp">
                 <div className="container">
                     <div className="row">
-                        {
-                            products && products.length === 0 ?
-                                <div className="emptyCart">
-                                    <img src="/images/emptyCart.svg" alt="emptyCart" />
-                                    <h1>No product found!</h1>
-                                    <Link href="/">
-                                        <a>Shop Now!</a>
-                                    </Link>
-                                </div>
-                                :
-                                <>
-                                    <div className="col-md-3">
-                                        <div className="left_fittr mrg_01">
-                                            {/* <h4>Filters</h4> */}
-                                            <div className="inner_boxs">
-                                                <div>
-                                                    <form>
-                                                        <div className="bs-example">
-                                                            <div className="accordion main_aco acco_after" id="accordionExample">
-                                                                <div className="card">
-                                                                    <div className="card-header" id="priceFilterCard">
-                                                                        <h2 className="mb-0 left_fittr">
-                                                                            <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#priceFilter">
-                                                                                <p>Price</p>
-                                                                                <i className="fa fa-plus"></i>
-                                                                            </button>
-                                                                        </h2>
-                                                                    </div>
-                                                                    <div id="priceFilter" className="collapse show" aria-labelledby="priceFilterCard" data-parent="#accordionExample">
-                                                                        <div className="card-body">
-                                                                            <div className="radio_cus">
-                                                                                {
-                                                                                    priceFilters.map((pf, index) => {
-                                                                                        return (
-                                                                                            <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
-                                                                                                <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
-                                                                                                <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
-                                                                                            </div>
-                                                                                        )
-                                                                                    })
-                                                                                }
+                        <div className="col-md-3">
+                            <div className="left_fittr mrg_01">
+                                <p>Home / {category.name} {total && `(${total})`}</p>
+                                <div className="inner_boxs">
+                                    <div>
+                                        <form>
+                                            <div className="bs-example">
+                                                <div className="accordion main_aco acco_after" id="accordionExample">
+                                                    <div className="card">
+                                                        <div className="card-header" id="priceFilterCard">
+                                                            <h2 className="mb-0 left_fittr">
+                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#priceFilter">
+                                                                    <p>Price</p>
+                                                                    <i className="fa fa-plus"></i>
+                                                                </button>
+                                                            </h2>
+                                                        </div>
+                                                        <div id="priceFilter" className="collapse show" aria-labelledby="priceFilterCard" data-parent="#accordionExample">
+                                                            <div className="card-body">
+                                                                <div className="radio_cus">
+                                                                    {
+                                                                        priceFilters.map((pf, index) => {
+                                                                            return (
+                                                                                <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
+                                                                                    <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
+                                                                                    <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
+                                                                                </div>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {
+                                                        filters.map(filter => {
+                                                            if (filter.filterValues.length > 0) {
+                                                                return (
+                                                                    <div className="card" key={filter.id} id={`${filter.name}FilterCard_${filter.id}`}>
+                                                                        <div className="card-header">
+                                                                            <h2 className="mb-0 left_fittr">
+                                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target={`#filter_${filter.name}_${filter.id}`}>
+                                                                                    <p>{filter.name}</p>
+                                                                                    <i className="fa fa-plus"></i>
+                                                                                </button>
+                                                                            </h2>
+                                                                        </div>
+                                                                        <div id={`filter_${filter.name}_${filter.id}`} className="collapse" aria-labelledby={`${filter.name}FilterCard_${filter.id}`} data-parent="#accordionExample">
+                                                                            <div className="card-body">
+                                                                                <div className="categories_bx">
+                                                                                    {
+                                                                                        filter.filterValues.map(fv => {
+                                                                                            return (
+                                                                                                <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
+                                                                                                    <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
+                                                                                                    <span className="checkmark"></span>
+                                                                                                </label>
+                                                                                            );
+                                                                                        })
+                                                                                    }
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-
-
-                                                                {
-                                                                    filters.map(filter => {
-                                                                        if (filter.filterValues.length > 0) {
-                                                                            return (
-                                                                                <div className="card" key={filter.id} id={`${filter.name}FilterCard_${filter.id}`}>
-                                                                                    <div className="card-header">
-                                                                                        <h2 className="mb-0 left_fittr">
-                                                                                            <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target={`#filter_${filter.name}_${filter.id}`}>
-                                                                                                <p>{filter.name}</p>
-                                                                                                <i className="fa fa-plus"></i>
-                                                                                            </button>
-                                                                                        </h2>
-                                                                                    </div>
-                                                                                    <div id={`filter_${filter.name}_${filter.id}`} className="collapse" aria-labelledby={`${filter.name}FilterCard_${filter.id}`} data-parent="#accordionExample">
-                                                                                        <div className="card-body">
-                                                                                            <div className="categories_bx">
-                                                                                                {
-                                                                                                    filter.filterValues.map(fv => {
-                                                                                                        return (
-                                                                                                            <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
-                                                                                                                <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
-                                                                                                                <span className="checkmark"></span>
-                                                                                                            </label>
-                                                                                                        );
-                                                                                                    })
-                                                                                                }
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            )
-                                                                        }
-                                                                    })
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-9">
-                                        <div className="inner_right_prodct">
-                                            <div className="mob_view filter_cs">
-                                                <div className="col_6">
-                                                    <h6><img src="/images/sort.jpg" alt="" /><span>Sort</span></h6>
-                                                </div>
-                                                <div className="col_6">
-                                                    <h6 data-toggle="modal" data-target="#myModal"><img src="/images/filter.png"
-                                                        alt="" /><span>Filter</span></h6>
-                                                </div>
-                                            </div>
-                                            <div className="inner_right_prodct">
-                                                <p>{category.name} - {total}</p>
-                                                <div className="row custom_col">
-                                                    {
-                                                        products && products.map(p => {
-                                                            return (
-                                                                <div className="col-md-6 col-6" key={p.id}>
-                                                                    <div className="cotton_fabric_sec">
-                                                                        <Link href={"/product/" + p.slug}>
-                                                                            <a>
-                                                                                <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
-                                                                            </a>
-                                                                        </Link>
-                                                                        <h5>{p.name}</h5>
-                                                                        <p><strong><GetPriceHtml product={p} /></strong></p>
-                                                                    </div>
-                                                                </div>
-                                                            )
+                                                                )
+                                                            }
                                                         })
                                                     }
                                                 </div>
                                             </div>
-                                            {
-                                                (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More</button>
-                                            }
-                                        </div>
+                                        </form>
                                     </div>
-                                </>
-                        }
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-9">
+                            <div className="inner_right_prodct">
+                                <div className="mob_view filter_cs">
+                                    <div className="col_6">
+                                        <h6><img src="/images/sort.jpg" alt="" /><span>Sort</span></h6>
+                                    </div>
+                                    <div className="col_6">
+                                        <h6 data-toggle="modal" data-target="#myModal"><img src="/images/filter.png"
+                                            alt="filterIcon" /><span>Filter</span></h6>
+                                    </div>
+                                </div>
+                                <div className="appliedFilters">
+                                    {
+                                        (router.query.start && router.query.end) &&
+                                        <div className="filter">
+                                            <span>Price {formatCurrency(parseInt(router.query.start), currency)} - {formatCurrency(parseInt(router.query.end), currency)}</span>
+                                            <button type="button" onClick={() => removeFilter("price")}>X</button>
+                                        </div>
+                                    }
+                                    {
+                                        router.query.filters && router.query.filters.split("|").map(appliedFilter => {
+                                            return filters.map(filter => {
+                                                let filterText = "";
+                                                let appFilterValuefilter = filter.filterValues.filter(fv => parseInt(appliedFilter) === fv.id);
+                                                if (appFilterValuefilter.length > 0) {
+                                                    filterText += appFilterValuefilter[0].name;
+
+                                                    return (
+                                                        <div className="filter" key={appliedFilter}>
+                                                            <span>{filterText}</span>
+                                                            <button type="button" onClick={() => removeFilter("filter", appFilterValuefilter[0].id)}>X</button>
+                                                        </div>)
+                                                }
+                                            })
+                                        })
+                                    }
+                                </div>
+                                <div className="inner_right_prodct">
+                                    {
+                                        products && products.length === 0 ?
+                                            <div className="emptyCart">
+                                                <img src="/images/emptyCart.svg" alt="emptyCart" />
+                                                <h1>No product found!</h1>
+                                                <button className="login_bttn go_bttn loadMore" onClick={() => router.back()}>Go Back</button>
+                                            </div> : <><div className="row custom_col">
+                                                {
+                                                    products && products.map(p => {
+                                                        return (
+                                                            <div className="col-md-6 col-6" key={p.id}>
+                                                                <div className="cotton_fabric_sec">
+                                                                    <Link href={"/product/" + p.slug}>
+                                                                        <a>
+                                                                            <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
+                                                                        </a>
+                                                                    </Link>
+                                                                    <h5>{p.name}</h5>
+                                                                    <p><strong><GetPriceHtml product={p} /></strong></p>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div></>
+                                    }
+
+                                </div>
+                                {
+                                    (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More</button>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
