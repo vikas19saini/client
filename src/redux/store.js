@@ -4,10 +4,10 @@ import thunkMiddleware from "redux-thunk";
 
 let initState = {
     currency: {
-        code: "INR",
+        code: "THB",
         id: 4,
         status: 1,
-        title: "INR",
+        title: "THB",
         value: 1
     }
 }
@@ -35,7 +35,6 @@ const reducer = (state = initState, action) => {
         case 'CLEART_CART':
             let beforeClearCart = { ...state, ...{ cartItems: 0 } };
             delete beforeClearCart.cartId;
-            delete beforeClearCart.order;
             return beforeClearCart;
         case 'SIGN_OUT':
             let afterLogout = { ...state }

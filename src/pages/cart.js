@@ -18,15 +18,18 @@ export default function Cart() {
     const [disableCheckout, setDisableCheckout] = useState(false)
 
     useEffect(async () => {
-        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-            for (let product of res.data.products) {
-                if (!stockStatus(product)) {
-                    setDisableCheckout(true)
+        if (cartId)
+            await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+                if (res.data) {
+                    for (let product of res.data.products) {
+                        if (!stockStatus(product)) {
+                            setDisableCheckout(true)
+                        }
+                    }
+                    dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+                    setCartProductDetails(res.data.products || []);
                 }
-            }
-            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-            setCartProductDetails(res.data.products || []);
-        })
+            })
     }, [reload])
 
     const removeProduct = async (cartProductId) => {

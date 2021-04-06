@@ -26,8 +26,12 @@ export default function Login() {
             setIsLoggingIn(false)
             dispatch({ type: "USER_LOGIN", payload: res.data });
 
-            // Sync cart
-            cartId && axios.post(`${process.env.API_URL}cart/sync`, { cartId: cartId });
+            axios.post(`${process.env.API_URL}cart/sync`, { cartId: cartId || null }).then(res => {
+                if (res.data) {
+                    dispatch({ type: "ADD_TO_CART", payload: res.data.id })
+                    dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length })
+                }
+            });
 
             redirect && router.push(redirect);
         }).catch(err => {

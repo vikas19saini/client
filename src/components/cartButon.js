@@ -11,7 +11,7 @@ export default function CartButton(props) {
     const [qty, setQty] = useState();
     const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1);
     const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200);
-    const [step] = useState(product.step ? product.step : 1);
+    const [step] = useState(/* product.step ? product.step : 0.1 */ 0.1);
 
     useEffect(() => {
         setQty(props.product.cartProducts ? props.product.cartProducts.quantity : props.product.minOrderQuantity);
@@ -123,9 +123,11 @@ export default function CartButton(props) {
                                     stockStatus(product) ?
                                         <Fragment>
                                             <p>Quantity</p>
-                                            <button className="minus" onClick={() => addProductToCart(qty - step)}></button>
-                                            <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                            <button className="plus" onClick={() => addProductToCart(qty + step)}></button>
+                                            <div className="dlx_main">
+                                                <button className="minus" onClick={() => addProductToCart(qty - step)}></button>
+                                                <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
+                                                <button className="plus" onClick={() => addProductToCart(qty + step)}></button>
+                                            </div>
                                         </Fragment>
                                         :
                                         <Fragment>
@@ -146,9 +148,11 @@ export default function CartButton(props) {
                             {
                                 stockStatus(product) ? (<div className="number-input md-number-input" key={product.id}>
                                     <p>Quantity</p>
-                                    <button className="minus" onClick={() => setQuantity(qty - step)}></button>
-                                    <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                    <button className="plus" onClick={() => setQuantity(qty + step)}></button>
+                                    <div className="dlx_main">
+                                        <button className="minus" onClick={() => setQuantity(qty - step)}></button>
+                                        <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
+                                        <button className="plus" onClick={() => setQuantity(qty + step)}></button>
+                                    </div>
                                 </div>) : (
                                     <div className="number-input md-number-input">
                                         <h2>Out of Stock</h2>

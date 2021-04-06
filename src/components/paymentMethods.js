@@ -7,11 +7,11 @@ import { useRouter } from 'next/router'
 
 export default function PaymentMethod(props) {
     let currency = useSelector(state => state.config.currency);
-    const orderId = useSelector(state => state.config.order ? state.config.order : null);
     const [paymentMethod, setPaymentMethod] = useState(null);
     const amountToPay = parseFloat((props.amount * currency.value).toFixed(2));
     const [allPaymentMethods, setAllPaymentMethods] = useState([]);
     const router = useRouter();
+    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
 
     useEffect(() => {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
@@ -19,10 +19,6 @@ export default function PaymentMethod(props) {
                 behavior: "smooth"
             })
         }
-
-        /* setTimeout(() => {
-            setPaymentMethod(null);
-        }, 10000) */
     }, [paymentMethod]);
 
     useEffect(() => {
@@ -33,16 +29,17 @@ export default function PaymentMethod(props) {
 
     const onSuccess = async (payment) => {
         try {
-            await axios.patch(`${process.env.API_URL}orders/updateStatus`, { status: 1, orderId: orderId });
+            let order = await axios.post(`${process.env.API_URL}orders`, { order: props.orderRequest, cartId: cartId });
+            order = order.data;
             await axios.post(`${process.env.API_URL}orders/payment`, {
-                orderId: orderId,
+                orderId: order.order.id,
                 transactionNo: payment.paymentID,
                 amount: amountToPay,
                 currency: currency.code,
                 status: payment.paid ? "SUCCESS" : "FAILED",
                 method: "paypal"
             });
-            router.push(`thankyou?orderId=${orderId}`)
+            router.push(`thankyou?orderId=${order.order.id}`)
         } catch (err) {
             toast.notify("Unable to place order please contact us!", {
                 type: "error",
@@ -80,11 +77,11 @@ export default function PaymentMethod(props) {
                                 <form name="payFormCcard" method="post" action={paymentMethod.url}>
                                     <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
                                     <input type="hidden" name="amount" value={amountToPay} />
-                                    <input type="hidden" name="orderRef" value={orderId} />
+                                    <input type="hidden" name="orderRef" value={cartId} />
                                     <input type="hidden" name="currCode" value="840" />
-                                    <input type="hidden" name="successUrl" value="http://localhost:3005/checkout" />
-                                    <input type="hidden" name="failUrl" value="http://localhost:3005/checkout" />
-                                    <input type="hidden" name="cancelUrl" value="http://localhost:3005/checkout" />
+                                    <input type="hidden" name="successUrl" value="http://staging.gandhifabrics.com/checkout" />
+                                    <input type="hidden" name="failUrl" value="http://staging.gandhifabrics.com/checkout" />
+                                    <input type="hidden" name="cancelUrl" value="http://staging.gandhifabrics.com/checkout" />
                                     <input type="hidden" name="payType" value="N" />
                                     <input type="hidden" name="payMethod" value="ALL" />
                                     <input type="hidden" name="lang" value="E" />

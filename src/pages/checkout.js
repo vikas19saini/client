@@ -10,6 +10,7 @@ import AddressForm from "../components/customer/addressForm"
 import PaymentMethod from "../components/paymentMethods";
 import ShippingMethod from "../components/shippingMethods";
 import { toast, ToastContainer } from 'react-nextjs-toast';
+import { useRouter } from "next/router"
 
 export default function Cart() {
     const [reload, setReload] = useState(1)
@@ -21,11 +22,12 @@ export default function Cart() {
     const [shippingMethods, setShippingMethods] = useState([]);
     const [selectedShippingMethod, setSelectShippingMethod] = useState(null);
     const [amountTopay, setAmountToPay] = useState(0);
-    const orderId = useSelector(state => state.config.order ? state.config.order : null);
     let currency = useSelector(state => state.config.currency);
     const dispatch = useDispatch();
     const [isError, setIsError] = useState(false);
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
+    const [orderRequest, setOrderRequest] = useState({});
+    const router = useRouter()
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}address`).then(res => {
@@ -40,15 +42,20 @@ export default function Cart() {
     }
 
     useEffect(async () => {
-        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-            for (let product of res.data.products) {
-                if (!stockStatus(product)) {
-                    setDisableCheckout(true)
+        if (!cartId) {
+            router.push("/cart");
+        } else {
+            await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+
+                for (let product of res.data.products) {
+                    if (!stockStatus(product)) {
+                        setDisableCheckout(true)
+                    }
                 }
-            }
-            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-            setCartProductDetails(res.data.products || []);
-        });
+                dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+                setCartProductDetails(res.data.products || []);
+            });
+        }
     }, [reload])
 
     useEffect(() => {
@@ -70,7 +77,7 @@ export default function Cart() {
             })
         }
         if (shippingAddress) {
-            axios.get(`${process.env.API_URL}cart/calculateShipping/${shippingAddress.id}`).then((res) => {
+            axios.post(`${process.env.API_URL}cart/calculateShipping/${shippingAddress.id}`, { cartId: cartId }).then((res) => {
                 setShippingMethods(res.data);
             }).catch(err => {
                 setDisableCheckout(true)
@@ -100,38 +107,24 @@ export default function Cart() {
 
     useEffect(() => {
         if (amountTopay !== 0 && shippingAddress) {
-            let request = {
+            setOrderRequest({
                 shippingAddressId: shippingAddress.id,
                 currencyCode: currency.code,
                 currencyValue: currency.value,
                 shippingCharges: parseFloat(selectedShippingMethod ? selectedShippingMethod.cost.toFixed(2) : 0),
                 shipingService: selectedShippingMethod ? selectedShippingMethod.serviceName : "",
                 amount: parseFloat(amountTopay.toFixed(2)),
-            }
-            if (!orderId) {
-                axios.post(`${process.env.API_URL}orders`, request).then((res) => {
-                    dispatch({ type: "SET_ORDER", payload: res.data.order.id });
-                    setIsError(false);
-                }).catch(err => {
-                    setIsError(true);
-                    let msg = err.response.data.message ? err.response.data.message : "Something went wrong!";
-                    toast.notify(msg, {
-                        type: "error",
-                        title: "Checkout!"
-                    });
+            });
+            axios.post(`${process.env.API_URL}cart/allocateStock`, { cartId: cartId }).then((res) => {
+                setIsError(false);
+            }).catch(err => {
+                setIsError(true);
+                let msg = err.response.data.message ? err.response.data.message : "Something went wrong!";
+                toast.notify(msg, {
+                    type: "error",
+                    title: "Checkout!"
                 });
-            } else {
-                axios.patch(`${process.env.API_URL}orders/${orderId}`, { ...request, ...{ action: "updateAllOrderData" } }).then((res) => {
-                    setIsError(false);
-                }).catch(err => {
-                    setIsError(true);
-                    let msg = err.response.data.message ? err.response.data.message : "Something went wrong!";
-                    toast.notify(msg, {
-                        type: "error",
-                        title: "Checkout!"
-                    });
-                });
-            }
+            });
         }
     }, [amountTopay]);
 
@@ -210,7 +203,7 @@ export default function Cart() {
                             }
 
                             {
-                                (selectedShippingMethod && !isError) && (<PaymentMethod amount={amountTopay} />)
+                                (selectedShippingMethod && !isError) && (<PaymentMethod amount={amountTopay} orderRequest={orderRequest} />)
                             }
                         </div>
                         <div className="col-lg-5 col-sm-12">

@@ -16,6 +16,7 @@ export default function About() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        dispatch({ type: "CLEART_CART", payload: 0 });
         if (orderId)
             axios.get(`${process.env.API_URL}orders/${orderId}`)
                 .then((res) => {
@@ -24,13 +25,13 @@ export default function About() {
 
     }, [orderId]);
 
-    useEffect(() => {
-        if (cartId) {
-            axios.delete(`${process.env.API_URL}cart/${cartId}`).then(d => {
-                dispatch({ type: "CLEART_CART", payload: 0 });
-            });
-        }
-    }, []);
+    /*  useEffect(() => {
+         if (cartId) {
+             axios.delete(`${process.env.API_URL}cart/${cartId}`).then(d => {
+                 dispatch({ type: "CLEART_CART", payload: 0 });
+             });
+         }
+     }, []); */
 
     return (
         <>

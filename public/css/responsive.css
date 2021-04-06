@@ -366,7 +366,7 @@
 
 @media only screen and (max-width:767px) {
 	.category>a{color: #000000}
-	.check_dis>a{font-size: 11px;color: #000000;font-weight:600;margin: 0}
+	.check_dis>a{font-size: 11px;margin: 0}
 	.main_tag>ul>div label{font-size: 12.6px}
 	.icon_up a {padding: 0 0 0 14px;}
 	.badge{right: 20px}
@@ -462,7 +462,7 @@
 	.return {padding: 0;}
 	.main_placed .check_dis>p{font-size: 12.2px;line-height:30px}
 	.dele_add {padding: 1.6rem 1rem;margin: 0 0 3rem}
-	.or_placed{padding: 1.6rem 2rem 1rem;background: transparent}
+	.or_placed{padding: 1.6rem 2rem 1rem;}
 	.or_placed .check_dis{text-align: center}
 	.mrg_12 .main_placed{padding: 1rem 1rem;}
 	.mrg_12.mrg_desk{margin: 0 0 18rem}
@@ -950,7 +950,7 @@ padding: 0 3.6rem;
     padding: 0 0 1rem;}
 	.main_inner_check{border-bottom: none}
 	.check_img{padding: 0 12px 0 0}
-	.appy_sec .inner_input {width: 55% !important;}
+	.appy_sec .inner_input {width: 50% !important;}
 	.appy_sec .input-group-append {
     margin: 0px auto 0;}
 	.appy_sec .sign_bttn{padding: 10px 40px 12px;border-radius: 3px}
@@ -1124,8 +1124,12 @@ padding: 0 3.6rem;
 	.deli_info p strong {font-size: 12px;}
 	.dis_help p {font-size: 14px;font-weight: bold;color: #666;}
 	.return p{font-size: 13px}
-	.floating-label {margin-bottom: 2rem;}
-	.con_detail_form p span{padding: 0 0 1.6rem}
+	.floating-label {margin-bottom: 2.6rem;}
+	.con_detail_form p span{padding: 0 0 1.6rem;font-size: 12.6px}
+	.file_upload span{margin-right:8px}
+	.con_detail_form p{font-size: 14px}
+	.contact_head h4{font-size: 20px}
+	.contact_head p{font-size: 13px}
 	.padd_right{padding-right: 2px}
 	.padd_left{padding-left: 2px}
 	.ftt_bg .container{width: 100%}
@@ -1134,6 +1138,10 @@ padding: 0 3.6rem;
 	#luggage{font-size: 12px}
 	.inner_top {padding: 40px 0;}
 	.checkout_menu ul{display: none}
+	.social_icon ul{width: 100%;text-align: center;float: inherit;display: flow-root;}
+	.live_txt {margin: 2rem 0 0;}
+	.file_upload .custom-file-upload{font-size: 14px;padding: 2px 15px}
+	.social_icon ul li{padding: 0 1rem}
 	
 	.header-v2 .container{width: 100%}
 	

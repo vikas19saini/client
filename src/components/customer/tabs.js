@@ -5,6 +5,11 @@ export default function Tabs(props) {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    const logout = () => {
+        dispatch({ type: "CLEART_CART" });
+        dispatch({ type: "SIGN_OUT" });
+    }
+
     return (
         <div className="tab">
             <button className={props.activeTab === 1 ? "tablinks active" : "tablinks"} onClick={() => router.push("/account?tab=1")}>
@@ -25,7 +30,7 @@ export default function Tabs(props) {
             {/* <button className={props.activeTab === 6 ? "tablinks active" : "tablinks"} onClick={() => router.push("/account?tab=6")}>
                 <img src="/images/address_icon/help.svg" alt="help" />Help</button> */}
 
-            <button className="tablinks" onClick={() => dispatch({ type: "SIGN_OUT" })}>
+            <button className="tablinks" onClick={logout}>
                 <img src="/images/address_icon/log_out.svg" alt="logout" />Log Out</button>
         </div>
     )

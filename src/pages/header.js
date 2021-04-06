@@ -223,7 +223,8 @@ export default function Header(props) {
                                         </div>
                                     </div>
                                 </li>
-                                {/* <li><a href="#" target="_blank">Shop By Categories</a></li> */}
+                                <li><Link href="/contact"><a>Enquire</a></Link></li>
+                                <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
                                     <form action="/search" autoComplete="off">

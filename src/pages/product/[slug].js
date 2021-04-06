@@ -10,6 +10,7 @@ import CartButton from "../../components/cartButon";
 import OwlCarousel from 'react-owl-carousel2';
 import Image from "next/image"
 import { toast, ToastContainer } from 'react-nextjs-toast';
+import Link from "next/link";
 
 export default function Product(product) {
 
@@ -61,7 +62,7 @@ export default function Product(product) {
                                             items: 1,
                                         }
                                     },
-                                    loop: true,
+                                    loop: false,
                                     autoplay: false,
                                     dots: true,
                                     nav: false,
@@ -110,7 +111,7 @@ export default function Product(product) {
                                             <div className="col-md-5">
                                                 <div className="order_s_1 right_s_1">
                                                     <p>Looking for order Bulk?</p>
-                                                    <h6>Bulk Order</h6>
+                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a>Bulk Order</a></Link></h6>
                                                 </div>
                                             </div>
 

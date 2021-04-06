@@ -51,7 +51,7 @@ export default function AddressForm(props) {
         axios.post(`${process.env.API_URL}address`, request).then(res => {
             toast.notify("New address created", {
                 type: "success",
-                title: "OTP Sent!"
+                title: "Success!"
             })
             props.setAddNew(false)
             setIsSaving(false)

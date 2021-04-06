@@ -3,18 +3,15 @@ import Head from "next/head";
 import Footer from "./footer";
 import Header from "./header";
 import { toast, ToastContainer } from 'react-nextjs-toast';
+import { useRouter } from "next/router";
 
 export default function Contact() {
+    const router = useRouter();
 
     const submit = async (e) => {
         e.preventDefault();
-        axios.post(`${process.env.API_URL}customer/enquiry`, {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            phone: e.target.phone.value,
-            message: e.target.message.value,
-            type: "contact"
-        }).then((res) => {
+        let formData = new FormData(document.querySelector("#contactForm"));
+        axios.post(`${process.env.API_URL}customer/enquiry`, formData).then((res) => {
             toast.notify(`Received your details! we will get back to you soon!`, {
                 type: "success",
                 title: "Success!"
@@ -31,7 +28,7 @@ export default function Contact() {
     return (
         <>
             <Head>
-                <title>Contact Us - Gandhi</title>
+                <title>Bulk Order - Gandhi</title>
             </Head>
             <Header shadow />
             <ToastContainer />
@@ -40,46 +37,53 @@ export default function Contact() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="contact_head wow fadeInUp">
-                                <h4>Contact Us</h4>
-                                <p><span>Questions? Concerns? We're ready to help! Experience our world-className </span>support by
-                     sending us a message today.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="inner_con_head wow fadeInUp">
-                                <h5>Write to Us</h5>
+                                <h4>Looking for Bulk/Wholesale</h4>
+                                <p><span>Questions? Concerns? We're ready to help! Experience our world-class </span>support by sending us a message today.</p>
                             </div>
                         </div>
                     </div>
 
-                    <form id="contactForm" method="post" className="floating-form wow fadeInUp" onSubmit={submit}>
+                    <form id="contactForm" encType="multipart/form-data" method="post" className="floating-form enquer_form" onSubmit={submit}>
                         <div className="row">
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="floating-label">
                                     <input className="floating-input" type="text" name="name" placeholder=" " required={true} />
                                     <label>Name</label>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="floating-label">
                                     <input className="floating-input" type="email" name="email" placeholder=" " required={true} />
                                     <label>Email Address</label>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="floating-label">
                                     <input className="floating-input" type="text" name="phone" placeholder=" " required={true} />
                                     <label>Mobile Number</label>
                                 </div>
                             </div>
+                            <div className="col-md-6">
+                                <div className="floating-label">
+                                    <input className="floating-input" type="number" name="quantity" placeholder=" " required={true} />
+                                    <input type="hidden" name="productId" required={true} defaultValue={router.query.productId} />
+                                    <input type="hidden" name="type" required={true} defaultValue="bulk" />
+                                    <label>Quantity</label>
+                                </div>
+                            </div>
                             <div className="col-md-12">
                                 <div className="floating-label">
                                     <textarea className="floating-input floating-textarea" name="message" placeholder=" " required={true}></textarea>
-                                    <label>Your Message</label>
+                                    <label>Details</label>
                                 </div>
-
+                            </div>
+                            <div className="col-md-12">
+                                <div className="form-group custom_upp file_upload capcha_tab">
+                                    <span>Upload Reference Pictures</span><label htmlFor="file-upload" className="custom-file-upload"> Upload Files </label>
+                                    <div className="input file">
+                                        <input type="file" name="file" id="file-upload" accept="image/*" />
+                                    </div>
+                                </div>
                             </div>
                             <div className="col-md-12">
                                 <button type="submit" className="bag_bttn align_cntr">Send Message</button>

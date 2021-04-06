@@ -830,7 +830,7 @@ a>img.desk_view{width: 140px}
     visibility: hidden;
     width: 20px;
     height: 20px;
-    margin: 0 5px 0 5px;
+    margin: 0 6px 0 0;
     padding: 0;
 }
     .radio-item input[type=radio]:before {
@@ -930,7 +930,9 @@ a>img.desk_view{width: 140px}
 .or_placed{position: absolute;
     width: 100%;
     background:#F3F3F3;
-    padding: 1.6rem 4rem 0;}
+    padding: 1.6rem 4rem 0;
+	margin: 3rem 0
+}
 .or_placed .check_dis h4{font-family: 'Montserrat';font-size: 18px;margin: 0 0 5px}
 .or_placed .check_dis p{font-family: 'Montserrat';font-size: 12px;}
 .or_placed .check_dis{padding: 15px 0}
@@ -2648,6 +2650,7 @@ button:focus {
 }
 #some-div a {
     display: block;
+	cursor: pointer
 }
 #some-div a:hover{text-decoration: none}
 #some-div a span:hover{color: #BE8F45}
@@ -5016,6 +5019,70 @@ font-weight: 500}
     border: 1px solid #BE8F45;
     background: #BE8F45;}
 
+
+
+/* enquer_form css start */
+.enquer_form{margin: 3rem 0 0}
+.quantity {
+  display: flex;
+}
+
+.enquer_form button{border: 1px solid #D8D8D8;
+    background: transparent;
+    margin: 0 .2rem;cursor: pointer}
+
+.custom_add h2{font-size: 17px;
+    color: #777777;
+    font-weight: 600;
+	margin: 0 0 1rem}
+
+.custom_add p{font-family: 'Montserrat';margin: 2rem 0 1rem;}
+
+.custom_add input{font-family: 'Montserrat';border: 1px solid #D8D8D8;font-size: 12.8px;padding: 4px 4px;
+    border-radius: 4px; background: transparent;height: 30px}
+
+.custom_add #birthdaytime{width: 100%}
+.enquer_form button.minus{width: 28px}
+.capcha_tab {
+    padding: 20px 0;
+}
+
+.file_upload span {
+    color: #555;
+    font-size: 13px;
+    margin-right: 13px;
+    font-weight: bold;
+}
+
+.w_check p{font-size: 12.8px;font-family: 'Montserrat';margin: 0}
+.custom_add .w_check>p>input{height: auto}
+
+.file_upload .custom-file-upload {
+    border: 1px solid #777777;
+    background: #777777;
+    display: inline-block;
+    padding: 3px 16px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.file_upload input[type="file"] {
+    display: none;
+}
+.social_icon ul{text-align: center}
+.social_icon ul li{display: inline-block;padding: 0 0rem 0 1.6rem}
+.social_icon ul li a i{font-size: 25px}
+.live_txt{margin: 3rem 0 1.6rem}
+.terms_bttm{margin: 0 0 3rem}
+
+.dlx_main{display: flex}
+
+
+
+/* enquer_form css closed */
+
+
 @media only screen and (max-width:1920px){
 	
 	
@@ -5035,6 +5102,8 @@ font-weight: 500}
     .megamenu-list>li>a {
         width: 65%;
     }
+	.con_tp .container{width: 100%}
+	span.shipingCost{padding-left: 0}
 }
 
 
