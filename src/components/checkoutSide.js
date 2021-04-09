@@ -1,24 +1,12 @@
 import { useSelector } from "react-redux";
-import { formatPrice, getProductPrice } from "../pages/helpers";
+import { formatPrice } from "../pages/helpers";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import axios from "axios";
 
 export default function CheckoutSidebar(props) {
-    let totalAmount = 0, discount = 0, couponDiscount = 0, totalPay = 0;
     const auth = useSelector(state => state.config.auth ? state.config.auth : false)
     const router = useRouter();
-
-    props.cart.forEach(pro => {
-        totalAmount += pro.ragularPrice * pro.cartProducts.quantity;
-        totalPay += getProductPrice(pro) * pro.cartProducts.quantity;
-        discount = totalAmount - totalPay
-    })
-
-    useEffect(() => {
-        props.setAmountToPay && props.setAmountToPay(totalPay);
-    }, [props.shippingCost]);
-    
-    totalPay = totalPay + (props.shippingCost || 0);
+    let currency = useSelector(state => state.config.currency);
 
     const checkOut = () => {
         if (auth)
@@ -27,15 +15,48 @@ export default function CheckoutSidebar(props) {
             router.push(`/account?redirect=${window.location.pathname}`);
     }
 
+    const applyCoupon = () => {
+        axios.post(`${process.env.API_URL}cart/applyCoupon`, {
+            cartId: props.cartData.id,
+            couponCode: document.getElementById("couponCode").value
+        }).then((res) => {
+            props.setReload((new Date()).getTime());
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    const removeCoupon = () => {
+        axios.post(`${process.env.API_URL}cart/removeCoupon`, {
+            cartId: props.cartData.id,
+        }).then((res) => {
+            props.setReload((new Date()).getTime());
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     return (
         <div className="appy_sec">
-            {/* <p>Apply Coupon</p> */}
             <div className="input-group over_bdr_1">
-                <input type="text" className="inner_input form-control" placeholder="Enter Coupon Code" id="mail"
-                    name="email" />
-                <div className="input-group-append">
-                    <span className="input-group-text sign_bttn">Appy</span>
-                </div>
+                {
+                    props.cartData.coupon ?
+                        <div className="couponApplied">
+                            <div className="text">
+                                <p>Coupon applied</p>
+                                <p>You save additional {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(props.cartData.couponDiscount * currency.value).replace("THB", "฿")}</p>
+                            </div>
+                            <div className="couponBtn">
+                                <button type="button" onClick={() => removeCoupon()}>Edit</button>
+                            </div>
+                        </div> : <>
+                            <input type="text" className="inner_input form-control" id="couponCode" placeholder="Enter Coupon Code" />
+                            <div className="input-group-append">
+                                <button className="input-group-text sign_bttn" onClick={() => applyCoupon()}>Appy</button>
+                            </div>
+                        </>
+                }
+
             </div>
             <div className="price_tt">
                 <p><strong>Price Details</strong></p>
@@ -43,15 +64,15 @@ export default function CheckoutSidebar(props) {
                     <tbody>
                         <tr>
                             <td>Total MRP</td>
-                            <td className="align_right">{formatPrice(totalAmount)}</td>
+                            <td className="align_right">{formatPrice(props.cartData.cartValue)}</td>
                         </tr>
                         <tr>
                             <td>Discount on MRP</td>
-                            <td className="align_right">{formatPrice(discount)}</td>
+                            <td className="align_right">{formatPrice(props.cartData.discount)}</td>
                         </tr>
                         <tr>
                             <td>Coupon Discount</td>
-                            <td className="align_right">{formatPrice(couponDiscount)}</td>
+                            <td className="align_right">{formatPrice(props.cartData.couponDiscount)}</td>
                         </tr>
                         {/* <tr>
                             <td>Tax</td>
@@ -59,11 +80,11 @@ export default function CheckoutSidebar(props) {
                         </tr> */}
                         <tr>
                             <td>Delivery Charges</td>
-                            <td className="align_right">{formatPrice(props.shippingCost || 0)}</td>
+                            <td className="align_right">{formatPrice(props.cartData.shippingCost || 0)}</td>
                         </tr>
                         <tr className="tb_1">
                             <td>Total Amount <span style={{ fontSize: 10 }}>(Tax included)</span></td>
-                            <td className="flt_right">{formatPrice(totalPay)}</td>
+                            <td className="flt_right">{formatPrice(props.cartData.total)}</td>
                         </tr>
                     </tbody>
                 </table>

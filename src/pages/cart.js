@@ -5,7 +5,7 @@ import Header from "./header"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios";
 import Image from "next/image"
-import { GetPriceHtml, stockStatus } from "./helpers"
+import { GetPriceHtml } from "./helpers"
 import Link from "next/link"
 import CartButton from "../components/cartButon"
 import CheckoutSidebar from "../components/checkoutSide"
@@ -16,24 +16,30 @@ export default function Cart() {
     const [cartProductDetails, setCartProductDetails] = useState([])
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const [disableCheckout, setDisableCheckout] = useState(false)
+    const [cartData, setCartData] = useState(null);
+    let currency = useSelector(state => state.config.currency);
 
     useEffect(async () => {
         if (cartId)
             await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
                 if (res.data) {
-                    for (let product of res.data.products) {
-                        if (!stockStatus(product)) {
-                            setDisableCheckout(true)
-                        }
+                    if (res.data.status === 2) {
+                        setDisableCheckout(true);
+                    } else {
+                        setDisableCheckout(false);
                     }
                     dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
                     setCartProductDetails(res.data.products || []);
+                    setCartData(res.data);
                 }
             })
     }, [reload])
 
     const removeProduct = async (cartProductId) => {
-        await axios.delete(`${process.env.API_URL}cart/remove/${cartProductId}`)
+        await axios.post(`${process.env.API_URL}cart/remove`, {
+            cartId: cartId,
+            cartProductId: cartProductId
+        })
         setDisableCheckout(false)
         setReload(reload + 1)
     }
@@ -85,6 +91,11 @@ export default function Cart() {
                                                                 </div>
                                                                 <div className="right_content_1">
                                                                     <p><GetPriceHtml product={cp} quantity={cp.cartProducts.quantity} /></p>
+                                                                    {
+                                                                        cp.cartProducts.discount ?
+                                                                            <p className="couponDiscountP">Coupon discount {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(cp.cartProducts.discount * currency.value).replace("THB", "฿")}</p>
+                                                                            : ""
+                                                                    }
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -95,7 +106,7 @@ export default function Cart() {
                                     }
                                 </div>
                                 <div className="col-md-5">
-                                    <CheckoutSidebar disableCheckout={disableCheckout} cart={cartProductDetails} />
+                                    {cartData && <CheckoutSidebar setReload={setReload} disableCheckout={disableCheckout} cartData={cartData} />}
                                 </div>
                             </div>
                         </div>

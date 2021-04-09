@@ -55,7 +55,6 @@ export default function CartButton(props) {
             })
         } else {
             if (cartId) {
-                console.log(pqty);
                 await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty, cartId: cartId }).then((res) => {
                     toast.notify("Cart updated", {
                         type: "success",

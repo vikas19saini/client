@@ -4,36 +4,33 @@ import Footer from "./footer"
 import Header from "./header"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios";
-import { formatAddress, stockStatus } from "./helpers"
+import { formatAddress } from "./helpers"
 import CheckoutSidebar from "../components/checkoutSide"
 import AddressForm from "../components/customer/addressForm"
 import PaymentMethod from "../components/paymentMethods";
-import ShippingMethod from "../components/shippingMethods";
-import { toast, ToastContainer } from 'react-nextjs-toast';
+import { ToastContainer } from 'react-nextjs-toast';
 import { useRouter } from "next/router"
 
 export default function Cart() {
     const [reload, setReload] = useState(1)
-    const [cartProductDetails, setCartProductDetails] = useState([])
-    const [disableCheckout, setDisableCheckout] = useState(false)
     const [addNew, setAddNew] = useState(false);
     const [addresses, setAddresses] = useState([]);
     const [shippingAddress, setShippingAddress] = useState(false);
-    const [shippingMethods, setShippingMethods] = useState([]);
-    const [selectedShippingMethod, setSelectShippingMethod] = useState(null);
-    const [amountTopay, setAmountToPay] = useState(0);
-    let currency = useSelector(state => state.config.currency);
     const dispatch = useDispatch();
-    const [isError, setIsError] = useState(false);
+    const [showPaymentMethods, setShowPaymentMethods] = useState(false);
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
-    const [orderRequest, setOrderRequest] = useState({});
-    const router = useRouter()
+    const router = useRouter();
+    const [cartData, setCartData] = useState(null);
+
+    if (!cartId) {
+        router.push("/cart");
+    }
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}address`).then(res => {
             setAddresses(res.data.rows)
         })
-    }, [addNew, reload])
+    }, [addNew, reload]);
 
     const deleteAddress = (id) => {
         axios.delete(`${process.env.API_URL}address/${id}`).then(res => {
@@ -42,20 +39,14 @@ export default function Cart() {
     }
 
     useEffect(async () => {
-        if (!cartId) {
-            router.push("/cart");
-        } else {
-            await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+            setCartData(res.data);
 
-                for (let product of res.data.products) {
-                    if (!stockStatus(product)) {
-                        setDisableCheckout(true)
-                    }
-                }
-                dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-                setCartProductDetails(res.data.products || []);
-            });
-        }
+            if (res.data.status === 2)
+                showPaymentMethods(false)
+
+            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+        });
     }, [reload])
 
     useEffect(() => {
@@ -71,31 +62,14 @@ export default function Cart() {
     }
 
     useEffect(() => {
-        if (document.getElementById("shippingMethods")) {
-            document.getElementById("shippingMethods").scrollIntoView({
-                behavior: "smooth"
-            })
-        }
-        if (shippingAddress) {
-            axios.post(`${process.env.API_URL}cart/calculateShipping/${shippingAddress.id}`, { cartId: cartId }).then((res) => {
-                setShippingMethods(res.data);
+        if (shippingAddress)
+            axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: shippingAddress.id }).then((res) => {
+                setShowPaymentMethods(true);
+                setReload((new Date()).getTime());
             }).catch(err => {
-                setDisableCheckout(true)
-            })
-        }
+                setShowPaymentMethods(false);
+            });
     }, [shippingAddress])
-
-    const changeDeliveryAddress = () => {
-        setShippingAddress(null);
-        setShippingMethods([]);
-        setSelectShippingMethod(null);
-
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-        });
-    }
 
     useEffect(() => {
         if (document.getElementById("paymentMethods")) {
@@ -103,30 +77,17 @@ export default function Cart() {
                 behavior: "smooth"
             })
         }
-    }, [selectedShippingMethod]);
+    }, [showPaymentMethods]);
 
-    useEffect(() => {
-        if (amountTopay !== 0 && shippingAddress) {
-            setOrderRequest({
-                shippingAddressId: shippingAddress.id,
-                currencyCode: currency.code,
-                currencyValue: currency.value,
-                shippingCharges: parseFloat(selectedShippingMethod ? selectedShippingMethod.cost.toFixed(2) : 0),
-                shipingService: selectedShippingMethod ? selectedShippingMethod.serviceName : "",
-                amount: parseFloat(amountTopay.toFixed(2)),
-            });
-            axios.post(`${process.env.API_URL}cart/allocateStock`, { cartId: cartId }).then((res) => {
-                setIsError(false);
-            }).catch(err => {
-                setIsError(true);
-                let msg = err.response.data.message ? err.response.data.message : "Something went wrong!";
-                toast.notify(msg, {
-                    type: "error",
-                    title: "Checkout!"
-                });
-            });
-        }
-    }, [amountTopay]);
+    const changeDeliveryAddress = () => {
+        setShippingAddress(null);
+        setShowPaymentMethods(false);
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    }
 
     return (
         <Fragment>
@@ -199,15 +160,11 @@ export default function Cart() {
                             }
 
                             {
-                                (shippingMethods.length > 0) && (<ShippingMethod shippingMethods={shippingMethods} selectedShippingMethodName={selectedShippingMethod && selectedShippingMethod.serviceName} setSelectShippingMethod={setSelectShippingMethod} />)
-                            }
-
-                            {
-                                (selectedShippingMethod && !isError) && (<PaymentMethod amount={amountTopay} orderRequest={orderRequest} />)
+                                showPaymentMethods && (<PaymentMethod cartData={cartData} />)
                             }
                         </div>
                         <div className="col-lg-5 col-sm-12">
-                            <CheckoutSidebar setAmountToPay={setAmountToPay} shippingCost={selectedShippingMethod && selectedShippingMethod.cost} disableCheckout={disableCheckout} cart={cartProductDetails} />
+                            {cartData && <CheckoutSidebar setReload={setReload} cartData={cartData} />}
                         </div>
                     </div>
                 </div>

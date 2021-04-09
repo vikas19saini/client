@@ -8,10 +8,9 @@ import { useRouter } from 'next/router'
 export default function PaymentMethod(props) {
     let currency = useSelector(state => state.config.currency);
     const [paymentMethod, setPaymentMethod] = useState(null);
-    const amountToPay = parseFloat((props.amount * currency.value).toFixed(2));
+    const amountToPay = parseFloat((props.cartData.total * currency.value).toFixed(2));
     const [allPaymentMethods, setAllPaymentMethods] = useState([]);
     const router = useRouter();
-    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
 
     useEffect(() => {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
@@ -29,12 +28,12 @@ export default function PaymentMethod(props) {
 
     const onSuccess = async (payment) => {
         try {
-            let order = await axios.post(`${process.env.API_URL}orders`, { order: props.orderRequest, cartId: cartId });
+            let order = await axios.post(`${process.env.API_URL}orders`, { cartId: props.cartData.id, currency: currency.code, paymentMethod: "paypal" });
             order = order.data;
             await axios.post(`${process.env.API_URL}orders/payment`, {
                 orderId: order.order.id,
                 transactionNo: payment.paymentID,
-                amount: amountToPay,
+                amount: props.cartData.total,
                 currency: currency.code,
                 status: payment.paid ? "SUCCESS" : "FAILED",
                 method: "paypal"
@@ -76,8 +75,8 @@ export default function PaymentMethod(props) {
                                 <p>You'll be redirected to payment page, where you can pay via credit/debit card</p>
                                 <form name="payFormCcard" method="post" action={paymentMethod.url}>
                                     <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
-                                    <input type="hidden" name="amount" value={amountToPay} />
-                                    <input type="hidden" name="orderRef" value={cartId} />
+                                    <input type="hidden" name="amount" value={props.cartData.total} />
+                                    <input type="hidden" name="orderRef" value={props.cartData.id} />
                                     <input type="hidden" name="currCode" value="840" />
                                     <input type="hidden" name="successUrl" value="http://staging.gandhifabrics.com/checkout" />
                                     <input type="hidden" name="failUrl" value="http://staging.gandhifabrics.com/checkout" />
