@@ -113,6 +113,12 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) { 
+	.nav-menu>li>a {
+    text-transform: capitalize;}
+	.navigation-portrait .nav-menu>li>a{color: #181818;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    font-weight: 400;padding: 20px 10px 20px 30px;}
 	.searchbox-open {
 		width: 100%;position: absolute;}
 	.searchbox-input{width: 90%}
@@ -365,10 +371,15 @@
 
 
 @media only screen and (max-width:767px) {
+	.update_bttn {float: inherit;}
+	.icon_up a img {width: 16px;}
+	.searchbox-icon img {width: 16px;}
+	.mr-auto h4{
+    padding:5rem 0 1rem;}
 	.category>a{color: #000000}
 	.check_dis>a{font-size: 11px;margin: 0}
 	.main_tag>ul>div label{font-size: 12.6px}
-	.icon_up a {padding: 0 0 0 14px;}
+	.icon_up a {padding: 0 0 0 10px;}
 	.badge{right: 20px}
 	.cotton_fabric_sec{padding: 0}
 	.delivery_option h3{font-size: 12px}
@@ -418,7 +429,7 @@
 	#big .owl-dots{left: 1rem}
 	#thumbs{display: none}
 	.customers-testimonials{background: none;height: auto}
-	#big{left: 0;z-index: -1}
+	#big{left: 0;z-index:inherit}
 	#arrivals {
     margin: 0;
 }
@@ -797,12 +808,12 @@ padding: 0 3.6rem;
 	
 	.mob_img{margin: 30px 0 0}
 	.inner_ftt p span{display: inline}
-	.ftt_menu ul{width: 50%;margin:55px 0}
+	.ftt_menu ul{width: 50%;margin:30px 0}
 	.flt_inhrit ul{float: inherit;margin: 0}
 	.copy_txt p{margin:1.6rem 0 0;text-align: center}
 	.pay_icon{float: inherit;text-align: center}
 	.pay_icon a {padding: 0 15px;}
-	.inner_ftt img{padding: 0 0 20px;width: 140px}
+	.inner_ftt img{padding: 0 0 10px;width: 130px}
 	.right_img_top {
     margin-top: 0;}
 	.gn_fabric img{width: 80%}
@@ -822,7 +833,7 @@ padding: 0 3.6rem;
 	
 	.navigation-portrait .nav-search{display: none}
 	#closeButton{display: none}
-	.navigation-portrait .submenu-indicator{margin-top: -6px}
+	.navigation-portrait .submenu-indicator{margin-top: -6px;top: 10px;right: 4px}
 	.nav-header {padding: 0;width: 100%}
 	.nav-brand{text-align: center;display: block}
 	.nav-toggle{left: 15px}
@@ -889,6 +900,7 @@ padding: 0 3.6rem;
 */
 	.inner_product {
     padding:65px 0 20px;
+	position: relative
 }
 	.main_pd_dis {
     padding: 0;
@@ -954,6 +966,7 @@ padding: 0 3.6rem;
 	.appy_sec .input-group-append {
     margin: 0px auto 0;}
 	.appy_sec .sign_bttn{padding: 10px 40px 12px;border-radius: 3px}
+	.appy_sec span .input-group-text.sign_bttn{padding: 5px 40px}
 	.check_add_2 {padding: 3rem 0 0rem;}
 	.check_add_3 {width: 100%;}
 	.check_add_3>img{left: 88%}
@@ -985,7 +998,7 @@ padding: 0 3.6rem;
 	header{position: relative}
 	.navigation-portrait{height: auto;padding: .6rem 0}
 	.fixed .navigation-portrait{padding: 0}
-	.pay_icon>a>img{width:95px}
+	.pay_icon>a>img{width:65px}
 	.view_bttn{padding:9px 25px;font-size: 10.6px;font-weight: 600}
 	.po_inherit{position: relative;padding: 3rem 2rem;
     left: 0;}
@@ -1034,6 +1047,7 @@ padding: 0 3.6rem;
     padding-top: 30px;
     max-height: 500px;
     padding-bottom: 30px;
+	top: 40px
     }
     .show_tab{
         display: block;
@@ -1050,10 +1064,10 @@ padding: 0 3.6rem;
 	.wish_img img{width: 100%}
 	.f_icon{right: 2rem}
 	.tabcontent h3{padding: 0 0 2rem;font-size: 18px}
-	.wish_img{margin: 0 0 3rem}
+	.wish_img{margin: 0 0 3rem;position: relative}
 	.spacing_bttm{padding: 0}
 	.mrg_12>.main_inner_check{border:none}
-	.mrg_12>.main_inner_check{padding: 0 0 .6rem;border-bottom: 1px solid #D8D8D8;}
+	.mrg_12>.main_inner_check{padding: 0 0 .6rem;}
 	.check_dis>p>strong>span{display: table}
 	.tp_or_dt p{font-size: 12px}
 	.qnt_ord p{font-size: 11px;margin: 0}
@@ -1134,7 +1148,7 @@ padding: 0 3.6rem;
 	.padd_left{padding-left: 2px}
 	.ftt_bg .container{width: 100%}
 	.ftt_menu ul li a {font-size: 11px;}
-	.inner_ftt p {font-size: 12px;}
+	.inner_ftt p {font-size: 12px;margin: 0 0 10px}
 	#luggage{font-size: 12px}
 	.inner_top {padding: 40px 0;}
 	.checkout_menu ul{display: none}
@@ -1281,6 +1295,5 @@ padding: 0 3.6rem;
 @media only screen and (max-width:375px){
 	#customers-testimonials .owl-dots {
 	bottom: 6rem;}
-	.scroll-down{bottom: 12rem}
-	
+	.scroll-down{bottom: 12rem}	
 }

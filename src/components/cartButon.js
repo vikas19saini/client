@@ -8,7 +8,7 @@ export default function CartButton(props) {
     const product = props.product;
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const dispatch = useDispatch();
-    const [qty, setQty] = useState();
+    const [qty, setQty] = useState(1);
     const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1);
     const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200);
     const [step] = useState(/* product.step ? product.step : 0.1 */ 0.1);

@@ -66,10 +66,10 @@ export default function Footer() {
                                         <li><Link href="/privacy"><a>Privacy Policy</a></Link></li>
                                     </ul>
                                 </div>
-                                <div className="ftt_menu flt_inhrit">
+                                <div className="ftt_menu flt_inhrit social_icon">
                                     <ul>
-                                        <li><a href="#facebook">Facebook</a></li>
-                                        <li><a href="#insta">Instagram</a></li>
+                                        <li><a href="#facebook"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="#Insta"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -83,8 +83,8 @@ export default function Footer() {
                                         <p>© {(new Date).getFullYear()} Gandhi Fabric. All Rights Reserved</p>
                                     </div>
                                     <div className="pay_icon">
-                                        <a href="#"><img src="/images/paypallogo.svg" alt="" /></a>
-                                        <a href="#"><img src="/images/visalogo.svg" alt="" /></a>
+                                        <a href="#"><img src="/images/paypallogo.svg" /></a>
+                                        <a href="#"><img src="/images/visalogo.svg" /></a>
                                     </div>
                                     <div className="copy_txt mob_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>

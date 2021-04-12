@@ -1132,30 +1132,26 @@ function productPageInit() {
         }
     });
     $('#may_like').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: false,
         dots: true,
-        margin: 40,
+        margin: 10,
         nav: false,
         responsive: {
             0: {
 
                 items: 1.2,
                 nav: false,
-                margin: 20,
+                margin: 10,
             },
-
             568: {
                 items: 3,
                 nav: false,
             },
-
             667: {
                 items: 3,
             },
-
             1170: {
-
                 items: 3,
             }
         }

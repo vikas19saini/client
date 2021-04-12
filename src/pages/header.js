@@ -39,26 +39,108 @@ export default function Header(props) {
                                     <form className="searchbox" action="/search" autoComplete="off">
                                         <input type="search" placeholder="Search......" name="query" defaultValue={router.query.query ? router.query.query : ""} className="searchbox-input" />
                                         <input type="submit" className="searchbox-submit" value="" />
-                                        <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" alt="" /></span>
+                                        <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" /></span>
                                     </form>
                                     <div className="txt_op_0" style={{ display: showSearchMenu ? "block" : "none" }}>
-                                        <h3><span>What do you wanna make</span></h3>
-                                        {
-                                            categories.map((cat) => {
-                                                return (
-                                                    <div className="category" key={cat.id}>
-                                                        <Link href={`/category/${cat.slug}`}>
-                                                            <a>
-                                                                <img src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
-                                                                <p>{cat.name}</p>
-                                                            </a>
-                                                        </Link>
-                                                    </div>
-                                                );
-                                            })
-                                        }
-
+                                        <h3><span>What do you want make</span></h3>
+                                        <div className="category">
+                                            <Link href="/search?query=Dresses">
+                                                <a>
+                                                    <img src="/images/icon_menu/dresses.svg" />
+                                                    <p>Dresses</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Blouses">
+                                                <a>
+                                                    <img src="/images/icon_menu/blouses.svg" />
+                                                    <p>Blouses</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Skirts">
+                                                <a>
+                                                    <img src="/images/icon_menu/skirts.svg" />
+                                                    <p>Skirts</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Jackets">
+                                                <a>
+                                                    <img src="/images/icon_menu/jackts.svg" />
+                                                    <p>Jackets</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/category/suiting">
+                                                <a>
+                                                    <img src="/images/icon_menu/suiting.svg" />
+                                                    <p>Suitings</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Bridal">
+                                                <a>
+                                                    <img src="/images/icon_menu/bridal.svg" />
+                                                    <p>Bridal</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Trousers">
+                                                <a>
+                                                    <img src="/images/icon_menu/trousers.svg" />
+                                                    <p>Trousers</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/category/shirting">
+                                                <a>
+                                                    <img src="/images/icon_menu/shirts.svg" />
+                                                    <p>Shirts</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Scarves">
+                                                <a>
+                                                    <img src="/images/icon_menu/scarves.svg" />
+                                                    <p>Scarves</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Kids">
+                                                <a>
+                                                    <img src="/images/icon_menu/kids.svg" />
+                                                    <p>Kids</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/search?query=Women">
+                                                <a>
+                                                    <img src="/images/icon_menu/women.svg" />
+                                                    <p>Women</p>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="category">
+                                            <Link href="/category/man-made">
+                                                <a>
+                                                    <img src="/images/icon_menu/men.svg" />
+                                                    <p>Men</p>
+                                                </a>
+                                            </Link>
+                                        </div>
                                     </div>
+
                                     <div className="icon_up">
                                         <Link href="/cart">
                                             <a className="mobileCart">
@@ -84,16 +166,72 @@ export default function Header(props) {
                         <div className="nav-menus-wrapper">
                             <ul className="nav-menu categoery_menu align-to-right wt_tx">
                                 <li>
-                                    <a className="show_sub tabs_veiw_s" href="#">All Fabric</a>
-                                    <div className="megamenu-panel" id="mobileMenu">
+                                    <div className="bs-example tabs_veiw">
+                                        <div className="accordion acco_after" id="accordionExample_1">
+                                            <div className="card">
+                                                <div className="card-header" id="heading_1">
+                                                    <h2 className="mb-0">
+                                                        <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_1">
+                                                            <p>My Accounts</p>
+                                                            <i className="fa fa-plus"></i>
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapse_1" className="collapse" aria-labelledby="heading_1" data-parent="#accordionExample">
+                                                    <div className="card-body">
+                                                        {
+                                                            config.auth ?
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/account?tab=1">
+                                                                            <a>Profile</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=2">
+                                                                            <a>Orders</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=4">
+                                                                            <a>Address</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=5">
+                                                                            <a>Wishlist</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+
+                                                                        <a onClick={() => dispatch({ type: "SIGN_OUT" })}>Log Out</a>
+
+                                                                    </li>
+                                                                </ul>
+                                                                :
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/account">
+                                                                            <a>Login</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li className="tp_bd_no">
+                                    <a className="show_sub" href="#">All Fabric</a>
+                                    <div className="megamenu-panel" id="close_menu">
                                         <div className="nav_head">
                                             <div id="closeButton" className="tabs_veiw_s"><img src="/images/close.png" /></div>
                                             <div className="tabs_veiw_s">
                                                 <div className="row">
                                                     <div className="col-md-2 col-xs-12">
-                                                        <Link href="/">
-                                                            <a><img className="desk_view" src="/images/logo.png" alt="logo" /></a>
-                                                        </Link>
+                                                        <a href="/"><img className="desk_view" src="/images/logo.png" /></a>
                                                     </div>
                                                     <div className="col-md-10 col-xs-12">
                                                         <div className="megamenu-lists">
@@ -132,7 +270,6 @@ export default function Header(props) {
                                                                                 );
                                                                             })
                                                                         }
-
                                                                     </div>
                                                                 </div>
                                                             </ul>
@@ -142,45 +279,6 @@ export default function Header(props) {
                                             </div>
                                             <div className="bs-example tabs_veiw">
                                                 <div className="accordion acco_after" id="accordionExample">
-                                                    <div className="card">
-                                                        <div className="card-header" id="headingfor">
-                                                            <h2 className="mb-0">
-                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefor"><p>My Accounts</p> <i className="fa fa-plus"></i></button>
-                                                            </h2>
-                                                        </div>
-                                                        <div id="collapsefor" className="collapse" aria-labelledby="headingfor" data-parent="#accordionExample">
-                                                            <div className="card-body">
-                                                                <ul>
-                                                                    <li>
-                                                                        <Link href="/account?tab=1">
-                                                                            <a>Profile</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=2">
-                                                                            <a>Orders</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=4">
-                                                                            <a>Address</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=5">
-                                                                            <a>Wishlist</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-
-                                                                        <a onClick={() => dispatch({ type: "SIGN_OUT" })}>Log Out</a>
-
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                     {
                                                         categories.map((cat) => {
                                                             return (
@@ -232,10 +330,9 @@ export default function Header(props) {
                                             <input type="search" name="query" defaultValue={router.query.query ? router.query.query : ""} placeholder="Search..." />
                                         </div>
                                     </form>
-
-                                    <Link href="/cart">
+                                    <Link href="/account?tab=5">
                                         <a>
-                                            <img src="/images/address_icon/card.svg" alt="cart" />
+                                            <img src="/images/address_icon/heart.svg" alt="cart" />
                                             <span className="badge" id="cartItems">{cartItemCount}</span>
                                         </a>
                                     </Link>
@@ -244,7 +341,12 @@ export default function Header(props) {
                                             <img src="/images/address_icon/user.svg" alt="account" />
                                         </a>
                                     </Link>
-
+                                    <Link href="/cart">
+                                        <a>
+                                            <img src="/images/address_icon/card.svg" alt="cart" />
+                                            <span className="badge" id="cartItems">{cartItemCount}</span>
+                                        </a>
+                                    </Link>
                                 </div>
                             </ul>
                         </div>
