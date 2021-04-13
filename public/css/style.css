@@ -586,7 +586,7 @@ a>img.desk_view{width: 140px}
 .padd_1_0{padding: 0 3rem}
 .new_add>p {
 	font-family: 'Montserrat';font-size: 14px;float: right}
-.add_bx{border: none !important;
+.add_bx{
     background: #FDFAFA;
     border-radius: 10px;
 }

@@ -51,13 +51,13 @@ export default function Wishlist() {
                                 items: 3
                             }
                         },
-                        loop: true,
+                        loop: false,
                         autoplay: false,
                         dots: false,
                         nav: false,
                         margin: 10,
                         rewind: true,
-                        autoWidth: true,
+                        autoWidth: false,
                         center: true
                     }} className="owl-carousel" >
                         <ProductCrousel wishlist products={wishlist} removeFromWishliat={removeFromWishliat} />

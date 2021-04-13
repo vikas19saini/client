@@ -32,12 +32,6 @@ export default function Cart() {
         })
     }, [addNew, reload]);
 
-    const deleteAddress = (id) => {
-        axios.delete(`${process.env.API_URL}address/${id}`).then(res => {
-            setReload(reload + 1)
-        })
-    }
-
     useEffect(async () => {
         await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
             setCartData(res.data);
@@ -110,7 +104,7 @@ export default function Cart() {
                                             <h5>Contact No: {shippingAddress.phone}</h5>
                                         </div>
                                         <div>
-                                            <button className="changeAddressBtn" onClick={changeDeliveryAddress}>Change</button>
+                                            <button className="checkoutBtn" onClick={changeDeliveryAddress}>Change address</button>
                                         </div>
                                     </div>
                                 ) : (
@@ -122,24 +116,19 @@ export default function Cart() {
 
                             {
                                 (!addNew && !shippingAddress) && (
-                                    <Fragment>
+                                    <div className="row">
                                         {
                                             addresses.map((add) => {
                                                 return (
-                                                    <div title="Click to select address" className={(shippingAddress === add.id) ? "check_add_3 checkout selected" : "check_add_3 checkout"} key={add.id}>
-                                                        {
-                                                            (add.isDefault === 1) && <div className="defaultAddress" title="Default address" />
-                                                        }
-                                                        <div onClick={() => setCustomerDeliveryAddress(add)}>
-                                                            <p><span>{add.name}</span> {formatAddress(add)}</p>
-                                                            <p><span>Phone: {add.phone}</span></p>
-                                                        </div>
-                                                        <div className="check_main_3">
-                                                            <div className="pull-left">
-                                                                <button className="smalBtn">Edit</button>
-                                                            </div>
-                                                            <div className="pull-right">
-                                                                <button className="smalBtn" onClick={() => deleteAddress(add.id)}>Delete</button>
+                                                    <div className="col-md-12 col-sm-12 addressOne">
+                                                        <div className={(shippingAddress === add.id) ? "check_add_3 checkout selected" : "check_add_3 checkout"} key={add.id}>
+                                                            {
+                                                                (add.isDefault === 1) && <div className="defaultAddress" title="Default address" />
+                                                            }
+                                                            <div>
+                                                                <p><span>{add.name}</span> {formatAddress(add)}</p>
+                                                                <p><span>Phone: {add.phone}</span></p>
+                                                                <button title="Click to select address" className="checkoutBtn" type="button" onClick={() => setCustomerDeliveryAddress(add)}>Deliver Here</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -151,7 +140,7 @@ export default function Cart() {
                                                 <button type="button" className="addAddressButton" onClick={() => setAddNew(true)}>Add an address</button>
                                             </div>
                                         </div>
-                                    </Fragment>
+                                    </div>
                                 )
                             }
 

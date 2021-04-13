@@ -16,6 +16,9 @@ export default function Addresses() {
     }, [addNew, reload])
 
     const deleteAddress = (id) => {
+        if (!confirm("Are you sure?"))
+            return;
+
         axios.delete(`${process.env.API_URL}address/${id}`).then(res => {
             setReload(reload + 1)
         })
@@ -24,53 +27,43 @@ export default function Addresses() {
     return (
         <div className="tabcontent" style={{ display: 'block', left: '0px' }}>
             <div className="row">
-                <div className="col-md-6 col-6 padd_0">
+                <div className="col-md-6 col-6">
                     <h3>My Addresses</h3>
                 </div>
                 {
                     !addNew && (
                         <Fragment>
-                            <div className="col-md-6 col-6 padd_0">
+                            <div className="col-md-6 col-6">
                                 <div className="new_add">
-                                    <button className="btn btn-primary pull-right" onClick={() => setAddNew(true)}>Add New Address</button>
+                                    <button className="checkoutBtn pull-right" onClick={() => setAddNew(true)}>Add New Address</button>
                                 </div>
                             </div>
-                            <div className="inner_add">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        {
-                                            addresses.length > 0 ? addresses.map(address => {
-                                                return (
-                                                    <div className="add_bx check_add_3" key={address.id}>
-                                                        <p><span>{address.name}</span> {formatAddress(address)}</p>
-                                                        <p><span>Phone: {address.phone}</span></p>
-                                                        <div className="mrg_adit">
-                                                            <div className="check_main_3">
-                                                                <div className="de_add md_1 inner_md">
-                                                                    <p>Default Address</p>
-                                                                </div>
-                                                                <div className="md_2">
-                                                                    <p>Edit</p>
-                                                                </div>
-                                                                <div className="md_2">
-                                                                    <p onClick={() => deleteAddress(address.id)}>Delete</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                                : (
-                                                    <div className="check_add_2 wow fadeInUp">
-                                                        <p>You don’t have a delivery address</p>
-                                                        <button type="button" onClick={() => setAddNew(true)}>Add an address</button>
-                                                    </div>
-                                                )
+                            {
+                                addresses.length > 0 ? addresses.map(address => {
+                                    return (
+                                        <div className="col-md-6" key={address.id}>
+                                            <div className="add_bx check_add_3" style={{ border: "1px solid #cf9f44" }}>
+                                                <p><span>{address.name}</span> {formatAddress(address)}</p>
+                                                <p><span>Phone: {address.phone}</span></p>
+                                                <div className="addressOption">
+                                                    {/* <button className="pull-left addressEdit" onClick={() => editAddress(address.id)}>Edit</button> */}
+                                                    <button className="pull-right addressDelete" onClick={() => deleteAddress(address.id)}>Delete</button>
+                                                    <div className="clearfix" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                    : (
+                                        <div className="col-md-12">
+                                            <div className="check_add_2 wow fadeInUp">
+                                                <p>You don’t have a delivery address</p>
+                                                <button type="button" onClick={() => setAddNew(true)}>Add an address</button>
+                                            </div>
+                                        </div>
+                                    )
 
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </Fragment>
                     )
                 }

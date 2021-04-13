@@ -16,7 +16,7 @@ export default function MyAccount() {
 
     return (
         <section className="inner_product">
-            <div className="container">
+            <div className="container" style={{ width: "100%" }}>
                 <div className="row">
                     <Tabs activeTab={tabValue} />
                     {

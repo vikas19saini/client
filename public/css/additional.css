@@ -326,3 +326,73 @@ span.eat {
   font-size: 12px !important;
   color: #aa8344;
 }
+.checkoutBtn{
+  border: 1px solid #cf9f44;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 3px;
+    background: #cf9f44;
+    color: #fff;
+}
+.check_add_3{
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.addressOne{
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+.tabcontent{
+  position: unset;
+  overflow: unset;
+  height: unset;
+  max-height: unset;
+}
+
+@media only screen and (max-width:767px) {
+  .accountTabs{
+    display: none;
+  }
+}
+.mrg_12{
+  margin: 0px;
+}
+.main_inner_check{
+  position: relative;
+}
+.check_dis{
+  float: unset;
+}
+.orderProduct p{
+  font-size: 12px;
+  margin-bottom: 0px;
+  font-family: 'Montserrat';
+  line-height: 20px;
+}
+.addressEdit {
+  border: 2px solid #cf9f44;
+  background: transparent;
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #cf9f44;
+}
+.addressDelete {
+  border: 2px solid #cf9f44;
+  background: transparent;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #cf9f44;
+} 

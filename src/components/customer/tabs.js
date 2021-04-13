@@ -11,7 +11,7 @@ export default function Tabs(props) {
     }
 
     return (
-        <div className="tab">
+        <div className="tab accountTabs">
             <button className={props.activeTab === 1 ? "tablinks active" : "tablinks"} onClick={() => router.push("/account?tab=1")}>
                 <img src="/images/address_icon/profile.svg" alt="profile" />My Profile</button>
 

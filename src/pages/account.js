@@ -11,6 +11,9 @@ export default function Account() {
 
     return (
         <Fragment>
+            <Head>
+                <title>My Account - Gandhi</title>
+            </Head>
             <Header shadow />
             {
                 auth ? <MyAccount /> : <Login />

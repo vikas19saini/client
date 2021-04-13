@@ -13,10 +13,10 @@ export default function About() {
     const [order, setOrder] = useState(null);
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const dispatch = useDispatch();
+    dispatch({ type: "CLEART_CART", payload: 0 });
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        dispatch({ type: "CLEART_CART", payload: 0 });
         if (orderId)
             axios.get(`${process.env.API_URL}orders/${orderId}`)
                 .then((res) => {
@@ -40,11 +40,11 @@ export default function About() {
             </Head>
             <Header shadow />
             <section style={{ marginTop: "20px", marginBottom: "20px" }}>
-                <div className="container">
-                    <div className="row">
+                <div style={{ width: "100%" }}>
+                    <div className="row" style={{ margin: "0px" }}>
                         <div className="col-md-12">
                             <div className="mrg_desk">
-                                <div className="or_placed">
+                                <div className="or_placed" style={{ marginTop: "0px" }}>
                                     <img src="/images/place_img.png" style={{ marginBottom: "20px" }} />
                                     <h4>Order Placed</h4>
                                     <p>Your Gandhi order was placed successfully & will be delivered shortly!</p>

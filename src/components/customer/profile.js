@@ -1,67 +1,69 @@
+import axios from "axios";
+import { useEffect, useState } from "react"
+import { ToastContainer, toast } from 'react-nextjs-toast';
+
 export default function Profile() {
+    const [profile, setProfile] = useState(null);
+    const [reload, setReload] = useState(1);
+    useEffect(async () => {
+        await axios.get(`${process.env.API_URL}customer/details`).then((res) => {
+            setProfile(res.data);
+        });
+    }, [reload]);
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        await axios.patch(`${process.env.API_URL}customer/details`, {
+            name: e.target.name.value,
+            phone: e.target.phone.value,
+        }).then((res) => {
+            toast.notify(`Profile Updated!`, {
+                type: "success",
+                title: "Profile!"
+            });
+            setReload(reload + 1);
+        }).catch(err => {
+            toast.notify(`Profile Updation Fail!`, {
+                type: "error",
+                title: "Profile!"
+            });
+            setReload(reload + 1);
+        });
+    }
+
     return (
         <div className="tabcontent" style={{ display: 'block', left: '0px' }}>
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="small-12 medium-2 large-2 columns">
-                        <div className="circle">
-                            <img className="profile-pic" src="/images/user_img.png" alt="" />
-                        </div>
-                        <div className="p-image">
-                            <img className="upload-button" src="/images/cemara.png" alt="" />
-                            <input className="file-upload" type="file" accept="image/*" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ToastContainer />
             <div className="form_aria_p">
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="floating-label">
-                            <input className="floating-input" type="text" placeholder=" " />
-                            <span className="highlight"></span>
-                            <label>First Name</label>
+                <form onSubmit={onSubmit}>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="floating-label">
+                                <input className="floating-input" name="name" type="text" placeholder=" " defaultValue={profile ? profile.name : ""} />
+                                <span className="highlight"></span>
+                                <label>First Name</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="floating-label">
+                                <input className="floating-input" name="email" readOnly={true} type="text" placeholder=" " defaultValue={profile ? profile.email : ""} />
+                                <span className="highlight"></span>
+                                <label>Email Address</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="floating-label">
+                                <span><img src="/images/icons/i_right.png" /></span>
+                                <input className="floating-input" name="phone" type="text" placeholder=" " defaultValue={profile ? profile.phone : ""} />
+                                <span className="highlight"></span>
+                                <label>Mobile Number</label>
+                            </div>
+                        </div>
+                        <div className="col-md-12">
+                            <button type="submit" className="bag_bttn">Update Profile</button>
                         </div>
                     </div>
-                    <div className="col-md-6">
-                        <div className="floating-label">
-                            <input className="floating-input" type="text" placeholder=" " />
-                            <span className="highlight"></span>
-                            <label>Last Name</label>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="floating-label">
-                            <span><img src="/images/icons/i_right.png" /></span>
-                            <input className="floating-input" type="text" placeholder=" " />
-                            <span className="highlight"></span>
-                            <label>Mobile Number</label>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="custom_date">
-                            <label htmlFor="dateofbirth">Date Of Birth</label>
-                            <input type="date" name="dateofbirth" id="dateofbirth" />
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="floating-label">
-                            <select className="floating-select" defaultValue={1}>
-                                <option value=""></option>
-                                <option value="1">Alabama</option>
-                                <option value="2">Boston</option>
-                                <option value="3">Ohaio</option>
-                                <option value="4">New York</option>
-                                <option value="5">Washington</option>
-                            </select>
-                            <span className="highlight"></span>
-                            <label>Country</label>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <button type="button" className="bag_bttn">Update Profile</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     )

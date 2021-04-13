@@ -44,7 +44,7 @@ export default function CheckoutSidebar(props) {
                         <div className="couponApplied">
                             <div className="text">
                                 <p>Coupon applied</p>
-                                <p>You save additional {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(props.cartData.couponDiscount * currency.value).replace("THB", "฿")}</p>
+                                <p>You save additional {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format((props.cartData.couponDiscount + props.cartData.discount) * currency.value).replace("THB", "฿")}</p>
                             </div>
                             <div className="couponBtn">
                                 <button type="button" onClick={() => removeCoupon()}>Edit</button>
