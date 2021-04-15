@@ -1,6 +1,6 @@
 import Header from "../header";
 import Footer from "../footer";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import Head from 'next/head'
 import { wrapper } from "../../redux/store";
@@ -11,10 +11,13 @@ import OwlCarousel from 'react-owl-carousel2';
 import Image from "next/image"
 import { toast, ToastContainer } from 'react-nextjs-toast';
 import Link from "next/link";
+import 'react-photoswipe/lib/photoswipe.css';
+import { PhotoSwipe } from 'react-photoswipe';
 
 export default function Product(product) {
 
-    let productImages = [...[product.featuredImage], ...product.thumbnails]
+    let productImages = [...[product.featuredImage], ...product.thumbnails];
+    const [openZoom, setOpenZoom] = useState(false);
 
     useEffect(() => {
         productPageInit() // defined in script.js
@@ -42,6 +45,18 @@ export default function Product(product) {
                 <meta name="description" content={product.metaDescription} />
             </Head>
             <Header shadow />
+            <PhotoSwipe isOpen={openZoom} items={
+                productImages.map((t) => {
+                    return {
+                        src: t.fullUrl,
+                        w: 1500,
+                        h: 1000,
+                        title: product.name
+                    }
+                })
+            } options={{
+                history: false
+            }} onClose={() => setOpenZoom(false)} />
             <section className="inner_product">
                 <div className="wd_full">
                     <div className="container">
@@ -76,7 +91,7 @@ export default function Product(product) {
                                                         <div className="over_icon_hard" onClick={addToWishlist}>
                                                             <img src="/images/address_icon/heart.svg" />
                                                         </div>
-                                                        <Image src={t.fullUrl} height={570} width={680} alt={product.name} />
+                                                        <Image src={t.fullUrl} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
                                                     </div>
                                                 </div>
                                             )
