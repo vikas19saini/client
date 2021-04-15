@@ -160,10 +160,10 @@ export default function CartButton(props) {
                             }
                             {
                                 product.stockStatus !== 0 &&
-                                <Fragment>
+                                <div className="cartButtonProduct">
                                     <button type="button" className="bag_bttn" onClick={() => addProductToCart(qty)}>Add to Bag</button>
                                     <button className="hard_icon" onClick={addToWishlist}><img src="/images/address_icon/heart.svg" alt="heart" /></button>
-                                </Fragment>
+                                </div>
                             }
                         </Fragment>
                     )

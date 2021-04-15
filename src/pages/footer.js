@@ -33,7 +33,8 @@ export default function Footer() {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="inner_ftt">
-                                    <img src="/images/logo.png" alt="" />
+                                    <a href="/">
+                                        <img src="/images/logo.png" alt="gandhi logo" /></a>
                                     <p>The Finest Fabrics from all over the world</p>
 
                                     {
@@ -56,7 +57,7 @@ export default function Footer() {
                                                 <a>Contact</a>
                                             </Link>
                                         </li>
-                                        <li><Link href="/about"><a>Our Stores</a></Link></li>
+                                        <li><Link href="/about"><a>About Us</a></Link></li>
                                         <li><Link href="/faq"><a>Faq</a></Link></li>
                                     </ul>
                                 </div>
@@ -83,8 +84,8 @@ export default function Footer() {
                                         <p>© {(new Date).getFullYear()} Gandhi Fabric. All Rights Reserved</p>
                                     </div>
                                     <div className="pay_icon">
-                                        <a href="#"><img src="/images/paypallogo.svg" /></a>
-                                        <a href="#"><img src="/images/visalogo.svg" /></a>
+                                        <a href="#logoPay"><img src="/images/paypallogo.svg" /></a>
+                                        <a href="#logoPay"><img src="/images/visalogo.svg" /></a>
                                     </div>
                                     <div className="copy_txt mob_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>

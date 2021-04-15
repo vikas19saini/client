@@ -1131,22 +1131,23 @@ function productPageInit() {
             }
         }
     });
-    $('#may_like').owlCarousel({
-        loop: false,
+
+    var mayLike = $('#may_like');
+
+    mayLike.owlCarousel({
+        loop: true,
         autoplay: false,
         dots: true,
-        margin: 10,
+        margin: 5,
         nav: false,
+        lazyLoad: true,
         responsive: {
             0: {
 
                 items: 1.2,
-                nav: false,
-                margin: 10,
             },
             568: {
                 items: 3,
-                nav: false,
             },
             667: {
                 items: 3,
@@ -1156,6 +1157,15 @@ function productPageInit() {
             }
         }
     });
+
+    /* mayLike.on('mousewheel', '.owl-stage', function (e) {
+        if (e.deltaY > 0) {
+            mayLike.trigger('next.owl');
+        } else {
+            mayLike.trigger('prev.owl');
+        }
+        e.preventDefault();
+    }); */
 }
 
 function homePageInit() {
@@ -1281,9 +1291,9 @@ function homePageInit() {
     });
 
     $('#collection_slide').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: false,
-        dots: true,
+        dots: false,
         nav: false,
         margin: 10,
         responsive: {

@@ -13,6 +13,9 @@ import { toast, ToastContainer } from 'react-nextjs-toast';
 import Link from "next/link";
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipe } from 'react-photoswipe';
+import {
+    isMobile
+} from "react-device-detect";
 
 export default function Product(product) {
 
@@ -88,9 +91,6 @@ export default function Product(product) {
                                             return (
                                                 <div className="item" key={t.id}>
                                                     <div className="icon_hard">
-                                                        <div className="over_icon_hard" onClick={addToWishlist}>
-                                                            <img src="/images/address_icon/heart.svg" />
-                                                        </div>
                                                         <Image src={t.fullUrl} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
                                                     </div>
                                                 </div>
@@ -146,7 +146,7 @@ export default function Product(product) {
             </section>
 
 
-            <div className="container dis_mrg_1">
+            <div className={isMobile ? "dis_mrg_1" : "container dis_mrg_1"}>
                 <div className="row">
                     <div className="col-md-12">
                         {
@@ -201,7 +201,7 @@ export default function Product(product) {
             {
                 product.relative.length > 0 &&
                 <section className="may_leke_sec">
-                    <div className="container">
+                    <div className={isMobile ? "container w100" : "container"}>
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="inner_main_hadding wow fadeInUp">

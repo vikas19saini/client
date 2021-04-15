@@ -396,3 +396,11 @@ span.eat {
   font-weight: 600;
   color: #cf9f44;
 } 
+.w100{
+  width: 100% !important;
+}
+.cartButtonProduct{
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}

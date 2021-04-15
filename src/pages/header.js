@@ -224,8 +224,8 @@ export default function Header(props) {
                                     </div>
                                 </li>
                                 <li className="tp_bd_no">
-                                    <a className="show_sub" href="#">All Fabric</a>
-                                    <div className="megamenu-panel" id="close_menu">
+                                    <a className="show_sub" href="#menu">All Fabric</a>
+                                    <div className="megamenu-panel" id="close_menu" style={{display: "none"}}>
                                         <div className="nav_head">
                                             <div id="closeButton" className="tabs_veiw_s"><img src="/images/close.png" /></div>
                                             <div className="tabs_veiw_s">

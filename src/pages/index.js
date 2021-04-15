@@ -157,7 +157,8 @@ export default function Home(props) {
 
                     <div className="bg_clr">
                       <h2>The Colour Palette To <span>Brighten Your Mood</span></h2>
-                      <button className="view_bttn dropbtn bg_bttn">View Collection</button>
+                      <Link href="/category/trends">
+                        <a className="view_bttn dropbtn bg_bttn">View Collection</a></Link>
                     </div>
                   </div>
 
@@ -248,27 +249,13 @@ export default function Home(props) {
           <div className="row">
             <div id="collection_slide" className="owl-carousel desk_view">
               <div className="item">
-                <img className="desk_view" src="images/bg_slide.jpg" className="img-fluid" />
+                <img className="desk_view" src="/images/bg_slide.jpg" className="img-fluid" />
                 <div className="slide_tx">
                   <h3><span>Our Wedding</span> Fabric Collection</h3>
                   <p className="desk_view">Beautiful Fabrics to Make your Day Perfect</p>
-                  <button type="button" className="view_slide_bttn learn_bttn">View</button>
-                </div>
-              </div>
-              <div className="item">
-                <img className="desk_view" src="images/bg_slide.jpg" className="img-fluid" />
-                <div className="slide_tx">
-                  <h3><span>Our Wedding</span> Fabric Collection</h3>
-                  <p className="desk_view">Beautiful Fabrics to Make your Day Perfect</p>
-                  <button type="button" className="view_slide_bttn learn_bttn">View</button>
-                </div>
-              </div>
-              <div className="item">
-                <img className="desk_view" src="images/bg_slide.jpg" className="img-fluid" />
-                <div className="slide_tx">
-                  <h3><span>Our Wedding </span>Fabric Collection</h3>
-                  <p className="desk_view">Beautiful Fabrics to Make your Day Perfect</p>
-                  <button type="button" className="view_slide_bttn learn_bttn">View</button>
+                  <Link href="/search?query=wedding">
+                    <a type="button" className="view_slide_bttn learn_bttn">View</a>
+                  </Link>
                 </div>
               </div>
             </div>
