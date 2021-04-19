@@ -35,7 +35,7 @@ export default function Wishlist() {
             <ToastContainer />
             <h3>Wishlist</h3>
             <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 wishlistC">
                     <OwlCarousel options={{
                         responsive: {
                             0: {
@@ -50,16 +50,9 @@ export default function Wishlist() {
                             1170: {
                                 items: 3
                             }
-                        },
-                        loop: false,
-                        autoplay: false,
-                        dots: false,
-                        nav: false,
+                        },                        
                         margin: 10,
-                        rewind: true,
-                        autoWidth: false,
-                        center: true
-                    }} className="owl-carousel" >
+                    }} className="owl-carousel">
                         <ProductCrousel wishlist products={wishlist} removeFromWishliat={removeFromWishliat} />
                     </OwlCarousel>
                 </div>

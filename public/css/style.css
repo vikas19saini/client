@@ -587,7 +587,6 @@ a>img.desk_view{width: 140px}
 .new_add>p {
 	font-family: 'Montserrat';font-size: 14px;float: right}
 .add_bx{border: none !important;
-    background: #FDFAFA;
     border-radius: 10px;
 }
 .add_bx p{font-weight: 400 !important}
@@ -5160,5 +5159,8 @@ font-weight: 500}
 }
 #couponCode{
     text-transform: uppercase;
+}
+.wishlistC .owl-item:first-child{
+    display: none !important;
 }
 /* header Css closed */

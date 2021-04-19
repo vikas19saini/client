@@ -41,7 +41,7 @@ export default function Addresses() {
                             {
                                 addresses.length > 0 ? addresses.map(address => {
                                     return (
-                                        <div className="col-md-6" key={address.id}>
+                                        <div className="col-md-6 cartProduct" key={address.id}>
                                             <div className="add_bx check_add_3" style={{ border: "1px solid #cf9f44" }}>
                                                 <p><span>{address.name}</span> {formatAddress(address)}</p>
                                                 <p><span>Phone: {address.phone}</span></p>
