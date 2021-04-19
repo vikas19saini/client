@@ -6,8 +6,11 @@ import axios from "axios";
 import { wrapper } from '../redux/store';
 import Products from "../components/productCrousel"
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 export default function Home(props) {
+
+  const route = useRouter();
 
   useEffect(() => {
     homePageInit() // defined in script.js
@@ -34,7 +37,7 @@ export default function Home(props) {
                           <div className="inner_txt">
                             <h1>{slider.heading}</h1>
                             <p>{slider.description}</p>
-                            <button type="button" className="learn_bttn">Learn more</button>
+                            <button type="button" onClick={() => route.push(slider.uri)} className="learn_bttn">Learn more</button>
                           </div>
                         </div>
                       );
