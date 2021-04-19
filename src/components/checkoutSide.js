@@ -50,9 +50,9 @@ export default function CheckoutSidebar(props) {
                                 <button type="button" onClick={() => removeCoupon()}>Edit</button>
                             </div>
                         </div> : <>
-                            <input type="text" className="inner_input form-control" id="couponCode" placeholder="Enter Coupon Code" />
+                            <input type="text" className="inner_input form-control" id="couponCode" name="couponCode" placeholder="Coupon Code" />
                             <div className="input-group-append">
-                                <button className="input-group-text sign_bttn" onClick={() => applyCoupon()}>Appy</button>
+                                <button className="input-group-text couponBtn2" onClick={() => applyCoupon()}>Apply Coupon</button>
                             </div>
                         </>
                 }

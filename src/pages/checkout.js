@@ -8,8 +8,8 @@ import { formatAddress } from "./helpers"
 import CheckoutSidebar from "../components/checkoutSide"
 import AddressForm from "../components/customer/addressForm"
 import PaymentMethod from "../components/paymentMethods";
-import { ToastContainer } from 'react-nextjs-toast';
 import { useRouter } from "next/router"
+import { toast, ToastContainer } from 'react-nextjs-toast';
 
 export default function Cart() {
     const [reload, setReload] = useState(1)
@@ -21,6 +21,13 @@ export default function Cart() {
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const router = useRouter();
     const [cartData, setCartData] = useState(null);
+
+    if (router.query.status) {
+        toast.notify(router.query.status, {
+            type: "error",
+            title: "Checkout!"
+        })
+    }
 
     if (!cartId) {
         router.push("/cart");
@@ -90,14 +97,14 @@ export default function Cart() {
             </Head>
             <Header shadow />
             <ToastContainer />
-            <section className="inner_product con_tp">
+            <section className="inner_product product_info" style={{ background: "#f6f7f7" }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-7 col-sm-12">
 
                             {
                                 shippingAddress ? (
-                                    <div className="dis_detail selectedAdd">
+                                    <div className="dis_detail selectedAdd cartProduct">
                                         <div>
                                             <h4>Delivery Address</h4>
                                             <p><span>{shippingAddress.name}</span> {formatAddress(shippingAddress)}</p>
@@ -120,8 +127,8 @@ export default function Cart() {
                                         {
                                             addresses.map((add) => {
                                                 return (
-                                                    <div className="col-md-12 col-sm-12 addressOne">
-                                                        <div className={(shippingAddress === add.id) ? "check_add_3 checkout selected" : "check_add_3 checkout"} key={add.id}>
+                                                    <div className="col-md-12 col-sm-12 addressOne cartProduct" key={add.id}>
+                                                        <div className={(shippingAddress === add.id) ? "check_add_3 checkout selected" : "check_add_3 checkout"}>
                                                             {
                                                                 (add.isDefault === 1) && <div className="defaultAddress" title="Default address" />
                                                             }
@@ -135,11 +142,9 @@ export default function Cart() {
                                                 );
                                             })
                                         }
-                                        <div className="row" style={{ textAlign: "center", width: "100%" }}>
-                                            <div className="col-lg-12 col-sm-12" >
-                                                <button type="button" className="addAddressButton" onClick={() => setAddNew(true)}>Add an address</button>
-                                            </div>
-                                        </div>
+
+                                        <button type="button" className="addAddressButton cartProduct" onClick={() => setAddNew(true)} style={{width: "100%", background: "#fff"}}>Add New Address</button>
+
                                     </div>
                                 )
                             }
@@ -152,7 +157,7 @@ export default function Cart() {
                                 showPaymentMethods && (<PaymentMethod cartData={cartData} />)
                             }
                         </div>
-                        <div className="col-lg-5 col-sm-12">
+                        <div className="col-lg-5 col-sm-12 nopadding">
                             {cartData && <CheckoutSidebar setReload={setReload} cartData={cartData} />}
                         </div>
                     </div>

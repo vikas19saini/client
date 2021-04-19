@@ -75,12 +75,12 @@ export default function PaymentMethod(props) {
                                 <p>You'll be redirected to payment page, where you can pay via credit/debit card</p>
                                 <form name="payFormCcard" method="post" action={paymentMethod.url}>
                                     <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
-                                    <input type="hidden" name="amount" value={props.cartData.total} />
+                                    <input type="hidden" name="amount" value={(props.cartData.total * currency.value).toFixed(2)} />
                                     <input type="hidden" name="orderRef" value={props.cartData.id} />
-                                    <input type="hidden" name="currCode" value="840" />
-                                    <input type="hidden" name="successUrl" value="http://staging.gandhifabrics.com/checkout" />
-                                    <input type="hidden" name="failUrl" value="http://staging.gandhifabrics.com/checkout" />
-                                    <input type="hidden" name="cancelUrl" value="http://staging.gandhifabrics.com/checkout" />
+                                    <input type="hidden" name="currCode" value={currency.code.toLowerCase() == "usd" ? "840" : "840"} />
+                                    <input type="hidden" name="successUrl" value={`${process.env.API_URL}orders/paymentSuccess?cartId=${props.cartData.id}&currencyCode=${currency.code}`} />
+                                    <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout?status=Payment Fail`} />
+                                    <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout?status=Payment cancelled`} />
                                     <input type="hidden" name="payType" value="N" />
                                     <input type="hidden" name="payMethod" value="ALL" />
                                     <input type="hidden" name="lang" value="E" />

@@ -85,7 +85,7 @@ export default function Product(product) {
                                     dots: true,
                                     nav: false,
                                     rewind: true,
-                                }} id="product_slide" className="owl-carousel wow fadeInUp" >
+                                }} id="product_slide" className="owl-carousel" >
                                     {
                                         productImages.map((t) => {
                                             return (
@@ -211,9 +211,29 @@ export default function Product(product) {
                         </div>
                         <div className="row">
                             <div className="col-md-12">
-                                <div id="may_like" className="owl-carousel wow fadeInUp relativeProducts">
+                                <OwlCarousel options={{
+                                    responsive: {
+                                        0: {
+                                            items: 1.2,
+                                        },
+                                        568: {
+                                            items: 3,
+                                        },
+                                        667: {
+                                            items: 3,
+                                        },
+                                        1170: {
+                                            items: 3,
+                                        }
+                                    },
+                                    loop: false,
+                                    autoplay: false,
+                                    dots: false,
+                                    nav: false,
+                                    margin: 0,
+                                }} id="may_like" className="owl-carousel relativeProducts" >
                                     <Products products={product.relative} />
-                                </div>
+                                </OwlCarousel>
                             </div>
                         </div>
                     </div>

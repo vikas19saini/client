@@ -150,7 +150,7 @@
 .selectedAdd, .blockBorder{
    border: 1px solid #e0e0e0;
     padding: 15px;
-    background: #e6ebeb26;
+    background: #fff;
     margin-bottom: 30px;
 }
 .selectedAdd p span{
@@ -401,6 +401,6 @@ span.eat {
 }
 .cartButtonProduct{
   display: flex;
-  align-items: center;
+  align-items: end;
   margin-bottom: 50px;
 }

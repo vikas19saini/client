@@ -181,7 +181,6 @@
 #may_like .item {
     margin:5px;
     transition: 700ms ease-in-out;
-	 padding: 10px
 }
 
 #may_like .item:hover {
@@ -586,7 +585,7 @@ a>img.desk_view{width: 140px}
 .padd_1_0{padding: 0 3rem}
 .new_add>p {
 	font-family: 'Montserrat';font-size: 14px;float: right}
-.add_bx{border: none !important;
+.add_bx{
     background: #FDFAFA;
     border-radius: 10px;
 }
@@ -979,6 +978,7 @@ a>img.desk_view{width: 140px}
 .md_1{width:50%;float: left;padding: 5px 0 0}
 .md_2{width:25%;float: left;padding: 5px 0 0}
 .check_add_3{
+    border: 1px solid #009A2D;
     border-radius: 4px;
     padding: 1.6rem 0 0;margin: 0 0 4rem}
 .check_add_3 p{font-family: 'Montserrat';font-size: 12px;font-weight: 600;padding: 0 1rem 1rem;margin: 0}
@@ -1040,7 +1040,7 @@ ul{list-style: none;
 }
 .price_tt table tr.tb_1 td{padding: 15px 0;font-weight: 600}
 .tb_1{border-top: 1px solid #D8D8D8;border-bottom:1px solid #D8D8D8;}
-.appy_sec{padding: 15px;background: #fff;}
+.appy_sec{padding: 0 0 0 6rem}
 .check_out_bttn{width: 100%}
 .right_content_1{position: absolute;
     right: 0;bottom: 15px;}
@@ -1149,7 +1149,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .md-number-input p{font-size: 14px;font-family: 'Montserrat';color: #000000}
 
-.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;margin: 0 0 30px}
+.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;}
 .hard_icon{border: 1px solid #BFBFBF;
     background: transparent;
     padding:9px 10px;
@@ -1299,14 +1299,11 @@ ul.pagination li a:hover:not(.active) {color: #000000;font-weight: 600}
     cursor: pointer;}
 
 div.center {text-align: center;border-top: 1px solid #B2B2B2;border-bottom: 1px solid #B2B2B2;margin: 0 5px}
-.cotton_fabric_sec span{
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
-    background: #caa467;
-    padding: 2px 10px;
-    border: 1px solid;
-    border-radius: 37px;
+.cotton_fabric_sec span{font-size: 12px;font-weight: bold;color: #fff;background: #FF1441;
+position: absolute;
+    bottom: 180px;
+    padding: 10px 15px;
+    margin: 0 15px;
 }
 
 input:checked + label {
@@ -2003,8 +2000,7 @@ button:focus {
     font-size: 60px;
     font-weight: 600;
     font-family: 'Oswald';
-    color: #fff;
-	padding: 0 0 1.6rem
+    color: #fff
 }
 
 .bg_sec h2 span {
@@ -4501,7 +4497,7 @@ header {
 
 .txt_op_0{display: none;z-index: 999; background: #fff;
     position: absolute;
-    top: 50px;padding: 2rem 0;width: 105%;height: 100vh}
+    top: 50px;padding: 2rem 0;width: 100%;height: 100vh}
 .txt_op_0 h3{font-size: 13px;
 	font-family: 'Montserrat';
     text-align: center;
@@ -5123,42 +5119,5 @@ font-weight: 500}
     
 }
 
-.cartPadding{
-    padding: 20px 0px 25px 0px !important;
-    border: 0px !important;
-}
-.cartProduct .mrg_12{
-    border-bottom: 0px !important;
-}
-.appy_sec{
-    position: sticky;
-    top: 100px;
-}
-.cartProduct, .appy_sec, .selectedAdd{
-    box-shadow: 0 0 0 1px #dcdcde;
-    background: #fff;
-}
-.check_out_bttn{
-    margin-bottom: 0px;
-}
-.check_out_bttn{
-    width: 100% !important;
-}
-.couponBtn2{
-    color: #000000;
-    border-radius: 0;
-    font-size: 12px;
-    padding: 10px 10px 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: 'Montserrat';
-    margin: 0 1px;
-    color: #fff;
-    border: 0px;
-    background: #BE8F45;
-}
-#couponCode{
-    text-transform: uppercase;
-}
+
 /* header Css closed */

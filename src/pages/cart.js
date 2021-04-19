@@ -39,7 +39,7 @@ export default function Cart() {
             });
         }
 
-    }, [reload])
+    }, [reload, cartId])
 
     const removeProduct = async (cartProductId) => {
         await axios.post(`${process.env.API_URL}cart/remove`, {
@@ -81,7 +81,7 @@ export default function Cart() {
                     </section>
                 </div> :
                     cartProductDetails.length > 0 ?
-                        <section className="inner_product product_info">
+                        <section className="inner_product product_info" style={{background: "#f6f7f7"}}>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-12">
@@ -91,14 +91,14 @@ export default function Cart() {
                                     </div>
                                 </div>
                                 <div className="row wow fadeInUp">
-                                    <div className="col-md-7">
+                                    <div className="col-md-8">
                                         {
                                             cartProductDetails.map((cp) => {
                                                 return (
-                                                    <div className="row" key={cp.id}>
-                                                        <div className="col-md-12">
+                                                    <div className="row cartProduct" key={cp.id}>
+                                                        <div className="col-md-11 col-sm-12">
                                                             <div className="mrg_12">
-                                                                <div className="main_inner_check rm_bdr">
+                                                                <div className="main_inner_check rm_bdr cartPadding">
                                                                     <div className="check_img">
                                                                         <Link href={`product/${cp.slug}`}>
                                                                             <a>
@@ -136,7 +136,7 @@ export default function Cart() {
                                             })
                                         }
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-md-4 nopadding">
                                         {cartData && <CheckoutSidebar setReload={setReload} disableCheckout={disableCheckout} cartData={cartData} />}
                                     </div>
                                 </div>

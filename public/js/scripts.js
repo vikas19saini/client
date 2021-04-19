@@ -1132,7 +1132,7 @@ function productPageInit() {
         }
     });
 
-    var mayLike = $('#may_like');
+    /* var mayLike = $('#may_like');
 
     mayLike.owlCarousel({
         loop: true,
@@ -1156,7 +1156,7 @@ function productPageInit() {
                 items: 3,
             }
         }
-    });
+    }); */
 
     /* mayLike.on('mousewheel', '.owl-stage', function (e) {
         if (e.deltaY > 0) {

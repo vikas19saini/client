@@ -371,17 +371,6 @@
 
 
 @media only screen and (max-width:767px) {
-	.icon_r_12 {
-    position: relative;
-    right: inherit;
-}
-	.fixed .nav-header {
-    padding: 0;}
-	
-	.inner_po_right {
-    right: 15px;
-    position: relative;
-}
 	.update_bttn {float: inherit;}
 	.icon_up a img {width: 16px;}
 	.searchbox-icon img {width: 16px;}
@@ -846,13 +835,7 @@ padding: 0 3.6rem;
 	#closeButton{display: none}
 	.navigation-portrait .submenu-indicator{margin-top: -6px;top: 10px;right: 4px}
 	.nav-header {padding: 0;width: 100%}
-	.nav-brand{text-align: center;
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 6rem;
-    z-index: -1;}
+	.nav-brand{text-align: center;display: block}
 	.nav-toggle{left: 15px}
 	.main_header_area .container{width:92%}
 	
@@ -916,7 +899,7 @@ padding: 0 3.6rem;
 }
 */
 	.inner_product {
-    padding:0px 0 0px;
+    padding:65px 0 20px;
 	position: relative
 }
 	.main_pd_dis {
@@ -971,7 +954,8 @@ padding: 0 3.6rem;
 	.check_qu_1>.md-number-input.number-input button.plus {
     padding-left:6px;}
 	.check_qu_1>.md-number-input.number-input input[type=number]{width: 25px;height: 25px;margin: 0 .2rem;}
-	.appy_sec {margin-top: 20px;}
+	.appy_sec {
+    padding: 2rem 0 0;}
 	.main_inner_check{position: relative;padding: 10px}
 	.mrg_12 {margin: 0 0 2rem;
     border-bottom: 1px solid #cccccc73;
@@ -1198,9 +1182,7 @@ padding: 0 3.6rem;
 }
 	
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-		.nopadding{
-            padding: 0px;
-        }
+		
 	.ftt_bg {
 		background: url(../images/footer_bg_mb_1.jpg) no-repeat;background-size: cover;
 		}
@@ -1301,16 +1283,6 @@ padding: 0 3.6rem;
 
 @media (min-width: 576px){
 .modal-dialog {max-width:600px;}
-}
-
-@media (min-width: 690px){
-    .right_icon {
-        float: unset;
-        position: absolute;
-        right: 0;
-        top: 15px;
-        left: unset;
-    }
 }
 
 @media only screen and (max-width:414px){
