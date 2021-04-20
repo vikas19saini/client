@@ -371,12 +371,16 @@
 
 
 @media only screen and (max-width:767px) {
+	.orderProduct{border: 1px solid #D8D8D8;margin:1rem 0}
+	.orderProduct .main_a_bdr{border: none}
 	.icon_r_12 {
     position: relative;
     right: inherit;
 }
 	.fixed .nav-header {
     padding: 0;}
+	
+	#product_slide{z-index: inherit}
 	
 	.inner_po_right {
     right: 15px;
@@ -1307,7 +1311,7 @@ padding: 0 3.6rem;
     .right_icon {
         float: unset;
         position: absolute;
-        right: 0;
+        right: 15px;
         top: 15px;
         left: unset;
     }

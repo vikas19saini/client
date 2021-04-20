@@ -145,6 +145,9 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+.addressDelete {
+    margin-right: 15px;
+	margin-bottom: 15px;}
 
 .right_content_1>p>strong{float: right}
 .right_content_1 p:nth-child(2){float: right;margin: .6rem 0}
@@ -1013,7 +1016,7 @@ a>img.desk_view{width: 140px}
 .check_dis{float: left}
 .right_icon{float: right}
 .main_inner_check{border-bottom: 1px solid #D8D8D8;width: 100%;position: absolute}
-.main_a_bdr{border: 1px solid #D8D8D8;padding: 1.4rem}
+.main_a_bdr{border: 1px solid #D8D8D8;padding: 1rem;margin: 15px;}
 .spacing_bttm{padding:1.6rem 0 1rem}
 .cancelled_bttn{background:#FF9D00}
 .right_icon i{padding: 0 5px;cursor: pointer}
@@ -2497,7 +2500,8 @@ button:focus {
     width: 100px;
     margin: 0 20px 0 0;
 	font-family: Montserrat;
-	font-size: 14px
+	font-size: 14px;
+    border: 1px solid;
 }
 
 #luggage option{background: #000000;}

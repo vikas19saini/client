@@ -22,13 +22,6 @@ export default function Cart() {
     const router = useRouter();
     const [cartData, setCartData] = useState(null);
 
-    if (router.query.status) {
-        toast.notify(router.query.status, {
-            type: "error",
-            title: "Checkout!"
-        })
-    }
-
     if (!cartId) {
         router.push("/cart");
     }
@@ -158,7 +151,7 @@ export default function Cart() {
                             }
                         </div>
                         <div className="col-lg-5 col-sm-12 nopadding">
-                            {cartData && <CheckoutSidebar setReload={setReload} cartData={cartData} />}
+                            {cartData && <CheckoutSidebar setReload={setReload} cartData={cartData} disableCheckout={true} />}
                         </div>
                     </div>
                 </div>

@@ -33,12 +33,11 @@ export default function PaymentMethod(props) {
             await axios.post(`${process.env.API_URL}orders/payment`, {
                 orderId: order.order.id,
                 transactionNo: payment.paymentID,
-                amount: props.cartData.total,
                 currency: currency.code,
                 status: payment.paid ? "SUCCESS" : "FAILED",
                 method: "paypal"
             });
-            router.push(`thankyou?orderId=${order.order.id}`)
+            router.push(`thankyou?orderId=${order.order.id}`);
         } catch (err) {
             toast.notify("Unable to place order please contact us!", {
                 type: "error",
@@ -78,15 +77,15 @@ export default function PaymentMethod(props) {
                                     <input type="hidden" name="amount" value={(props.cartData.total * currency.value).toFixed(2)} />
                                     <input type="hidden" name="orderRef" value={props.cartData.id} />
                                     <input type="hidden" name="currCode" value={currency.code.toLowerCase() == "usd" ? "840" : "840"} />
-                                    <input type="hidden" name="successUrl" value={`${process.env.API_URL}orders/paymentSuccess?cartId=${props.cartData.id}&currencyCode=${currency.code}`} />
-                                    <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout?status=Payment Fail`} />
-                                    <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout?status=Payment cancelled`} />
+                                    <input type="hidden" name="successUrl" value={`${process.env.WEB_URL}placeorder?cartId=${props.cartData.id}&currencyCode=${currency.code}`} />
+                                    <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout`} />
+                                    <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout`} />
                                     <input type="hidden" name="payType" value="N" />
                                     <input type="hidden" name="payMethod" value="ALL" />
                                     <input type="hidden" name="lang" value="E" />
                                     <input type="hidden" name="remark" value="-" />
                                     <input type="hidden" name="redirect" value="30" />
-                                    <input type="submit" />
+                                    <input type="submit" value="Pay Now" className="bag_bttn check_out_bttn" />
                                 </form>
                             </div>)
                         }
