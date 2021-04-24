@@ -276,7 +276,7 @@
 	.inner_product {
     padding:130px 0 100px;}
 	.tab button{padding: 9px 20px;font-size: 11px}
-	.bag_bttn{font-size: 11px; padding: 9px 44px;}
+	.bag_bttn{font-size: 11px; padding: 9px 25px;}
 	.floating-label label{font-size: 12px}
 	.custom_date label{font-size: 12px}
 	.custom_date input{font-size: 12px}
@@ -371,16 +371,15 @@
 
 
 @media only screen and (max-width:767px) {
-	.orderProduct{border: 1px solid #D8D8D8;margin:1rem 0}
-	.orderProduct .main_a_bdr{border: none}
+	.brocade_bg{padding-left: 15px;}
+	.checkoutBtn{padding: 5px 12px;font-size: 10.6px}
+	.cartProduct{margin: 0 0 1rem}
 	.icon_r_12 {
     position: relative;
     right: inherit;
 }
 	.fixed .nav-header {
     padding: 0;}
-	
-	#product_slide{z-index: inherit}
 	
 	.inner_po_right {
     right: 15px;
@@ -932,7 +931,7 @@ padding: 0 3.6rem;
 	.dis_detail h2 {
 		font-size: 16px;font-weight: bold}
 	.dis_detail h2 span{font-weight: normal;font-size: 14px}
-	.bag_bttn{width: 60%;padding: 10px 43px}
+	.bag_bttn{width: 60%;padding: 10px 35px;}
 	.hard_icon{padding: 7px 10px;}
 	.inner_fabric_1 p{font-size: 11px;font-weight: 500}
 	.inner_fabric_1 p span {font-size: 10px;display:inline;}
@@ -1311,7 +1310,7 @@ padding: 0 3.6rem;
     .right_icon {
         float: unset;
         position: absolute;
-        right: 15px;
+        right: 0;
         top: 15px;
         left: unset;
     }

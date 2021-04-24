@@ -120,7 +120,7 @@ export default function Contact() {
                                 <div className="custom_add terms_bttm">
                                     <p>Terms and conditions :</p>
                                     <div className="w_check">
-                                        <p><input type="checkbox" style={{ width: "auto" }} required={true} /> We hereby agree to get on a video call with hp singh agencies team members</p>
+                                        <p><input type="checkbox" style={{ width: "auto" }} required={true} /> We hereby agree to get on a call with the team at Gandhi Fabrics.</p>
                                     </div>
                                 </div>
                             </div>
