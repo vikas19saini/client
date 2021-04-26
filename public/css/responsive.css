@@ -260,7 +260,6 @@
 	.arrivals a p {font-size: 13px;}
 	section.hidden_m{display: none !important}
 	.tab_padd{padding: 7rem 0 0}
-	footer{padding: 2rem 0 0}
 	.nav-search a>img{width: 15px}
 	.nav-search a{padding: 0 10px 0}
 	.nav-search-button>img{width: 15px}
@@ -342,7 +341,6 @@
 	.inner_brocade p {font-size: 14px;}
 	.inner_brocade {margin-top: 7rem}
 	.subcategory_desk {padding: 150px 20px 60px}
-	.inner_main_ld {margin:6rem auto 3rem}
 	.form_login input[type="text"], .form_login input[type="password"], .form_login input[type="email"] {margin: 1.6rem 0 0;}
 	.login_bttn {margin: 1.6rem 0 1rem;}
 	.inner_main_ld h4{padding: 15px 0}
@@ -359,9 +357,6 @@
 
 
 @media only screen and (max-width:768px) {
-.inner_main_ld {
-    margin: 14rem auto 3rem;
-}
 .hard_icon img {
     width: 20px;}
 	#search-box{right: 15%;background: transparent}
@@ -865,7 +860,7 @@ padding: 0 3.6rem;
 	.dropdown-content{
     padding: 10px 18px;}
 	.drop_bg {margin: 30px 0 0}
-	.ftt_bg{margin-top: 60px}
+	/* .ftt_bg{margin-top: 60px} */
 	.left_fittr>p{display: none}
 	
 	.left_fittr{display: none;width: 100%;background: #fff;
@@ -1046,7 +1041,7 @@ padding: 0 3.6rem;
 	#product_slide .owl-item img{height: 310px}
 	.inner_sec_tp {
 		background: transparent;padding: 0}
-	.inner_main_ld{padding: 0 2rem;margin:3rem 0 1rem}
+	.inner_main_ld{padding: 0 2rem; width: 98%;}
 	.or_placed>.check_img img{background: #F3F3F3;
     padding: .6rem;
     border-radius: 50%;}
@@ -1209,7 +1204,7 @@ padding: 0 3.6rem;
 		}
 		
 		.ld_bg {
-			background: url(../images/ld_bg_mob.jpg) no-repeat center;background-size:cover}
+			/* background: url(../images/ld_bg_mob.jpg) no-repeat center;background-size:cover */}
 		
 /* New menu css*/
 		

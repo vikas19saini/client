@@ -69,8 +69,8 @@ export default function Footer() {
                                 </div>
                                 <div className="ftt_menu flt_inhrit social_icon">
                                     <ul>
-                                        <li><a href="https://www.facebook.com/gandhifabrics.th" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                        <li><a href="https://www.instagram.com/gandhi_fabrics" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/gandhi_fabrics" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.facebook.com/gandhifabrics.th" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

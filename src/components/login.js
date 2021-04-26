@@ -79,7 +79,6 @@ export default function Login() {
                 type: "error",
                 title: "OTP Error!"
             })
-
             setIsLoading(false)
         })
 
@@ -117,19 +116,18 @@ export default function Login() {
                         <div className="container-fluid ld_bg">
                             <div className="row">
                                 <div className="inner_main_ld">
-                                    <h4>Personalize your style from the fabric</h4>
-                                    <h6>Welcome to Gandhi Fabric</h6>
-                                    <form onSubmit={login}>
+                                    <h4>Welcome to Gandhi Fabrics</h4>
+                                    <form className="loginForm" onSubmit={login}>
                                         <div className="form_login">
                                             <input type="email" name="email" placeholder="Email Address" required={true} />
                                             <input type="password" name="password" placeholder="Password" required={true} />
                                             {/* <div className="reset_pass"><a href="#">Forgot Password?</a></div> */}
                                         </div>
                                         <button type="submit" className="login_bttn go_bttn" disabled={isLoggingIn}>
-                                            {isLoggingIn ? (<div className="loader"></div>) : "LOGIN"}
+                                            {isLoggingIn ? (<div className="loader"></div>) : "LOG IN"}
                                         </button>
-                                        <p className="mass_tx">
-                                            <a href="#registartion" onClick={() => setShowLoginPage(false)}>Doesn’t have an account? Signup</a>
+                                        <p className="mass_tx" style={{ textAlign: "center" }}>
+                                            <button type="button" className="textBtn" onClick={() => setShowLoginPage(false)}>Doesn’t have an account? Sign up</button>
                                         </p>
                                     </form>
                                 </div>
@@ -137,43 +135,28 @@ export default function Login() {
                         </div>
                     ) : (
                         <div className="container-fluid ld_bg">
-                            <div className="divRegistration row">
+                            <div className="row">
                                 <div className="inner_main_ld">
-                                    <h4 style={{ textAlign: "center" }}>Personalize your style from the fabric</h4>
-                                    <h6>Welcome to Gandhi Fabric</h6>
+                                    <h4>Welcome to Gandhi Fabrics</h4>
                                     {
                                         !otpSent ? (
-                                            <form onSubmit={onSubmit} >
+                                            <form className="loginForm" onSubmit={onSubmit} >
                                                 <div className="form_login">
-                                                    <div className="row">
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <input type="text" name="name" placeholder="Name" required />
-                                                        </div>
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <input type="text" name="phone" placeholder="Mobile number" required />
-                                                        </div>
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <input name="email" placeholder="Email address" type="email" required />
-                                                        </div>
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <input type="password" name="password" placeholder="Password" required />
-                                                        </div>
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <input type="password" name="confirmPassword" placeholder="Confirm assword" required />
-                                                        </div>
-                                                        <div className="col-md-6 col-sm-12">
-                                                            <button type="submit" className="login_bttn go_bttn" disabled={isLoading}>{
-                                                                isLoading ? (<div className="loader"></div>) : "SIGNUP"
-                                                            }</button>
-                                                        </div>
-                                                    </div>
+                                                    <input type="text" name="name" placeholder="Name" required />
+                                                    <input type="text" name="phone" placeholder="Mobile number" required />
+                                                    <input name="email" placeholder="Email address" type="email" required />
+                                                    <input type="password" name="password" placeholder="Password" required />
+                                                    <input type="password" name="confirmPassword" placeholder="Confirm assword" required />
                                                 </div>
-                                                <p className="mass_tx">
-                                                    <a href="#login" onClick={() => setShowLoginPage(true)}>Already have an account? Login</a>
+                                                <button type="submit" className="login_bttn go_bttn" disabled={isLoading}>{
+                                                    isLoading ? (<div className="loader"></div>) : "SIGN UP"
+                                                }</button>
+                                                <p className="mass_tx" style={{ textAlign: "center" }}>
+                                                    <button className="textBtn" type="button" onClick={() => setShowLoginPage(true)}>Already have an account? Login</button>
                                                 </p>
                                             </form>
                                         ) : (
-                                            <form onSubmit={verifyOtp}>
+                                            <form className="loginForm" onSubmit={verifyOtp}>
                                                 <div className="form_login">
                                                     <div>
                                                         <input name="otp" aria-label="Otp" placeholder="OTP" type="text" required />
@@ -182,8 +165,8 @@ export default function Login() {
                                                 <button type="submit" className="login_bttn go_bttn" disabled={verifyingOtp}>{
                                                     verifyingOtp ? (<div className="loader"></div>) : "VERIFY"
                                                 }</button>
-                                                <p className="mass_tx">
-                                                    <a href="#login" onClick={() => setShowLoginPage(true)}>Already have an account? Login</a>
+                                                <p className="mass_tx" style={{ textAlign: "center" }}>
+                                                    <button type="button" className="textBtn" onClick={() => setShowLoginPage(true)}>Already have an account? Login</button>
                                                 </p>
                                             </form>
                                         )

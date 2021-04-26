@@ -137,21 +137,21 @@ export default function Contact() {
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Official Email <span>Support@gandhi.com</span></p>
+                                    <p>Official Email <span><a style={{ color: "inherit" }} href="mailto:support@gandhifabrics.com">support@gandhifabrics.com</a></span></p>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Mobile Number <span>+91 97884-66774</span></p>
+                                    <p>Mobile Number <span><a style={{ color: "inherit" }} href="tel:+66-947741515">+66-947741515</a></span></p>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>OFFICE ADDRESS <span>Gandhi Impex 326 Phahurat Road Bangkok 10200 Thailand T+66 (0) 2225
+                                    <p>OFFICE ADDRESS <span><strong>Gandhi Impex,</strong> 326 Phahurat Road Bangkok 10200 Thailand T+66 (0) 2225
                            5997/+66 (0) 2225 5503</span></p>
-                                    <p><span>GandhiPlus C025 2nd Floor China World 677-681 Chakraphet Road Bangkok 10200 Thailand T +66
+                                    <p><span><strong>GandhiPlus,</strong> C025 2nd Floor China World 677-681 Chakraphet Road Bangkok 10200 Thailand T +66
                            (0) 2222 4962/+66 (0) 2222 4953</span></p>
-                                    <p><span>The Cynosure Bangkok A002-A005 G Floor China World 677-681 Chakraphet Road Bangkok 10200
+                                    <p><span><strong>The Cynosure Bangkok,</strong> A002-A005 G Floor China World 677-681 Chakraphet Road Bangkok 10200
                            Thailand T+66 (0) 2225 2001-3</span></p>
                                 </div>
                             </div>

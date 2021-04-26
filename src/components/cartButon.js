@@ -141,7 +141,7 @@ export default function CartButton(props) {
                     : (
                         <Fragment>
                             <div className="dis_detail">
-                                <h5>{product.name}</h5>
+                                <h5>{product.name} - {product.sku}</h5>
                                 <h2><GetPriceHtml product={product} quantity={qty} /></h2>
                             </div>
                             {

@@ -12,12 +12,12 @@ export function getProductPrice(product) {
 export function formatPrice(price) {
     const storeConfig = useSelector(state => state.config);
     price = parseFloat((price * storeConfig.currency.value).toFixed(2))
-    return new Intl.NumberFormat('en-IN', { style: "currency", currency: storeConfig.currency.code }).format(price).replace("THB", "฿").replace("$", "USD");
+    return new Intl.NumberFormat('en-IN', { style: "currency", currency: storeConfig.currency.code }).format(price).replace("THB", "฿").replace("$", "$");
 }
 
 export function formatCurrency(val, currency) {
     val = parseFloat((val * currency.value).toFixed(2));
-    return new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(val).replace("THB", "฿").replace("$", "USD");
+    return new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(val).replace("THB", "฿").replace("$", "$");
 }
 
 export function GetPriceHtml(props) {
@@ -25,11 +25,11 @@ export function GetPriceHtml(props) {
 
     if (props.product.salePrice === 0) {
         formatPrice(1) // dummy call
-        return (formatPrice(props.product.ragularPrice * quantity))
+        return (formatPrice(props.product.ragularPrice * quantity)) + " / Mtr"
     }
     return (
         <Fragment>
-            {formatPrice(props.product.salePrice * quantity) /* + "/Mtr " */} <span><del>{formatPrice(props.product.ragularPrice * quantity)}{/* /Mtr */}</del></span>
+            {formatPrice(props.product.salePrice * quantity)} / Mtr <span><del>{formatPrice(props.product.ragularPrice * quantity)} / Mtr </del></span>
         </Fragment>
     )
 }

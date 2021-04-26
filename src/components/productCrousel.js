@@ -14,7 +14,7 @@ export default function Products(props) {
                 <div className="arrivals">
                     <Link href={`/product/${p.slug}`}>
                         <a>
-                            <p>{p.name} <strong>{<GetPriceHtml product={p} />}</strong></p>
+                            <p>{p.name} - {p.sku} <strong>{<GetPriceHtml product={p} />}</strong></p>
                         </a>
                     </Link>
                 </div>

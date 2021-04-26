@@ -259,7 +259,7 @@ export default function Products(props) {
                                                                             <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
                                                                         </a>
                                                                     </Link>
-                                                                    <h5>{p.name}</h5>
+                                                                    <h5>{p.name} - {p.sku}</h5>
                                                                     <p><strong><GetPriceHtml product={p} /></strong></p>
                                                                 </div>
                                                             </div>

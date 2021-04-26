@@ -126,14 +126,14 @@ export default function Product(product) {
                                             <div className="col-md-5">
                                                 <div className="order_s_1 right_s_1">
                                                     <p>Looking for order Bulk?</p>
-                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a>Bulk Order</a></Link></h6>
+                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>Bulk Order</a></Link></h6>
                                                 </div>
                                             </div>
 
                                             <div className="col-md-5">
                                                 <div className="order_s_1">
                                                     <p>Want to order sample ?</p>
-                                                    <h6>Order Swatch</h6>
+                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>Order Swatch</a></Link></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,22 +176,28 @@ export default function Product(product) {
                     <div className="row">
                         <div className="col-md-4 col-12">
                             <div className="deli_info info_right">
-                                <img src="/images/address_icon/mob_i.svg" alt="mobile" />
-                                <p><strong>Give us a call</strong> Mon - Sat 10AM to 7Pm</p>
+                                <a href="tel:+66-947741515" style={{ color: "inherit", textDecoration: "unset" }}>
+                                    <img src="/images/address_icon/mob_i.svg" alt="mobile" />
+                                    <p><strong>Give us a call</strong> Mon - Sun 9AM to 6PM</p>
+                                </a>
                             </div>
                         </div>
 
                         <div className="col-md-4 col-6  padd_right">
                             <div className="deli_info info_right">
-                                <img src="/images/address_icon/whatsapp.svg" alt="whatsapp" />
-                                <p><strong>Chat with us on whatapp</strong> Mon - Sat 10AM to 7Pm</p>
+                                <a href="https://api.whatsapp.com/send?phone=+66947741515" style={{ color: "inherit", textDecoration: "unset" }}>
+                                    <img src="/images/address_icon/whatsapp.svg" alt="whatsapp" />
+                                    <p><strong>Chat with us on Whatsapp</strong> Mon - Sun 9AM to 6PM</p>
+                                </a>
                             </div>
                         </div>
 
                         <div className="col-md-4 col-6 padd_left">
                             <div className="deli_info bdr_message">
-                                <img src="/images/address_icon/message.svg" alt="message" />
-                                <p><strong>Drop us an email</strong> Mon - Sat 10AM to 7Pm</p>
+                                <a href="mailto:support@gandhifabrics.com" style={{ color: "inherit", textDecoration: "unset" }}>
+                                    <img src="/images/address_icon/message.svg" alt="message" />
+                                    <p><strong>Drop us an email</strong></p>
+                                </a>
                             </div>
                         </div>
 
