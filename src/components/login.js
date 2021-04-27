@@ -146,7 +146,7 @@ export default function Login() {
                                                     <input type="text" name="phone" placeholder="Mobile number" required />
                                                     <input name="email" placeholder="Email address" type="email" required />
                                                     <input type="password" name="password" placeholder="Password" required />
-                                                    <input type="password" name="confirmPassword" placeholder="Confirm assword" required />
+                                                    <input type="password" name="confirmPassword" placeholder="Confirm password" required />
                                                 </div>
                                                 <button type="submit" className="login_bttn go_bttn" disabled={isLoading}>{
                                                     isLoading ? (<div className="loader"></div>) : "SIGN UP"

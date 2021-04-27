@@ -23,9 +23,9 @@ export default function Faq() {
                            order. Alternatively, you can email us at <a href="mailto:support@gandhifabrics.com">support@gandhifabrics.com .</a></p>
                                     </li>
                                     <li>Who Will deliver My Order?
-                        <p>For Domestic delivery, we offer shipping services through …………… and ………….which can be
+                        <p>For Domestic delivery, we offer shipping services through DHL and Thailandpost which can be
                                         selected at the time of placing the order. For International delivery ,we offer shipping
-                           services through …………and ……….which can be selected at the time of placing the order.</p>
+                           services through DHL and Thailandpost which can be selected at the time of placing the order.</p>
                                     </li>
                                     <li>Where Will My Order Be Shipped From?
                         <p>We will be shipping all orders from Bangkok,Thailand.</p>
@@ -46,7 +46,7 @@ export default function Faq() {
                                     </li>
                                     <li>Can I Exchange My Order?
                         <p>We do not offer any exchanges on the fabric once cut,unless there are defects in the yardage
-                           at the time of receipt. Payment</p>
+                           at the time of receipt.</p>
                                     </li>
                                     <li>What are the accepted methods of payment for domestic orders?
                         <p>We accept the following modes of payment</p>

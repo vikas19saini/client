@@ -45,30 +45,29 @@ export default function Toc() {
                                 <ul>
                                     <h6>TERMS & CONDITIONS FOR THE PERIOD OF SALE</h6>
                                     <p>During Sale</p>
-                                    <li>Our sale period is from …………….., across all stores and on gandhifabrics.com .</li>
-                                    <li>Our sale is applicable on select products, both online and in-store.</li>
-                                    <li>We do not accept exchange or return of discounted products unless a defective piece has been
+                                    <li><p>Our sale is applicable on select products, both online and in-store.</p></li>
+                                    <li><p>We do not accept exchange or return of discounted products unless a defective piece has been
                                     shipped to the customer. All replacements and refunds are processed only after the sale period
-                        is over.</li>
-                                    <li>All prices are inclusive of applicable taxes.</li>
-                                    <li>All online or in-store advance booking orders that cannot be partially/fully delivered will be
-                        refunded within 15 days from confirmation of cancellation.</li>
-                                    <li>In case of any discrepancy in the pricing of a discounted product on account of human error,
-                        the amount that appears in the system will be deemed final.</li>
-                                    <li>We experience high volumes during the sale and will be unable to cancel any order due to
+                        is over.</p></li>
+                                    <li><p>All prices are inclusive of applicable taxes.</p></li>
+                                    <li><p>All online or in-store advance booking orders that cannot be partially/fully delivered will be
+                        refunded within 15 days from confirmation of cancellation.</p></li>
+                                    <li><p>In case of any discrepancy in the pricing of a discounted product on account of human error,
+                        the amount that appears in the system will be deemed final.</p></li>
+                                    <li><p>We experience high volumes during the sale and will be unable to cancel any order due to
                                     shipment delays. However,we reserve the right to cancel an order on account of non-availability
-                        of goods.</li>
-                                    <li>We try our best to fulfil every order. In a case a product in our inventory does not meet our
-                        quality check, we may have to cancel the order.</li>
-                                    <li>Accounting and encashment of credit notes would make those orders ineligible for any further
-                        exchanges or refunds.</li>
-                                    <li>We take exchange rates and currency volatility into account, with respect to our USD pricing.
-                     </li>
-                                    <li>All Duties & Taxes for international orders will apply as per the rules of the shipping
-                        destination and will be borne by the customer.</li>
-                                    <li>We've resumed international delivery and will ship orders as soon as possible. However, we're
-                        unable to control any delays caused by country-specific shipping restrictions.</li>
-                                    <li>All T&Cs mentioned here are over and above our standard T&Cs.</li>
+                        of goods.</p></li>
+                                    <li><p>We try our best to fulfil every order. In a case a product in our inventory does not meet our
+                        quality check, we may have to cancel the order.</p></li>
+                                    <li><p>Accounting and encashment of credit notes would make those orders ineligible for any further
+                        exchanges or refunds.</p></li>
+                                    <li><p>We take exchange rates and currency volatility into account, with respect to our USD pricing.
+                     </p></li>
+                                    <li><p>All Duties & Taxes for international orders will apply as per the rules of the shipping
+                        destination and will be borne by the customer.</p></li>
+                                    <li><p>We've resumed international delivery and will ship orders as soon as possible. However, we're
+                        unable to control any delays caused by country-specific shipping restrictions.</p></li>
+                                    <li><p>All T&Cs mentioned here are over and above our standard T&Cs.</p></li>
                                     <h6>RIGHT TO CHANGE</h6>
                                     <p>GANDHI reserves the sole right to update or modify these Terms and Conditions at any time
                                     without prior notice. For this reason, we encourage you to review these Terms and Conditions
@@ -77,7 +76,7 @@ export default function Toc() {
                                     <p>We view protection of your privacy as a very important principle. We understand clearly that You
                                     and Your Personal Information is one of our most important assets. We process your personal data
                         as per our privacy policy. Click on the link to learn more about our Privacy policies: <a
-                                            href="https://www.gandhifabrics.com/privacypolicy/">https://www.gandhifabrics.com/privacypolicy/
+                                            href="https://www.gandhifabrics.com/privacy/">https://www.gandhifabrics.com/privacy/
                         </a></p>
                                     <h6>BILLING</h6>
                                     <p>The price of our merchandise as mentioned on GANDHIFABRICS.com is the Maximum Retail Price (MRP)
@@ -122,7 +121,7 @@ export default function Toc() {
                                     (including but not limited to Govt. Issued ID and address proof) to establish the ownership of
                                     the payment instrument used by you for your purchase. This is done so as to ensure a safe and a
                         full proof online shopping environment to our users.</p>
-                                    <p>GANDHI may employ ……………. and such other third party facilities, for Payments on the Website.
+                                    <p>GANDHI may employ Paypal, Bangkok Bank and such other third party facilities, for Payments on the Website.
                                     Such payments can be made through the electronic transactions, as may be permitted by GANDHI
                                     which shall be at its sole discretion. Use of such third party services will be governed by
                                     their User Agreement, Seller Terms, Conditions and other rules and policies as may be required
