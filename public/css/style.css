@@ -558,7 +558,7 @@ a>img.desk_view{width: 140px}
     padding: 0 95px 0 0;
 }
 
-.fixed .nav-menu>li>a{color: #000000;padding: 27px 15px}
+.fixed .nav-menu>li>a, .fixed .currencySwitch{color: #000000;padding: 27px 15px !important}
 
 
 /* Style the tab */

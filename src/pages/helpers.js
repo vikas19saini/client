@@ -60,6 +60,4 @@ export function formatAddress(address, isOrder = false) {
     return addressArr.join(", ");
 }
 
-export default function ABC() {
-    return ("");
-}
+export default {}
