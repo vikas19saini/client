@@ -127,7 +127,7 @@ export default function Login() {
                                             {isLoggingIn ? (<div className="loader"></div>) : "LOG IN"}
                                         </button>
                                         <p className="mass_tx" style={{ textAlign: "center" }}>
-                                            <button type="button" className="textBtn" onClick={() => setShowLoginPage(false)}>Doesn’t have an account? Sign up</button>
+                                            <button type="button" className="textBtn" onClick={() => setShowLoginPage(false)}>Don't have an account? Sign up</button>
                                         </p>
                                     </form>
                                 </div>
