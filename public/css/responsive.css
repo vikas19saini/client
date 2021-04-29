@@ -1217,7 +1217,7 @@ padding: 0 3.6rem;
 		
 		.navigation-portrait .nav-menu>li{border-top: none}
 		
-		.navigation-portrait .nav-menu>li>a {
+		.navigation-portrait .nav-menu>li>a, .currencySwitch {
 			font-size: 13px;
 			font-weight: 500;
 			text-transform: inherit;

@@ -91,7 +91,7 @@ export default function Cart() {
                                     </div>
                                 </div>
                                 <div className="row wow fadeInUp">
-                                    <div className="col-md-8">
+                                    <div className="col-md-8 nopadding">
                                         {
                                             cartProductDetails.map((cp) => {
                                                 return (

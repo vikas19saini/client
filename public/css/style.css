@@ -2672,7 +2672,7 @@ button:focus {
 
 
 /* new megamenu */
-.navigation-portrait .nav-menu>li>a {
+.navigation-portrait .nav-menu>li>a, .currencySwitch {
     width: 100%;
     height: auto;
     padding: 10px 10px 10px 30px;
@@ -2971,7 +2971,7 @@ header {
     border-top: none;
 }
 
-.nav-menu>li>a {
+.nav-menu>li>a, .currencySwitch {
     height: 70px;
     padding: 37px 15px;
     display: inline-block;

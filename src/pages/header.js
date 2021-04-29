@@ -343,8 +343,8 @@ export default function Header(props) {
                                 </li>
                                 <li><Link href="/contact"><a>Enquire</a></Link></li>
                                 <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
-                                <li className="desk_view">
-                                    <a>{
+                                <li>
+                                    <div className="currencySwitch">{
                                         data &&
                                         <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
                                             {
@@ -353,7 +353,7 @@ export default function Header(props) {
                                                 })
                                             }
                                         </select>
-                                    }</a>
+                                    }</div>
                                 </li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
