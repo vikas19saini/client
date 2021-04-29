@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
@@ -27,6 +28,25 @@ export default function Header(props) {
             setCategories(response.data.rows);
         })
     }, []);
+
+    const storeConfig = useSelector(state => state.config);
+
+    const [selectedCurrency, setSelectedCurrency] = useState(storeConfig.currency.id);
+
+    const fetcher = async (url) => await axios.get(url).then(res => res.data);
+    const { data } = useSWR(`${process.env.API_URL}static/config`, fetcher, { revalidateOnFocus: false });
+
+    const setCurrency = (e) => {
+        let c = data.filter(d => parseInt(e.target.value) === d.id);
+        c = c[0];
+
+        dispatch({ type: 'SET_CURRENCY', payload: c });
+        setSelectedCurrency(c.id);
+        window.scroll({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 
     return (
         <header className={props.shadow ? "header_area head_shedow" : "header_area"}>
@@ -225,7 +245,7 @@ export default function Header(props) {
                                 </li>
                                 <li className="tp_bd_no">
                                     <a className="show_sub" href="#menu">All Fabric</a>
-                                    <div className="megamenu-panel" id="close_menu" style={{display: "none"}}>
+                                    <div className="megamenu-panel" id="close_menu" style={{ display: "none" }}>
                                         <div className="nav_head">
                                             <div id="closeButton" className="tabs_veiw_s"><img src="/images/close.png" /></div>
                                             <div className="tabs_veiw_s">
@@ -323,6 +343,18 @@ export default function Header(props) {
                                 </li>
                                 <li><Link href="/contact"><a>Enquire</a></Link></li>
                                 <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
+                                <li className="desk_view">
+                                    <a>{
+                                        data &&
+                                        <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
+                                            {
+                                                data.map(d => {
+                                                    return (<option value={d.id} key={d.id}>{d.code}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    }</a>
+                                </li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
                                     <form action="/search" autoComplete="off">

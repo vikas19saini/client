@@ -159,7 +159,7 @@
 
 .update_bttn{float: right}
 .nav-brand>img{width: 140px}
-#thumbs .owl-item img{height:580px}
+#thumbs .owl-item img{cursor: pointer;width: 100%;height: 100vh}
 .mrg_adit{position: relative}
 .check_add_3 .mark_d.inner_md p{background: transparent}
 
@@ -212,12 +212,12 @@
 .tabs_veiw{display:none}
 
 #product_slide .owl-nav .owl-prev, #product_slide .owl-nav .owl-next{font-size: 28px}
-#product_slide .owl-nav .owl-prev:hover, #product_slide .owl-nav .owl-next:hover{color:#BE8F45}
-#product_slide .owl-nav .owl-prev{position: absolute;
+#product_slide .owl-nav .owl-prev:hover, #product_slide .owl-nav .owl-next:hover, #may_like .owl-nav .owl-next:hover, #may_like .owl-nav .owl-prev:hover{color:#BE8F45}
+#product_slide .owl-nav .owl-prev, #may_like .owl-nav .owl-prev{position: absolute;
     left: 0;
     top: 45%;
 transform: translateY(-45%);}
-#product_slide .owl-nav .owl-next{position: absolute;
+#product_slide .owl-nav .owl-next, #may_like .owl-nav .owl-next{position: absolute;
     right: 0;
     top: 45%;
 transform: translateY(-45%);}
@@ -1930,9 +1930,9 @@ button:focus {
 .learn_bttn:hover{border: 1px solid #BE8F45;color: #fff;background: #BE8F45}
 
 .customers-testimonials {
-    background: url(../images/tp_bg_left.png) no-repeat center;
-    background-size:cover;
-	height:580px;
+    background: url(../images/tp_bg_left.jpg) no-repeat center;
+    background-size:100% 100%;
+	height:100vh;
 	
 }
 
@@ -1949,6 +1949,7 @@ button:focus {
     align-items: center;
     justify-content: center;
     height: 100%;
+	cursor: pointer;
     left: 3rem;}
 
 #big .owl-dots button {
@@ -2498,18 +2499,20 @@ button:focus {
 }
 
 #luggage {
-    border: none;
+    cursor: pointer;
     background: transparent;
-    color: #fff;
+    color: #000000;
     text-transform: uppercase;
-    width: 100px;
-    margin: 0 20px 0 0;
+    width:80px;
 	font-family: Montserrat;
-	font-size: 14px;
-    border: 1px solid;
+	font-size: 12px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+	position: relative;
+    z-index: 999;
 }
 
-#luggage option{background: #000000;}
+#luggage option{cursor: pointer;}
 
 .inner_top {
     padding:45px 0

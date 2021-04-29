@@ -517,7 +517,7 @@
     }
     .inner_txt h1 {
         font-size: 22px;
-        color: #fff;
+        color:#f5a62b;
 		text-transform: uppercase
     }
     .bg_banner #customers-testimonials {
@@ -531,7 +531,9 @@
     }
     .inner_txt p {
         font-size: 13px;
-        padding: 0
+        padding: 0;
+		color: #fff;
+		font-weight: 600
     }
     .inner_txt p span {
         display:inline-block;

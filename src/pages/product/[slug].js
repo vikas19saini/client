@@ -83,8 +83,9 @@ export default function Product(product) {
                                     loop: false,
                                     autoplay: false,
                                     dots: true,
-                                    nav: false,
+                                    nav: true,
                                     rewind: true,
+                                    navText: ['<button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button>', '<button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>']
                                 }} id="product_slide" className="owl-carousel" >
                                     {
                                         productImages.map((t) => {
@@ -102,7 +103,6 @@ export default function Product(product) {
 
                             <div className="col-md-6">
                                 <div className="main_pd_dis wow fadeInUp">
-
                                     <CartButton product={product} />
                                     <div className="product_details_right">
                                         <p className="product_details_right_p5">Product Specification / Details</p>
@@ -235,7 +235,9 @@ export default function Product(product) {
                                     loop: false,
                                     autoplay: false,
                                     dots: false,
-                                    nav: false,
+                                    nav: true,
+                                    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                                    smartSpeed: 900,
                                     margin: 0,
                                 }} id="may_like" className="owl-carousel relativeProducts" >
                                     <Products products={product.relative} />

@@ -1,30 +1,6 @@
-import axios from "axios"
 import Link from "next/link"
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import useSwr from "swr"
 
 export default function Footer() {
-    const storeDispatch = useDispatch()
-    const storeConfig = useSelector(state => state.config);
-
-    const [selectedCurrency, setSelectedCurrency] = useState(storeConfig.currency.id)
-
-    const fetcher = async (url) => await axios.get(url).then(res => res.data)
-    const { data } = useSwr(`${process.env.API_URL}static/config`, fetcher, { revalidateOnFocus: false })
-
-    const setCurrency = (e) => {
-        let c = data.filter(d => parseInt(e.target.value) === d.id);
-        c = c[0];
-
-        storeDispatch({ type: 'SET_CURRENCY', payload: c });
-        setSelectedCurrency(c.id);
-        window.scroll({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
     return (
         <footer>
             <div className="container-fluid ftt_bg">
@@ -37,16 +13,6 @@ export default function Footer() {
                                         <img src="/images/logo.png" alt="gandhi logo" /></a>
                                     <p>The Finest Fabrics from all over the world</p>
 
-                                    {
-                                        data &&
-                                        <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
-                                            {
-                                                data.map(d => {
-                                                    return (<option value={d.id} key={d.id}>{d.code}</option>)
-                                                })
-                                            }
-                                        </select>
-                                    }
                                 </div>
                             </div>
                             <div className="col-md-6">
