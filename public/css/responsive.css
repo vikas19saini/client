@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1025px) and (max-width: 1920px) {
+@media only screen and (min-width: 1025px) and (max-width: 2000px) {
     /* new megamenu */
     .cus_nv {
         text-align: center;
@@ -366,6 +366,16 @@
 
 
 @media only screen and (max-width:767px) {
+	.main_a_bdr {
+    border-bottom: 1px solid #ccc;}
+	
+	.orderProduct .main_inner_check.main_a_bdr img {
+    margin: 0 0 10px;
+}
+	
+	.fixed .nav-menu>li>a, .fixed .currencySwitch {
+    padding: 1.3rem 32px !important;
+}
 	.brocade_bg{padding-left: 15px;}
 	.checkoutBtn{padding: 5px 12px;font-size: 10.6px}
 	.cartProduct{margin: 0 0 1rem}
@@ -1043,7 +1053,7 @@ padding: 0 3.6rem;
 	#product_slide .owl-item img{height: 310px}
 	.inner_sec_tp {
 		background: transparent;padding: 0}
-	.inner_main_ld{padding: 0 2rem; width: 98%;}
+	.inner_main_ld{padding: 0 2rem; width: 98%;margin: 3rem auto}
 	.or_placed>.check_img img{background: #F3F3F3;
     padding: .6rem;
     border-radius: 50%;}
@@ -1110,8 +1120,8 @@ padding: 0 3.6rem;
 	.dis_detail h4{font-size: 18px}
 	.tx_head_1 {padding: 15px}
 	.inner_main_ld h6{font-size: 15px}
-	.login_bttn{padding: 1rem}
-	.form_login input[type="text"], .form_login input[type="password"], .form_login input[type="email"]{padding: 1rem}
+	.login_bttn{padding: .8rem;font-size: 12px}
+	.form_login input[type="text"], .form_login input[type="password"], .form_login input[type="email"]{padding: .8rem}
 	.social_i{padding:.5rem .8rem}
 	.categoery_menu .submenu-indicator-chevron{border-color: transparent #000000 #000000 transparent;}
 	#product_slide{padding: 0}
@@ -1223,6 +1233,7 @@ padding: 0 3.6rem;
 			text-transform: inherit;
     padding:1.3rem 32px;
 	border-bottom: 1px solid rgba(0,0,0,.125);
+			height: 20px;
 }
 		
 		
@@ -1307,7 +1318,7 @@ padding: 0 3.6rem;
     .right_icon {
         float: unset;
         position: absolute;
-        right: 0;
+        right: 15px;
         top: 15px;
         left: unset;
     }

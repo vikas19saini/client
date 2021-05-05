@@ -23,9 +23,9 @@ export default function Faq() {
                            order. Alternatively, you can email us at <a href="mailto:support@gandhifabrics.com">support@gandhifabrics.com .</a></p>
                                     </li>
                                     <li>Who Will deliver My Order?
-                        <p>For Domestic delivery, we offer shipping services through DHL and Thailandpost which can be
+                        <p>For Domestic delivery, we offer shipping services through DHL and EMS which can be
                                         selected at the time of placing the order. For International delivery ,we offer shipping
-                           services through DHL and Thailandpost which can be selected at the time of placing the order.</p>
+                           services through DHL and EMS which can be selected at the time of placing the order.</p>
                                     </li>
                                     <li>Where Will My Order Be Shipped From?
                         <p>We will be shipping all orders from Bangkok,Thailand.</p>
@@ -49,10 +49,10 @@ export default function Faq() {
                            at the time of receipt.</p>
                                     </li>
                                     <li>What are the accepted methods of payment for domestic orders?
-                        <p>We accept the following modes of payment</p>
+                        <p>PayPal, Debit/Credit Cards</p>
                                     </li>
                                     <li>What are the accepted modes of payment for international orders?
-                        <p>We accept the following modes of payment.</p>
+                        <p>Debit/Credit Cards</p>
                                     </li>
                                 </ol>
                             </div>

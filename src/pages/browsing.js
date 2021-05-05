@@ -147,8 +147,8 @@ export default function Contact() {
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>OFFICE ADDRESS <span><strong>Gandhi Impex,</strong> 326 Phahurat Road , Bangkok 10200 , Thailand T+66 (0) 2225 5997,+66 (0) 2225 5503</span></p>
-                                    <p><span><strong>GandhiPlus,</strong> C025 2nd Floor China World , 677-681 Chakraphet Road , Bangkok 10200, Thailand T +66 (0) 2222 4962,+66 (0) 2222 4953</span></p>
+                                    <p>OFFICE ADDRESS <span><strong>Gandhi 1944,</strong> 326 Phahurat Road , Bangkok 10200 , Thailand T+66 (0) 2225 5997,+66 (0) 2225 5503</span></p>
+                                    <p><span><strong>Gandhi Tessuti,</strong> Address: 205-207 Phahurat Rd, Wang Burapha Phirom, Phra Nakhon, Bangkok 10200, Thailand. T 02-222-7798, 066-140-1326</span></p>
                                     <p><span><strong>The Cynosure Bangkok,</strong> A002-A005 G Floor China World , 677-681 Chakraphet Road , Bangkok 10200 , Thailand T+66 (0) 2225 2001-3</span></p>
                                 </div>
                             </div>

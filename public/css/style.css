@@ -211,16 +211,21 @@
 
 .tabs_veiw{display:none}
 
-#product_slide .owl-nav .owl-prev, #product_slide .owl-nav .owl-next{font-size: 28px}
+#product_slide .owl-nav .owl-prev, #product_slide .owl-nav .owl-next{font-size:40px}
 #product_slide .owl-nav .owl-prev:hover, #product_slide .owl-nav .owl-next:hover, #may_like .owl-nav .owl-next:hover, #may_like .owl-nav .owl-prev:hover{color:#BE8F45}
 #product_slide .owl-nav .owl-prev, #may_like .owl-nav .owl-prev{position: absolute;
     left: 0;
     top: 45%;
-transform: translateY(-45%);}
+transform: translateY(-45%);width: 40px;
+    height: 40px;
+    text-align: right;}
 #product_slide .owl-nav .owl-next, #may_like .owl-nav .owl-next{position: absolute;
     right: 0;
     top: 45%;
-transform: translateY(-45%);}
+transform: translateY(-45%);
+width: 40px;
+    height: 40px;
+    text-align: right;}
 
 /* new accordion menu start*/
 
@@ -1356,12 +1361,12 @@ input:focus {
 /*  subcategory page css */
 
 
-.subcategory_desk{background: url(../images/sub_img/cotton1-01.jpg) no-repeat center;
+.subcategory_desk{background: url(../images/sub_img/cotton1-01.jpg) no-repeat center 100%;
     background-size:cover;padding:95px 0}
 
 .linen_sub{background: url(../images/sub_img/linen1-01.jpg) no-repeat center;}
 
-.lace_sub{background: url(../images/sub_img/lace1-01.jpg) no-repeat center;}
+.lace_sub{background: url(../images/sub_img/lace1-01.jpg) 100% no-repeat center;}
 .wool_sub{background: url(../images/sub_img/wool-01.jpg) no-repeat center;}
 .plain_sub{background: url(../images/sub_img/plain-01.jpg) no-repeat center;}
 .silk_sub{background: url(../images/sub_img/silk_desk.jpg) no-repeat center;}
@@ -2571,11 +2576,10 @@ button:focus {
 }
 
 .inner_main_ld {
-    margin: 30px auto 30px;
+    margin:7rem auto;
     display: block;
     padding: 10px 50px;
     background: #fff;
-    box-shadow: 0 0 0 1px #dcdcde;
     width: 50%;
 }
 
@@ -5111,6 +5115,8 @@ font-weight: 500}
 	
     .form_login input[type="text"], .form_login input[type="password"], .form_login input[type="email"]{padding: 1.4rem;}
 	.login_bttn{padding: 1.4rem;}
+	.bg_sec h2 span{display: inline}
+	.padd_0>img{width: 100%}
 }
 
 @media only screen and (max-width:1366px) {
