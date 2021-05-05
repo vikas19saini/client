@@ -233,6 +233,8 @@ span.eat {
     margin: 0 auto;
     padding: 7px 20px;
     border-radius: 3px;
+    font-size: 12px;
+    margin-bottom: 15px;
 }
 .appliedFilters{
   display: block;

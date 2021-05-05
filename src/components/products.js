@@ -347,6 +347,7 @@ export default function Products(props) {
                         </div>
                         <div className="modal-footer ft_btn_lft">
                             <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Close</button>
+                            {/* <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Apply</button> */}
                         </div>
                     </div>
                 </div>
