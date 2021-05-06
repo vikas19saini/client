@@ -1322,29 +1322,23 @@ function homePageInit() {
     $('#arrivals').owlCarousel({
         loop: true,
         autoplay: false,
-        dots: true,
-        nav: false,
-        margin: 30,
+        dots: false,
+        nav: true,
+        navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+        margin: 10,
         responsive: {
             0: {
-
                 items: 1.2,
                 nav: false,
-                margin: 15,
             },
-
             568: {
                 items: 1.2,
-                nav: false,
             },
-
             667: {
-                items: 3,
+                items: 3.1,
             },
-
             1170: {
-
-                items: 3
+                items: 3.1
             }
         }
     });

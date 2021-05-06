@@ -40,6 +40,7 @@ export default function Wishlist() {
                         responsive: {
                             0: {
                                 items: 1,
+                                nav: false
                             },
                             568: {
                                 items: 1,
@@ -52,7 +53,9 @@ export default function Wishlist() {
                             }
                         },                        
                         margin: 10,
-                    }} className="owl-carousel">
+                        nav: true,
+                        navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+                    }} className="owl-carousel" id="may_like">
                         <ProductCrousel wishlist products={wishlist} removeFromWishliat={removeFromWishliat} />
                     </OwlCarousel>
                 </div>

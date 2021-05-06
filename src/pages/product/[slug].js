@@ -69,6 +69,8 @@ export default function Product(product) {
                                     responsive: {
                                         0: {
                                             items: 1,
+                                            nav: false,
+                                            dots: true
                                         },
                                         568: {
                                             items: 1,
@@ -82,7 +84,7 @@ export default function Product(product) {
                                     },
                                     loop: false,
                                     autoplay: false,
-                                    dots: true,
+                                    dots: false,
                                     nav: true,
                                     rewind: true,
                                     navText: ['<button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button>', '<button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>']
@@ -221,22 +223,23 @@ export default function Product(product) {
                                     responsive: {
                                         0: {
                                             items: 1.2,
+                                            nav: false
                                         },
                                         568: {
-                                            items: 3,
+                                            items: 2.1,
                                         },
                                         667: {
-                                            items: 3,
+                                            items: 3.1,
                                         },
                                         1170: {
-                                            items: 3,
+                                            items: 3.1,
                                         }
                                     },
                                     loop: false,
                                     autoplay: false,
                                     dots: false,
                                     nav: true,
-                                    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                                    navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
                                     smartSpeed: 900,
                                     margin: 0,
                                 }} id="may_like" className="owl-carousel relativeProducts" >
