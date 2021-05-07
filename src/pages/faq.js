@@ -23,12 +23,12 @@ export default function Faq() {
                            order. Alternatively, you can email us at <a href="mailto:support@gandhifabrics.com">support@gandhifabrics.com .</a></p>
                                     </li>
                                     <li>Who Will deliver My Order?
-                        <p>For Domestic delivery, we offer shipping services through DHL and EMS which can be
-                                        selected at the time of placing the order. For International delivery ,we offer shipping
-                           services through DHL and EMS which can be selected at the time of placing the order.</p>
+                        <p>For Domestic delivery, we offer shipping services through EMS which can be
+                                        selected at the time of placing the order. For International delivery, we offer shipping
+                           services through DHL which can be selected at the time of placing the order.</p>
                                     </li>
                                     <li>Where Will My Order Be Shipped From?
-                        <p>We will be shipping all orders from Bangkok,Thailand.</p>
+                        <p>We will be shipping all orders from Bangkok, Thailand.</p>
                                     </li>
                                     <li>How Long Will It Take To Get My Order?
                         <p>We offer different shipping methods which take anywhere from 7-15 days ,depending on your
