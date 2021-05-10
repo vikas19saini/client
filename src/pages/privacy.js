@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="inner_main_hadding wow fadeInUp">
-                                <h4>Return Policy</h4>
+                                <h4>Privacy Policy</h4>
                             </div>
                             <div class="return wow fadeInUp">
                                 <ol>

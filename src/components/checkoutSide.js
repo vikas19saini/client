@@ -63,11 +63,11 @@ export default function CheckoutSidebar(props) {
                 <table className="table borderless">
                     <tbody>
                         <tr>
-                            <td>Total MRP</td>
+                            <td>Total</td>
                             <td className="align_right">{formatPrice(props.cartData.cartValue)}</td>
                         </tr>
                         <tr>
-                            <td>Discount on MRP</td>
+                            <td>Discount</td>
                             <td className="align_right">{formatPrice(props.cartData.discount)}</td>
                         </tr>
                         <tr>

@@ -25,11 +25,11 @@ export function GetPriceHtml(props) {
 
     if (props.product.salePrice === 0) {
         formatPrice(1) // dummy call
-        return (formatPrice(props.product.ragularPrice * quantity)) + " / Mtr"
+        return (formatPrice(props.product.ragularPrice * quantity)) + " / Metre"
     }
     return (
         <Fragment>
-            {formatPrice(props.product.salePrice * quantity)} / Mtr <span><del>{formatPrice(props.product.ragularPrice * quantity)} / Mtr </del></span>
+            {formatPrice(props.product.salePrice * quantity)} / Metre <span><del>{formatPrice(props.product.ragularPrice * quantity)} / Metre </del></span>
         </Fragment>
     )
 }
