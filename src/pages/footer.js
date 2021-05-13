@@ -50,8 +50,9 @@ export default function Footer() {
                                         <p>© {(new Date).getFullYear()} Gandhi Fabric. All Rights Reserved</p>
                                     </div>
                                     <div className="pay_icon">
-                                        <a href="#logoPay"><img src="/images/paypallogo.svg" /></a>
-                                        <a href="#logoPay"><img src="/images/visalogo.svg" /></a>
+                                        <a><img src="/images/paypallogo.svg" /></a>
+                                        <a><img src="/images/visalogo.svg" /></a>
+                                        <a><img src="/images/mastercard.svg" /></a>
                                     </div>
                                     <div className="copy_txt mob_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>
