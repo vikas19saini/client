@@ -262,13 +262,13 @@ export default function Header(props) {
                                                                             categories.map((cat) => {
                                                                                 return (
                                                                                     <div id="some-div" className="expanded" key={cat.id}>
-                                                                                        <a onClick={() => setOpenCategory(cat.id)}>
+                                                                                        <a className="showSubMenuDesktop">
                                                                                             <img className="catImage" src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
                                                                                             <span>{cat.name}</span>
                                                                                         </a>
                                                                                         {
                                                                                             cat.children && cat.children.length > 0 &&
-                                                                                            <div id="some-element" className={(openCategory === cat.id) ? "sub-menu active" : "sub-menu"}>
+                                                                                            <div id="some-element" className={"sub-menu submenuDesktop"}>
                                                                                                 <ul>
                                                                                                     {
                                                                                                         cat.children.map((subCat) => {

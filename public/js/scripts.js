@@ -1391,6 +1391,8 @@ $(document).ready(function () {
     });
 });
 
-
-/* var wow = new WOW();
-wow.init(); */
+$(document).on('click', '.showSubMenuDesktop', function (e) {
+    e.preventDefault();
+    $(".submenuDesktop").removeClass("active");
+    $(this).next(".submenuDesktop").addClass("active");
+})
