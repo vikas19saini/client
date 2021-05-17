@@ -40,6 +40,9 @@ const reducer = (state = initState, action) => {
             let afterLogout = { ...state }
             delete afterLogout.auth;
             return afterLogout;
+        case 'SET_CSRF':
+            let cs = { ...state, ...{ csrf: action.payload } }
+            return cs;
         default:
             return state;
     }
