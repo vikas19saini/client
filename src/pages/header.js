@@ -10,7 +10,6 @@ export default function Header(props) {
     const config = useSelector(state => state.config)
     const [showSearchMenu, setShowSearchMenu] = useState(false);
     const [categories, setCategories] = useState([]);
-    /* const [openCategory, setOpenCategory] = useState(-1); */
     const router = useRouter();
 
     const dispatch = useDispatch();

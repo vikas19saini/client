@@ -86,7 +86,7 @@ export default function SubCategory(props) {
                                             <div className="cotton_fabric_sec tp_border wow fadeInUp">
                                                 <Link href={"/category/" + c.slug}>
                                                     <a>
-                                                        <Image src={c.subCategory ? c.subCategory.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" />
+                                                        <Image src={c.subCategory ? c.subCategory.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" unoptimized />
                                                     </a>
                                                 </Link>
                                                 <h5>{c.name}</h5>
