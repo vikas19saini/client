@@ -61,7 +61,7 @@ export default function Products(props) {
             setTotal(response.data.count);
             setTotalPages(Math.ceil(response.data.count / limit));
         });
-    }, [router, page])
+    }, [router, page]);
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/filters`).then((res) => {

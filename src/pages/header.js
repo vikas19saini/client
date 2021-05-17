@@ -181,7 +181,7 @@ export default function Header(props) {
                             </Link>
                             <div className="nav-toggle"></div>
                         </div>
-                        <div className="nav-menus-wrapper">
+                        <div className="nav-menus-wrapper sideMenu">
                             <ul className="nav-menu categoery_menu align-to-right wt_tx">
                                 <li>
                                     <div className="bs-example tabs_veiw">
@@ -202,22 +202,22 @@ export default function Header(props) {
                                                                 <ul>
                                                                     <li>
                                                                         <Link href="/account?tab=1">
-                                                                            <a>Profile</a>
+                                                                            <a className="mobileMenuIcon">Profile</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
                                                                         <Link href="/account?tab=2">
-                                                                            <a>Orders</a>
+                                                                            <a className="mobileMenuIcon">Orders</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
                                                                         <Link href="/account?tab=4">
-                                                                            <a>Address</a>
+                                                                            <a className="mobileMenuIcon">Address</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
                                                                         <Link href="/account?tab=5">
-                                                                            <a>Wishlist</a>
+                                                                            <a className="mobileMenuIcon">Wishlist</a>
                                                                         </Link>
                                                                     </li>
                                                                     <li>
@@ -230,7 +230,7 @@ export default function Header(props) {
                                                                 <ul>
                                                                     <li>
                                                                         <Link href="/account">
-                                                                            <a>Login</a>
+                                                                            <a className="mobileMenuIcon">Login</a>
                                                                         </Link>
                                                                     </li>
                                                                 </ul>
@@ -304,7 +304,7 @@ export default function Header(props) {
                                                                     <div className="card-header" id="headingOne">
                                                                         <h2 className="mb-0">
                                                                             <Link href={`/category/${cat.slug}`}>
-                                                                                <a>
+                                                                                <a className="mobileMenuIcon">
                                                                                     <img className="catImage" src={cat.icon ? cat.icon.fullUrl : "/images/placeholder.png"} alt={cat.name} />
                                                                                     {cat.name}
                                                                                 </a>
@@ -321,7 +321,7 @@ export default function Header(props) {
                                                                                         return (
                                                                                             <li key={subCat.id}>
                                                                                                 <Link href={`/category/${subCat.slug}`}>
-                                                                                                    <a>{subCat.name}</a>
+                                                                                                    <a className="mobileMenuIcon">{subCat.name}</a>
                                                                                                 </Link>
                                                                                             </li>
                                                                                         );

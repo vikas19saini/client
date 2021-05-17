@@ -21,6 +21,7 @@ export default function Cart() {
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const router = useRouter();
     const [cartData, setCartData] = useState(null);
+    const [shippingNotAvailable, setShippingNotAvailable] = useState(false);
 
     if (!cartId) {
         router.push("/cart");
@@ -60,7 +61,9 @@ export default function Cart() {
             axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: shippingAddress.id }).then((res) => {
                 setShowPaymentMethods(true);
                 setReload((new Date()).getTime());
+                setShippingNotAvailable(false);
             }).catch(err => {
+                setShippingNotAvailable(true);
                 setShowPaymentMethods(false);
             });
     }, [shippingAddress])
@@ -93,7 +96,7 @@ export default function Cart() {
             <section className="inner_product product_info" style={{ background: "#f6f7f7" }}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-7 col-sm-12">
+                        <div className="col-lg-7 col-sm-12 nopadding">
 
                             {
                                 shippingAddress ? (
@@ -102,9 +105,12 @@ export default function Cart() {
                                             <h4>Delivery Address</h4>
                                             <p><span>{shippingAddress.name}</span> {formatAddress(shippingAddress)}</p>
                                             <h5>Contact No: {shippingAddress.phone}</h5>
-                                        </div>
-                                        <div>
-                                            <button className="checkoutBtn" onClick={changeDeliveryAddress}>Change address</button>
+                                            <button className="checkoutBtn" style={{ margin: "0px" }} onClick={changeDeliveryAddress}>Change address</button>
+                                            {
+                                                shippingNotAvailable && (
+                                                    <p className="deliveryErr">Delivery is not available at your selected location please choose a different delivery location or contact us for more details.</p>
+                                                )
+                                            }
                                         </div>
                                     </div>
                                 ) : (
@@ -136,7 +142,7 @@ export default function Cart() {
                                             })
                                         }
 
-                                        <button type="button" className="addAddressButton cartProduct" onClick={() => setAddNew(true)} style={{width: "100%", background: "#fff"}}>Add New Address</button>
+                                        <button type="button" className="addAddressButton cartProduct" onClick={() => setAddNew(true)} style={{ width: "100%", background: "#fff" }}>Add New Address</button>
 
                                     </div>
                                 )

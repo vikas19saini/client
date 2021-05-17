@@ -1181,3 +1181,8 @@ $(document).on('click', '.showSubMenuDesktop', function (e) {
 $(document).on('click', '.menuLinkDesktop', function () {
     $(".megamenu-panel").hide();
 });
+
+$(document).on('click', '.mobileMenuIcon', function () {
+    $(".sideMenu").removeClass("nav-menus-wrapper-open");
+    $(".sideMenu").css("transition-property", "none");
+});
