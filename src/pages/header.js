@@ -11,7 +11,6 @@ export default function Header(props) {
     const [showSearchMenu, setShowSearchMenu] = useState(false);
     const [categories, setCategories] = useState([]);
     const router = useRouter();
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -25,7 +24,7 @@ export default function Header(props) {
     useEffect(() => {
         axios.get(`${process.env.API_URL}category`).then(response => {
             setCategories(response.data.rows);
-        })
+        });
     }, []);
 
     const storeConfig = useSelector(state => state.config);
@@ -274,7 +273,7 @@ export default function Header(props) {
                                                                                                             return (
                                                                                                                 <li key={subCat.id}>
                                                                                                                     <Link href={`/category/${subCat.slug}`}>
-                                                                                                                        <a>{subCat.name}</a>
+                                                                                                                        <a className="menuLinkDesktop">{subCat.name}</a>
                                                                                                                     </Link>
                                                                                                                 </li>
                                                                                                             );

@@ -693,22 +693,22 @@ function navigation() {
     if (window.matchMedia("(max-width: 1024px)").matches) {
         // The viewport is less than 768 pixels wide
         //alert("This is a mobile device.");
-       /*  $('.ac-list > .expanded').on('click', function (e) {
-            //e.preventDefault();
-            $(".expanded").removeAttr("style");
-            if ($(this).find('.sub-menu').is(':visible')) {
-                $(this).removeClass('megaopen');
-                $(this).removeAttr("style");
-                $(this).find('.sub-menu').slideUp();
-            } else {
-                $('.ac-list > .expanded').removeClass('megaopen');
-                $(this).addClass('megaopen');
-                var newHeight = $(this).find('.sub-menu').height();
-                $(this).height(newHeight + 100);
-                $('.ac-list > .expanded').find('.sub-menu').slideUp();
-                //$(this).find('.sub-menu').slideToggle();
-            }
-        }); */
+        /*  $('.ac-list > .expanded').on('click', function (e) {
+             //e.preventDefault();
+             $(".expanded").removeAttr("style");
+             if ($(this).find('.sub-menu').is(':visible')) {
+                 $(this).removeClass('megaopen');
+                 $(this).removeAttr("style");
+                 $(this).find('.sub-menu').slideUp();
+             } else {
+                 $('.ac-list > .expanded').removeClass('megaopen');
+                 $(this).addClass('megaopen');
+                 var newHeight = $(this).find('.sub-menu').height();
+                 $(this).height(newHeight + 100);
+                 $('.ac-list > .expanded').find('.sub-menu').slideUp();
+                 //$(this).find('.sub-menu').slideToggle();
+             }
+         }); */
     } else {
         /* $('.ac-list > .expanded').on('click', function (e) {
             //e.preventDefault();
@@ -1176,4 +1176,8 @@ $(document).on('click', '.showSubMenuDesktop', function (e) {
     $(".expanded.parentMenu").removeAttr("style");
     $(this).next(".submenuDesktop").addClass("active");
     $(this).parent("div").css("height", $(this).next(".submenuDesktop").height() + 100);
-})
+});
+
+$(document).on('click', '.menuLinkDesktop', function () {
+    $("#close_menu").trigger('click');
+});
