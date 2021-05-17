@@ -68,7 +68,7 @@ function MyApp({ Component, pageProps }) {
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/owl.carousel.js"></script>
-        <script src="/js/tabheader.js"></script>
+        {/* <script src="/js/tabheader.js"></script> */}
         <script src="/js/wow.js"></script>
         <script src="/js/scripts.js"></script>
       </Head>

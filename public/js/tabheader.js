@@ -1,9 +1,3 @@
-
-
-$(document).ready(function () {
-    
-});
-
 $(document).ready(function () {
     $('.tablinks').on('click', function (e) {
         e.preventDefault();
