@@ -1179,5 +1179,5 @@ $(document).on('click', '.showSubMenuDesktop', function (e) {
 });
 
 $(document).on('click', '.menuLinkDesktop', function () {
-    $("#close_menu").trigger('click');
+    $(".megamenu-panel").hide();
 });
