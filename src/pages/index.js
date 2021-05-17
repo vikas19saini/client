@@ -35,7 +35,7 @@ export default function Home(props) {
                         <div className="item" key={slider.id}>
                           <img src={slider.mobileMedia.fullUrl} alt={slider.heading} className="img-fluid mob_view" />
                           <div className="inner_txt">
-                            <h1>{slider.heading}</h1>
+                            <h1 style={{ width: "90%", wordBreak: "break-word" }}>{slider.heading}</h1>
                             <p>{slider.description}</p>
                             <button type="button" onClick={() => route.push(slider.uri)} className="learn_bttn">Learn more</button>
                           </div>
