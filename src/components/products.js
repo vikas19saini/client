@@ -44,6 +44,8 @@ export default function Products(props) {
     const [page, setPage] = useState(category.page || 1);
     let limit = category.limit;
     const currency = useSelector(state => state.config.currency);
+    const [mobileFiltersSelected, setMobileFiltersSelected] = useState();
+    const [mobileSelectedPriceFilter, setMobileSelectedPriceFilter] = useState();
 
     useEffect(() => {
         let queryParams = router.query;
@@ -104,9 +106,13 @@ export default function Products(props) {
 
     const removeFilter = (type, val) => {
         let appliedFiltersTemp = { ...router.query };
+        let mpf = { ...mobileSelectedPriceFilter };
         if (type === "price") {
             delete appliedFiltersTemp.start;
             delete appliedFiltersTemp.end;
+            delete mpf.start;
+            delete mpf.end;
+            setMobileSelectedPriceFilter(mpf);
         } else {
             let currentFilters = appliedFiltersTemp.filters.split("|");
             currentFilters = currentFilters.filter(f => parseInt(f) !== val);
@@ -119,6 +125,67 @@ export default function Products(props) {
             router.push(`/search?${queryParams}`);
         } else {
             router.push(`/category/${category.slug}?${queryParams}`);
+        }
+    }
+
+    useEffect(() => {
+        let mfSelected = router.query.filters ? router.query.filters.split("|").map(f => Number(f)) : [];
+        setMobileFiltersSelected(mfSelected);
+
+        if (router.query.start && router.query.end) {
+            let mspf = {
+                start: parseInt(router.query.start),
+                end: parseInt(router.query.end),
+            }
+
+            setMobileSelectedPriceFilter(mspf);
+        }
+
+    }, [router]);
+
+    const applyFilterMobile = (filter) => {
+        let mfSelected = [...mobileFiltersSelected];
+        if (mfSelected.includes(filter)) {
+            mfSelected = mfSelected.filter(f => f !== filter);
+        } else {
+            mfSelected.push(filter);
+        }
+
+        setMobileFiltersSelected(mfSelected);
+    }
+
+    const setMobilePriceFilterClick = (start, end) => {
+        setMobileSelectedPriceFilter({
+            start: parseInt(start),
+            end: parseInt(end)
+        });
+    }
+
+    const applyMobileFilter = () => {
+        let filters = [...mobileFiltersSelected];
+        let appliedFiltersTemp = { ...router.query, ...{ filters: filters.join("|") } };
+        delete appliedFiltersTemp.page;
+
+        let priceFilter = { ...mobileSelectedPriceFilter };
+        if (priceFilter.start && priceFilter.end) {
+            appliedFiltersTemp = { ...appliedFiltersTemp, ...{ start: priceFilter.start, end: priceFilter.end } };
+        }
+
+        let queryParams = new URLSearchParams(appliedFiltersTemp);
+        if (router.pathname === "/search") {
+            router.push(`/search?${queryParams}`);
+        } else {
+            router.push(`/category/${category.slug}?${queryParams}`);
+        }
+    }
+
+
+    const clearAllFilters = () => {
+        setMobileSelectedPriceFilter({});
+        if (router.pathname === "/search") {
+            router.push(`/search`);
+        } else {
+            router.push(`/category/${category.slug}`);
         }
     }
 
@@ -281,8 +348,9 @@ export default function Products(props) {
             <div className="modal md_bg_filter" id="myModal">
                 <div className="modal-dialog filter_mrg">
                     <div className="modal-content">
-                        <div className="modal-header">
-                            <h4>Filter</h4>
+                        <div className="modal-header mfilterModal">
+                            <h4>Filters</h4>
+                            <button onClick={clearAllFilters} className="clearFilterMbtn" data-dismiss="modal">Clear</button>
                         </div>
                         <div className="modal-body main_filter_pop filtersMobile">
                             <div className="d-flex flex-row mt-2">
@@ -307,8 +375,8 @@ export default function Products(props) {
                                                 {
                                                     priceFilters.map((pf, index) => {
                                                         return (
-                                                            <div key={index} onClick={() => setPrice(pf.start, pf.end)}>
-                                                                <input type="radio" defaultValue={pf.start} readOnly={true} checked={router.query.start && parseInt(router.query.start) === pf.start ? true : false} />
+                                                            <div key={index} onClick={() => setMobilePriceFilterClick(pf.start, pf.end)}>
+                                                                <input type="radio" defaultValue={pf.start} readOnly={true} checked={mobileSelectedPriceFilter && parseInt(mobileSelectedPriceFilter.start) === pf.start ? true : false} />
                                                                 <label htmlFor="test1">{formatCurrency(pf.start, currency)} - {formatCurrency(pf.end, currency)}</label>
                                                             </div>
                                                         )
@@ -322,16 +390,17 @@ export default function Products(props) {
                                             return (
                                                 <div className={filter.id === openFilter ? "tab-pane fade show active" : "tab-pane fade show"} key={filter.id}>
                                                     <div className="main_tag">
-                                                        <ul>
+                                                        <ul style={{ padding: "15px 10px" }}>
                                                             {
                                                                 filter.filterValues.map(fv => {
                                                                     return (
-                                                                        <li className="normalValueContainer selectedOption" onClick={() => applyFilter(fv.id)} key={fv.id}>
-                                                                            <label className="customCheckbox">
-                                                                                <div className="filterValue">{fv.name}</div>
-                                                                                <input type="checkbox" name="filterValues" />
-                                                                                <div className="checkboxIndicator"></div>
-                                                                            </label>
+                                                                        <li className="normalValueContainer selectedOption" onClick={() => applyFilterMobile(fv.id)} key={fv.id}>
+                                                                            <div className="customCheckbox">
+                                                                                <div className={mobileFiltersSelected.includes(fv.id) ? "filterValue selected" : "filterValue"}>{fv.name}</div>
+                                                                                {
+                                                                                    mobileFiltersSelected.includes(fv.id) && <img src="/images/checked.svg" width="20px" />
+                                                                                }
+                                                                            </div>
                                                                         </li>
                                                                     );
                                                                 })
@@ -347,7 +416,7 @@ export default function Products(props) {
                         </div>
                         <div className="modal-footer ft_btn_lft">
                             <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Close</button>
-                            {/* <button type="button" className="btn btn-danger clse_bttn" data-dismiss="modal">Apply</button> */}
+                            <button type="button" className="btn btn-danger clse_bttn" onClick={applyMobileFilter} data-dismiss="modal">Apply</button>
                         </div>
                     </div>
                 </div>

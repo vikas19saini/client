@@ -4669,7 +4669,11 @@ header {
 .md_bg_filter{position: fixed;height: 100vh;top: 0}
 
 
-.filter_mrg h4{font-size: 16px;width: 100%;font-family: 'Montserrat';color: #1D1D1D}
+.filter_mrg h4{font-size: 14px;
+    width: 100%;
+    font-family: 'Montserrat';
+    color: #1D1D1D;
+    text-transform: uppercase;}
 .filter_mrg h3{font-size: 16px;white-space: nowrap;color: #E08927;font-family: 'Montserrat';}
 .filter_mrg .modal-content{border:none;border-radius:0;height: 100vh}
 .main_filter_pop .mt-2, .my-2 {margin-top:0 !important;}
@@ -4708,7 +4712,8 @@ header {
     display: inline-block;
     width: 100%;
     font-size: 14px;
-	margin-bottom: 0
+	margin-bottom: 0;
+    display: flex;
 }
 
 .customCheckbox input {
@@ -4730,16 +4735,24 @@ header {
     border-radius: 2px;
 }
 
-.filterValue{font-size: 16px;
+.normalValueContainer{
+    padding: 10px 2px;
+}
+
+.filterValue{font-size: 14px;
     font-weight: 500;
     color: #707070;
-	font-family: 'Montserrat';}
+	font-family: 'Montserrat'; flex-grow: 1;}
+
+    .filterValue.selected{
+        font-weight: 600;
+    }
 
 .main_tag ul{padding: 1.6rem .7rem}
 .clse_bttn{background: none;width: 50%;
     border: none;
     color: #1D1D1D;
-    font-size: 16px;font-family: 'Montserrat';font-weight: 600;color: #CA4D6A}
+    font-size: 14px;font-family: 'Montserrat';font-weight: 600;color: #CA4D6A;text-transform: uppercase;}
 
 .ft_btn_lft{justify-content: inherit;text-align: left;position: fixed;
     bottom: 0;
