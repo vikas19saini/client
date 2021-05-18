@@ -216,17 +216,20 @@ span.eat {
 }
 .emptyCart{
   text-align: center;
-  margin: 100px auto;
+  margin: 50px auto;
 }
-.emptyCart img{
-  width: 100px;
-}
+
 .emptyCart h1{
-  font-size: 16px;
+  font-size: 20px;
     margin-top: 20px;
     font-family: inherit;
     text-transform: uppercase;
     font-weight: 700;
+}
+.emptyCart p{
+  font-size: 14px;
+    margin-bottom: 20px;
+    color: #878787;
 }
 .emptyCart a{
   background: #917343;

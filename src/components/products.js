@@ -189,6 +189,27 @@ export default function Products(props) {
         }
     }
 
+    if (products && products.length === 0) {
+        return (
+            <section className="inner_listing">
+                <div className="inner_sec_tp">
+                    <div className="container">
+                        <div className="emptyCart">
+                            <img src="/images/noresults.png" alt="emptyCart" />
+                            <h1>Sorry, no results found!</h1>
+                            <p>Please check the spelling or try searching for something else</p>
+                            <button className="login_bttn go_bttn loadMore" onClick={() => router.back()} style={{
+                                background: "transparent",
+                                color: "#000",
+                                textTransform: "uppercase"
+                            }}>Go Back</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
     return (
         <section className="inner_listing">
             <div className="inner_sec_tp">
@@ -228,7 +249,6 @@ export default function Products(props) {
                                                             </div>
                                                         </div>
                                                     </div>
-
 
                                                     {
                                                         filters.map(filter => {
@@ -309,33 +329,25 @@ export default function Products(props) {
                                     }
                                 </div>
                                 <div className="inner_right_prodct">
-                                    {
-                                        products && products.length === 0 ?
-                                            <div className="emptyCart">
-                                                <img src="/images/emptyCart.svg" alt="emptyCart" />
-                                                <h1>No product found!</h1>
-                                                <button className="login_bttn go_bttn loadMore" onClick={() => router.back()}>Go Back</button>
-                                            </div> : <><div className="row custom_col">
-                                                {
-                                                    products && products.map(p => {
-                                                        return (
-                                                            <div className="col-md-6 col-6" key={p.id}>
-                                                                <div className="cotton_fabric_sec">
-                                                                    <Link href={"/product/" + p.slug}>
-                                                                        <a>
-                                                                            <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
-                                                                        </a>
-                                                                    </Link>
-                                                                    <h5>{p.name} - {p.sku}</h5>
-                                                                    <p><strong><GetPriceHtml product={p} /></strong></p>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div></>
-                                    }
-
+                                    <div className="row custom_col">
+                                        {
+                                            products && products.map(p => {
+                                                return (
+                                                    <div className="col-md-6 col-6" key={p.id}>
+                                                        <div className="cotton_fabric_sec">
+                                                            <Link href={"/product/" + p.slug}>
+                                                                <a>
+                                                                    <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
+                                                                </a>
+                                                            </Link>
+                                                            <h5>{p.name} - {p.sku}</h5>
+                                                            <p><strong><GetPriceHtml product={p} /></strong></p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                                 {
                                     (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More Products</button>
