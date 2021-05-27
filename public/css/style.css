@@ -1197,12 +1197,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 .md-number-input p{font-size: 14px;font-family: 'Montserrat';color: #000000}
 
-.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;margin: 0 0 30px}
+.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;margin: 0 0 30px;min-height: 50px;
+    max-height: 50px;}
 .hard_icon{border: 1px solid #BFBFBF;
     background: transparent;
     padding:9px 10px;
     cursor: pointer;margin: 0 35px;
-    border-radius: 4px;}
+    border-radius: 4px;min-height: 50px;
+    max-height: 50px;}
 .hard_icon img{width: 26px}
 .bag_bttn:hover{border: 1px solid #BE8F45;background:#BE8F45;color: #fff}
 .hard_icon:hover{border: 1px solid #BE8F45;color: #fff;background: #BE8F45}

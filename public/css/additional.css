@@ -10,14 +10,14 @@
 }
 
 .loader {
-    border: 3px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 3px solid #3498db;
-    width: 30px;
-    height: 30px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
-    margin: 0 auto;
+  border: 2px solid #dc3545;
+  border-radius: 50%;
+  border-top: 2px solid #f8f9fa;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
   }
 
   .clearFilterMbtn{

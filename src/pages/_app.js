@@ -72,13 +72,13 @@ function MyApp({ Component, pageProps }) {
         <script src="/js/wow.js"></script>
         <script src="/js/scripts.js"></script>
       </Head>
-      <PersistGate persistor={store.__persistor} loading={<div>Initializing application...</div>}>
-        <BlockUi tag="div" blocking={blockUi}>
+      {/* <PersistGate persistor={store.__persistor} loading={<div>Initializing application...</div>}> */}
+      {/* <BlockUi tag="div" blocking={blockUi}> */}
 
-          <Component {...pageProps} />
+      <Component {...pageProps} />
 
-        </BlockUi>
-      </PersistGate>
+      {/* </BlockUi> */}
+      {/* </PersistGate> */}
     </Fragment>)
 }
 

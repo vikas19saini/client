@@ -12,6 +12,7 @@ export default function CartButton(props) {
     const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1);
     const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200);
     const [step] = useState(/* product.step ? product.step : 0.1 */ 0.1);
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         setQty(props.product.cartProducts ? props.product.cartProducts.quantity : props.product.minOrderQuantity);
@@ -55,20 +56,24 @@ export default function CartButton(props) {
             })
         } else {
             if (cartId) {
+                setIsLoading(true);
                 await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty, cartId: cartId }).then((res) => {
                     toast.notify("Cart updated", {
                         type: "success",
                         title: "Success!!!",
                     });
                     setCartItems(cartId);
+                    setIsLoading(false);
                 }).catch(e => {
                     console.log(e)
                     toast.notify("Couldn't be Updated", {
                         type: "error",
                         title: "Error!!!",
-                    })
+                    });
+                    setIsLoading(false);
                 });
             } else {
+                setIsLoading(true);
                 await axios.post(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty }).then((res) => {
                     toast.notify(`${props.iscartpage ? "Cart updated" : "Added to cart"}`, {
                         type: "success",
@@ -76,11 +81,13 @@ export default function CartButton(props) {
                     });
                     setCartItems(res.data.id);
                     dispatch({ type: "ADD_TO_CART", payload: res.data.id });
+                    setIsLoading(false);
                 }).catch(e => {
                     toast.notify("Couldn't be added", {
                         type: "error",
                         title: "Error!!!",
-                    })
+                    });
+                    setIsLoading(false);
                 });
             }
         }
@@ -97,16 +104,19 @@ export default function CartButton(props) {
     }
 
     const addToWishlist = () => {
+        setIsLoading(true);
         axios.post(`${process.env.API_URL}wishlist`, { productId: product.id }).then(res => {
             toast.notify(`${res.data.message}`, {
                 type: "success",
                 title: "Wishlist!"
-            })
+            });
+            setIsLoading(false);
         }).catch(err => {
             toast.notify(`Something went wrong!`, {
                 type: "error",
                 title: "Wishlist!"
-            })
+            });
+            setIsLoading(false);
         })
     }
 
@@ -122,10 +132,10 @@ export default function CartButton(props) {
                                     stockStatus(product) ?
                                         <Fragment>
                                             <p>Quantity</p>
-                                            <div className="dlx_main">
-                                                <button className="minus" onClick={() => addProductToCart(qty - step)}></button>
+                                            <div className="dlx_main" style={{ display: "flex", alignItems: "center" }}>
+                                                {isLoading ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isLoading} onClick={() => addProductToCart(qty - step)}></button>}
                                                 <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                                <button className="plus" onClick={() => addProductToCart(qty + step)}></button>
+                                                {isLoading ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isLoading} onClick={() => addProductToCart(qty + step)}></button>}
                                             </div>
                                         </Fragment>
                                         :
@@ -161,8 +171,13 @@ export default function CartButton(props) {
                             {
                                 product.stockStatus !== 0 &&
                                 <div className="cartButtonProduct">
-                                    <button type="button" className="bag_bttn" onClick={() => addProductToCart(qty)}>Add to Bag</button>
-                                    <button className="hard_icon" onClick={addToWishlist}><img src="/images/address_icon/heart.svg" alt="heart" /></button>
+                                    <button type="button" className="bag_bttn" disabled={isLoading} onClick={() => addProductToCart(qty)}>{
+                                        isLoading ? <div className="loader" /> : "Add to Bag"
+                                    }</button>
+                                    <button className="hard_icon" disabled={isLoading} onClick={addToWishlist}>
+                                        {
+                                            isLoading ? <div className="loader" /> : <img src="/images/address_icon/heart.svg" alt="heart" />
+                                        }</button>
                                 </div>
                             }
                         </Fragment>
