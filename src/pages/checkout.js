@@ -25,29 +25,36 @@ export default function Cart() {
     const [shippingNotAvailable, setShippingNotAvailable] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
 
-    if (!cartId) {
-        router.push("/cart");
-    }
+    useEffect(() => {
+        if (!cartId) {
+            router.push("/cart");
+        }
+    }, [cartId])
 
     useEffect(() => {
         setIsUpdating(true);
         axios.get(`${process.env.API_URL}address`).then(res => {
             setAddresses(res.data.rows)
             setIsUpdating(false);
+        }).catch(err => {
+            setIsUpdating(false);
         })
     }, [addNew, reload]);
 
     useEffect(async () => {
-        setIsUpdating(true);
-        await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-            setCartData(res.data);
+        if (cartId) {
+            setIsUpdating(true);
+            await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+                if (res.data) {
+                    setCartData(res.data);
+                    if (res.data.status === 2)
+                        showPaymentMethods(false)
 
-            if (res.data.status === 2)
-                showPaymentMethods(false)
-
-            dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-            setIsUpdating(false);
-        });
+                    dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
+                }
+                setIsUpdating(false);
+            });
+        }
     }, [reload])
 
     useEffect(() => {

@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
         <script src="/js/scripts.js"></script>
       </Head>
       {/* <PersistGate persistor={store.__persistor} loading={<div>Initializing application...</div>}> */}
-      {/* <BlockUi tag="div" blocking={blockUi}> */}
+      {/* yy */}
 
       <Component {...pageProps} />
 
