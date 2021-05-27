@@ -51,7 +51,7 @@ export default function Product(product) {
             <PhotoSwipe isOpen={openZoom} items={
                 productImages.map((t) => {
                     return {
-                        src: t.fullUrl,
+                        src: t ? t.fullUrl : "/images/placeholder.png",
                         w: 1500,
                         h: 1000,
                         title: product.name
@@ -92,9 +92,9 @@ export default function Product(product) {
                                     {
                                         productImages.map((t) => {
                                             return (
-                                                <div className="item" key={t.id}>
+                                                <div className="item" key={t ? t.id : Math.random()}>
                                                     <div className="icon_hard">
-                                                        <Image src={t.fullUrl} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
+                                                        <Image src={t ? t.fullUrl : "/images/placeholder.png"} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
                                                     </div>
                                                 </div>
                                             )
