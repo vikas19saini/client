@@ -96,7 +96,7 @@ export default function PaymentMethod(props) {
                                 } : {
                                     sandbox: paymentMethod.key
                                 }
-                            } currency={currency.code} total={amountToPay} style={{
+                            } currency={currency.code} total={amountToPay} env={paymentMethod.mode} style={{
                                 size: 'responsive',
                                 color: 'gold',
                                 shape: 'pill',
