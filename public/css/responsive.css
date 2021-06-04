@@ -449,13 +449,12 @@
 	.plain_sub{background: url(../images/sub_img/plain-01_mob.jpg) no-repeat center;}
 	.wool_sub{background: url(../images/sub_img/wool_mob.jpg) no-repeat center;}
 	.silk_sub{background: url(../images/sub_img/silk_mob.jpg) no-repeat center;}
-	.flex_derection {padding:0;}
 	#big .owl-dots{left: 1rem}
 	#thumbs{display: none}
 	.customers-testimonials{background: none;height: auto}
 	#big{left: 0;z-index:inherit}
 	#arrivals {
-    margin: 0;
+    margin: 0 0 4rem;
 }
 	.mrg_top .padd_0{padding: 0}
 	
@@ -689,6 +688,7 @@
     .flex_derection {
         flex-direction: column-reverse;
         display: flex;
+		padding: 0 0 4rem
     }
     .sub_txt h4 {
         color: #000000;
