@@ -1129,7 +1129,7 @@ function subCategory() {
         loop: true,
         autoplay: false,
         dots: false,
-        nav: true,
+        nav: false,
         responsive: {
             0: {
                 items: 1.2,
