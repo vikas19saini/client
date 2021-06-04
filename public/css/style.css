@@ -176,9 +176,9 @@
 #arrivals .item>img{cursor: pointer}
 
  #arrivals .item {
-    margin:5px;
+    /* margin:5px; */
     transition: 700ms ease-in-out;
-	 padding: 10px
+	 /* padding: 10px */
 }
 
 #arrivals .item:hover {
@@ -187,9 +187,9 @@
 }
 
 #may_like .item {
-    margin:5px;
+    /* margin:5px; */
     transition: 700ms ease-in-out;
-	 padding: 10px
+	 /* padding: 10px */
 }
 
 #may_like .item:hover {
@@ -1014,7 +1014,7 @@ a>img.desk_view{width: 140px}
 .tx_head_1 p{font-size: 14px;font-weight: 400;color:#A0A0A0}
 .tx_head_1{padding: 20px}
 .hidden_m{display: none}
-#arrivals{margin: 0 0 4rem}
+#arrivals{margin: 0 0 4rem;margin-bottom: 20px;}
 
 /* checkout_3 css start */
 .check_add_3>img{position: absolute;

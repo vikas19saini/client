@@ -211,38 +211,37 @@ export default function Product(product) {
                 <section className="may_leke_sec">
                     <div className={isMobile ? "container w100" : "container"}>
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-12 padd_0">
                                 <div className="inner_main_hadding wow fadeInUp">
                                     <h4>You May Also Like</h4>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-12 padd_0">
                                 <OwlCarousel options={{
                                     responsive: {
                                         0: {
                                             items: 1.2,
-                                            nav: false
+                                            nav: false,
                                         },
                                         568: {
-                                            items: 2.1,
+                                            items: 1.2,
                                         },
                                         667: {
                                             items: 3.1,
                                         },
                                         1170: {
-                                            items: 3.1,
+                                            items: 3.1
                                         }
                                     },
-                                    loop: false,
+                                    loop: true,
                                     autoplay: false,
                                     dots: false,
                                     nav: true,
                                     navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
-                                    smartSpeed: 900,
-                                    margin: 0,
-                                }} id="may_like" className="owl-carousel relativeProducts" >
+                                    margin: 10,
+                                }} id="arrivals" className="owl-carousel relativeProducts" >
                                     <Products products={product.relative} />
                                 </OwlCarousel>
                             </div>
