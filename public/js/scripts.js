@@ -1193,7 +1193,7 @@ $(window).scroll(function () {
     var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
     var top_of_screen = $(window).scrollTop();
 
-    if (document.querySelector(".mob_view_filter.filter_cs")) {
+    if (document.querySelector(".mob_view_filter.filter_cs") && $(window).width() <= 750) {
         if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
             $(".mob_view_filter.filter_cs").css("display", "none");
         } else {
