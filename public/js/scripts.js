@@ -1126,25 +1126,23 @@ function homePageInit() {
 
 function subCategory() {
     $('#mini_slide').owlCarousel({
-        loop: false,
+        loop: true,
         autoplay: false,
         dots: false,
-        nav: false,
+        nav: true,
         responsive: {
             0: {
                 items: 1.2,
-                nav: false,
-                margin: 20,
+                margin: 10,
             },
             568: {
-                items: 3,
-                nav: false,
+                items: 3.1,
             },
             667: {
-                items: 3,
+                items: 3.1,
             },
             1170: {
-                items: 3,
+                items: 3.1,
             }
         }
     });

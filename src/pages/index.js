@@ -271,7 +271,9 @@ export default function Home(props) {
         <div className="row">
           <div className="slide_tx po_inherit">
             <h3><span>Wedding</span>Collection</h3>
-            <button type="button" className="view_slide_bttn learn_bttn">View</button>
+            <Link href="/search?query=wedding">
+              <a type="button" className="view_slide_bttn learn_bttn">View</a>
+            </Link>
             <img src="images/bitmap.jpg" className="img-fluid" alt="" />
           </div>
         </div>
