@@ -157,11 +157,10 @@ export default function Home(props) {
               <div className="wow fadeInUp">
                 <div className="row">
                   <div className="col-md-7">
-
                     <div className="bg_clr">
                       <h2>The Colour Palette To <span>Brighten Your Mood</span></h2>
                       <Link href="/category/trends">
-                        <a className="view_bttn dropbtn bg_bttn">View Collection</a></Link>
+                        <a className="view_bttn dropbtn" style={{ color: "#fff" }}>View Collection</a></Link>
                     </div>
                   </div>
 
@@ -224,8 +223,9 @@ export default function Home(props) {
                 <h3>Our Printed Fabric Collection</h3>
                 <p>A Collection Of Printed Fabrics, Featuring International Trends and classNameic Patterns.</p>
                 <div className="dropdown">
-                  <Link href="category/prints">
-                    <a className="view_bttn dropbtn">View Collection</a></Link>
+                  <Link href="/category/prints">
+                    <a className="view_bttn dropbtn">View Collection</a>
+                  </Link>
                   <div className="drop_bg desk_view">
                     <div className="dropdown-content">
                       <div className="row">
@@ -481,7 +481,7 @@ export default function Home(props) {
         </div>
         <div className="container">
           <div className="row wow fadeInUp">
-            <div className="col-md-12 padd_0">
+            <div className="col-md-12 padd_0_all">
               <div id="arrivals" className="owl-carousel relativeProducts">
                 <Products products={props.products} />
               </div>

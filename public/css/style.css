@@ -288,7 +288,7 @@
 		.acco_after .card-header button{float: right;padding: 1rem 25px;}
 		.acco_after .card-header button i{font-size: 10px;color: #181818;}
 		.acco_after .card{border: none}
-		.acco_after .card-header{background: transparent;border-bottom: 1px solid #f0f0f0;}
+		.acco_after .card-header{background: transparent;border-bottom: 1.6px solid rgba(0,0,0,.125)}
 		.acco_after .card-body{border-bottom:1px solid #f0f0f0;padding:1rem 0 .6rem}
 .tp_bd_no{border-top: none !important;}
 		
@@ -5256,4 +5256,11 @@ font-weight: 500}
     /* text-transform: uppercase; */
     font-weight: 500;
     text-decoration: underline;
+}
+
+.padd_0_all{
+    padding: 0px !important;
+}
+.mob_view_filter{
+    display: none;
 }

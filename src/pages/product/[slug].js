@@ -208,25 +208,27 @@ export default function Product(product) {
             </div>
             {
                 product.relative.length > 0 &&
-                <section className="may_leke_sec">
-                    <div className={isMobile ? "container w100" : "container"}>
+                <section className="sec_padd sec_arrivals">
+                    <div className="container">
                         <div className="row">
-                            <div className="col-md-12 padd_0">
-                                <div className="inner_main_hadding wow fadeInUp">
+                            <div className="col-md-12">
+                                <div className="secound_hadd_pr inner_main_hadding wow fadeInUp">
                                     <h4>You May Also Like</h4>
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-md-12 padd_0">
+                    </div>
+                    <div className="container">
+                        <div className="row wow fadeInUp">
+                            <div className="col-md-12 padd_0_all">
                                 <OwlCarousel options={{
                                     responsive: {
                                         0: {
-                                            items: 1.2,
+                                            items: 1.1,
                                             nav: false,
                                         },
                                         568: {
-                                            items: 1.2,
+                                            items: 1.1,
                                         },
                                         667: {
                                             items: 3.1,

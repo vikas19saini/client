@@ -4,7 +4,7 @@ import Link from "next/link"
 import { formatCurrency, GetPriceHtml } from "../pages/helpers"
 import { useRouter } from 'next/router'
 import { useSelector } from "react-redux"
-import { route } from "next/dist/next-server/server/router"
+import { isMobile } from "react-device-detect"
 
 const priceFilters = [
     {
@@ -46,8 +46,11 @@ export default function Products(props) {
     const currency = useSelector(state => state.config.currency);
     const [mobileFiltersSelected, setMobileFiltersSelected] = useState();
     const [mobileSelectedPriceFilter, setMobileSelectedPriceFilter] = useState();
+    const [isLoadiingMore, setIsloadingMore] = useState(false);
 
     useEffect(() => {
+
+        setIsloadingMore(true);
         let queryParams = router.query;
         let offset = (page - 1) * limit
 
@@ -62,6 +65,7 @@ export default function Products(props) {
             }
             setTotal(response.data.count);
             setTotalPages(Math.ceil(response.data.count / limit));
+            setIsloadingMore(false);
         });
     }, [router, page]);
 
@@ -293,7 +297,7 @@ export default function Products(props) {
                         </div>
                         <div className="col-md-9">
                             <div className="inner_right_prodct">
-                                <div className="mob_view filter_cs">
+                                <div className="mob_view_filter filter_cs">
                                     <div className="col_6">
                                         <h6><img src="/images/sort.jpg" alt="" /><span>Sort</span></h6>
                                     </div>
@@ -350,8 +354,13 @@ export default function Products(props) {
                                     </div>
                                 </div>
                                 {
-                                    (total > products.length) && <button className="login_bttn go_bttn loadMore" onClick={() => setPage(page + 1)}>Load More Products</button>
+                                    (total > products.length) && <button className="login_bttn go_bttn loadMore" disabled={isLoadiingMore} onClick={() => setPage(page + 1)}>
+                                        {
+                                            isLoadiingMore ? <div className="loader" /> : "Load More Products"
+                                        }
+                                    </button>
                                 }
+                                <br />
                             </div>
                         </div>
                     </div>

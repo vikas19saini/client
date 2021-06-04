@@ -114,8 +114,7 @@ export default function Cart() {
                 <section className="inner_product product_info" style={{ background: "#f6f7f7" }}>
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-7 col-sm-12 nopadding">
-
+                            <div className="col-lg-7 col-sm-12">
                                 {
                                     shippingAddress ? (
                                         <div className="dis_detail selectedAdd cartProduct">
@@ -180,7 +179,9 @@ export default function Cart() {
                         </div>
                     </div>
                 </section>
-            </BlockUi><Footer />
+            </BlockUi>
+            <br />
+            <Footer />
         </Fragment>
     )
 }

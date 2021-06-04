@@ -371,6 +371,13 @@
     .appliedFilters{
         display: none !important;
     }
+    .mob_view_filter{
+        display: block;
+    }
+    #arrivals .owl-item img{
+        height: 180px !important;
+        object-fit: cover;
+    }
 	.main_a_bdr {
     border-bottom: 1px solid #ccc;}
 	
@@ -672,7 +679,7 @@
         text-align: left
     }
     .dis_flex {
-        height: 120px;
+        height: 185px;
     margin-bottom: 3rem;
 		display:inherit;
     align-items:inherit;

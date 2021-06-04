@@ -1107,11 +1107,11 @@ function homePageInit() {
         margin: 10,
         responsive: {
             0: {
-                items: 1.2,
+                items: 1.1,
                 nav: false,
             },
             568: {
-                items: 1.2,
+                items: 1.1,
             },
             667: {
                 items: 3.1,
@@ -1185,4 +1185,19 @@ $(document).on('click', '.menuLinkDesktop', function () {
 $(document).on('click', '.mobileMenuIcon', function () {
     $(".sideMenu").removeClass("nav-menus-wrapper-open");
     $(".sideMenu").css("transition-property", "none");
+});
+
+$(window).scroll(function () {
+    var top_of_element = $("footer").offset().top;
+    var bottom_of_element = $("footer").offset().top + $("footer").outerHeight();
+    var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+    var top_of_screen = $(window).scrollTop();
+
+    if (document.querySelector(".mob_view_filter.filter_cs")) {
+        if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+            $(".mob_view_filter.filter_cs").css("display", "none");
+        } else {
+            $(".mob_view_filter.filter_cs").css("display", "block");
+        }
+    }
 });

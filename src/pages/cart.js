@@ -163,6 +163,7 @@ export default function Cart() {
                             </div>
                 }
             </BlockUi>
+            <br />
             <Footer />
         </Fragment>
     )
