@@ -327,10 +327,10 @@ a>img.desk_view{width: 140px}
     padding: 10px;
 }
 
-.cotton_fabric_sec:hover {
+/* .cotton_fabric_sec:hover {
     box-shadow: 0px 0px 10px #bf9f9f;
 	padding: 10px
-}
+} */
 
 .delivery_option p input, .delivery_option p select {
     outline: none;
