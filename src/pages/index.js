@@ -294,7 +294,7 @@ export default function Home(props) {
                   very latest in fashionable jacquards and textured fabrics as well as other luxurious and
                         exclusive fabrics. All these and much more.</p>
                   <div className="dropdown">
-                    <Link href="/search?query=Autumn+Winter">
+                    <Link href="/search?query=Autumn">
                       <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
                   </div>
                 </div>
@@ -312,7 +312,7 @@ export default function Home(props) {
                   collection of cotton and other natural fabrics is unsurpassed. We bring to you the best in
                         innovative and trending fabrics from all over the world.</p>
                   <div className="dropdown">
-                    <Link href="/search?query=Spring+Summer">
+                    <Link href="/search?query=Summer">
                       <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
                   </div>
                 </div>
