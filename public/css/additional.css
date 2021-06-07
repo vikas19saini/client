@@ -257,15 +257,17 @@ span.eat {
 .appliedFilters{
   display: block;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px 0px;
   margin-bottom: 10px;
   width: 100%;
+  margin-top: 5px
 }
 .appliedFilters .filter{
-  display: inline-block;
+  color: #fff;
+    display: inline-block;
     align-items: center;
-    background: #ccc;
-    padding: 5px 10px;
+    background: #BE8F45;
+    padding: 2px 5px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
@@ -426,4 +428,33 @@ span.eat {
     font-weight: 600 !important;
     letter-spacing: 0px;
     text-transform: unset !important;
+}
+
+.sortDesktop{
+  border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background-color: #fff;
+}
+
+.btnFilter{
+  background: transparent;
+    color: #000;
+    border: 0px;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: inherit;
+}
+.btnFilter:hover{
+  background: transparent !important;
+  color: #000 !important;
+}
+.sortDesktop .btn-group{
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.sortDesktop .btn-group::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
 }

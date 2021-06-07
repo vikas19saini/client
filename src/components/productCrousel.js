@@ -1,4 +1,4 @@
-import { GetPriceHtml } from "../pages/helpers"
+import { GetPriceHtml } from "./helpers"
 import Link from "next/link"
 import Image from "next/image"
 

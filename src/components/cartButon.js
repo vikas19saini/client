@@ -1,32 +1,44 @@
 import { Fragment, useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-nextjs-toast';
-import { useSelector, useDispatch } from "react-redux";
-import { GetPriceHtml, stockStatus } from "../pages/helpers";
-import axios from "axios";
+import { useSelector } from "react-redux";
+import { GetPriceHtml, stockStatus, useCart } from "../components/helpers";
 
 export default function CartButton(props) {
     const product = props.product;
-    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
-    const dispatch = useDispatch();
     const [qty, setQty] = useState(1);
     const [minQty] = useState(product.minOrderQuantity ? product.minOrderQuantity : 1);
     const [maxQty] = useState(product.maxOrderQuantity ? product.maxOrderQuantity : 200);
     const [step] = useState(/* product.step ? product.step : 0.1 */ 0.1);
-    const [isLoading, setIsLoading] = useState(false)
+    const { addToCart, isAdding, addtoWishList, isAddingToWishlist } = useCart();
+    const cartData = useSelector(state => state.config.cartData);
+
+    /* useEffect(() => {
+        if (cartData && cartData.products.length > 0) {
+            let product = cartData.products.filter((cp) => cp.id === props.product.id);
+            setQty(product[0].cartProducts.quantity);
+        }
+        setQty(props.product.cartProducts ? props.product.cartProducts.quantity : props.product.minOrderQuantity);
+    }, [props.product]); */
 
     useEffect(() => {
-        setQty(props.product.cartProducts ? props.product.cartProducts.quantity : props.product.minOrderQuantity);
-    }, [props.product]);
+        if (cartData && cartData.products && cartData.products.length > 0) {
+            let product = cartData.products.filter((cp) => cp.id === props.product.id);
+            if (product.length > 0)
+                setQty(product[0].cartProducts.quantity);
+            else
+                setQty(props.product.minOrderQuantity);
+        } else {
+            setQty(props.product.minOrderQuantity);
+        }
+    }, [cartData, props.product]);
 
     const setQuantity = (val) => {
-
         if (val < minQty) {
             toast.notify(`Invalid quantity, min order quantity is : ${minQty}`, {
                 type: "error",
                 title: "Error!!!"
-            })
-
-            return
+            });
+            return;
         }
 
         if (val > maxQty) {
@@ -55,69 +67,20 @@ export default function CartButton(props) {
                 title: "Error!!!"
             })
         } else {
-            if (cartId) {
-                setIsLoading(true);
-                await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty, cartId: cartId }).then((res) => {
-                    toast.notify("Cart updated", {
-                        type: "success",
-                        title: "Success!!!",
-                    });
-                    setCartItems(cartId);
-                    setIsLoading(false);
-                }).catch(e => {
-                    console.log(e)
-                    toast.notify("Couldn't be Updated", {
-                        type: "error",
-                        title: "Error!!!",
-                    });
-                    setIsLoading(false);
-                });
-            } else {
-                setIsLoading(true);
-                await axios.post(`${process.env.API_URL}cart`, { productId: parseInt(product.id), quantity: pqty }).then((res) => {
-                    toast.notify(`${props.iscartpage ? "Cart updated" : "Added to cart"}`, {
-                        type: "success",
-                        title: "Success!!!",
-                    });
-                    setCartItems(res.data.id);
-                    dispatch({ type: "ADD_TO_CART", payload: res.data.id });
-                    setIsLoading(false);
-                }).catch(e => {
-                    toast.notify("Couldn't be added", {
-                        type: "error",
-                        title: "Error!!!",
-                    });
-                    setIsLoading(false);
-                });
-            }
+            let response = await addToCart(product.id, pqty);
+            toast.notify(response.message, {
+                type: response.type,
+                title: response.title,
+            });
         }
-
-        props.iscartpage && props.setReload(props.reload + 1);
     }
 
-    const setCartItems = (cartId) => {
-        !props.iscartpage &&
-            axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-                console.log(res.data);
-                dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-            });
-    }
-
-    const addToWishlist = () => {
-        setIsLoading(true);
-        axios.post(`${process.env.API_URL}wishlist`, { productId: product.id }).then(res => {
-            toast.notify(`${res.data.message}`, {
-                type: "success",
-                title: "Wishlist!"
-            });
-            setIsLoading(false);
-        }).catch(err => {
-            toast.notify(`Something went wrong!`, {
-                type: "error",
-                title: "Wishlist!"
-            });
-            setIsLoading(false);
-        })
+    const addToWishlist = async () => {
+        let response = await addtoWishList(product.id);
+        toast.notify(`${response.message}`, {
+            type: response.type,
+            title: response.title
+        });
     }
 
     return (
@@ -125,7 +88,7 @@ export default function CartButton(props) {
             <ToastContainer />
             {
                 props.iscartpage ?
-                    (<Fragment>
+                    (
                         <div className="check_qu_1">
                             <div className="number-input md-number-input">
                                 {
@@ -133,9 +96,9 @@ export default function CartButton(props) {
                                         <Fragment>
                                             <p>Quantity</p>
                                             <div className="dlx_main" style={{ display: "flex", alignItems: "center" }}>
-                                                {isLoading ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isLoading} onClick={() => addProductToCart(qty - step)}></button>}
+                                                {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isAdding} onClick={() => addProductToCart(qty - step)}></button>}
                                                 <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                                {isLoading ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isLoading} onClick={() => addProductToCart(qty + step)}></button>}
+                                                {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isAdding} onClick={() => addProductToCart(qty + step)}></button>}
                                             </div>
                                         </Fragment>
                                         :
@@ -147,7 +110,7 @@ export default function CartButton(props) {
                                 }
                             </div>
                         </div>
-                    </Fragment>)
+                    )
                     : (
                         <Fragment>
                             <div className="dis_detail">
@@ -171,12 +134,12 @@ export default function CartButton(props) {
                             {
                                 product.stockStatus !== 0 &&
                                 <div className="cartButtonProduct">
-                                    <button type="button" className="bag_bttn" disabled={isLoading} onClick={() => addProductToCart(qty)}>{
-                                        isLoading ? <div className="loader" /> : "Add to Bag"
+                                    <button type="button" className="bag_bttn" disabled={isAdding} onClick={() => addProductToCart(qty)}>{
+                                        isAdding ? <div className="loader" /> : "Add to Bag"
                                     }</button>
-                                    <button className="hard_icon" disabled={isLoading} onClick={addToWishlist}>
+                                    <button className="hard_icon" disabled={isAddingToWishlist} onClick={addToWishlist}>
                                         {
-                                            isLoading ? <div className="loader" /> : <img src="/images/address_icon/heart.svg" alt="heart" />
+                                            isAddingToWishlist ? <div className="loader" /> : <img src="/images/address_icon/heart.svg" alt="heart" />
                                         }</button>
                                 </div>
                             }

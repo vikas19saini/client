@@ -37,9 +37,15 @@ const reducer = (state = initState, action) => {
             delete beforeClearCart.cartId;
             return beforeClearCart;
         case 'SIGN_OUT':
-            let afterLogout = { ...state }
+            let afterLogout = { ...state };
             delete afterLogout.auth;
             return afterLogout;
+        case 'SET_CART_DATA':
+            let afterCartData = { ...state, ...{ cartData: action.payload } };
+            return afterCartData;
+        case 'SET_WISH_LIST':
+            let wishlistData = { ...state, ...{ wishlist: action.payload } };
+            return wishlistData;
         case 'SET_CSRF':
             let cs = { ...state, ...{ csrf: action.payload } }
             return cs;

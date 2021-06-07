@@ -5,17 +5,17 @@ import axios from "axios";
 import Head from 'next/head'
 import { wrapper } from "../../redux/store";
 import Products from "../../components/productCrousel"
-import { stockStatus } from "../helpers";
+import { stockStatus } from "../../components/helpers";
 import CartButton from "../../components/cartButon";
 import OwlCarousel from 'react-owl-carousel2';
 import Image from "next/image"
-import { toast, ToastContainer } from 'react-nextjs-toast';
 import Link from "next/link";
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipe } from 'react-photoswipe';
 import {
     isMobile
 } from "react-device-detect";
+import { useSelector } from "react-redux";
 
 export default function Product(product) {
 
@@ -24,25 +24,10 @@ export default function Product(product) {
 
     useEffect(() => {
         productPageInit() // defined in script.js
-    }, [])
-
-    const addToWishlist = () => {
-        axios.post(`${process.env.API_URL}wishlist`, { productId: product.id }).then(res => {
-            toast.notify(`${res.data.message}`, {
-                type: "success",
-                title: "Wishlist!"
-            })
-        }).catch(err => {
-            toast.notify(`Something went wrong!`, {
-                type: "error",
-                title: "Wishlist!"
-            })
-        })
-    }
+    }, []);
 
     return (
         <Fragment>
-            <ToastContainer />
             <Head>
                 <title>{product.metaTitle ? product.metaTitle : product.name}</title>
                 <meta name="description" content={product.metaDescription} />

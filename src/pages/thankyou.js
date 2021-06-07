@@ -2,18 +2,18 @@ import Head from "next/head";
 import Footer from "./footer";
 import Header from "./header";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import { formatAddress, formatCurrency } from "./helpers";
-import { useDispatch, useSelector } from "react-redux";
+import { formatAddress, formatCurrency } from "../components/helpers";
+import { useDispatch } from "react-redux";
 
 export default function About() {
     const router = useRouter();
     const orderId = router.query.orderId;
     const [order, setOrder] = useState(null);
-    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const dispatch = useDispatch();
     dispatch({ type: "CLEART_CART", payload: 0 });
+    dispatch({ type: "SET_CART_DATA", payload: null });
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -25,16 +25,8 @@ export default function About() {
 
     }, [orderId]);
 
-    /*  useEffect(() => {
-         if (cartId) {
-             axios.delete(`${process.env.API_URL}cart/${cartId}`).then(d => {
-                 dispatch({ type: "CLEART_CART", payload: 0 });
-             });
-         }
-     }, []); */
-
     return (
-        <>
+        <Fragment>
             <Head>
                 <title>Order Placed - Gandhi</title>
             </Head>
@@ -78,6 +70,6 @@ export default function About() {
                 </div>
             </section>
             <Footer />
-        </>
+        </Fragment>
     );
 }

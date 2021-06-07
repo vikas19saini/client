@@ -192,10 +192,10 @@
 	 /* padding: 10px */
 }
 
-#may_like .item:hover {
+/* #may_like .item:hover {
     box-shadow: 0px 0px 10px #bf9f9f;
 	padding: 10px
-}
+} */
 
 .delivery_option h3 {
     font-weight: 600;

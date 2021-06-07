@@ -2,7 +2,7 @@ import Axios from "axios";
 import { Fragment, useEffect, useState } from "react"
 import AddressForm from "./addressForm"
 import axios from "axios";
-import { formatAddress } from "../../pages/helpers"
+import { formatAddress } from "../helpers"
 
 export default function Addresses() {
     const [addNew, setAddNew] = useState(false);

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { formatCurrency, GetPriceHtml } from "../pages/helpers"
+import { formatCurrency, GetPriceHtml } from "./helpers"
 import { useRouter } from 'next/router'
 import { useSelector } from "react-redux"
 import { isMobile } from "react-device-detect"
@@ -187,9 +187,27 @@ export default function Products(props) {
     const clearAllFilters = () => {
         setMobileSelectedPriceFilter({});
         if (router.pathname === "/search") {
-            router.push(`/search`);
+            router.push(`/search/?query=${category.name}`);
         } else {
             router.push(`/category/${category.slug}`);
+        }
+    }
+
+    const sortBy = (sortBy) => {
+        let appliedFiltersTemp = { ...router.query };
+
+        if (sortBy === "clear") {
+            delete appliedFiltersTemp.sort;
+        } else {
+            appliedFiltersTemp = { ...appliedFiltersTemp, ...{ sort: sortBy } };
+        }
+
+        delete appliedFiltersTemp.page;
+        let queryParams = new URLSearchParams(appliedFiltersTemp);
+        if (router.pathname === "/search") {
+            router.push(`/search?${queryParams}`);
+        } else {
+            router.push(`/category/${category.slug}?${queryParams}`);
         }
     }
 
@@ -221,7 +239,7 @@ export default function Products(props) {
                     <div className="row">
                         <div className="col-md-3">
                             <div className="left_fittr mrg_01">
-                                <p>Home / {category.name} {total && `(${total})`}</p>
+                                <p style={{ textTransform: "capitalize" }}>Home / {category.name} {total && `(${total})`}</p>
                                 <div className="inner_boxs">
                                     <div>
                                         <form>
@@ -297,13 +315,20 @@ export default function Products(props) {
                         </div>
                         <div className="col-md-9">
                             <div className="inner_right_prodct">
-                                <div className="mob_view_filter filter_cs">
-                                    <div className="col_6">
-                                        <h6><img src="/images/sort.jpg" alt="" /><span>Sort</span></h6>
+                                <div className="sortDesktop">
+                                    <div className="btn-group">
+                                        <button type="button" className="btn btn-primary btnFilter" style={{ pointerEvents: "none" }}>Sort By:</button>
+                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("clear")}>Relevance</button>
+                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("ragularPriceAsc")} >Price--Low to high</button>
+                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("ragularPriceDesc")}>Price--High to Low</button>
+                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("createdAtDesc")}>Newest First</button>
                                     </div>
-                                    <div className="col_6">
+                                </div>
+                                <div className="mob_view_filter filter_cs">
+
+                                    <div className="col_6" style={{ width: "100%", float: "unset", textAlign: "center" }}>
                                         <h6 data-toggle="modal" data-target="#myModal"><img src="/images/filter.png"
-                                            alt="filterIcon" /><span>Filter</span></h6>
+                                            alt="filterIcon" style={{ float: "unset" }} /><span>Filter</span></h6>
                                     </div>
                                 </div>
                                 <div className="appliedFilters">
@@ -338,7 +363,7 @@ export default function Products(props) {
                                             products && products.map(p => {
                                                 return (
                                                     <div className="col-md-6 col-6" key={p.id}>
-                                                        <div className="cotton_fabric_sec">
+                                                        <div className="cotton_fabric_sec" style={{ padding: "0px" }}>
                                                             <Link href={"/product/" + p.slug}>
                                                                 <a>
                                                                     <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />

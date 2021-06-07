@@ -8,9 +8,10 @@ import { useRouter } from 'next/router'
 export default function PaymentMethod(props) {
     let currency = useSelector(state => state.config.currency);
     const [paymentMethod, setPaymentMethod] = useState(null);
-    const amountToPay = parseFloat((props.cartData.total * currency.value).toFixed(2));
     const [allPaymentMethods, setAllPaymentMethods] = useState([]);
     const router = useRouter();
+    const cartData = useSelector(state => state.config.cartData);
+    const amountToPay = parseFloat((cartData.total * currency.value).toFixed(2));
 
     useEffect(() => {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
@@ -28,7 +29,7 @@ export default function PaymentMethod(props) {
 
     const onSuccess = async (payment) => {
         try {
-            let order = await axios.post(`${process.env.API_URL}orders`, { cartId: props.cartData.id, currency: currency.code, paymentMethod: "paypal" });
+            let order = await axios.post(`${process.env.API_URL}orders`, { cartId: cartData.id, currency: currency.code, paymentMethod: "paypal" });
             order = order.data;
             await axios.post(`${process.env.API_URL}orders/payment`, {
                 orderId: order.order.id,
@@ -42,7 +43,7 @@ export default function PaymentMethod(props) {
             toast.notify("Unable to place order please contact us!", {
                 type: "error",
                 title: "Order Failed"
-            })
+            });
         }
     }
 
@@ -58,14 +59,18 @@ export default function PaymentMethod(props) {
                     <div className="col-md-12 col-12">
                         {
                             allPaymentMethods.map((pm, index) => {
-                                return (
-                                    <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
-                                        <span className="radio-item">
-                                            <input type="radio" onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
-                                            <label>{pm.title}</label>
-                                        </span>
-                                    </div>
-                                );
+                                if (pm.currencies.includes(currency.code.toLowerCase)) {
+                                    return (
+                                        <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
+                                            <span className="radio-item">
+                                                <input type="radio" defaultChecked={false} onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
+                                                <label>{pm.title}</label>
+                                            </span>
+                                        </div>
+                                    );
+                                } else {
+                                    return ("");
+                                }
                             })
                         }
                         {
@@ -74,10 +79,10 @@ export default function PaymentMethod(props) {
                                 <p>You'll be redirected to payment page, where you can pay via credit/debit card</p>
                                 <form name="payFormCcard" method="post" action={paymentMethod.url}>
                                     <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
-                                    <input type="hidden" name="amount" value={(props.cartData.total * currency.value).toFixed(2)} />
-                                    <input type="hidden" name="orderRef" value={props.cartData.id} />
+                                    <input type="hidden" name="amount" value={(cartData.total * currency.value).toFixed(2)} />
+                                    <input type="hidden" name="orderRef" value={cartData.id} />
                                     <input type="hidden" name="currCode" value={currency.code.toLowerCase() == "usd" ? "840" : "840"} />
-                                    <input type="hidden" name="successUrl" value={`${process.env.WEB_URL}placeorder?cartId=${props.cartData.id}&currencyCode=${currency.code}`} />
+                                    <input type="hidden" name="successUrl" value={`${process.env.WEB_URL}placeorder?cartId=${cartData.id}&currencyCode=${currency.code}`} />
                                     <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout`} />
                                     <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout`} />
                                     <input type="hidden" name="payType" value="N" />

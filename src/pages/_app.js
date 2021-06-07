@@ -7,7 +7,6 @@ import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
 import axios from "axios";
-import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 
 //Binding events. 
@@ -23,11 +22,10 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function MyApp({ Component, pageProps }) {
   const store = useStore();
   const route = useRouter();
-  const [blockUi, setBlockUi] = useState(false);
 
   axios.interceptors.request.use((con) => {
-    let config = store.getState().config
-    setBlockUi(true);
+    let config = store.getState().config;
+    
     if (config.auth)
       if (config.auth.token)
         con.headers.Authorization = `${config.auth.token}`;
@@ -39,15 +37,13 @@ function MyApp({ Component, pageProps }) {
 
   axios.interceptors.response.use(
     (response) => {
-      setBlockUi(false);
       return response;
     },
     error => {
-      if (error.response && error.response.status === 401) {
+      /* if (error.response && error.response.status === 401) {
         store.dispatch({ type: "SIGN_OUT" });
         route.push("/account?redirect=" + window.location.pathname);
-      }
-      setBlockUi(false);
+      } */
       return Promise.reject(error);
     }
   );
@@ -76,8 +72,6 @@ function MyApp({ Component, pageProps }) {
       {/* yy */}
 
       <Component {...pageProps} />
-
-      {/* </BlockUi> */}
       {/* </PersistGate> */}
     </Fragment>)
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react"
-import { formatCurrency } from "../../pages/helpers";
+import { formatCurrency } from "../helpers";
 
 export default function Orders() {
     const [orders, setOrders] = useState([]);

@@ -31,6 +31,8 @@ export default function Login() {
                     dispatch({ type: "ADD_TO_CART", payload: res.data.id })
                     dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length })
                 }
+
+                window.location.reload();
             });
 
             redirect && router.push(redirect);

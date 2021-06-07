@@ -3,22 +3,21 @@ import { Fragment } from "react"
 import { useSelector } from "react-redux"
 import Footer from "./footer"
 import Header from "./header"
-import Login from "../components/login"
 import MyAccount from "../components/customer/account"
+import { withAuth } from "../components/helpers"
 
-export default function Account() {
-    const auth = useSelector(state => state.config.auth ? state.config.auth : false)
-
+export function Account() {
+    
     return (
         <Fragment>
             <Head>
                 <title>My Account - Gandhi</title>
             </Head>
             <Header shadow />
-            {
-                auth ? <MyAccount /> : <Login />
-            }
+            <MyAccount />
             <Footer />
         </Fragment>
     )
 }
+
+export default withAuth(Account);

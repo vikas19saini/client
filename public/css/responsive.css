@@ -371,6 +371,14 @@
     .appliedFilters{
         display: none !important;
     }
+    .sortDesktop{
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    .btnFilter{
+        font-size: 12px !important;
+    }
+
     .mob_view_filter{
         display: block;
     }
@@ -910,7 +918,7 @@ padding: 0 3.6rem;
 	
 	ul.pagination li a{padding: 18px 10px}
 	.inner_listing {
-    padding:50px 0 0;}
+    padding:0px 0 0;}
 	.padd_right_0{padding: 0}
 	.inner_brocade h3 {
     font-size: 24px;

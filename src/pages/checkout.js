@@ -4,32 +4,24 @@ import Footer from "./footer"
 import Header from "./header"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios";
-import { formatAddress } from "./helpers"
+import { formatAddress, useCart, withAuth } from "../components/helpers"
 import CheckoutSidebar from "../components/checkoutSide"
 import AddressForm from "../components/customer/addressForm"
 import PaymentMethod from "../components/paymentMethods";
-import { useRouter } from "next/router"
-import { toast, ToastContainer } from 'react-nextjs-toast';
+import { ToastContainer } from 'react-nextjs-toast';
 import BlockUi from "react-block-ui"
+import { useRouter } from "next/router"
 
-export default function Cart() {
+function Checkout() {
     const [reload, setReload] = useState(1)
     const [addNew, setAddNew] = useState(false);
     const [addresses, setAddresses] = useState([]);
     const [shippingAddress, setShippingAddress] = useState(false);
-    const dispatch = useDispatch();
     const [showPaymentMethods, setShowPaymentMethods] = useState(false);
-    const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
-    const router = useRouter();
-    const [cartData, setCartData] = useState(null);
     const [shippingNotAvailable, setShippingNotAvailable] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
-
-    useEffect(() => {
-        if (!cartId) {
-            router.push("/cart");
-        }
-    }, [cartId])
+    const { disableCheckout, cartId } = useCart();
+    const router = useRouter();
 
     useEffect(() => {
         setIsUpdating(true);
@@ -40,22 +32,6 @@ export default function Cart() {
             setIsUpdating(false);
         })
     }, [addNew, reload]);
-
-    useEffect(async () => {
-        if (cartId) {
-            setIsUpdating(true);
-            await axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-                if (res.data) {
-                    setCartData(res.data);
-                    if (res.data.status === 2)
-                        showPaymentMethods(false)
-
-                    dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length });
-                }
-                setIsUpdating(false);
-            });
-        }
-    }, [reload])
 
     useEffect(() => {
         window.scrollTo({
@@ -103,10 +79,29 @@ export default function Cart() {
         });
     }
 
+    if (disableCheckout) {
+        return (
+            <Fragment>
+                <Head>
+                    <title>Cart Details</title>
+                </Head>
+                <Header shadow />
+                <div className="mobile_hidden_vissible" id="cartProducts">
+                    <section className="empty-cart">
+                        <div className="empty-cart_main">
+                            <h2>Some item in your cart is out of stock.</h2>
+                            <button className="checkoutBtn" onClick={() => router.push("/cart")}>Go to cart</button>
+                        </div>
+                    </section>
+                </div>
+            </Fragment>
+        )
+    }
+
     return (
         <Fragment>
             <Head>
-                <title>Checkout</title>
+                <title>Checkout - Gandhi Fabrics</title>
             </Head>
             <Header shadow />
             <ToastContainer />
@@ -158,9 +153,7 @@ export default function Cart() {
                                                     );
                                                 })
                                             }
-
                                             <button type="button" className="addAddressButton cartProduct" onClick={() => setAddNew(true)} style={{ width: "100%", background: "#fff" }}>Add New Address</button>
-
                                         </div>
                                     )
                                 }
@@ -170,11 +163,11 @@ export default function Cart() {
                                 }
 
                                 {
-                                    showPaymentMethods && (<PaymentMethod cartData={cartData} />)
+                                    showPaymentMethods && (<PaymentMethod />)
                                 }
                             </div>
                             <div className="col-lg-5 col-sm-12 nopadding">
-                                {cartData && <CheckoutSidebar setReload={setReload} cartData={cartData} disableCheckout={true} />}
+                                <CheckoutSidebar setReload={setReload} hideCheckoutBtn />
                             </div>
                         </div>
                     </div>
@@ -185,3 +178,5 @@ export default function Cart() {
         </Fragment>
     )
 }
+
+export default withAuth(Checkout);
