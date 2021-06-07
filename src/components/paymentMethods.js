@@ -59,7 +59,7 @@ export default function PaymentMethod(props) {
                     <div className="col-md-12 col-12">
                         {
                             allPaymentMethods.map((pm, index) => {
-                                if (pm.currencies.includes(currency.code.toLowerCase)) {
+                                if (pm.currencies.includes(currency.code.toLowerCase())) {
                                     return (
                                         <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
                                             <span className="radio-item">

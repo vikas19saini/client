@@ -77,7 +77,7 @@ export default function Products(props) {
 
     const applyFilter = (filterValue) => {
         let currentFilters = router.query.filters ? router.query.filters.split("|") : [];
-        currentFilters = currentFilters.map(fv => parseInt(fv));
+        currentFilters = currentFilters.map(fv => fv);
 
         if (currentFilters.includes(filterValue)) {
             currentFilters = currentFilters.filter(fv => fv !== filterValue);
@@ -119,7 +119,7 @@ export default function Products(props) {
             setMobileSelectedPriceFilter(mpf);
         } else {
             let currentFilters = appliedFiltersTemp.filters.split("|");
-            currentFilters = currentFilters.filter(f => parseInt(f) !== val);
+            currentFilters = currentFilters.filter(f => f !== val);
             currentFilters.length > 0 ? appliedFiltersTemp.filters = currentFilters.join("|") : delete appliedFiltersTemp.filters
         }
 
@@ -133,7 +133,7 @@ export default function Products(props) {
     }
 
     useEffect(() => {
-        let mfSelected = router.query.filters ? router.query.filters.split("|").map(f => Number(f)) : [];
+        let mfSelected = router.query.filters ? router.query.filters.split("|").map(f => f) : [];
         setMobileFiltersSelected(mfSelected);
 
         if (router.query.start && router.query.end) {
@@ -291,8 +291,8 @@ export default function Products(props) {
                                                                                     {
                                                                                         filter.filterValues.map(fv => {
                                                                                             return (
-                                                                                                <label className="check_cus" onClick={() => applyFilter(fv.id)} key={fv.id}>{fv.name}
-                                                                                                    <input type="checkbox" defaultValue={fv.id} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.id) ? true : false} />
+                                                                                                <label className="check_cus" onClick={() => applyFilter(fv.name)} key={fv.id}>{fv.name}
+                                                                                                    <input type="checkbox" defaultValue={fv.name} readOnly={true} checked={router.query.filters && router.query.filters.includes(fv.name) ? true : false} />
                                                                                                     <span className="checkmark"></span>
                                                                                                 </label>
                                                                                             );
@@ -343,14 +343,14 @@ export default function Products(props) {
                                         router.query.filters && router.query.filters.split("|").map(appliedFilter => {
                                             return filters.map(filter => {
                                                 let filterText = "";
-                                                let appFilterValuefilter = filter.filterValues.filter(fv => parseInt(appliedFilter) === fv.id);
+                                                let appFilterValuefilter = filter.filterValues.filter(fv => appliedFilter === fv.name);
                                                 if (appFilterValuefilter.length > 0) {
                                                     filterText += appFilterValuefilter[0].name;
 
                                                     return (
                                                         <div className="filter" key={appliedFilter}>
                                                             <span>{filterText}</span>
-                                                            <button type="button" onClick={() => removeFilter("filter", appFilterValuefilter[0].id)}>X</button>
+                                                            <button type="button" onClick={() => removeFilter("filter", appFilterValuefilter[0].name)}>X</button>
                                                         </div>)
                                                 }
                                             })
@@ -440,11 +440,11 @@ export default function Products(props) {
                                                             {
                                                                 filter.filterValues.map(fv => {
                                                                     return (
-                                                                        <li className="normalValueContainer selectedOption" onClick={() => applyFilterMobile(fv.id)} key={fv.id}>
+                                                                        <li className="normalValueContainer selectedOption" onClick={() => applyFilterMobile(fv.name)} key={fv.id}>
                                                                             <div className="customCheckbox">
-                                                                                <div className={mobileFiltersSelected.includes(fv.id) ? "filterValue selected" : "filterValue"}>{fv.name}</div>
+                                                                                <div className={mobileFiltersSelected.includes(fv.name) ? "filterValue selected" : "filterValue"}>{fv.name}</div>
                                                                                 {
-                                                                                    mobileFiltersSelected.includes(fv.id) && <img src="/images/checked.svg" width="20px" />
+                                                                                    mobileFiltersSelected.includes(fv.name) && <img src="/images/checked.svg" width="20px" />
                                                                                 }
                                                                             </div>
                                                                         </li>
