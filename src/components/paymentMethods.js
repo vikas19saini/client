@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-nextjs-toast';
 import { useRouter } from 'next/router'
+import { PayPalButton } from "react-paypal-button-v2";
 
 export default function PaymentMethod(props) {
     let currency = useSelector(state => state.config.currency);
@@ -33,10 +34,14 @@ export default function PaymentMethod(props) {
             order = order.data;
             await axios.post(`${process.env.API_URL}orders/payment`, {
                 orderId: order.order.id,
-                transactionNo: payment.paymentID,
+                transactionNo: payment.id,
                 currency: currency.code,
-                status: payment.paid ? "SUCCESS" : "FAILED",
-                method: "paypal"
+                status: payment.status ? payment.status : "FAILED",
+                method: "paypal",
+                additionalLinks: JSON.stringify({
+                    payer: payment.payer.email_address,
+                    payerId: payment.payer.payer_id
+                })
             });
             router.push(`thankyou?orderId=${order.order.id}`);
         } catch (err) {
@@ -62,9 +67,11 @@ export default function PaymentMethod(props) {
                                 if (pm.currencies.includes(currency.code.toLowerCase())) {
                                     return (
                                         <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
-                                            <span className="radio-item">
-                                                <input type="radio" defaultChecked={false} onChange={() => setPaymentMethod(pm)} value={pm.name} checked={(paymentMethod && (paymentMethod.name === pm.name))} />
-                                                <label>{pm.title}</label>
+                                            <span className="radio-item" style={{ display: "flex", alignItems: "center" }}>
+                                                <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
+                                                    <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></span>
+                                                </span>
+                                                <label style={{ cursor: "pointer" }}>{pm.title}</label>
                                             </span>
                                         </div>
                                     );
@@ -95,20 +102,27 @@ export default function PaymentMethod(props) {
                             </div>)
                         }
                         {
-                            (paymentMethod && paymentMethod.name === "paypal") && (<PaypalExpressBtn client={
-                                paymentMethod.mode === "production" ? {
-                                    production: paymentMethod.key
-                                } : {
-                                    sandbox: paymentMethod.key
-                                }
-                            } currency={currency.code} total={amountToPay} env={paymentMethod.mode} style={{
-                                size: 'responsive',
-                                color: 'gold',
-                                shape: 'pill',
-                                label: 'pay',
-                                tagline: true,
-                                fundingicons: true
-                            }} onSuccess={onSuccess} />)
+                            (paymentMethod && paymentMethod.name === "paypal") && (<PayPalButton options={{
+                                clientId: paymentMethod.key
+                            }}
+                                currency={currency.code} amount={amountToPay} env={paymentMethod.mode} style={{
+                                    hight: 25,
+                                    color: 'gold',
+                                    shape: 'rect',
+                                    label: 'pay',
+                                    fundingicons: true,
+                                    tagline: false
+                                }} onSuccess={onSuccess} onError={() => {
+                                    toast.notify("Payment failed!", {
+                                        type: "error",
+                                        title: "Order Failed"
+                                    });
+                                }} catchError={() => {
+                                    toast.notify("Payment failed!", {
+                                        type: "error",
+                                        title: "Order Failed"
+                                    });
+                                }} />)
                         }
                     </div>
                 </div>

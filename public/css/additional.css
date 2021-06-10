@@ -458,3 +458,31 @@ span.eat {
   width: 0px;
   height: 0px;
 }
+
+.outerDot{
+  display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #8d8d8d;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+.outerDot.active{
+  border: 2px solid #28a745 !important;
+}
+.outerDot .innerDot{
+  display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.outerDot .innerDot.active{
+  border: 2px solid #28a745 !important;
+  background-color: #28a745 !important;
+}
