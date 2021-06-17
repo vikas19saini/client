@@ -146,7 +146,7 @@ export default function SubCategory(props) {
                                             <div className="cotton_fabric_sec tp_border">
                                                 <Link href={"/category/" + ra.slug}>
                                                     <a>
-                                                        <Image src={ra.subCategory ? ra.subCategory.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" unoptimized />
+                                                        <Image src={ra.subCategory ? ra.subCategory.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" quality={90} />
                                                     </a>
                                                 </Link>
                                                 <h5>{ra.name} </h5>

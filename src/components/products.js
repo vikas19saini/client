@@ -4,7 +4,7 @@ import Link from "next/link"
 import { formatCurrency, GetPriceHtml } from "./helpers"
 import { useRouter } from 'next/router'
 import { useSelector } from "react-redux"
-import { isMobile } from "react-device-detect"
+import Image from "next/image";
 
 const priceFilters = [
     {
@@ -366,7 +366,7 @@ export default function Products(props) {
                                                         <div className="cotton_fabric_sec" style={{ padding: "0px" }}>
                                                             <Link href={"/product/" + p.slug}>
                                                                 <a>
-                                                                    <img src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} alt={p.name} className="img-fluid" />
+                                                                    <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} width={434} height={297} alt={p.name} className="img-fluid" quality={90} />
                                                                 </a>
                                                             </Link>
                                                             <h5>{p.name} - {p.sku}</h5>

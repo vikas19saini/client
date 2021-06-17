@@ -79,7 +79,7 @@ export default function Product(product) {
                                             return (
                                                 <div className="item" key={t ? t.id : Math.random()}>
                                                     <div className="icon_hard">
-                                                        <Image src={t ? t.fullUrl : "/images/placeholder.png"} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
+                                                        <Image quality={90} src={t ? t.fullUrl : "/images/placeholder.png"} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
                                                     </div>
                                                 </div>
                                             )

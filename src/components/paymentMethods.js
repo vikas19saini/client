@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import PaypalExpressBtn from 'react-paypal-express-checkout';
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-nextjs-toast';
