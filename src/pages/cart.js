@@ -109,7 +109,7 @@ export default function Cart() {
                                                         <div className="check_img">
                                                             <Link href={`product/${cp.slug}`}>
                                                                 <a>
-                                                                    <Image src={cp.featuredImage.miniThumbnailUrl} width={130} height={130} />
+                                                                    <Image quality={100} src={cp.featuredImage.miniThumbnailUrl} width={130} height={130} />
                                                                 </a>
                                                             </Link>
                                                         </div>

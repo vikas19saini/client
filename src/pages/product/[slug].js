@@ -79,7 +79,7 @@ export default function Product(product) {
                                             return (
                                                 <div className="item" key={t ? t.id : Math.random()}>
                                                     <div className="icon_hard">
-                                                        <Image quality={90} src={t ? t.fullUrl : "/images/placeholder.png"} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
+                                                        <Image quality={100} src={t ? t.fullUrl : "/images/placeholder.png"} height={570} width={680} alt={product.name} onClick={() => setOpenZoom(true)} />
                                                     </div>
                                                 </div>
                                             )
@@ -245,10 +245,8 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     try {
         let product = await axios.get(`${process.env.API_URL}products/${context.params.slug}`)
         product = product.data;
-
         let relativeProducts = await axios.get(`${process.env.API_URL}products/relative/${product.id}`);
         relativeProducts = relativeProducts.data
-
         product.stockStatus = stockStatus(product)
 
         product.relative = relativeProducts;

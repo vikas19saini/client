@@ -366,7 +366,7 @@ export default function Products(props) {
                                                         <div className="cotton_fabric_sec" style={{ padding: "0px" }}>
                                                             <Link href={"/product/" + p.slug}>
                                                                 <a>
-                                                                    <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} width={434} height={297} alt={p.name} className="img-fluid" quality={90} />
+                                                                    <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} width={434} height={297} alt={p.name} className="img-fluid" quality={100} />
                                                                 </a>
                                                             </Link>
                                                             <h5>{p.name} - {p.sku}</h5>

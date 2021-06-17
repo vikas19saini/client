@@ -8,7 +8,7 @@ export default function Products(props) {
             <div className="item" key={p.id}>
                 <Link href={`/product/${p.slug}`}>
                     <a>
-                        <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} height={350} width={350} alt={p.name} quality={90} />
+                        <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} height={350} width={350} alt={p.name} quality={100} />
                     </a>
                 </Link>
                 <div className="arrivals">
