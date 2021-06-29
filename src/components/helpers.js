@@ -30,11 +30,14 @@ export function GetPriceHtml(props) {
 
     if (props.product.salePrice === 0) {
         formatPrice(1) // dummy call
-        return (formatPrice(props.product.ragularPrice * quantity)) + " / Metre"
+        return (formatPrice(props.product.ragularPrice * quantity)) + "/Metre"
     }
+
+    let discountPer = 100 * (props.product.ragularPrice - props.product.salePrice * quantity) / props.product.ragularPrice;
+
     return (
         <Fragment>
-            {formatPrice(props.product.salePrice * quantity)} / Metre <span><del>{formatPrice(props.product.ragularPrice * quantity)} / Metre </del></span>
+            {formatPrice(props.product.salePrice * quantity)} <del style={{color: "#bfbfbf"}}>{formatPrice(props.product.ragularPrice * quantity)} </del>/ Metre <i className="disPer">({Math.round(discountPer)}% Off)</i>
         </Fragment>
     )
 }
@@ -167,7 +170,7 @@ export function useCart() {
             setIsAddingToWishlist(true);
             let res = await axios.post(`${process.env.API_URL}wishlist`, { productId: id });
             setIsAddingToWishlist(false);
-           /*  setReload1(reload1 + 1) */
+            /*  setReload1(reload1 + 1) */
             return { type: "success", message: res.data.message, title: "Success" };
         } catch (err) {
             setIsAddingToWishlist(false);

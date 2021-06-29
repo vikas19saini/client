@@ -19,6 +19,11 @@
   animation: spin 2s linear infinite;
   margin: 0 auto;
   }
+  .disPer{
+    text-transform: uppercase;
+    color: crimson;
+    font-size: 12px;
+  }
 
   .clearFilterMbtn{
     background: transparent;
