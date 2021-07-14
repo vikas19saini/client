@@ -476,6 +476,9 @@ span.eat {
 .outerDot.active{
   border: 2px solid #28a745 !important;
 }
+footer{
+  margin-top: 20px;
+}
 .outerDot .innerDot{
   display: inline-block;
     height: 10px;

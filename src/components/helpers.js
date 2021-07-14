@@ -33,11 +33,11 @@ export function GetPriceHtml(props) {
         return (formatPrice(props.product.ragularPrice * quantity)) + "/Metre"
     }
 
-    let discountPer = 100 * (props.product.ragularPrice - props.product.salePrice * quantity) / props.product.ragularPrice;
+    let discountPer = 100 * ((props.product.ragularPrice * quantity) - (props.product.salePrice * quantity)) / (props.product.ragularPrice * quantity);
 
     return (
         <Fragment>
-            {formatPrice(props.product.salePrice * quantity)} <del style={{color: "#bfbfbf"}}>{formatPrice(props.product.ragularPrice * quantity)} </del>/ Metre <i className="disPer">({Math.round(discountPer)}% Off)</i>
+            {formatPrice(props.product.salePrice * quantity)} <del style={{ color: "#bfbfbf" }}>{formatPrice(props.product.ragularPrice * quantity)} </del>/ Metre <i className="disPer">({Math.round(discountPer)}% Off)</i>
         </Fragment>
     )
 }

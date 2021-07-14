@@ -60,7 +60,7 @@ export default function Header(props) {
                                         <span className="searchbox-icon" onClick={() => setShowSearchMenu(!showSearchMenu)}><img src="/images/address_icon/search.svg" /></span>
                                     </form>
                                     <div className="txt_op_0" style={{ display: showSearchMenu ? "block" : "none" }}>
-                                        <h3><span>What do you want make</span></h3>
+                                        <h3><span>What do you want to make?</span></h3>
                                         <div className="category">
                                             <Link href="/search?query=Dresses">
                                                 <a>

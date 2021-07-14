@@ -50,7 +50,7 @@ export default function Contact() {
                         <div className="col-md-12">
                             <div className="contact_head wow fadeInUp">
                                 <h4>Browse Our Store</h4>
-                                <p><span>Questions? Concerns? We're ready to help! Experience our world-class</span>support by sending us a message today.</p>
+                                <p><span>Questions? Concerns? We're ready to help! Experience our world-class</span> support by sending us a message today.</p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ export default function Contact() {
                             <input type="hidden" name="type" defaultValue="live" />
                             <div className="col-md-4">
                                 <div className="custom_add">
-                                    <p>Preffered date:</p>
+                                    <p>Preferred  date:</p>
                                     <input type="datetime-local" name="dateTime" placeholder="Select date" />
                                 </div>
                             </div>
