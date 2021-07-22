@@ -12,11 +12,32 @@ export default function PaymentMethod(props) {
     const router = useRouter();
     const cartData = useSelector(state => state.config.cartData);
     const amountToPay = parseFloat((cartData.total * currency.value).toFixed(2));
+    const [stockAllocated, setStockAllocated] = useState(false);
+    const cartId = props.cartId;
+
+    useEffect(() => {
+        setPaymentMethod(null);
+    }, [currency])
 
     useEffect(() => {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
             document.getElementById("cardForm").scrollIntoView({
                 behavior: "smooth"
+            })
+        }
+
+        if (paymentMethod && !stockAllocated) {
+            axios.post(`${process.env.API_URL}cart/allocateStock`, {
+                cartId: cartId
+            }).then(res => {
+                setStockAllocated(true);
+            }).catch(err => {
+                setPaymentMethod(null);
+                setStockAllocated(false)
+                toast.notify("Item out of stock", {
+                    type: "error",
+                    title: "Stock"
+                });
             })
         }
     }, [paymentMethod]);
@@ -61,24 +82,7 @@ export default function PaymentMethod(props) {
             <div className="center-block">
                 <div className="row">
                     <div className="col-md-12 col-12">
-                        {
-                            allPaymentMethods.map((pm, index) => {
-                                if (pm.currencies.includes(currency.code.toLowerCase())) {
-                                    return (
-                                        <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
-                                            <span className="radio-item" style={{ display: "flex", alignItems: "center" }}>
-                                                <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
-                                                    <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></span>
-                                                </span>
-                                                <label style={{ cursor: "pointer" }}>{pm.title}</label>
-                                            </span>
-                                        </div>
-                                    );
-                                } else {
-                                    return ("");
-                                }
-                            })
-                        }
+                        <PaymentOptions paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} paymentOptions={allPaymentMethods} />
                         {
                             (paymentMethod && paymentMethod.name === "bank") &&
                             (<div className="payViaBank">
@@ -87,7 +91,7 @@ export default function PaymentMethod(props) {
                                     <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
                                     <input type="hidden" name="amount" value={(cartData.total * currency.value).toFixed(2)} />
                                     <input type="hidden" name="orderRef" value={cartData.id} />
-                                    <input type="hidden" name="currCode" value={currency.code.toLowerCase() == "usd" ? "840" : "840"} />
+                                    <input type="hidden" name="currCode" value={paymentMethod.currencyCode} />
                                     <input type="hidden" name="successUrl" value={`${process.env.WEB_URL}placeorder?cartId=${cartData.id}&currencyCode=${currency.code}`} />
                                     <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout`} />
                                     <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout`} />
@@ -128,4 +132,33 @@ export default function PaymentMethod(props) {
             </div>
         </div>
     )
+}
+
+function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
+    let currency = useSelector(state => state.config.currency);
+
+    let isOptionAvail = false;
+    for (let pm of paymentOptions) {
+        if (pm.currencies.includes(currency.code.toLowerCase())) {
+            isOptionAvail = true;
+        }
+    }
+
+    if (!isOptionAvail) return (<p className="deliveryErr"><u>We are sorry!</u> We are currently not accepting payments in (<strong>{currency.code.toUpperCase()}</strong>) currency. Please choose another currency to continue checkout. </p>);
+
+    return paymentOptions.map((pm, index) => {
+        if (pm.currencies.includes(currency.code.toLowerCase())) {
+            return (
+                <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
+                    <span className="radio-item" style={{ display: "flex", alignItems: "center" }}>
+                        <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
+                            <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></span>
+                        </span>
+                        <label style={{ cursor: "pointer" }}>{pm.title}</label>
+                    </span>
+                </div>
+            );
+        }
+    });
+
 }

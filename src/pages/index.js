@@ -221,7 +221,7 @@ export default function Home(props) {
             <div className="col-md-6">
               <div className="left_2 inner_left">
                 <h3>Our Printed Fabric Collection</h3>
-                <p>A Collection Of Printed Fabrics, Featuring International Trends and classNameic Patterns.</p>
+                <p>A Collection Of Printed Fabrics, Featuring International Trends and classic Patterns.</p>
                 <div className="dropdown">
                   <Link href="/category/prints">
                     <a className="view_bttn dropbtn">View Collection</a>

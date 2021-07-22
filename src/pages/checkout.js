@@ -108,10 +108,19 @@ function Checkout() {
             <BlockUi blocking={isUpdating}>
                 <section className="inner_product product_info" style={{ background: "#f6f7f7" }}>
                     <div className="container">
+                        <div className="row rm" style={{ marginRight: "0px" }}>
+
+                            <div className="checkoutInfo">
+                                <div className="alert alert-info">
+                                    <p>Due to the current lockdown situation May cause the delivery of goods to be delayed 7-10 days.</p>
+                                    <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
+                                </div>
+                            </div>
+                        </div>
                         <div className="row">
                             <div className="col-lg-7 col-sm-12">
                                 {
-                                    shippingAddress ? (
+                                    shippingAddress && (
                                         <div className="dis_detail selectedAdd cartProduct">
                                             <div>
                                                 <h4>Delivery Address</h4>
@@ -125,16 +134,15 @@ function Checkout() {
                                                 }
                                             </div>
                                         </div>
-                                    ) : (
-                                        <div className="dis_detail wow fadeInUp">
-                                            <h4>Select delivery address</h4>
-                                        </div>
                                     )
                                 }
 
                                 {
                                     (!addNew && !shippingAddress) && (
                                         <div className="row">
+                                            <div className="col-md-12 col-sm-12 addressOne cartProduct" style={{ padding: "15px 10px" }}>
+                                                <h4>Select delivery address</h4>
+                                            </div>
                                             {
                                                 addresses.map((add) => {
                                                     return (
@@ -163,7 +171,7 @@ function Checkout() {
                                 }
 
                                 {
-                                    showPaymentMethods && (<PaymentMethod />)
+                                    showPaymentMethods && (<PaymentMethod cartId={cartId} />)
                                 }
                             </div>
                             <div className="col-lg-5 col-sm-12 nopadding">

@@ -371,6 +371,12 @@
     .appliedFilters{
         display: none !important;
     }
+    .checkoutInfo{
+        margin-top: 10px;
+    }
+    .rm{
+        margin-right: -15px !important;
+    }
     .sortDesktop{
         margin-bottom: 5px;
         font-size: 12px;

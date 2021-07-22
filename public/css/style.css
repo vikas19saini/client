@@ -1180,7 +1180,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #212121;
 }
 .md-number-input.number-input input[type=number] {
-     max-width: 2rem;
+    max-width: 50px;
     border: none;
     font-size: 14px;
     height:30px;
@@ -1190,7 +1190,6 @@ input[type=number]::-webkit-outer-spin-button {
     border: 1px solid #38383A;
 	 background: #0F0F0F;
     color: #fff;
-	margin:0 .7rem;
 }
 
 .md-number-input.number-input input[type=number]:hover{border: 1px solid #BE8F45}
@@ -5263,4 +5262,13 @@ font-weight: 500}
 }
 .mob_view_filter{
     display: none;
+}
+.checkoutInfo{
+    width: 100%;
+    margin-bottom: 13px;    
+    margin-top: -50px;
+}
+.checkoutInfo p{
+    margin: 0px;
+    text-align: center;
 }
