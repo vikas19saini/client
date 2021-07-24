@@ -5198,7 +5198,7 @@ font-weight: 500}
 }
 
 .cartPadding{
-    padding: 20px 0px 25px 0px !important;
+    padding:  20px 0px !important;
     border: 0px !important;
 }
 .cartProduct .mrg_12{
@@ -5207,6 +5207,12 @@ font-weight: 500}
 .appy_sec{
     position: sticky;
     top: 100px;
+}
+.cartProduct{
+    margin: 5px 0px;
+}
+.outofstock{
+    box-shadow: 0 0 0 1px #dc3545 !important;
 }
 .cartProduct, .appy_sec, .selectedAdd{
     box-shadow: 0 0 0 1px #dcdcde;
@@ -5271,4 +5277,45 @@ font-weight: 500}
 .checkoutInfo p{
     margin: 0px;
     text-align: center;
+}
+
+.lowstock{
+    color: #dc3545 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.cartAdd{
+    margin: 0;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    font-family: 'Montserrat';
+}
+.actionButton{
+    margin-bottom: 15px;
+}
+.cartAction{
+    text-align: right;
+}
+.cartAction del{
+    display: block;
+}
+.cartPTitle{
+    color: #212529;
+    margin-bottom: 6px;
+    display: block;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 600;
+}
+.cartPTitle:hover{
+    color: inherit;
+}
+.cartProduct .md-number-input{
+    padding: 5px 0 0px !important;
 }

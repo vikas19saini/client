@@ -371,6 +371,12 @@
     .appliedFilters{
         display: none !important;
     }
+    .cartAction del{
+        display: inline-block;
+    }
+    .cartProduct .md-number-input{
+        padding: 5px 0 7px !important;
+    }
     .checkoutInfo{
         margin-top: 10px;
     }

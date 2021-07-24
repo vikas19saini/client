@@ -2,7 +2,6 @@ import Head from "next/head"
 import { Fragment, useEffect, useState } from "react"
 import Footer from "./footer"
 import Header from "./header"
-import { useSelector, useDispatch } from "react-redux"
 import axios from "axios";
 import { formatAddress, useCart, withAuth } from "../components/helpers"
 import CheckoutSidebar from "../components/checkoutSide"
@@ -20,7 +19,7 @@ function Checkout() {
     const [showPaymentMethods, setShowPaymentMethods] = useState(false);
     const [shippingNotAvailable, setShippingNotAvailable] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
-    const { disableCheckout, cartId } = useCart();
+    const { disableCheckout, cartId, calcShiping } = useCart();
     const router = useRouter();
 
     useEffect(() => {
@@ -48,7 +47,7 @@ function Checkout() {
     useEffect(() => {
         if (shippingAddress) {
             setIsUpdating(true);
-            axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: shippingAddress.id }).then((res) => {
+            calcShiping(shippingAddress.id).then((d) => {
                 setShowPaymentMethods(true);
                 setReload((new Date()).getTime());
                 setShippingNotAvailable(false);

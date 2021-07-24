@@ -102,40 +102,41 @@ export default function Cart() {
                             {
                                 cartProductDetails.map((cp) => {
                                     return (
-                                        <div className="row cartProduct" key={cp.id}>
-                                            <div className="col-md-11 col-sm-12">
-                                                <div className="mrg_12">
-                                                    <div className="main_inner_check rm_bdr cartPadding">
-                                                        <div className="check_img">
-                                                            <Link href={`product/${cp.slug}`}>
-                                                                <a>
-                                                                    <Image quality={100} src={cp.featuredImage.miniThumbnailUrl} width={130} height={130} />
-                                                                </a>
-                                                            </Link>
-                                                        </div>
-                                                        <div className="check_dis">
-                                                            <Link href={`product/${cp.slug}`}>
-                                                                <a>
-                                                                    <p>{cp.name}</p>
-                                                                </a>
-                                                            </Link>
-                                                            <CartButton product={cp} iscartpage />
-                                                        </div>
-                                                        <div className="right_icon">
-                                                            <i onClick={() => removeProduct(cp.cartProducts.id)} className="fa fa-trash" aria-hidden="true"></i>
-                                                            <button type="button" onClick={() => addToWishlist(cp.id)} style={{ background: "transparent", border: "0px" }}>
-                                                                <img src="/images/address_icon/heart.svg" />
-                                                            </button>
-                                                        </div>
-                                                        <div className="right_content_1">
-                                                            <p><strong><GetPriceHtml product={cp} quantity={cp.cartProducts.quantity} /></strong></p>
-                                                            {
-                                                                cp.cartProducts.discount ?
-                                                                    <p className="couponDiscountP">Discount {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(cp.cartProducts.discount * currency.value).replace("THB", "฿")}</p>
-                                                                    : ""
-                                                            }
-                                                        </div>
+                                        <div className={cp.cartProducts.status === 2 ? "row cartProduct cartPadding outofstock" : "row cartPadding cartProduct"} key={cp.id}>
+                                            <div className="col-lg-3 col-4 vcenter">
+                                                <Link href={`product/${cp.slug}`}>
+                                                    <a>
+                                                        <Image quality={100} src={cp.featuredImage.miniThumbnailUrl} width={130} height={130} />
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                            <div className="col-lg-5 col-8">
+                                                <div className="cartProductDetail vcenter">
+                                                    <Link href={`product/${cp.slug}`}>
+                                                        <a className="cartPTitle">
+                                                            {cp.name} - {cp.sku}
+                                                        </a>
+                                                    </Link>
+                                                    <p className="cartAdd">Quantity - {cp.cartProducts.quantity}</p>
+                                                    <CartButton product={cp} iscartpage />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-12 vcenter">
+                                                <div className="cartAction">
+                                                    <div className="actionButton">
+                                                        <button type="button" onClick={() => removeProduct(cp.cartProducts.id)} style={{ background: "transparent", border: "0px" }}>
+                                                            <i className="fa fa-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                        <button type="button" onClick={() => addToWishlist(cp.id)} style={{ background: "transparent", border: "0px" }}>
+                                                            <i className="fa fa-heart-o" aria-hidden="true"></i>
+                                                        </button>
                                                     </div>
+                                                    <p><strong><GetPriceHtml product={cp} quantity={cp.cartProducts.quantity} /></strong></p>
+                                                    {
+                                                        cp.cartProducts.discount ?
+                                                            <p className="couponDiscountP">Discount {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(cp.cartProducts.discount * currency.value).replace("THB", "฿")}</p>
+                                                            : ""
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

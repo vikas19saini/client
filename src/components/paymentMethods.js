@@ -5,15 +5,13 @@ import { toast, ToastContainer } from 'react-nextjs-toast';
 import { useRouter } from 'next/router'
 import { PayPalButton } from "react-paypal-button-v2";
 
-export default function PaymentMethod(props) {
+export default function PaymentMethod() {
     let currency = useSelector(state => state.config.currency);
     const [paymentMethod, setPaymentMethod] = useState(null);
     const [allPaymentMethods, setAllPaymentMethods] = useState([]);
     const router = useRouter();
     const cartData = useSelector(state => state.config.cartData);
-    const amountToPay = parseFloat((cartData.total * currency.value).toFixed(2));
-    const [stockAllocated, setStockAllocated] = useState(false);
-    const cartId = props.cartId;
+    const amountToPay = parseFloat((cartData.total * currency.value).toFixed(2))
 
     useEffect(() => {
         setPaymentMethod(null);
@@ -23,21 +21,6 @@ export default function PaymentMethod(props) {
         if (paymentMethod === "bank" && document.getElementById("cardForm")) {
             document.getElementById("cardForm").scrollIntoView({
                 behavior: "smooth"
-            })
-        }
-
-        if (paymentMethod && !stockAllocated) {
-            axios.post(`${process.env.API_URL}cart/allocateStock`, {
-                cartId: cartId
-            }).then(res => {
-                setStockAllocated(true);
-            }).catch(err => {
-                setPaymentMethod(null);
-                setStockAllocated(false)
-                toast.notify("Item out of stock", {
-                    type: "error",
-                    title: "Stock"
-                });
             })
         }
     }, [paymentMethod]);

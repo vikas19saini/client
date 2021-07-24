@@ -11,6 +11,7 @@ export default function CartButton(props) {
     const [step, setStep] = useState(0.1);
     const { addToCart, isAdding, addtoWishList, isAddingToWishlist } = useCart();
     const cartData = useSelector(state => state.config.cartData);
+    const [cartProductId, setCartProductId] = useState(null);
 
     useEffect(() => {
         setProduct(props.product);
@@ -21,7 +22,12 @@ export default function CartButton(props) {
             setMinOrderQty(product.minOrderQuantity ? product.minOrderQuantity : 1);
             setQty(product.minOrderQuantity ? product.minOrderQuantity : 1);
             setStep(product.step ? product.step : 0.1);
-            setMaxOrderQty(product.manageStock ? product.quantity : 50);
+            if (product.manageStock && product.cartProducts && product.cartProducts.status === 1) {
+                setMaxOrderQty(product.quantity + product.cartProducts.quantity);
+            } else {
+                setMaxOrderQty(product.manageStock ? product.quantity : 50);
+            }
+
         }
     }, [product]);
 
@@ -29,57 +35,47 @@ export default function CartButton(props) {
         if (product) {
             if (cartData && cartData.products && cartData.products.length > 0) {
                 let cartProduct = cartData.products.filter((cp) => cp.id === product.id);
-                if (cartProduct.length > 0)
+                if (cartProduct.length > 0) {
+                    setCartProductId(cartProduct[0].cartProducts.id);
                     setQty(cartProduct[0].cartProducts.quantity);
-                else
+                    if (cartProduct[0].cartProducts.status === 1) {
+                        setMaxOrderQty(product.quantity + cartProduct[0].cartProducts.quantity);
+                    }
+                } else {
                     setQty(product.minOrderQuantity);
+                    setCartProductId(null);
+                }
             } else {
                 setQty(product.minOrderQuantity);
+                setCartProductId(null);
             }
         }
     }, [cartData, product]);
 
     const setQuantity = (val) => {
+        val = parseFloat(val.toFixed(2));
         if (val < minQty) {
-            toast.notify(`Min order quantity is : ${minQty}`, {
-                type: "error",
-                title: "Error!!!"
-            });
-            return;
+            val = minQty;
+        } else if (val > maxQty) {
+            val = maxQty;
         }
 
-        if (val > maxQty) {
-            toast.notify(`Max order quantity is : ${maxQty}`, {
-                type: "error",
-                title: "Error!!!"
-            })
-
-            return;
-        }
-
-        val = parseFloat(val.toFixed(2))
         setQty(val)
     }
 
     const addProductToCart = async (quantity) => {
         let pqty = quantity;
         if (pqty < minQty) {
-            toast.notify(`Invalid quantity, min order quantity is : ${minQty}`, {
-                type: "error",
-                title: "Error!!!"
-            })
+            pqty = minQty;
         } else if (pqty > maxQty) {
-            toast.notify(`Invalid quantity, max order quantity is : ${maxQty}`, {
-                type: "error",
-                title: "Error!!!"
-            })
-        } else {
-            let response = await addToCart(product.id, pqty);
-            toast.notify(response.message, {
-                type: response.type,
-                title: response.title,
-            });
+            pqty = maxQty;
         }
+
+        let response = await addToCart(product.id, pqty, cartProductId);
+        toast.notify(response.message, {
+            type: response.type,
+            title: response.title,
+        });
     }
 
     const addToWishlist = async () => {
@@ -97,27 +93,7 @@ export default function CartButton(props) {
                 {
                     props.iscartpage ?
                         (
-                            <div className="check_qu_1">
-                                <div className="number-input md-number-input">
-                                    {
-                                        stockStatus(product) ?
-                                            <Fragment>
-                                                <p>Quantity</p>
-                                                <div className="dlx_main" style={{ display: "flex", alignItems: "center" }}>
-                                                    {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isAdding} onClick={() => addProductToCart(qty - step)}></button>}
-                                                    <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
-                                                    {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isAdding} onClick={() => addProductToCart(qty + step)}></button>}
-                                                </div>
-                                            </Fragment>
-                                            :
-                                            <Fragment>
-                                                <div className="number-input md-number-input">
-                                                    <h4>Out of Stock</h4>
-                                                </div>
-                                            </Fragment>
-                                    }
-                                </div>
-                            </div>
+                            <CartButtonOfCart product={product} isAdding={isAdding} iscartpage={props.iscartpage} addProductToCart={addProductToCart} qty={qty} step={step} />
                         )
                         : (
                             <Fragment>
@@ -156,7 +132,53 @@ export default function CartButton(props) {
                 }
             </Fragment>
         )
-    } else {
-        return ("");
+    }
+
+    return ("");
+}
+
+function CartButtonOfCart({
+    product: product,
+    iscartpage: iscartpage,
+    isAdding: isAdding,
+    addProductToCart: addProductToCart,
+    qty: qty,
+    step: step
+}) {
+    let productStockStatus = stockStatus(product, iscartpage);
+
+    if (productStockStatus.status === 1) {
+        return (
+            <div className="check_qu_1">
+                <div className="number-input md-number-input">
+                    <div className="dlx_main" style={{ display: "flex", alignItems: "center" }}>
+                        {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isAdding} onClick={() => addProductToCart(qty - step)}></button>}
+                        <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
+                        {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isAdding} onClick={() => addProductToCart(qty + step)}></button>}
+                    </div>
+                </div>
+            </div>
+        );
+    } else if (productStockStatus.status === 2) {
+        return (
+            <div className="check_qu_1">
+                <div className="number-input md-number-input">
+                    <div className="number-input md-number-input"><h4>{productStockStatus.message}</h4></div>
+                </div>
+            </div>
+        );
+    } else if (productStockStatus.status === 3) {
+        return (
+            <div className="check_qu_1">
+                <div className="number-input md-number-input">
+                    <div className="dlx_main" style={{ display: "flex", alignItems: "center" }}>
+                        {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="minus" disabled={isAdding} onClick={() => addProductToCart(qty - step)}></button>}
+                        <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
+                        {isAdding ? <div className="loader" style={{ margin: "0px" }} /> : <button className="plus" disabled={isAdding} onClick={() => addProductToCart(qty + step)}></button>}
+                    </div>
+                    <div className="number-input md-number-input"><p className="lowstock">{productStockStatus.message}</p></div>
+                </div>
+            </div>
+        );
     }
 }

@@ -42,11 +42,23 @@ export function GetPriceHtml(props) {
     )
 }
 
-export function stockStatus(product) {
-    /* if (product.stockStatus) {
-        if (product.manageStock && product.quantity <= 0)
-            product.stockStatus = 0
-    } */
+export function stockStatus(product, isCart = false) {
+    if (isCart) {
+
+        if (product.cartProducts.status === 1) {
+            return { status: 1 };
+        }
+
+        if (!product.currentStockStatus) {
+            return { status: 2, message: "Out of Stock" };
+        }
+
+        if (product.cartProducts.status === 2) {
+            return { status: 3, message: `Only ${product.quantity} In Stock` };
+        }
+
+        return { status: 1 };
+    }
 
     return product.currentStockStatus
 }
@@ -101,7 +113,6 @@ export function useCart() {
     const [isRemoving, setIsRemoving] = useState(false);
     const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
     const [reload, setReload] = useState(1);
-    /* const [reload1, setReload1] = useState(1); */
     const cartId = useSelector(state => state.config.cartId ? state.config.cartId : null);
     const dispatch = useDispatch();
     const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
@@ -109,34 +120,54 @@ export function useCart() {
 
     useEffect(() => {
         cartId && axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
-            if (res.data.status === 2) {
-                setDisableCheckout(true);
-            } else {
-                setDisableCheckout(false);
+            let disableCheckout = false;
+            for (let cp of res.data.products) {
+                if (cp.cartProducts.status === 2) {
+                    disableCheckout = true;
+                    break;
+                }
             }
+            setDisableCheckout(disableCheckout);
 
             dispatch({ type: "SET_CART_DATA", payload: res.data });
             dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length + "" });
+        }).catch((err) => {
+            console.log(err);
         });
     }, [reload, cartId]);
 
-    /* useEffect(() => {
-        axios.get(`${process.env.API_URL}wishlist`).then((res) => {
-            dispatch({ type: "SET_WISH_LIST", payload: res.data.rows });
-        });
-    }, [reload1]); */
+    useEffect(() => {
+        calculateCart();
+    }, [cartId]);
 
-    const addToCart = async (id, qty) => {
+    async function calculateCart() {
+        if (cartId) return axios.post(`${process.env.API_URL}cart/calculateCart`, { cartId: cartId });
+    }
+
+    const calcShiping = async (addressId) => {
+        try {
+            await axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: addressId });
+            await axios.post(`${process.env.API_URL}cart/allocateStock`, { cartId: cartId });
+            await calculateCart();
+            setReload(reload + 1);
+            return { message: "Shipping Calculated" };
+        } catch (err) {
+            throw new Error(err);
+        }
+    }
+
+    const addToCart = async (id, qty, cartProductId = null) => {
         try {
             setIsAdding(true);
-
             if (cartId) {
-                await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(id), quantity: qty, cartId: cartId });
+                await axios.patch(`${process.env.API_URL}cart`, { productId: parseInt(id), quantity: qty, cartId: cartId, cartProductId: cartProductId });
             } else {
                 let response = await axios.post(`${process.env.API_URL}cart`, { productId: parseInt(id), quantity: qty });
                 dispatch({ type: "ADD_TO_CART", payload: response.data.id });
             }
 
+            console.log("Called")
+            await calculateCart();
             setIsAdding(false);
             setReload(reload + 1);
             let message = cartId ? "Cart updated" : "Item added";
@@ -155,6 +186,8 @@ export function useCart() {
                 cartId: cartId,
                 cartProductId: id
             });
+
+            await calculateCart();
             setIsRemoving(false);
             setReload(reload + 1);
             return { type: "success", message: "Item Removed", title: "Success" };
@@ -185,6 +218,8 @@ export function useCart() {
                 cartId: cartId,
                 couponCode: code
             });
+
+            await calculateCart();
             setReload(reload + 1);
             setIsApplyingCoupon(false);
             return { type: "success", message: "Coupon Applied", title: "Success" };
@@ -201,6 +236,8 @@ export function useCart() {
             await axios.post(`${process.env.API_URL}cart/removeCoupon`, {
                 cartId: cartId,
             });
+
+            await calculateCart();
             setReload(reload + 1);
             setIsApplyingCoupon(false);
             return { type: "success", message: "Coupon Removed", title: "Success" };
@@ -212,6 +249,6 @@ export function useCart() {
 
     return {
         cartId, isAdding, isRemoving, addToCart, remove, addtoWishList,
-        isAddingToWishlist, disableCheckout, applyCoupon, removeCoupon, isApplyingCoupon
+        isAddingToWishlist, disableCheckout, applyCoupon, removeCoupon, isApplyingCoupon, calcShiping
     }
 }

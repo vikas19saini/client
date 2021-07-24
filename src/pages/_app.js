@@ -1,7 +1,6 @@
 import Head from "next/head"
-import { Fragment, useState } from "react"
+import { Fragment } from "react"
 import { wrapper } from "../redux/store"
-import { PersistGate } from "redux-persist/integration/react"
 import { useStore } from "react-redux"
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
@@ -25,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 
   axios.interceptors.request.use((con) => {
     let config = store.getState().config;
-    
+
     if (config.auth)
       if (config.auth.token)
         con.headers.Authorization = `${config.auth.token}`;
@@ -40,10 +39,6 @@ function MyApp({ Component, pageProps }) {
       return response;
     },
     error => {
-      /* if (error.response && error.response.status === 401) {
-        store.dispatch({ type: "SIGN_OUT" });
-        route.push("/account?redirect=" + window.location.pathname);
-      } */
       return Promise.reject(error);
     }
   );
@@ -67,13 +62,24 @@ function MyApp({ Component, pageProps }) {
         {/* <script src="/js/tabheader.js"></script> */}
         <script src="/js/wow.js"></script>
         <script src="/js/scripts.js"></script>
-      </Head>
-      {/* <PersistGate persistor={store.__persistor} loading={<div>Initializing application...</div>}> */}
-      {/* yy */}
 
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-NK4ZLVB');`,
+        }}>
+        </script>
+
+      </Head>
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK4ZLVB"
+          height="0" width="0" style={{ display: "none", visibility: "hidden" }}></iframe>
+      </noscript>
       <Component {...pageProps} />
-      {/* </PersistGate> */}
-    </Fragment>)
+    </Fragment>
+  )
 }
 
 export default wrapper.withRedux(MyApp);
