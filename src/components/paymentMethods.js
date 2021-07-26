@@ -87,9 +87,11 @@ export default function PaymentMethod() {
                                 </form>
                             </div>)
                         }
+                        {console.log(currency.code)}
                         {
                             (paymentMethod && paymentMethod.name === "paypal") && (<PayPalButton options={{
-                                clientId: paymentMethod.key
+                                clientId: paymentMethod.key,
+                                currency: currency.code
                             }}
                                 currency={currency.code} amount={amountToPay} env={paymentMethod.mode} style={{
                                     hight: 25,
@@ -97,7 +99,7 @@ export default function PaymentMethod() {
                                     shape: 'rect',
                                     label: 'pay',
                                     fundingicons: true,
-                                    tagline: false
+                                    tagline: false,
                                 }} onSuccess={onSuccess} onError={() => {
                                     toast.notify("Payment failed!", {
                                         type: "error",
