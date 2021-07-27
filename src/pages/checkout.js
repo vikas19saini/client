@@ -111,7 +111,7 @@ function Checkout() {
 
                             <div className="checkoutInfo">
                                 <div className="alert alert-info">
-                                    <p>Due to the current lockdown situation May cause the delivery of goods to be delayed 7-10 days.</p>
+                                    <p>Due to the current lockdown situation, please expect a delay of 7-10 days in the delivery times for your orders.</p>
                                     <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
                                 </div>
                             </div>
