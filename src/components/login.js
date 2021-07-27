@@ -36,13 +36,25 @@ export default function Login() {
             });
 
             redirect && router.push(redirect);
-        }).catch(err => {
-            setIsLoggingIn(false)
-            toast.notify(err.response.data.message, {
-                type: "error",
-                title: "Login Error!"
-            })
+        }).catch(async (err) => {
+            setIsLoggingIn(false);
+            let statusCode = err.response.data.statusCode || null;
+            if (statusCode === 1100) {
+                await resendOtp();
+                setEmail(e.target.email.value);
+                setOtpSent(true);
+                setShowLoginPage(false);
+            } else {
+                toast.notify(err.response.data.message, {
+                    type: "error",
+                    title: "Login Error!"
+                });
+            }
         })
+    }
+
+    async function resendOtp() {
+        await axios.post(`${process.env.API_URL}customer/resendOtp`, { email: email });
     }
 
     const onSubmit = (e) => {
@@ -129,7 +141,7 @@ export default function Login() {
                                             {isLoggingIn ? (<div className="loader"></div>) : "LOG IN"}
                                         </button>
                                         <p className="mass_tx" style={{ textAlign: "center" }}>
-                                            <button type="button" className="textBtn" onClick={() => setShowLoginPage(false)}>Don't have an account? Sign up</button>
+                                            <button type="button" className="textBtn" onClick={() => { setShowLoginPage(false); setOtpSent(false) }}>Don't have an account? Sign up</button>
                                         </p>
                                     </form>
                                 </div>
