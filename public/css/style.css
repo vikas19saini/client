@@ -5319,3 +5319,10 @@ font-weight: 500}
 .cartProduct .md-number-input{
     padding: 5px 0 0px !important;
 }
+.catpl{
+    margin-right: 5px;
+    border-right: 2px solid;
+    padding-right: 5px;
+    font-weight: 500;
+    color: #212529;
+}

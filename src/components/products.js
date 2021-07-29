@@ -365,12 +365,14 @@ export default function Products(props) {
                                                     <div className="col-md-6 col-6" key={p.id}>
                                                         <div className="cotton_fabric_sec" style={{ padding: "0px" }}>
                                                             <Link href={"/product/" + p.slug}>
-                                                                <a>
+                                                                <a style={{ display: "block", textDecoration: "none" }}>
                                                                     <Image src={p.featuredImage ? p.featuredImage.thumbnailUrl : "/images/placeholder.png"} width={434} height={297} alt={p.name} className="img-fluid" quality={100} />
+
+
+                                                                    <h5>{p.name} - {p.sku}</h5>
+                                                                    <p><strong><GetPriceHtml product={p} /></strong></p>
                                                                 </a>
                                                             </Link>
-                                                            <h5>{p.name} - {p.sku}</h5>
-                                                            <p><strong><GetPriceHtml product={p} /></strong></p>
                                                         </div>
                                                     </div>
                                                 )
