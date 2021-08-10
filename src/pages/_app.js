@@ -49,14 +49,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="google-site-verification" content="xvj66e2ya5woglN4ZKsFqBFeXewEgvx5jpYh0gB2r-M" />
-        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
-        <link type="text/css" rel="stylesheet" href="/css/style.css" />
-        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/responsive.css" />
-        <link type="text/css" rel="stylesheet" href="/css/additional.css" />
-        <link rel="icon" href="/logo.png" />
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/owl.carousel.js"></script>
@@ -72,7 +64,14 @@ function MyApp({ Component, pageProps }) {
           })(window,document,'script','dataLayer','GTM-NK4ZLVB');`,
         }}>
         </script>
-
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
+        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+        <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
+        <link type="text/css" rel="stylesheet" href="/css/responsive.css" />
+        <link type="text/css" rel="stylesheet" href="/css/additional.css" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK4ZLVB"

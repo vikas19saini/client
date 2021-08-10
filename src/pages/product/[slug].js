@@ -104,12 +104,6 @@ export default function Product(product) {
                                                     )
                                                 })
                                             }
-                                            <li>
-                                                Categories
-                                            </li>
-                                            <li>
-                                                {product.categories.map((c) => <Link href={`/category/${c.slug}`}><a className="catpl">{c.name}</a></Link>)}
-                                            </li>
                                         </ul>
                                     </div>
 
