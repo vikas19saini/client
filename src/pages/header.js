@@ -174,11 +174,9 @@ export default function Header(props) {
                                     </div>
                                 </div>
                             </div>
-                            <Link href="/">
-                                <a className="nav-brand">
-                                    <img src="/images/logo.png" alt="gandhi logo" />
-                                </a>
-                            </Link>
+                            <a className="nav-brand" href="/">
+                                <img src="/images/logo.png" alt="gandhi logo" />
+                            </a>
                             <div className="nav-toggle"></div>
                         </div>
                         <div className="nav-menus-wrapper sideMenu">

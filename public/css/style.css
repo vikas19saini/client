@@ -4500,7 +4500,7 @@ header {
 .icon_up{position: absolute;right: 0;top: 10px;}
 .icon_up a i{color: #000000}
 
-#product_slide .owl-item img{height: 448px;cursor: zoom-in;}
+#product_slide .owl-item img{cursor: zoom-in;}
 #mini_slide .owl-item img{height: 281px}
 .cttn_coll:hover{color: #fff;border: none;background: #404042}
 .learn_bttn.pro_124:hover{border: 1px solid #BE8F45;background: transparent}
@@ -5194,7 +5194,9 @@ font-weight: 500}
 
 @media screen and (min-device-width:320px) and (max-device-width: 767px) { 
 	.container{width: 85%}
-    
+    .container.dis_mrg_1{
+        width: 98%;
+    }
 }
 
 .cartPadding{

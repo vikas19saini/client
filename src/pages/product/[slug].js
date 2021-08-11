@@ -22,6 +22,17 @@ export default function Product(product) {
     let productImages = [...[product.featuredImage], ...product.thumbnails];
     const [openZoom, setOpenZoom] = useState(false);
 
+    const [relativeProducts, setRelativeProducts] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${process.env.API_URL}products/relative/${product.id}`)
+            .then((response) => {
+                setRelativeProducts(response.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, []);
+
     useEffect(() => {
         productPageInit() // defined in script.js
     }, []);
@@ -192,7 +203,7 @@ export default function Product(product) {
                 </div>
             </div>
             {
-                product.relative.length > 0 &&
+                relativeProducts.length > 0 &&
                 <section className="sec_padd sec_arrivals">
                     <div className="container">
                         <div className="row">
@@ -229,7 +240,7 @@ export default function Product(product) {
                                     navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
                                     margin: 10,
                                 }} id="arrivals" className="owl-carousel relativeProducts" >
-                                    <Products products={product.relative} />
+                                    <Products products={relativeProducts} />
                                 </OwlCarousel>
                             </div>
                         </div>
@@ -245,16 +256,11 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     try {
         let product = await axios.get(`${process.env.API_URL}products/${context.params.slug}`)
         product = product.data;
-        let relativeProducts = await axios.get(`${process.env.API_URL}products/relative/${product.id}`);
-        relativeProducts = relativeProducts.data
         product.stockStatus = stockStatus(product)
-
-        product.relative = relativeProducts;
         return {
             props: product
         }
     } catch (error) {
-
         return {
             notFound: true,
         }

@@ -49,12 +49,12 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="google-site-verification" content="xvj66e2ya5woglN4ZKsFqBFeXewEgvx5jpYh0gB2r-M" />
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/owl.carousel.js"></script>
+        <script src="/js/jquery.min.js" crossOrigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js" crossOrigin="anonymous"></script>
+        <script src="/js/owl.carousel.js" crossOrigin="anonymous"></script>
         {/* <script src="/js/tabheader.js"></script> */}
-        <script src="/js/wow.js"></script>
-        <script src="/js/scripts.js"></script>
+        <script src="/js/wow.js" crossOrigin="anonymous"></script>
+        <script src="/js/scripts.js" crossOrigin="anonymous"></script>
 
         <script dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,13 +64,14 @@ function MyApp({ Component, pageProps }) {
           })(window,document,'script','dataLayer','GTM-NK4ZLVB');`,
         }}>
         </script>
-        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/css/minified.css" />
+        {/* <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
-        <link type="text/css" rel="stylesheet" href="/css/style.css" />
+        <link type="text/css" rel="stylesheet" href="/css/style.css" /> */}
         <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
+        {/* <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/responsive.css" />
-        <link type="text/css" rel="stylesheet" href="/css/additional.css" />
+        <link type="text/css" rel="stylesheet" href="/css/additional.css" /> */}
         <link rel="icon" href="/logo.png" />
       </Head>
       <noscript>

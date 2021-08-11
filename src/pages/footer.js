@@ -53,6 +53,7 @@ export default function Footer() {
                                         <a><img src="/images/paypallogo.svg" /></a>
                                         <a><img src="/images/visalogo.svg" /></a>
                                         <a><img src="/images/mastercard.svg" /></a>
+                                        <a target="_blank" href="http://www.trustmarkthai.com/callbackData/popup.php?data=eb-33-5-baf100508ab53ebfa7a9c2144094de67528014de037&markID=firstmar"><img src="https://www.trustmarkthai.com/trust_banners/bns_registered.png" /></a>
                                     </div>
                                     <div className="copy_txt mob_view">
                                         <p>© 2020 Gandhi Fabric. All Rights Reserved</p>
