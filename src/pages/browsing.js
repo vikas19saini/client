@@ -142,7 +142,7 @@ export default function Contact() {
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Mobile Number <span>
+                                    <p>Contact Us At <span>
                                         <a style={{ color: "inherit" }} href="tel:+660947741515">+66 (0) 94774 1515</a><br />
                                         <a style={{ color: "inherit" }} href="tel:+66022252001">+66 (0) 2225 2001</a>
                                     </span></p>
@@ -150,9 +150,9 @@ export default function Contact() {
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Showroom Address <span><strong>Gandhi 1944,</strong> 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</span></p>
-                                    <p><span><strong>Gandhi Tessuti,</strong> 205-207 Phahurat Road, Bangkok 10200, Thailand. T+66 (0) 2222 7798, +66 (0) 2623 9208 H 08:45 - 18:00 (Mon-Sun)</span></p>
-                                    <p><span><strong>The Cynosure Bangkok,</strong> A002-A005 1 Floor China World, 677-681 Chakraphet Road, Bangkok 10200, Thailand T+66 (0) 2225 2001-3 H 09:30 - 18:30 (Mon-Sun)</span></p>
+                                    <p>Showroom Address <span><strong>Gandhi 1944,</strong> 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
+                                    <p><span><strong>Gandhi Tessuti,</strong> 205-207 Phahurat Road, Bangkok 10200, Thailand. T+66 (0) 2222 7798, +66 (0) 2623 9208 H 08:45 - 18:00 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
+                                    <p><span><strong>The Cynosure Bangkok,</strong> A002-A005 1 Floor China World, 677-681 Chakraphet Road, Bangkok 10200, Thailand T+66 (0) 2225 2001-3 H 09:30 - 18:30 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
                                 </div>
                             </div>
                         </div>

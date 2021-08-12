@@ -20,7 +20,7 @@ export default function Faq() {
                                 <ol>
                                     <li>How Do I Track My Order?
                         <p>Please refer to the ‘My Orders’ section of your Account for all the details related to your
-                           order. Alternatively, you can email us at <a href="mailto:support@gandhifabrics.com">support@gandhifabrics.com .</a></p>
+                           order. Alternatively, you can email us at <a href="mailto:support@gandhifabrics.com">support@gandhifabrics.com</a></p>
                                     </li>
                                     <li>Who Will deliver My Order?
                         <p>For Domestic delivery, we offer shipping services through EMS which can be
@@ -31,28 +31,28 @@ export default function Faq() {
                         <p>We will be shipping all orders from Bangkok, Thailand.</p>
                                     </li>
                                     <li>How Long Will It Take To Get My Order?
-                        <p>We offer different shipping methods which take anywhere from 7-15 days ,depending on your
+                        <p>We offer different shipping methods which take anywhere from 7-15 days, depending on your
                            location.</p>
                                     </li>
                                     <li>Which Countries Do You Ship To?
                         <p>We ship all over the world.</p>
                                     </li>
                                     <li>Do I have to Pay Customs And Import Charges?
-                        <p>Exchange and Returns</p>
+                        <p>Subject to the country in which the order is being shipped</p>
                                     </li>
                                     <li>Can I Return My Order?
                         <p>We do not offer any returns on the fabric once cut, unless there are defects in the yardage,
                            at the time of receipt.</p>
                                     </li>
                                     <li>Can I Exchange My Order?
-                        <p>We do not offer any exchanges on the fabric once cut,unless there are defects in the yardage
+                        <p>We do not offer any exchanges on the fabric once cut, unless there are defects in the yardage
                            at the time of receipt.</p>
                                     </li>
                                     <li>What are the accepted methods of payment for domestic orders?
                         <p>PayPal, Debit/Credit Cards</p>
                                     </li>
                                     <li>What are the accepted modes of payment for international orders?
-                        <p>Debit/Credit Cards</p>
+                        <p>Debit/Credit Cards and Paypal</p>
                                     </li>
                                 </ol>
                             </div>

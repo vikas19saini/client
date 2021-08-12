@@ -66,8 +66,8 @@ export default function Home(props) {
 
       <a href="#" className="scroll-down mob_view" address="true" onClick={() => scrollDown()}>
         <img src="images/arrow.png" alt="arrow" /><span>scroll
-        down
-         </span>
+          down
+        </span>
       </a>
 
       <div className="container">
@@ -121,7 +121,7 @@ export default function Home(props) {
             <div className="col-md-6">
               <div className="left_2 inner_left">
                 <h3>Our Lace Fabric Collection</h3>
-                <p>Delicate and Intricate Lace fabrics From all over the world</p>
+                <p>Delicate and Intricate Lace fabrics from all over the world</p>
                 <div className="dropdown">
                   <Link href="/category/lace">
                     <a className="view_bttn dropbtn">View Collection</a></Link>
@@ -272,7 +272,7 @@ export default function Home(props) {
           <div className="slide_tx po_inherit">
             <h3><span>Wedding</span>Collection</h3>
             <Link href="/search?query=wedding">
-              <a type="button" className="view_slide_bttn learn_bttn">View</a>
+              <a type="button" className="view_slide_bttn learn_bttn" style={{ letterSpacing: "1px" }}>View Collection</a>
             </Link>
             <img src="images/bitmap.jpg" className="img-fluid" alt="" />
           </div>
@@ -293,8 +293,8 @@ export default function Home(props) {
                 <div className="inner_left">
                   <h3>Autumn Winter</h3>
                   <p>Our collection of fabrics for Autumn Winter, showcase some of the very finest wool fabrics; the
-                  very latest in fashionable jacquards and textured fabrics as well as other luxurious and
-                        exclusive fabrics. All these and much more.</p>
+                    very latest in fashionable jacquards and textured fabrics as well as other luxurious and
+                    exclusive fabrics. All these and much more.</p>
                   <div className="dropdown">
                     <Link href="/search?query=Autumn">
                       <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
@@ -311,8 +311,8 @@ export default function Home(props) {
                 <div className="inner_left">
                   <h3>Spring Summer</h3>
                   <p>Our collection of fabrics for Spring Summer feature the very best in sheer fabrics. Our
-                  collection of cotton and other natural fabrics is unsurpassed. We bring to you the best in
-                        innovative and trending fabrics from all over the world.</p>
+                    collection of cotton and other natural fabrics is unsurpassed. We bring to you the best in
+                    innovative and trending fabrics from all over the world.</p>
                   <div className="dropdown">
                     <Link href="/search?query=Summer">
                       <a className="view_bttn dropbtn lern_bttn">learn more</a></Link>
@@ -335,7 +335,7 @@ export default function Home(props) {
             <div className="row wow fadeInUp">
               <div className="col-md-12">
                 <div className="sub_txt">
-                  <h4>Subscribe now and get 15% off</h4>
+                  <h4>Subscribe now</h4>
                   <p>Sign up to get weekly emails with our <span>promotions and special content.</span></p>
                   <div className="input-group custom_input mb-3">
                     <input type="text" className="inner_input form-control" placeholder="Enter your email" id="mail" name="email" />
@@ -463,7 +463,7 @@ export default function Home(props) {
                   <h4>The Suiting Collection</h4>
                   <p>Our Collection of the world's finest fabrics<span> For suiting and shirting</span></p>
                   <Link href="/category/suiting">
-                    <a className="view_slide_bttn learn_bttn">View collection</a></Link>
+                    <a className="view_slide_bttn learn_bttn" style={{ color: "#fff" }}>View collection</a></Link>
                 </div>
               </div>
             </div>
