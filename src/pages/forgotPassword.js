@@ -46,7 +46,7 @@ export default function ForgotPassword() {
             });
         }).catch((err) => {
             setIsLoading(false);
-            toast.notify("Password Couldn't be changed!!", {
+            toast.notify("Invalid email or OTP!!", {
                 type: "error",
                 title: "Password Reset!"
             });
