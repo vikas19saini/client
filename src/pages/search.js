@@ -48,7 +48,6 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
             props: category
         }
     } catch (error) {
-        console.log(error)
         return {
             notFound: true,
         }

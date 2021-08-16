@@ -31,7 +31,6 @@ export default function SubCategory(props) {
                             <div className="inner_sub_txt inner_txt wow fadeInUp">
                                 <h1>{category.name}</h1>
                                 <p>{category.description}</p>
-                                <button type="button" className="view_slide_bttn learn_bttn cttn_coll">View Collection</button>
                             </div>
                         </div>
                     </div>
@@ -84,7 +83,7 @@ export default function SubCategory(props) {
                                     return (
                                         <div className="col-md-6" key={c.id}>
                                             <div className="cotton_fabric_sec tp_border wow fadeInUp">
-                                                <Link href={"/category/" + c.slug}>
+                                                <Link href={`/category/${category.slug}/${c.slug}`}>
                                                     <a>
                                                         <Image src={c.subCategory ? c.subCategory.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" unoptimized />
                                                     </a>
@@ -109,7 +108,7 @@ export default function SubCategory(props) {
                         <div className="row">
                             <div className="col-md-6 padd_right_0">
                                 <div className="">
-                                    <Link href={"/category/" + secondSection[0].slug}>
+                                    <Link href={`/category/${category.slug}/${secondSection[0].slug}`}>
                                         <a>
                                             <img src={secondSection[0].subCategory ? secondSection[0].subCategory.fullUrl : "/images/placeholder.png"} alt={secondSection[0].name} className="img-fluid" />
                                         </a>
@@ -121,7 +120,7 @@ export default function SubCategory(props) {
                                     <div className="inner_brocade">
                                         <h3>{secondSection[0].name}</h3>
                                         <p>{secondSection[0].description}</p>
-                                        <Link href={"/category/" + secondSection[0].slug}>
+                                        <Link href={`/category/${category.slug}/${secondSection[0].slug}`}>
                                             <a>
                                                 <button type="button" className="view_slide_bttn learn_bttn pro_124">{secondSection[0].products.length} products</button>
                                             </a>
@@ -144,7 +143,7 @@ export default function SubCategory(props) {
                                     return (
                                         <div className="item" key={ra.id}>
                                             <div className="cotton_fabric_sec tp_border">
-                                                <Link href={"/category/" + ra.slug}>
+                                                <Link href={`/category/${category.slug}/${ra.slug}`}>
                                                     <a>
                                                         <Image src={ra.subCategory ? ra.subCategory.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" quality={100} />
                                                     </a>
@@ -181,7 +180,7 @@ export default function SubCategory(props) {
                                                         <h3>{tc.name}</h3>
                                                         <p>{tc.description}</p>
                                                         <div className="dropdown">
-                                                            <Link href={"/category/" + tc.slug}>
+                                                            <Link href={`/category/${category.slug}/${tc.slug}`}>
                                                                 <a>
                                                                     <button className="view_bttn dropbtn lern_bttn">{tc.products.length} products</button>
                                                                 </a>
@@ -206,7 +205,7 @@ export default function SubCategory(props) {
                                                     <h3>{tc.name}</h3>
                                                     <p>{tc.description}</p>
                                                     <div className="dropdown">
-                                                        <Link href={"/category/" + tc.slug}>
+                                                        <Link href={`/category/${category.slug}/${tc.slug}`}>
                                                             <a>
                                                                 <button className="view_bttn dropbtn lern_bttn">{tc.products.length} products</button>
                                                             </a>

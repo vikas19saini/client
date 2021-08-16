@@ -91,7 +91,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
         } else {
-            router.push(`/category/${category.slug}?${queryParams}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
     }
 
@@ -104,7 +104,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
         } else {
-            router.push(`/category/${category.slug}?${queryParams}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
     }
 
@@ -128,7 +128,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
         } else {
-            router.push(`/category/${category.slug}?${queryParams}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
     }
 
@@ -179,7 +179,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
         } else {
-            router.push(`/category/${category.slug}?${queryParams}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
     }
 
@@ -189,7 +189,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search/?query=${category.name}`);
         } else {
-            router.push(`/category/${category.slug}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}`);
         }
     }
 
@@ -207,7 +207,7 @@ export default function Products(props) {
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
         } else {
-            router.push(`/category/${category.slug}?${queryParams}`);
+            router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
     }
 

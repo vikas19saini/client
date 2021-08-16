@@ -270,7 +270,7 @@ export default function Header(props) {
                                                                                                         cat.children.map((subCat) => {
                                                                                                             return (
                                                                                                                 <li key={subCat.id}>
-                                                                                                                    <Link href={`/category/${subCat.slug}`}>
+                                                                                                                    <Link href={`/category/${cat.slug}/${subCat.slug}`}>
                                                                                                                         <a className="menuLinkDesktop">{subCat.name}</a>
                                                                                                                     </Link>
                                                                                                                 </li>
@@ -318,7 +318,7 @@ export default function Header(props) {
                                                                                     cat.children.map((subCat) => {
                                                                                         return (
                                                                                             <li key={subCat.id}>
-                                                                                                <Link href={`/category/${subCat.slug}`}>
+                                                                                                <Link href={`/category/${cat.slug}/${subCat.slug}`}>
                                                                                                     <a className="mobileMenuIcon">{subCat.name}</a>
                                                                                                 </Link>
                                                                                             </li>
