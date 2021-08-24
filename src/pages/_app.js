@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }) {
           })(window,document,'script','dataLayer','GTM-NK4ZLVB');`,
         }}>
         </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" crossOrigin="anonymous" defer="defer"></script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js"></script>
         <link type="text/css" rel="stylesheet" href="/css/minified.css" />
         {/* <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
