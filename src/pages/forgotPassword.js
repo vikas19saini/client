@@ -1,10 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import axios from "axios"
 import { toast, ToastContainer } from 'react-nextjs-toast'
-import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from 'next/router'
+import Header from "./header";
+import Footer from "./footer";
 
 export default function ForgotPassword() {
     const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -58,6 +58,7 @@ export default function ForgotPassword() {
             <Head>
                 <title>Forgot Password - Gandhi</title>
             </Head>
+            <Header />
             <ToastContainer />
             <div className="container-fluid ld_bg">
                 <div className="row">
@@ -102,7 +103,7 @@ export default function ForgotPassword() {
 
                 </div>
             </div>
-
+            <Footer />
         </Fragment>
     )
 }

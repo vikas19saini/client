@@ -29,20 +29,22 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     try {
         let contextParams = context.params.slug;
         let category = null;
+        let layout = "subcategory";
 
-        if (contextParams && contextParams.length > 0) {
-            category = await axios.get(`${process.env.API_URL}category/${contextParams[0]}`);
-            category = category.data;
-            category.layout = "subcategory";
-        }
+        category = await axios.get(`${process.env.API_URL}category/${contextParams[0]}`);
+        category = category.data;
+        category.layout = layout
 
-        if (contextParams.length === 2) {
+        if (contextParams.length === 2 || category.descendents.length === 0) {
             let queryParams = context.query;
             let offset = (page - 1) * limit
 
             queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
             queryParams = new URLSearchParams(queryParams)
-            let responseData = await axios.get(`${process.env.API_URL}category/products/${contextParams[1]}?${queryParams}`);
+
+            let productCate = contextParams[1] || contextParams[0];
+
+            let responseData = await axios.get(`${process.env.API_URL}category/products/${productCate}?${queryParams}`);
 
             let data = responseData.data.category;
             data.products = responseData.data.rows;

@@ -351,6 +351,9 @@ export default function Header(props) {
                                         </select>
                                     }</div>
                                 </li>
+                                <li>
+                                    <div id="google_translate_element" />
+                                </li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="nav-search-button"><img src="/images/address_icon/search.svg" /></div>
                                     <form action="/search" autoComplete="off">

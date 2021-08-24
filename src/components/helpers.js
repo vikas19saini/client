@@ -207,6 +207,9 @@ export function useCart() {
             return { type: "success", message: res.data.message, title: "Success" };
         } catch (err) {
             setIsAddingToWishlist(false);
+            if(err.response.status === 401){
+                return { type: "error", message: "Please login to add!", title: "Error" };
+            }
             return { type: "error", message: "Something went wrong!", title: "Error" };
         }
     }
