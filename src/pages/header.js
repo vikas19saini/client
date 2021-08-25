@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import LanguageSwitcher from "../components/language";
 
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
@@ -13,7 +14,6 @@ export default function Header(props) {
     const router = useRouter();
     const dispatch = useDispatch();
     const [changelanguage, setChangelanguage] = useState(false);
-    let translatorInstance = null;
 
     useEffect(() => {
         navigation() // written in script.js
@@ -47,20 +47,6 @@ export default function Header(props) {
             behavior: 'smooth'
         });
     }
-
-    useEffect(() => {
-        if (changelanguage) {
-            translatorInstance = new google.translate.TranslateElement({
-                pageLanguage: 'en'
-            }, 'google_translate_element');
-        } else {
-            if (document.querySelector("#google_translate_element")) {
-                document.querySelector("#google_translate_element").innerHTML = "";
-                translatorInstance.dispose();
-            }
-
-        }
-    }, [changelanguage])
 
     return (
         <>
@@ -370,7 +356,7 @@ export default function Header(props) {
                                     </li>
                                     <li>
                                         <div className="currencySwitch">
-                                            <button className="modalButton" onClick={() => setChangelanguage(true)} type="button" style={{ margin: "0px", position: "relative", zIndex: "999" }}>Language</button>
+                                            <button className="modalButton" onClick={() => setChangelanguage(true)} type="button" style={{ margin: "0px", position: "relative", zIndex: "999" }}>switch Language</button>
                                         </div>
                                     </li>
                                     <div className="nav-search tabs_veiw_s">
@@ -406,11 +392,7 @@ export default function Header(props) {
             </header>
             {
                 changelanguage &&
-                <div className="languageModal">
-                    <h5>Change Website Language</h5>
-                    <div id="google_translate_element" />
-                    <button className="pull-right modalButton" onClick={() => setChangelanguage(false)} type="button">Close</button>
-                </div>
+                <LanguageSwitcher setChangelanguage={setChangelanguage} />
             }
         </>
     );
