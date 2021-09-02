@@ -6,7 +6,7 @@ export default function Tabs(props) {
     const router = useRouter();
 
     const logout = () => {
-        dispatch({ type: "CLEART_CART" });
+        /* dispatch({ type: "CLEART_CART" }); */
         dispatch({ type: "SIGN_OUT" });
     }
 

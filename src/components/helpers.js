@@ -72,8 +72,8 @@ export function formatAddress(address, isOrder = false) {
         address.postcode && addressArr.push(address.postcode)
     } else {
         address.address && addressArr.push(address.address)
-        address.zone.name && addressArr.push(address.zone.name)
-        address.country.name && addressArr.push(address.country.name)
+        address.zone && addressArr.push(address.zone.name)
+        address.country && addressArr.push(address.country.name)
         address.postcode && addressArr.push(address.postcode)
     }
 
@@ -117,6 +117,7 @@ export function useCart() {
     const dispatch = useDispatch();
     const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
     const [disableCheckout, setDisableCheckout] = useState(false);
+    const [customerCartData, setCustomerCartData] = useState(null);
 
     useEffect(() => {
         cartId && axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
@@ -128,7 +129,7 @@ export function useCart() {
                 }
             }
             setDisableCheckout(disableCheckout);
-
+            setCustomerCartData(res.data);
             dispatch({ type: "SET_CART_DATA", payload: res.data });
             dispatch({ type: "SET_CART_ITEMS", payload: res.data.products.length + "" });
         }).catch((err) => {
@@ -207,7 +208,7 @@ export function useCart() {
             return { type: "success", message: res.data.message, title: "Success" };
         } catch (err) {
             setIsAddingToWishlist(false);
-            if(err.response.status === 401){
+            if (err.response.status === 401) {
                 return { type: "error", message: "Please login to add!", title: "Error" };
             }
             return { type: "error", message: "Something went wrong!", title: "Error" };
@@ -252,6 +253,6 @@ export function useCart() {
 
     return {
         cartId, isAdding, isRemoving, addToCart, remove, addtoWishList,
-        isAddingToWishlist, disableCheckout, applyCoupon, removeCoupon, isApplyingCoupon, calcShiping
+        isAddingToWishlist, disableCheckout, applyCoupon, removeCoupon, isApplyingCoupon, calcShiping, customerCartData
     }
 }

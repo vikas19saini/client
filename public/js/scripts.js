@@ -1200,8 +1200,6 @@ $(window).scroll(function () {
     }
 });
 
-function InitTran() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'en',
-    }, 'google_translate_element');
-}
+$(document).on('click', "#showCartMobile", function () {
+    $(".appy_sec.cart-details").toggleClass("d-none");
+});

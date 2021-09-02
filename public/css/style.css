@@ -1029,7 +1029,7 @@ a>img.desk_view{width: 140px}
 .check_add_3{
     border-radius: 4px;
     padding: 1.6rem 0 0;margin: 0 0 4rem}
-.check_add_3 p{font-family: 'Montserrat';font-size: 12px;font-weight: 600;padding: 0 1rem 1rem;margin: 0}
+.check_add_3 p{font-family: 'Montserrat';font-size: 13px;font-weight: 400;padding: 0 1rem 1rem;margin: 0}
 .check_add_3 p span{display: block}
 .check_add_3 .inner_md p{font-size: 12px;font-family: 'Montserrat';text-transform: uppercase;color: #777777;background:#F7F7F7;display: inline-block; margin: 0;white-space: nowrap;}
 .check_add_3 .de_add p{border: 1px solid #000000;
@@ -1075,7 +1075,7 @@ ul{list-style: none;
 .right_content_1 p a:hover{opacity: .7}
 .over_bdr_1{border: 1px solid #C7C7C7;border-radius: 4px;}
 .over_bdr_1>input{border-radius: 4px;font-size: 14px}
-.over_bdr_1 .input-group-append{padding: 6px}
+.over_bdr_1 .input-group-append{padding: 0px}
 .appy_sec p{font-size: 16px;font-weight: 400;font-family: 'Montserrat';margin: 0;padding: 0 0 10px;display: table}
 .price_tt{padding: 25px 0}
 .price_tt table tr td{font-family: 'Montserrat';font-size: 14px;padding: 0 0 12px}
@@ -1196,7 +1196,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .md-number-input p{font-size: 14px;font-family: 'Montserrat';color: #000000}
 
-.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;margin: 0 0 30px;min-height: 50px;
+.bag_bttn{font-size: 12px;font-family: 'Montserrat';background: transparent; color: #000000;text-transform: uppercase;border:1px solid #BFBFBF;padding: 15px 100px;border-radius: 4px;font-weight: 500;cursor: pointer;margin: 0;min-height: 50px;
     max-height: 50px;}
 .hard_icon{border: 1px solid #BFBFBF;
     background: transparent;
@@ -5197,6 +5197,10 @@ font-weight: 500}
     .container.dis_mrg_1{
         width: 98%;
     }
+
+    .container.checkoutPage{
+        width: 100% !important;
+    }
 }
 
 .cartPadding{
@@ -5327,4 +5331,79 @@ font-weight: 500}
     padding-right: 5px;
     font-weight: 500;
     color: #212529;
+}
+
+.checkoutPage{
+    max-width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-family: 'Montserrat' !important;
+}
+
+.checkoutPage p.heading{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.checkoutPage button{
+    font-size: 12px;    
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.checkoutPage .mb-0, .checkoutPage .my-0{
+    padding: 0px;
+}
+
+.checkoutPage .breadcrumb{
+    background: transparent;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.checkoutPage .list-group-item:last-child{
+    margin-bottom: 0;
+}
+
+.checkoutPage .list-group-item{
+    background: transparent;
+}
+
+.checkoutPage input{
+    height: 40px;
+    font-size: 12px;
+    letter-spacing: 0px;
+    color: #ccc;
+    font-family: 'Montserrat' !important;
+}
+
+.checkoutPage input:focus{
+    outline: none;
+    border-color: #999999;
+    -webkit-box-shadow: 0 0 0 .5px #999999;
+    box-shadow: 0 0 0 .5px #999999;
+}
+
+.processBtn{
+    height: 50px;
+}
+.radius{
+    border-top-left-radius: .25rem !important;
+    border-bottom-left-radius: .25rem !important;
+    border-top-right-radius: .25rem !important;
+    border-bottom-right-radius: .25rem !important;
+}
+
+#couponCode{
+    height: 100%;
+}
+
+.checkoutPage .appy_sec{
+    background-color: transparent;
+}
+
+#showCartMobile{
+    color: #8d8d8d;
+    font-size: 14px;
 }

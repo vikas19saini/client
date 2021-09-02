@@ -736,6 +736,9 @@
     .input-group-append {
         margin: 25px auto 0
     }
+    .checkoutPage .input-group-append{
+        margin: 0px;
+    }
     .fb_slide_txt {
         width: 100%;
         background: transparent;

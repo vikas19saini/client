@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { toast, ToastContainer } from 'react-nextjs-toast';
+import { toast } from 'react-nextjs-toast';
 import { useRouter } from 'next/router'
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -57,7 +57,6 @@ export default function PaymentMethod() {
 
     return (
         <div className="dis_detail blockBorder" id="paymentMethods">
-            <ToastContainer />
             <div>
                 <h4 className="p0">Payment Method</h4>
             </div>

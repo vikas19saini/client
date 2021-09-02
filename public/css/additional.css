@@ -190,7 +190,7 @@
   padding: 20px 20px;
   text-transform: capitalize;
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 5px;
 }
 span.shipingCost {
   margin-left: 10px;
@@ -344,7 +344,7 @@ span.eat {
   color: #aa8344;
 }
 .checkoutBtn{
-  border: 1px solid #cf9f44;
+  border: 1px solid #6c757d;
     margin-left: 15px;
     margin-bottom: 15px;
     font-size: 12px;
@@ -352,7 +352,7 @@ span.eat {
     font-weight: 600;
     padding: 5px 15px;
     border-radius: 3px;
-    background: #cf9f44;
+    background: #6c757d;
     color: #fff;
 }
 .check_add_3{
