@@ -47,10 +47,12 @@ function Checkout() {
             <div style={{ background: "#fafafa" }}>
                 <div className="checkoutPage">
                     <div className="row">
-                        <div className="col-md-5 order-md-2 p-0">
+                        <div className="col-md-5 order-md-2 p-0 pl-md-5">
                             <div className="pr-md-5 mt-md-5">
                                 <div className="py-2 text-center d-block d-sm-none">
-                                    <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
+                                    <a className="nav-brand" href="/">
+                                        <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
+                                    </a>
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb">
                                             <li className="breadcrumb-item">
@@ -74,9 +76,11 @@ function Checkout() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-7 order-md-1 pb-5" style={{ background: "#fff" }}>
+                        <div className="col-md-7 order-md-1 pb-5 pr-md-5 " style={{ background: "#fff" }}>
                             <div className="py-4 text-center d-none d-sm-block">
-                                <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
+                                <a className="nav-brand" href="/">
+                                    <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
+                                </a>
                                 <nav aria-label="breadcrumb">
                                     <ol className="breadcrumb">
                                         <li className="breadcrumb-item">
@@ -152,6 +156,7 @@ function CustomerAddresses({
 
     const calcShippingCost = (shippingAddress) => {
         setCalcShipping(shippingAddress.id);
+        setShowPaymentMethod(false);
         calcShiping(shippingAddress.id).then((d) => {
             setCalcShipping(false);
             setReload(new Date().getTime());
@@ -161,6 +166,10 @@ function CustomerAddresses({
             setCalcShipping(false);
             setChangeAddress(false);
             setShowPaymentMethod(false);
+            toast.notify("Delivery not available at this location.", {
+                type: "error",
+                title: "Shippment!"
+            });
         });
     }
 
@@ -228,7 +237,12 @@ function ShippingAddress({
     const [countries, setCountries] = useState([]);
     const [zones, setZones] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [isRegisteredUser, setIsRegisteredUser] = useState(false);
+    const [isValidating, setIsValidating] = useState(false);
+    const [emailAddress, setEmailAddress] = useState("");
+    const [hideGuestCheckout, setHideGuestCheckout] = useState(true);
+    const [isLoggingIn, setIsLoggingIn] = useState(false)
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/countries`).then(res => {
@@ -286,74 +300,143 @@ function ShippingAddress({
         }
     }
 
+    const checkIsRegisteredUser = (email) => {
+        if (email) {
+            setIsValidating(true);
+            axios.post(`${process.env.API_URL}customer/checkUserExist`, { email: email }).then((res) => {
+                setIsRegisteredUser(true);
+                setIsValidating(false);
+                setEmailAddress(email);
+                setHideGuestCheckout(true);
+            }).catch(err => {
+                setIsRegisteredUser(false);
+                setIsValidating(false);
+                setEmailAddress("");
+                setHideGuestCheckout(false);
+            })
+        }
+    }
+
+    const login = (e) => {
+        e.preventDefault()
+        setIsLoggingIn(true)
+
+        axios.post(`${process.env.API_URL}user/login`, { email: e.target.email.value, password: e.target.password.value }).then(res => {
+            setIsLoggingIn(false)
+            dispatch({ type: "USER_LOGIN", payload: res.data });
+            setReload(new Date().getTime());
+        }).catch(async (err) => {
+            setIsLoggingIn(false);
+            toast.notify(err.response.data.message, {
+                type: "error",
+                title: "Login Error!"
+            });
+        })
+    }
+
     return (
-        <form onSubmit={guestCheckout}>
-            <div className="p-2">
-                <p className="heading">Contact Information</p>
-                <div className="input-group">
-                    <input type="email" name="email" required={true} className="form-control" placeholder="Email Address" />
-                </div>
-            </div>
-            <div className="p-2 mt-4">
-                <p className="heading">Shipping Address</p>
-                <div className="row padding_0">
-                    <div className="col-12">
+        <>
+            {
+                isRegisteredUser &&
+                <form onSubmit={login}>
+                    <div className="p-2">
+                        <p className="heading">Please enter your password to login</p>
+                        <div className="form-group">
+                            <input type="email" name="email" required={true} defaultValue={emailAddress} className="form-control p-3" placeholder="Email Address" />
+                            <input type="password" name="password" required={true} autoFocus={true} className="form-control p-3 mt-2" placeholder="Password" />
+                            <a href="/forgotPassword" type="button" style={{ color: "inherit" }} className="textBtn ml-0">Forgot Password?</a>
+                        </div>
+                        <div className="mt-4 mb-5">
+                            <button disabled={isLoggingIn} type="submit" className="btn btn-secondary">{
+                                isLoggingIn ? <div className="loader" /> : "Continue"
+                            }</button>
+                            <button onClick={() => {
+                                setIsRegisteredUser(false);
+                            }} type="button" className="btn btn-outlined ml-2">Continue as Guest</button>
+                        </div>
+                    </div>
+                </form>
+            }
+
+            {
+                !isRegisteredUser &&
+                <form onSubmit={guestCheckout}>
+                    <div className="p-2">
+                        <p className="heading">Contact Information</p>
                         <div className="input-group">
-                            <input type="text" name="name" required={true} className="form-control" placeholder="Full Name" />
+                            <input type="email" name="email" id="guestEmail" required={true} className="form-control p-3" placeholder="Email Address" />
+                            <div className="input-group-btn">
+                                <button disabled={isValidating} onClick={() => checkIsRegisteredUser(document.getElementById("guestEmail").value)} className="btn btn-secondary text-uppercase p-3 r-0 rounded-right" type="button">
+                                    {isValidating ? <div className="loader" /> : "Continue"}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-12">
-                        <div className="input-group mt-3">
-                            <input type="text" name="address" required={true} className="form-control" placeholder="Address" />
+                    {
+                        !hideGuestCheckout &&
+                        <div className="p-2 mt-4">
+                            <p className="heading">Shipping Address</p>
+                            <div className="row padding_0">
+                                <div className="col-12">
+                                    <div className="input-group">
+                                        <input type="text" name="name" required={true} className="form-control p-3" placeholder="Full Name" />
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="input-group mt-3">
+                                        <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="input-group mt-3">
+                                        <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
+                                    </div>
+                                </div>
+                                <div className="col-4">
+                                    <div className="input-group mt-3">
+                                        <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
+                                            <option value="">-Select Country-</option>
+                                            {
+                                                countries.map(c => {
+                                                    return (<option value={c.id} key={c.id}>{c.name}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-4">
+                                    <div className="input-group mt-3">
+                                        <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
+                                            <option value="">-Select State-</option>
+                                            {
+                                                zones.map(z => {
+                                                    return (<option value={z.id} key={z.id}>{z.name}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-4">
+                                    <div className="input-group mt-3">
+                                        <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="input-group mt-3">
+                                        <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
+                                    </div>
+                                </div>
+                                <div className="col-12 mt-4 mb-5">
+                                    <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
+                                        isSaving ? <div className="loader" /> : "Continue To Shipping"
+                                    }</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-12">
-                        <div className="input-group mt-3">
-                            <input type="text" name="city" required={true} className="form-control" placeholder="City" />
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div className="input-group mt-3">
-                            <select className="form-control" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
-                                <option value="">-Select Country-</option>
-                                {
-                                    countries.map(c => {
-                                        return (<option value={c.id} key={c.id}>{c.name}</option>)
-                                    })
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div className="input-group mt-3">
-                            <select className="form-control" name="zoneId" required={false} defaultValue={1}>
-                                <option value="">-Select State-</option>
-                                {
-                                    zones.map(z => {
-                                        return (<option value={z.id} key={z.id}>{z.name}</option>)
-                                    })
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div className="input-group mt-3">
-                            <input type="text" name="postcode" required={true} className="form-control" placeholder="Postcode" />
-                        </div>
-                    </div>
-                    <div className="col-12">
-                        <div className="input-group mt-3">
-                            <input type="text" name="phone" required={true} className="form-control" placeholder="Phone" />
-                        </div>
-                    </div>
-                    <div className="col-12 mt-3 mb-5">
-                        <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
-                            isSaving ? <div className="loader" /> : "Continue To Shipping"
-                        }</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+                    }
+                </form>
+            }
+        </>
     );
 }
 

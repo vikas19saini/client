@@ -17,7 +17,7 @@ export default function MyAccount() {
     return (
         <section className="inner_product">
             <div className="container" style={{ width: "100%" }}>
-                <div className="row">
+                <div className="row m-0">
                     <Tabs activeTab={tabValue} />
                     {
                         tabValue === 1 && <Profile />

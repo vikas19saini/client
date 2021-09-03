@@ -12,11 +12,13 @@ export default function CheckoutSidebar(props) {
 
     const applyCouponCode = async (couponCode) => {
         try {
-            let response = await applyCoupon(couponCode);
-            toast.notify(`${response.message}`, {
-                type: response.type,
-                title: response.title
-            });
+            if (couponCode) {
+                let response = await applyCoupon(couponCode);
+                toast.notify(`${response.message}`, {
+                    type: response.type,
+                    title: response.title
+                });
+            }
         } catch (err) {
             console.log(err);
         }
@@ -32,21 +34,24 @@ export default function CheckoutSidebar(props) {
 
     return (
         <Fragment>
-            <div className="d-block d-sm-none p-2">
-                <div className="dis_detail selectedAdd cartProduct m-0">
-                    <div>
-                        <h6 className="p-0 m-0">
-                            <span id="showCartMobile">Sjow order summary <i className="fa fa-chevron-down"></i></span>
-                            <span className="pull-right">{formatPrice(cartData ? cartData.total : 0)}</span>
-                        </h6>
+            {
+                router.pathname === "/checkout" &&
+                <div className="d-block d-sm-none p-2">
+                    <div className="dis_detail selectedAdd cartProduct m-0">
+                        <div>
+                            <h6 className="p-0 m-0">
+                                <span id="showCartMobile">Show order summary <i className="fa fa-chevron-down"></i></span>
+                                <span className="pull-right">{formatPrice(cartData ? cartData.total : 0)}</span>
+                            </h6>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="appy_sec cart-details d-none d-sm-block">
-                <div className="input-group over_bdr_1">
+            }
+            <div className={router.pathname === "/checkout" ? "appy_sec cart-details d-none d-sm-block" : "appy_sec cart-details"}>
+                <div className="input-group">
                     {
                         cartData && cartData.coupon ?
-                            <div className="couponApplied">
+                            <div className="couponApplied over_bdr_1">
                                 <div className="text">
                                     <p>Coupon applied</p>
                                     <p>You save additional {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format((cartData.couponDiscount + cartData.discount) * currency.value).replace("THB", "฿")}</p>
@@ -57,11 +62,13 @@ export default function CheckoutSidebar(props) {
                                     }</button>
                                 </div>
                             </div> : <>
-                                <input type="text" className="inner_input form-control" id="couponCode" name="couponCode" placeholder="Coupon Code" />
-                                <div className="input-group-append">
-                                    <button className="btn btn-secondary radius" disabled={isApplyingCoupon} onClick={() => applyCouponCode(document.getElementById("couponCode").value)}>{
-                                        isApplyingCoupon ? <div className="loader" /> : "Apply Coupon"
-                                    }</button>
+                                <div className="input-group">
+                                    <input type="text" id="couponCode" name="couponCode" className="form-control p-2" placeholder="Promo Code" />
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-secondary text-uppercase rounded-right r-0" type="button" disabled={isApplyingCoupon} onClick={() => applyCouponCode(document.getElementById("couponCode").value)}>
+                                            {isApplyingCoupon ? <div className="loader" /> : "Apply Coupon"}
+                                        </button>
+                                    </div>
                                 </div>
                             </>
                     }

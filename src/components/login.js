@@ -125,13 +125,13 @@ export default function Login() {
                                         <div className="form_login">
                                             <input type="email" name="email" placeholder="Email Address" required={true} />
                                             <input type="password" name="password" placeholder="Password" required={true} />
+                                            <button type="button" className="textBtn ml-0" onClick={() => router.push("/forgotPassword")}>Forgot Password?</button>
                                         </div>
                                         <button type="submit" className="login_bttn go_bttn" disabled={isLoggingIn}>
                                             {isLoggingIn ? (<div className="loader"></div>) : "LOG IN"}
                                         </button>
                                         <p className="mass_tx" style={{ textAlign: "center" }}>
                                             <button type="button" className="textBtn" onClick={() => { setShowLoginPage(false); setOtpSent(false) }}>Don't have an account? Sign up</button>
-                                            <button type="button" className="textBtn" onClick={() => router.push("/forgotPassword")}>Forgot Password?</button>
                                         </p>
                                     </form>
                                 </div>

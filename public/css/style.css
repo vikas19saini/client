@@ -5346,38 +5346,26 @@ font-weight: 500}
 }
 
 .checkoutPage button{
-    font-size: 12px;    
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: .5px;
+    font-family: 'Montserrat' !important;
 }
 
 .checkoutPage .mb-0, .checkoutPage .my-0{
     padding: 0px;
 }
-
 .checkoutPage .breadcrumb{
     background: transparent;
     justify-content: center;
     font-size: 12px;
 }
-
 .checkoutPage .list-group-item:last-child{
     margin-bottom: 0;
 }
-
 .checkoutPage .list-group-item{
     background: transparent;
 }
-
 .checkoutPage input{
-    height: 40px;
-    font-size: 12px;
-    letter-spacing: 0px;
-    color: #ccc;
     font-family: 'Montserrat' !important;
 }
-
 .checkoutPage input:focus{
     outline: none;
     border-color: #999999;
@@ -5394,16 +5382,16 @@ font-weight: 500}
     border-top-right-radius: .25rem !important;
     border-bottom-right-radius: .25rem !important;
 }
-
 #couponCode{
     height: 100%;
 }
-
 .checkoutPage .appy_sec{
     background-color: transparent;
 }
-
 #showCartMobile{
     color: #8d8d8d;
     font-size: 14px;
+}
+.r-0{
+    border-radius: 0;
 }
