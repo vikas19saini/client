@@ -49,23 +49,23 @@ function Checkout() {
                     <div className="row">
                         <div className="col-md-5 order-md-2 p-0 pl-md-5">
                             <div className="pr-md-5 mt-md-5">
-                                <div className="py-2 text-center d-block d-sm-none">
-                                    <a className="nav-brand" href="/">
-                                        <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
-                                    </a>
-                                    <nav aria-label="breadcrumb">
-                                        <ol className="breadcrumb">
-                                            <li className="breadcrumb-item">
-                                                <Link href="/cart">
-                                                    <a style={{ color: "inherit" }}>
-                                                        Back to Cart
-                                                    </a>
-                                                </Link>
-                                            </li>
-                                        </ol>
-                                    </nav>
+                                <div className="py-2 text-center d-block d-md-none border-bottom">
+                                    <div className="row m-0 mt-2" style={{ alignItems: "center" }}>
+                                        <div className="col">
+                                            <Link href="/cart">
+                                                <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
+                                                    <i className="fa fa-chevron-left" />
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className="col">
+                                            <a href="/">
+                                                <img className="d-block mx-auto mb-2 pull-right" src="/images/logo.png" alt="gandhi" height="50" />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="checkoutInfo mt-0">
+                                <div className="checkoutInfo mt-0 mt-1">
                                     <div className="alert alert-warning">
                                         <p>Due to the current lockdown situation, please expect a delay of 7-10 days in the delivery times for your orders.</p>
                                         <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
@@ -76,25 +76,25 @@ function Checkout() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-7 order-md-1 pb-5 pr-md-5 " style={{ background: "#fff" }}>
-                            <div className="py-4 text-center d-none d-sm-block">
-                                <a className="nav-brand" href="/">
-                                    <img className="d-block mx-auto mb-2" src="/images/logo.png" alt="gandhi" height="50" />
-                                </a>
-                                <nav aria-label="breadcrumb">
-                                    <ol className="breadcrumb">
-                                        <li className="breadcrumb-item">
-                                            <Link href="/cart">
-                                                <a style={{ color: "inherit" }}>
-                                                    Back to Cart
-                                                </a>
-                                            </Link>
-                                        </li>
-                                    </ol>
-                                </nav>
-                            </div>
+                        <div className="col-md-7 order-md-1 pb-5 pr-md-5 p-0" style={{ background: "#fff" }}>
                             <div className="pl-md-5">
                                 <div className="pl-md-5">
+                                    <div className="py-4 text-center d-none d-md-block mb-5 border-bottom">
+                                        <div className="row m-0 mt-2" style={{ alignItems: "center" }}>
+                                            <div className="col">
+                                                <Link href="/cart">
+                                                    <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
+                                                        <i className="fa fa-chevron-left" />
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                            <div className="col">
+                                                <a href="/">
+                                                    <img className="d-block mx-auto mb-2 pull-right" src="/images/logo.png" alt="gandhi" height="50" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     {
                                         isLoggedIn &&
                                         <CustomerAddresses cartId={cartId} customerCartData={customerCartData} setReload={setReload} calcShiping={calcShiping} setIsLoading={setIsLoading} />
@@ -241,8 +241,8 @@ function ShippingAddress({
     const [isRegisteredUser, setIsRegisteredUser] = useState(false);
     const [isValidating, setIsValidating] = useState(false);
     const [emailAddress, setEmailAddress] = useState("");
-    const [hideGuestCheckout, setHideGuestCheckout] = useState(true);
-    const [isLoggingIn, setIsLoggingIn] = useState(false)
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
+    const [showEmailField, setShowEmailField] = useState(true);
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/countries`).then(res => {
@@ -300,19 +300,22 @@ function ShippingAddress({
         }
     }
 
-    const checkIsRegisteredUser = (email) => {
+    const checkIsRegisteredUser = (e) => {
+        e.preventDefault();
+        let email = e.target.email.value;
+
         if (email) {
             setIsValidating(true);
             axios.post(`${process.env.API_URL}customer/checkUserExist`, { email: email }).then((res) => {
                 setIsRegisteredUser(true);
                 setIsValidating(false);
                 setEmailAddress(email);
-                setHideGuestCheckout(true);
+                setShowEmailField(false);
             }).catch(err => {
                 setIsRegisteredUser(false);
                 setIsValidating(false);
                 setEmailAddress("");
-                setHideGuestCheckout(false);
+                setShowEmailField(false);
             })
         }
     }
@@ -334,110 +337,119 @@ function ShippingAddress({
         })
     }
 
-    return (
-        <>
-            {
-                isRegisteredUser &&
-                <form onSubmit={login}>
-                    <div className="p-2">
-                        <p className="heading">Please enter your password to login</p>
-                        <div className="form-group">
-                            <input type="email" name="email" required={true} defaultValue={emailAddress} className="form-control p-3" placeholder="Email Address" />
-                            <input type="password" name="password" required={true} autoFocus={true} className="form-control p-3 mt-2" placeholder="Password" />
-                            <a href="/forgotPassword" type="button" style={{ color: "inherit" }} className="textBtn ml-0">Forgot Password?</a>
-                        </div>
-                        <div className="mt-4 mb-5">
-                            <button disabled={isLoggingIn} type="submit" className="btn btn-secondary">{
-                                isLoggingIn ? <div className="loader" /> : "Continue"
-                            }</button>
-                            <button onClick={() => {
-                                setIsRegisteredUser(false);
-                            }} type="button" className="btn btn-outlined ml-2">Continue as Guest</button>
+    if (showEmailField) {
+        return (
+            <form onSubmit={checkIsRegisteredUser}>
+                <div className="p-2">
+                    <p className="heading">Contact Information</p>
+                    <div className="input-group">
+                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder="Email Address" />
+                        <div className="input-group-btn">
+                            <button disabled={isValidating} className="btn btn-secondary text-uppercase p-3 r-0 rounded-right" type="submit">
+                                {isValidating ? <div className="loader" /> : "Continue"}
+                            </button>
                         </div>
                     </div>
-                </form>
-            }
+                </div>
+            </form>
+        )
+    }
 
-            {
-                !isRegisteredUser &&
-                <form onSubmit={guestCheckout}>
-                    <div className="p-2">
-                        <p className="heading">Contact Information</p>
-                        <div className="input-group">
-                            <input type="email" name="email" id="guestEmail" required={true} className="form-control p-3" placeholder="Email Address" />
-                            <div className="input-group-btn">
-                                <button disabled={isValidating} onClick={() => checkIsRegisteredUser(document.getElementById("guestEmail").value)} className="btn btn-secondary text-uppercase p-3 r-0 rounded-right" type="button">
-                                    {isValidating ? <div className="loader" /> : "Continue"}
-                                </button>
+
+    if (isRegisteredUser && !showEmailField) {
+        return (
+            <form onSubmit={login}>
+                <div className="p-2">
+                    <p className="heading">Please enter your password to login</p>
+                    <div className="form-group">
+                        <input type="email" name="email" required={true} defaultValue={emailAddress} className="form-control p-3" placeholder="Email Address" />
+                        <input type="password" name="password" required={true} autoFocus={true} className="form-control p-3 mt-2" placeholder="Password" />
+                        <a href="/forgotPassword" type="button" style={{ color: "inherit" }} className="textBtn ml-0">Forgot Password?</a>
+                    </div>
+                    <div className="mt-4 mb-5">
+                        <button disabled={isLoggingIn} type="submit" className="btn btn-secondary">{
+                            isLoggingIn ? <div className="loader" /> : "Continue"
+                        }</button>
+                        <button onClick={() => {
+                            setIsRegisteredUser(false);
+                        }} type="button" className="btn btn-outlined ml-2">Continue as Guest</button>
+                    </div>
+                </div>
+            </form>
+        )
+    }
+
+    if (!isRegisteredUser && !showEmailField) {
+        return (
+            <form onSubmit={guestCheckout}>
+                <div className="p-2">
+                    <p className="heading">Contact Information</p>
+                    <div className="input-group">
+                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder="Email Address" />
+                    </div>
+                </div>
+                <div className="p-2 mt-4">
+                    <p className="heading">Shipping Address</p>
+                    <div className="row padding_0">
+                        <div className="col-12">
+                            <div className="input-group">
+                                <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder="Full Name" />
                             </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="input-group mt-3">
+                                <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="input-group mt-3">
+                                <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div className="input-group mt-3">
+                                <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
+                                    <option value="">-Select Country-</option>
+                                    {
+                                        countries.map(c => {
+                                            return (<option value={c.id} key={c.id}>{c.name}</option>)
+                                        })
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div className="input-group mt-3">
+                                <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
+                                    <option value="">-Select State-</option>
+                                    {
+                                        zones.map(z => {
+                                            return (<option value={z.id} key={z.id}>{z.name}</option>)
+                                        })
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div className="col-4">
+                            <div className="input-group mt-3">
+                                <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="input-group mt-3">
+                                <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
+                            </div>
+                        </div>
+                        <div className="col-12 mt-4 mb-5">
+                            <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
+                                isSaving ? <div className="loader" /> : "Continue To Shipping"
+                            }</button>
                         </div>
                     </div>
-                    {
-                        !hideGuestCheckout &&
-                        <div className="p-2 mt-4">
-                            <p className="heading">Shipping Address</p>
-                            <div className="row padding_0">
-                                <div className="col-12">
-                                    <div className="input-group">
-                                        <input type="text" name="name" required={true} className="form-control p-3" placeholder="Full Name" />
-                                    </div>
-                                </div>
-                                <div className="col-12">
-                                    <div className="input-group mt-3">
-                                        <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
-                                    </div>
-                                </div>
-                                <div className="col-12">
-                                    <div className="input-group mt-3">
-                                        <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="input-group mt-3">
-                                        <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
-                                            <option value="">-Select Country-</option>
-                                            {
-                                                countries.map(c => {
-                                                    return (<option value={c.id} key={c.id}>{c.name}</option>)
-                                                })
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="input-group mt-3">
-                                        <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
-                                            <option value="">-Select State-</option>
-                                            {
-                                                zones.map(z => {
-                                                    return (<option value={z.id} key={z.id}>{z.name}</option>)
-                                                })
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-4">
-                                    <div className="input-group mt-3">
-                                        <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
-                                    </div>
-                                </div>
-                                <div className="col-12">
-                                    <div className="input-group mt-3">
-                                        <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
-                                    </div>
-                                </div>
-                                <div className="col-12 mt-4 mb-5">
-                                    <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
-                                        isSaving ? <div className="loader" /> : "Continue To Shipping"
-                                    }</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </form>
-            }
-        </>
-    );
+                </div>
+            </form>
+        )
+    }
 }
 
 export default Checkout;
