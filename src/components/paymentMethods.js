@@ -56,11 +56,7 @@ export default function PaymentMethod() {
     }
 
     return (
-        <div className="dis_detail blockBorder" id="paymentMethods">
-            <div>
-                <h4 className="p0">Payment Method</h4>
-            </div>
-            <hr className="seperator" />
+        <div className="dis_detail blockBorder p-0" id="paymentMethods">
             <div className="center-block">
                 <div className="row">
                     <div className="col-md-12 col-12">
@@ -133,13 +129,14 @@ function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
     return paymentOptions.map((pm, index) => {
         if (pm.currencies.includes(currency.code.toLowerCase())) {
             return (
-                <div key={index} className="paymentMethod" onClick={() => setPaymentMethod(pm)}>
-                    <span className="radio-item" style={{ display: "flex", alignItems: "center" }}>
+                <div key={index} className="paymentMethod m-1" onClick={() => setPaymentMethod(pm)}>
+                    <span className="radio-item p-2" style={{ display: "flex", alignItems: "center" }}>
                         <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
                             <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></span>
                         </span>
-                        <label style={{ cursor: "pointer" }}>{pm.title}</label>
+                        <label style={{ cursor: "pointer" }}>Pay By - {pm.title}</label>
                     </span>
+                    <p className="small mt-1" style={{textTransform: "none"}}>Click here to choose this payment method and Please wait until you see payment options.</p>
                 </div>
             );
         }

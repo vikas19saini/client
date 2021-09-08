@@ -66,6 +66,7 @@
 
   .check_add_3.checkout{
     cursor: pointer;
+    min-height: 200px;
   }
 
   .check_add_3.selected .check_main_3{
@@ -141,11 +142,6 @@
 
   .selectedAdd{
     position: relative;
-    align-items: center;
-  }
-  .selectedAdd div:first-child{
-    flex-grow: 1;
-    margin-right: 5px;
   }
 
   button.changeAddressBtn {
@@ -158,7 +154,6 @@
     font-weight: 600;
 }
 .selectedAdd, .blockBorder{
-   border: 1px solid #e0e0e0;
     padding: 15px;
     background: #fff;
     margin-bottom: 30px;

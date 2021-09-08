@@ -46,15 +46,15 @@ function Checkout() {
             <ToastContainer />
             <div style={{ background: "#fafafa" }}>
                 <div className="checkoutPage">
-                    <div className="row">
+                    <div className="row m-0">
                         <div className="col-md-5 order-md-2 p-0 pl-md-5">
                             <div className="pr-md-5 mt-md-5">
-                                <div className="py-2 text-center d-block d-md-none border-bottom">
+                                <div className="py-2 text-center d-block d-md-none border-bottom" style={{ background: "#fafafa" }}>
                                     <div className="row m-0 mt-2" style={{ alignItems: "center" }}>
                                         <div className="col">
                                             <Link href="/cart">
                                                 <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
-                                                    <i className="fa fa-chevron-left" />
+                                                    <i className="fa fa-chevron-left" /> Cart
                                                 </a>
                                             </Link>
                                         </div>
@@ -76,15 +76,15 @@ function Checkout() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-7 order-md-1 pb-5 pr-md-5 p-0" style={{ background: "#fff" }}>
+                        <div className="col-md-7 order-md-1 pr-md-5 p-0" style={{ background: "#fff" }}>
                             <div className="pl-md-5">
                                 <div className="pl-md-5">
-                                    <div className="py-4 text-center d-none d-md-block mb-5 border-bottom">
+                                    <div className="py-4 text-center d-none d-md-block mb-5 border-bottom" style={{ background: "#fafafa" }}>
                                         <div className="row m-0 mt-2" style={{ alignItems: "center" }}>
                                             <div className="col">
                                                 <Link href="/cart">
                                                     <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
-                                                        <i className="fa fa-chevron-left" />
+                                                        <i className="fa fa-chevron-left" /> Cart
                                                     </a>
                                                 </Link>
                                             </div>
@@ -102,6 +102,22 @@ function Checkout() {
                                     {
                                         !isLoggedIn && <ShippingAddress calcShiping={calcShiping} setReload={setReload} cartId={cartId} />
                                     }
+                                    <div className="mt-5 border-top">
+                                        <ul className="mt-2" style={{ listStyle: "none", fontSize: "12px", textAlign: "center" }}>
+                                            <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
+                                                <Link href="/about"><a target="_blank" className="text-muted">About Us</a></Link>
+                                            </li>
+                                            <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
+                                                <Link href="/privacy"><a target="_blank" className="text-muted">Privacy Policy</a></Link>
+                                            </li>
+                                            <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
+                                                <Link href="/toc"><a target="_blank" className="text-muted">Terms & Conditions</a></Link>
+                                            </li>
+                                            <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light">
+                                                <Link href="/contact"><a target="_blank" className="text-muted">Contact</a></Link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -125,6 +141,7 @@ function CustomerAddresses({
     const [changeAddress, setChangeAddress] = useState(false);
     const [showAddresses, setShowAddresses] = useState(false);
     const [showPaymentMethod, setShowPaymentMethod] = useState(false);
+    const [addedAddress, setAddedAddress] = useState(1);
 
     useEffect(() => {
 
@@ -152,7 +169,7 @@ function CustomerAddresses({
                 setIsLoading(false);
             })
         }
-    }, [changeAddress, showAddresses]);
+    }, [changeAddress, showAddresses, addedAddress]);
 
     const calcShippingCost = (shippingAddress) => {
         setCalcShipping(shippingAddress.id);
@@ -174,23 +191,27 @@ function CustomerAddresses({
     }
 
     return (
-        <div className="p-2 row p-0">
+        <div className="row m-0">
             {
                 (showAddresses || changeAddress) &&
                 <Fragment>
-                    <div className="col-12 p-3 card">
-                        <h5 className="heading m-0">Shipping Address</h5>
+                    <div className="col-md-12 col-sm-12 col-xs-12 p-0">
+                        <div className="card p-3 mb-2 mt-2" style={{display: "flex", flexDirection: "inherit", alignItems: "center", justifyContent: "space-between"}}>
+                            <p className="heading m-0">Shipping Address
+                            </p>
+                            <button type="button" className="btn btn-light" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#addNewAddress">Add New</button>
+                        </div>
                     </div>
                     {
                         addresses.map((add) => {
                             return (
-                                <div className="col-md-6 col-sm-6 col-xs-12 addressOne cartProduct" key={add.id}>
-                                    <div className="check_add_3 checkout m-2">
+                                <div className="col-md-6 col-sm-6 col-xs-12 p-0" key={add.id}>
+                                    <div className="check_add_3 checkout card m-md-1">
                                         <div>
                                             <p><span>{add.name}</span> {formatAddress(add)}</p>
                                             <p><span>Phone: {add.phone}</span></p>
-                                            <button disabled={calculatinShipping} title="Click to select address" className="checkoutBtn" type="button" onClick={() => calcShippingCost(add)}>
-                                                {calculatinShipping === add.id ? <div className="loader" /> : "Deliver Here"}
+                                            <button disabled={calculatinShipping} title="Click to select address" className="btn btn-secondary checkoutBtn" type="button" onClick={() => calcShippingCost(add)}>
+                                                {calculatinShipping === add.id ? <span className="spinner-border spinner-border-sm"></span> : "Deliver Here"}
                                             </button>
                                         </div>
                                     </div>
@@ -205,7 +226,7 @@ function CustomerAddresses({
                 customerCartData && customerCartData.address && !changeAddress &&
                 <Fragment>
                     <div className="col-12 p-0">
-                        <div className="dis_detail selectedAdd cartProduct">
+                        <div className="dis_detail selectedAdd mt-2 card">
                             <div>
                                 <h4>Delivery Address</h4>
                                 <div className="seperator" />
@@ -224,6 +245,15 @@ function CustomerAddresses({
                     }
                 </Fragment>
             }
+            <div id="addNewAddress" className="modal" role="dialog">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-body">
+                            <CreateNewAddress setAddedAddress={setAddedAddress} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
@@ -346,7 +376,7 @@ function ShippingAddress({
                         <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder="Email Address" />
                         <div className="input-group-btn">
                             <button disabled={isValidating} className="btn btn-secondary text-uppercase p-3 r-0 rounded-right" type="submit">
-                                {isValidating ? <div className="loader" /> : "Continue"}
+                                {isValidating ? <span className="spinner-border spinner-border-sm"></span> : "Continue"}
                             </button>
                         </div>
                     </div>
@@ -368,7 +398,7 @@ function ShippingAddress({
                     </div>
                     <div className="mt-4 mb-5">
                         <button disabled={isLoggingIn} type="submit" className="btn btn-secondary">{
-                            isLoggingIn ? <div className="loader" /> : "Continue"
+                            isLoggingIn ? <span className="spinner-border spinner-border-sm"></span> : "Continue"
                         }</button>
                         <button onClick={() => {
                             setIsRegisteredUser(false);
@@ -442,7 +472,7 @@ function ShippingAddress({
                         </div>
                         <div className="col-12 mt-4 mb-5">
                             <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
-                                isSaving ? <div className="loader" /> : "Continue To Shipping"
+                                isSaving ? <span className="spinner-border spinner-border-sm"></span> : "Continue To Shipping"
                             }</button>
                         </div>
                     </div>
@@ -450,6 +480,140 @@ function ShippingAddress({
             </form>
         )
     }
+}
+
+function CreateNewAddress({
+    setAddedAddress
+}) {
+
+    const [countries, setCountries] = useState([]);
+    const [zones, setZones] = useState([]);
+    const [isSaving, setIsSaving] = useState(false);
+
+    useEffect(() => {
+        axios.get(`${process.env.API_URL}static/countries`).then(res => {
+            setCountries(res.data);
+            let zones = []
+
+            res.data.forEach(country => {
+                country.zones.forEach(zone => {
+                    zones.push({ id: zone.id, name: zone.name })
+                })
+            })
+            setZones(zones)
+        })
+    }, [])
+
+    const fetchZones = (e) => {
+        let countryData = countries.filter(c => c.id == e.target.value);
+        let zones = []
+        countryData.forEach(country => {
+            country.zones.forEach(zone => {
+                zones.push({ id: zone.id, name: zone.name })
+            })
+        })
+
+        setZones(zones)
+    }
+
+    const saveAddress = (e) => {
+        e.preventDefault();
+        setIsSaving(true);
+
+        let request = {
+            name: e.target.name.value,
+            phone: e.target.phone.value,
+            address: e.target.address.value,
+            city: e.target.city.value,
+            postcode: e.target.postcode.value,
+            countryId: e.target.countryId.value,
+            zoneId: e.target.zoneId.value,
+            type: "home",
+            isDefault: 0,
+        }
+
+        axios.post(`${process.env.API_URL}address`, request).then(res => {
+            toast.notify("New address created", {
+                type: "success",
+                title: "Success!"
+            });
+            setIsSaving(false);
+            setAddedAddress(new Date().getTime());
+            document.querySelector("#closeModal").click();
+        }).catch(err => {
+            let message = err.response.data.errors ? err.response.data.errors[0].message : "Oops! something went wrong!"
+            toast.notify(message, {
+                type: "error",
+                title: "Error!"
+            });
+            setIsSaving(false);
+        })
+    }
+
+    return (
+        <form onSubmit={saveAddress}>
+            <div className="p-2 mt-4">
+                <p className="heading">Shipping Address</p>
+                <div className="row padding_0">
+                    <div className="col-12">
+                        <div className="input-group">
+                            <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder="Full Name" />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="input-group mt-3">
+                            <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="input-group mt-3">
+                            <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="input-group mt-3">
+                            <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
+                                <option value="">-Select Country-</option>
+                                {
+                                    countries.map(c => {
+                                        return (<option value={c.id} key={c.id}>{c.name}</option>)
+                                    })
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="input-group mt-3">
+                            <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
+                                <option value="">-Select State-</option>
+                                {
+                                    zones.map(z => {
+                                        return (<option value={z.id} key={z.id}>{z.name}</option>)
+                                    })
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="input-group mt-3">
+                            <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="input-group mt-3">
+                            <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
+                        </div>
+                    </div>
+                    <div className="col-12 mt-4 mb-5">
+                        <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
+                            isSaving ? <span className="spinner-border spinner-border-sm"></span> : "Save & Continue"
+                        }</button>
+                        <button type="button" id="closeModal" data-dismiss="modal" className="btn btn btn-light processBtn ml-2">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    )
 }
 
 export default Checkout;

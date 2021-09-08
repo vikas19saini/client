@@ -36,10 +36,10 @@ export default function CheckoutSidebar(props) {
         <Fragment>
             {
                 router.pathname === "/checkout" &&
-                <div className="d-block d-sm-none p-2">
-                    <div className="dis_detail selectedAdd cartProduct m-0">
+                <div className="d-block d-sm-none">
+                    <div className="dis_detail card m-0">
                         <div>
-                            <h6 className="p-0 m-0">
+                            <h6 className="pl-4 pr-4 pb-2 pt-2 m-0">
                                 <span id="showCartMobile">Show order summary <i className="fa fa-chevron-down"></i></span>
                                 <span className="pull-right">{formatPrice(cartData ? cartData.total : 0)}</span>
                             </h6>
@@ -47,7 +47,7 @@ export default function CheckoutSidebar(props) {
                     </div>
                 </div>
             }
-            <div className={router.pathname === "/checkout" ? "appy_sec cart-details d-none d-sm-block" : "appy_sec cart-details"}>
+            <div className={router.pathname === "/checkout" ? "appy_sec cart-details d-none d-sm-block card" : "appy_sec cart-details card"}>
                 <div className="input-group">
                     {
                         cartData && cartData.coupon ?
@@ -58,7 +58,7 @@ export default function CheckoutSidebar(props) {
                                 </div>
                                 <div className="couponBtn">
                                     <button type="button" disabled={isApplyingCoupon} onClick={() => removeCouponCode()}>{
-                                        isApplyingCoupon ? <div className="loader" /> : "Remove"
+                                        isApplyingCoupon ? <span className="spinner-border spinner-border-sm"></span> : "Remove"
                                     }</button>
                                 </div>
                             </div> : <>
@@ -66,7 +66,7 @@ export default function CheckoutSidebar(props) {
                                     <input type="text" id="couponCode" name="couponCode" className="form-control p-2" placeholder="Promo Code" />
                                     <div className="input-group-btn">
                                         <button className="btn btn-secondary text-uppercase rounded-right r-0" type="button" disabled={isApplyingCoupon} onClick={() => applyCouponCode(document.getElementById("couponCode").value)}>
-                                            {isApplyingCoupon ? <div className="loader" /> : "Apply Coupon"}
+                                            {isApplyingCoupon ? <span className="spinner-border spinner-border-sm"></span> : "Apply Coupon"}
                                         </button>
                                     </div>
                                 </div>
