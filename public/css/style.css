@@ -5394,3 +5394,9 @@ font-weight: 500}
 .r-0{
     border-radius: 0;
 }
+.checkoutPage .form-control{
+    height: auto !important;
+}
+.checkoutPage button{
+    height: 100%;
+}
