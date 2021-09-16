@@ -14,12 +14,12 @@ $(document).ready(function(){
         $(this).removeAttr("style");
         $(this).find('.sub-menu').slideUp();
     } else {
-        $('.ac-list > .expanded').removeClass('megaopen');
+        /* $('.ac-list > .expanded').removeClass('megaopen');
         $(this).addClass('megaopen');
         var newHeight = $(this).find('.sub-menu').height();
         $(this).height(newHeight+100);
         $('.ac-list > .expanded').find('.sub-menu').slideUp();
-        $(this).find('.sub-menu').slideToggle();
+        $(this).find('.sub-menu').slideToggle(); */
     }
   });
   });

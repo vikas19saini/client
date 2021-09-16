@@ -15,7 +15,6 @@ import { PhotoSwipe } from 'react-photoswipe';
 import {
     isMobile
 } from "react-device-detect";
-import { useSelector } from "react-redux";
 
 export default function Product(product) {
 

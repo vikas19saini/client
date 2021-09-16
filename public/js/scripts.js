@@ -1121,6 +1121,194 @@ function homePageInit() {
             }
         }
     });
+
+    $('#looking_make').owlCarousel({
+        loop: true,
+        autoplay: false,
+        dots: false,
+        nav: false,
+        margin: 0,
+        responsive: {
+            0: {
+
+                items: 3.6,
+
+            },
+
+            568: {
+                items: 3.2,
+
+            },
+
+            667: {
+                items: 4.2,
+            },
+
+            1170: {
+
+                items: 5,
+
+            }
+        }
+    });
+
+    $('#best_sellers').owlCarousel({
+        loop: true,
+        autoplay: false,
+        dots: false,
+        nav: true,
+        margin: 40,
+        navText: ["<img src='images/new_img/left.png'>", "<img src='images/new_img/right.png'>"],
+        responsive: {
+            0: {
+
+                items: 1.2,
+                margin: 20,
+
+            },
+
+            568: {
+                items: 1.2,
+
+            },
+
+            667: {
+                items: 2,
+            },
+
+            1170: {
+
+                items: 2,
+
+            }
+        }
+    });
+
+    $('#fabric').owlCarousel({
+        loop: true,
+        autoplay: false,
+        dots: false,
+        nav: true,
+        margin: 20,
+        navText: ["<img src='images/new_img/left.png'>", "<img src='images/new_img/right.png'>"],
+        responsive: {
+            0: {
+
+                items: 1.4,
+
+            },
+
+            568: {
+                items: 1.2,
+
+            },
+
+            667: {
+                items: 2,
+            },
+
+            1170: {
+
+                items: 3,
+
+            }
+        }
+    });
+
+    $('#best_sellers_1').owlCarousel({
+        loop: true,
+        autoplay: false,
+        dots: true,
+        nav: true,
+        margin: 40,
+        navText: ["<img src='images/new_img/left.png'>", "<img src='images/new_img/right.png'>"],
+        responsive: {
+            0: {
+
+                items: 1.2,
+                margin: 20,
+
+            },
+
+            568: {
+                items: 1.2,
+
+            },
+
+            667: {
+                items: 2,
+            },
+
+            1170: {
+
+                items: 2,
+
+            }
+        }
+    });
+
+    $('#fabric_1, #fabric_2, #just').owlCarousel({
+        loop: true,
+        autoplay: false,
+        nav: true,
+        margin: 20,
+        navText: ["<img src='images/new_img/left.png'>", "<img src='images/new_img/right.png'>"],
+        responsive: {
+            0: {
+
+                items: 1.4,
+                dots: true,
+
+            },
+
+            568: {
+                items: 1.2,
+                dots: true,
+
+            },
+
+            667: {
+                items: 2.2,
+                dots: true,
+            },
+
+            1170: {
+
+                items: 3,
+                dots: false,
+
+            }
+        }
+    });
+    $('#screenshot_slider').owlCarousel({
+        loop: true,
+        nav: false,
+        dots: false,
+        margin: 10,
+        center: true,
+        responsive: {
+            0: {
+
+                items: 1.3,
+
+            },
+
+            568: {
+                items: 1.2,
+
+            },
+
+            667: {
+                items: 3,
+            },
+
+            1170: {
+
+                items: 3.2,
+
+            }
+        }
+    });
 }
 
 
