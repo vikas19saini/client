@@ -96,6 +96,7 @@ export default function SubCategory(props) {
                                                             <a>
                                                                 <h3>{s.name}</h3>
                                                                 <p>{s.description}</p>
+                                                                <p>{s.products.length} products</p>
                                                             </a>
                                                         </Link>
                                                     </div>
@@ -128,6 +129,7 @@ export default function SubCategory(props) {
                                                             <a>
                                                                 <h3>{s.name}</h3>
                                                                 <p>{s.description}</p>
+                                                                <p>{s.products.length} products</p>
                                                             </a>
                                                         </Link>
                                                     </div>
