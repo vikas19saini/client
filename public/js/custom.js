@@ -1,16 +1,3 @@
-
-$(window).scroll(function () {
-  var sticky = $('.header_area'),
-    scroll = $(window).scrollTop();
-
-  if (scroll >= 40) {
-    sticky.addClass('fixed');
-  }
-  else {
-    sticky.removeClass('fixed');
-  }
-});
-
 !(function (n, i, e, a) {
   ; (n.navigation = function (t, s) {
     var o = {

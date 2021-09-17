@@ -1,4 +1,3 @@
-
 $(window).scroll(function () {
     var sticky = $('.header_area'),
         scroll = $(window).scrollTop();
@@ -8,6 +7,14 @@ $(window).scroll(function () {
     }
     else {
         sticky.removeClass('fixed');
+    }
+
+    if ($(window).width() < 750 && scroll >= 40) {
+        $("#navigation1").hide();
+        $("form.example.mob_view").addClass("p-3")
+    } else {
+        $("#navigation1").show();
+        $("form.example.mob_view").removeClass("p-3")
     }
 });
 
@@ -52,7 +59,7 @@ $(window).scroll(function () {
         n(t).find(".nav-search").length > 0 &&
             n(t)
                 .find(".nav-search")
-                .find("form")
+                .find("form1")
                 .prepend(
                     "<span class='nav-search-close-button' tabindex='0'>&#10005;</span>"
                 ),
@@ -124,10 +131,9 @@ $(window).scroll(function () {
                                 r.settings.submenuIndicator &&
                                 n(this)
                                     .children("a")
-                                    .append(
-                                        "<span class='submenu-indicator'><span class='submenu-indicator-chevron'></span></span>"
-                                    ))
+                                    .append(""))
                     })
+
             },
             m = function () {
                 n(t).hasClass("navigation-portrait")
@@ -138,7 +144,7 @@ $(window).scroll(function () {
                 C() > r.settings.mobileBreakpoint &&
                     n(t)
                         .find(".nav-search")
-                        .find("form")
+                        .find("form1")
                         .fadeOut(),
                     "fade" == e
                         ? n(i)
@@ -238,11 +244,11 @@ $(window).scroll(function () {
                     "none" ==
                         n(t)
                             .find(".nav-search")
-                            .find("form")
+                            .find("form1")
                             .css("display")
                         ? (n(t)
                             .find(".nav-search")
-                            .find("form")
+                            .find("form1")
                             .fadeIn(200),
                             n(t)
                                 .find(".nav-search")
@@ -250,7 +256,7 @@ $(window).scroll(function () {
                                 .focus())
                         : (n(t)
                             .find(".nav-search")
-                            .find("form")
+                            .find("form1")
                             .fadeOut(200),
                             n(t)
                                 .find(".nav-search")
@@ -1313,24 +1319,34 @@ function homePageInit() {
 
 
 function subCategory() {
-    $('#mini_slide').owlCarousel({
+    $('#best_sellers').owlCarousel({
         loop: true,
         autoplay: false,
         dots: false,
-        nav: false,
+        nav: true,
+        margin: 40,
+        navText: ["<img src='/images/new_img/left.png'>", "<img src='/images/new_img/right.png'>"],
         responsive: {
             0: {
+
                 items: 1.2,
-                margin: 10,
+                margin: 20,
+
             },
+
             568: {
-                items: 3.1,
+                items: 1.2,
+
             },
+
             667: {
-                items: 3.1,
+                items: 2,
             },
+
             1170: {
-                items: 3.1,
+
+                items: 2,
+
             }
         }
     });

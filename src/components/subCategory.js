@@ -1,22 +1,29 @@
-import { Fragment, useEffect } from "react"
+import { Fragment, useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router";
 
 export default function SubCategory(props) {
-    let category = props.category
-    let firstSection = [], secondSection = [], thirdSection = [], restAll = []
+    const [subCategories, setSubCategories] = useState([]);
+    const [slider, setSlider] = useState([]);
+    const [grid, setGrid] = useState([]);
+    const history = useRouter();
+    const category = props.category;
 
-    for (let i = 0; i < category.descendents.length; i++) {
-        if (i < 2) {
-            firstSection.push(category.descendents[i])
-        } else if (i === 2) {
-            secondSection.push(category.descendents[i])
-        } else if (i > 2 && i < 5) {
-            thirdSection.push(category.descendents[i])
-        } else {
-            restAll.push(category.descendents[i])
+    useEffect(() => {
+        setSubCategories(props.category.descendents);
+    }, [props.category])
+
+    useEffect(() => {
+        if (subCategories.length > 0) {
+            if (subCategories.length >= 4) {
+                setSlider(subCategories.splice(0, 3));
+                setGrid(subCategories.splice(3, subCategories.length - 1));
+            } else {
+                setGrid(subCategories);
+            }
         }
-    }
+    }, [subCategories])
 
     useEffect(() => {
         subCategory()
@@ -24,41 +31,40 @@ export default function SubCategory(props) {
 
     return (
         <Fragment>
-            <div className="container-fluid subcategory_desk desk_view" style={{ background: `url(${category.media ? category.media.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="inner_sub_txt inner_txt wow fadeInUp">
-                                <h1>{category.name}</h1>
-                                <p>{category.description}</p>
+            <div className="container">
+                <div className="inner_cotton_main wow fadeInUp">
+                    <div className="desk_view">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="cotton_flx_row">
+                                    <div className="cotton_mainHead">
+                                        <h3>{category.name}</h3>
+                                        <p>{category.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="cotton_main_banner">
+                                    <img src={category.media ? category.media.fullUrl : "//images/placeholder.png"} alt={category.name} className="img-fluid desk_view" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="container-fluid subcategory_mob mob_view" style={{ background: `url(${category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"}) no-repeat center` }}>
-                <div className="row">
-                    <div className="col-md-12">
-                        <div id="top_banner_1" className="owl-carousel wow fadeInUp">
-                            <div className="item">
-                                <div className="inner_sub_txt inner_txt">
-                                    <h1>{category.name}</h1>
-                                    <p>{category.description}</p>
-                                    <button type="button" className="view_slide_bttn learn_bttn pro_124 cttn_coll">View Collection</button>
+                    <div className="mob_view">
+                        <div className="row">
+                            <div className="col-md-8">
+                                <div className="cotton_main_banner">
+                                    <img src={category.subCategory ? category.subCategory.fullUrl : "//images/placeholder.png"} alt={category.name} className="img-fluid mob_view" />
                                 </div>
                             </div>
-                            <div className="item">
-                                <div className="inner_sub_txt inner_txt">
-                                    <h1>{category.name}</h1>
-                                    <p>{category.description}</p>
-                                    <button type="button" className="view_slide_bttn learn_bttn pro_124 cttn_coll">View Collection</button>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="inner_sub_txt inner_txt">
-                                    <h1>{category.name}</h1>
-                                    <p>{category.description}</p>
-                                    <button type="button" className="view_slide_bttn learn_bttn pro_124 cttn_coll">View Collection</button>
+                            <div className="col-md-4 mob_padd_0">
+                                <div className="cotton_flx_row">
+                                    <div className="cotton_mainHead">
+                                        <h3>{category.name}</h3>
+                                        <p>{category.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,165 +73,75 @@ export default function SubCategory(props) {
             </div>
 
             {
-                firstSection.length > 0 &&
+                slider.length > 0 &&
                 <section className="sec_padd">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="inner_main_hadding wow fadeInUp">
-                                    <h4>Explore in {category.name}</h4>
+                                    <h4>Exclusive {category.name}</h4>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
-                            {
-                                firstSection.map(c => {
-                                    return (
-                                        <div className="col-md-6" key={c.id}>
-                                            <div className="cotton_fabric_sec tp_border wow fadeInUp">
-                                                <Link href={`/category/${category.slug}/${c.slug}`}>
-                                                    <a>
-                                                        <Image src={c.subCategory ? c.subCategory.fullUrl : "/images/placeholder.png"} width={450} height={560} alt={c.name} className="img-fluid" placeolder="skeleton" unoptimized />
-                                                    </a>
-                                                </Link>
-                                                <h5>{c.name}</h5>
-                                                <p>{c.products.length} products</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-                </section>
-            }
-
-            {
-                secondSection.length > 0 &&
-
-                <section className="sec_padd wow fadeInUp">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-md-6 padd_right_0">
-                                <div className="">
-                                    <Link href={`/category/${category.slug}/${secondSection[0].slug}`}>
-                                        <a>
-                                            <img src={secondSection[0].subCategory ? secondSection[0].subCategory.fullUrl : "/images/placeholder.png"} alt={secondSection[0].name} className="img-fluid" />
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="col-md-6 padd_left_0 brocade_bg">
-                                <div className="dis_flex">
-                                    <div className="inner_brocade">
-                                        <h3>{secondSection[0].name}</h3>
-                                        <p>{secondSection[0].description}</p>
-                                        <Link href={`/category/${category.slug}/${secondSection[0].slug}`}>
-                                            <a>
-                                                <button type="button" className="view_slide_bttn learn_bttn pro_124">{secondSection[0].products.length} products</button>
-                                            </a>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            }
-
-            {
-                restAll.length > 0 &&
-                <section className="sec_padd">
-                    <div className="container custom_con">
-                        <div id="mini_slide" className="owl-carousel wow fadeInUp">
-                            {
-                                restAll.map(ra => {
-                                    return (
-                                        <div className="item" key={ra.id}>
-                                            <div className="cotton_fabric_sec tp_border">
-                                                <Link href={`/category/${category.slug}/${ra.slug}`}>
-                                                    <a>
-                                                        <Image src={ra.subCategory ? ra.subCategory.thumbnailUrl : "/images/placeholder.png"} width={350} height={350} alt={ra.name} className="img-fluid" quality={100} />
-                                                    </a>
-                                                </Link>
-                                                <h5>{ra.name} </h5>
-                                                <p>{ra.products.length} products</p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
-                </section>
-            }
-
-            {
-                thirdSection.length > 0 &&
-                thirdSection.map((tc, index) => {
-                    if (index % 2 === 0) {
-                        return (
-                            <section className="sec_padd wow fadeInUp" key={tc.id} style={{ paddingBottom: 20 }}>
-                                <div className="container">
-                                    <div className="row_revers">
-                                        <div className="row">
-                                            <div className="col-md-7">
-                                                <div className="">
-                                                    <img src={tc.subCategory ? tc.subCategory.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-5">
-                                                <div className="dis_flex">
-                                                    <div className="inner_left">
-                                                        <h3>{tc.name}</h3>
-                                                        <p>{tc.description}</p>
-                                                        <div className="dropdown">
-                                                            <Link href={`/category/${category.slug}/${tc.slug}`}>
-                                                                <a>
-                                                                    <button className="view_bttn dropbtn lern_bttn">{tc.products.length} products</button>
-                                                                </a>
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        )
-                    } else {
-                        return (
-                            <section className="sec_padd wow fadeInUp" key={tc.id} style={{ paddingBottom: 20 }}>
-                                <div className="container">
-                                    <div className="row flex_derection">
-                                        <div className="col-md-5">
-                                            <div className="dis_flex">
-                                                <div className="inner_left">
-                                                    <h3>{tc.name}</h3>
-                                                    <p>{tc.description}</p>
-                                                    <div className="dropdown">
-                                                        <Link href={`/category/${category.slug}/${tc.slug}`}>
+                            <div className="col-md-12 wow fadeInUp">
+                                <div id="best_sellers" className="custom_icon owl-carousel mrg_113 owl-theme wow fadeInUp">
+                                    {slider.map((s) => {
+                                        return (
+                                            <div className="item">
+                                                <img src={s.subCategory ? s.subCategory.fullUrl : "//images/placeholder.png"} alt={s.name} className="img-fluid" />
+                                                <div className="top_space">
+                                                    <div className="sld_bttm_tx">
+                                                        <Link href={`/category/${category.slug}/${s.slug}`}>
                                                             <a>
-                                                                <button className="view_bttn dropbtn lern_bttn">{tc.products.length} products</button>
+                                                                <h3>{s.name}</h3>
+                                                                <p>{s.description}</p>
                                                             </a>
                                                         </Link>
                                                     </div>
+                                                    <button onClick={() => history.push(`/category/${category.slug}/${s.slug}`)} type="button" className="shop_bttn">Shop Now</button>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+
+            {
+                grid.length > 0 &&
+                <section className="sub_cotton_sec">
+                    <div className="container">
+                        <div className="row wow fadeInUp">
+                            {
+                                grid.map((s) => {
+                                    return (
+                                        <div className="col-md-6">
+                                            <div className="cotton_feb">
+                                                <img src={s.subCategory ? s.subCategory.fullUrl : "//images/placeholder.png"} alt={s.name} className="img-fluid" />
+                                                <div className="top_space">
+                                                    <div className="sld_bttm_tx">
+                                                        <Link href={`/category/${category.slug}/${s.slug}`}>
+                                                            <a>
+                                                                <h3>{s.name}</h3>
+                                                                <p>{s.description}</p>
+                                                            </a>
+                                                        </Link>
+                                                    </div>
+                                                    <button onClick={() => history.push(`/category/${category.slug}/${s.slug}`)} type="button" className="shop_bttn">Shop Now</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-7">
-                                            <div>
-                                                <img src={tc.subCategory ? tc.subCategory.fullUrl : "/images/placeholder.png"} alt={tc.name} className="img-fluid" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        )
-                    }
-                })
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </section>
             }
-        </Fragment >
-    );
+        </Fragment>
+    )
 }

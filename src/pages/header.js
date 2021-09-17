@@ -137,8 +137,8 @@ export default function Header(props) {
                                 <li><Link href="/contact"><a>Enquire</a></Link></li>
                                 <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
                                 <li className="tp_bd_no">
-                                    <a className="show_sub" href="#">All Fabric</a>
-                                    <div className="megamenu-panel" id="close_menu">
+                                    <a className="show_sub" href="#menu">All Fabric</a>
+                                    <div className="megamenu-panel">
                                         <div className="nav_head">
                                             <div className="tabs_veiw_s">
                                                 <div className="row">

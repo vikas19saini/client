@@ -6,6 +6,7 @@ import axios from "axios";
 import { wrapper } from '../redux/store';
 import Products from "../components/productCrousel"
 import { useRouter } from "next/router";
+import Link from 'next/dist/client/link';
 
 export default function Home(props) {
 
@@ -82,74 +83,123 @@ export default function Home(props) {
               <div id="looking_make" className="flx_delection custom_icon owl-carousel owl-theme">
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/dresses.svg" alt="gandhi fabrics" />
-                    <p>Dresses</p>
+                    <Link href="/search?query=dresses">
+                      <a>
+                        <img src="images/icon_menu/dresses.svg" alt="gandhi fabrics" />
+                        <p>Dresses</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/blouses.svg" alt="gandhi fabrics" />
-                    <p>Blouses</p>
+                    <Link href="/search?query=blouses">
+                      <a>
+                        <img src="images/icon_menu/blouses.svg" alt="gandhi fabrics" />
+                        <p>Blouses</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/skirts.svg" alt="gandhi fabrics" />
-                    <p>Skirts</p>
+                    <Link href="/search?query=skirts">
+                      <a>
+                        <img src="images/icon_menu/skirts.svg" alt="gandhi fabrics" />
+                        <p>Skirts</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/jackts.svg" alt="gandhi fabrics" />
-                    <p>Jackts</p>
+                    <Link href="/search?query=jackts">
+                      <a>
+                        <img src="images/icon_menu/jackts.svg" alt="gandhi fabrics" />
+                        <p>Jackts</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/suiting.svg" alt="gandhi fabrics" />
-                    <p>Suiting</p>
+                    <Link href="/search?query=suiting">
+                      <a>
+                        <img src="images/icon_menu/suiting.svg" alt="gandhi fabrics" />
+                        <p>Suiting</p>
+                      </a>
+                    </Link>
+                  </div>
+
+                </div>
+                <div className="item">
+                  <div className="lk_make">
+                    <Link href="/search?query=bridal">
+                      <a>
+                        <img src="images/icon_menu/bridal.svg" alt="gandhi fabrics" />
+                        <p>Bridal</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/bridal.svg" alt="gandhi fabrics" />
-                    <p>Bridal</p>
+                    <Link href="/search?query=trousers">
+                      <a>
+                        <img src="images/icon_menu/trousers.svg" alt="gandhi fabrics" />
+                        <p>Trousers</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/trousers.svg" alt="gandhi fabrics" />
-                    <p>Trousers</p>
+                    <Link href="/search?query=shirts">
+                      <a>
+                        <img src="images/icon_menu/shirts.svg" alt="gandhi fabrics" />
+                        <p>Shirts</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/shirts.svg" alt="gandhi fabrics" />
-                    <p>Shirts</p>
+                    <Link href="/search?query=scarves">
+                      <a>
+                        <img src="images/icon_menu/scarves.svg" alt="gandhi fabrics" />
+                        <p>Scarves</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/scarves.svg" alt="gandhi fabrics" />
-                    <p>Scarves</p>
+                    <Link href="/search?query=kids">
+                      <a>
+                        <img src="images/icon_menu/kids.svg" alt="gandhi fabrics" />
+                        <p>Kids</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/kids.svg" alt="gandhi fabrics" />
-                    <p>Kids</p>
+                    <Link href="/search?query=women">
+                      <a>
+                        <img src="images/icon_menu/women.svg" alt="gandhi fabrics" />
+                        <p>Women</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="item">
                   <div className="lk_make">
-                    <img src="images/icon_menu/women.svg" alt="gandhi fabrics" />
-                    <p>Women</p>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className="lk_make">
-                    <img src="images/icon_menu/men.svg" alt="gandhi fabrics" />
-                    <p>Men</p>
+                    <Link href="/search?query=men">
+                      <a>
+                        <img src="images/icon_menu/men.svg" alt="gandhi fabrics" />
+                        <p>Men</p>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -431,8 +481,8 @@ export default function Home(props) {
             <div className="row">
               <div className="col-md-12 mob_padd_0 wow fadeInUp">
                 <div className="banner_sec_md">
-                  <a href="#" className="desk_view"><img src="images/new_img/img_8.png" alt="gandhi fabrics" className="img-fluid" /></a>
-                  <a href="#" className="mob_view"><img src="images/new_img/mob_img_5.png" alt="gandhi fabrics" className="img-fluid" /></a>
+                  <a href="#" className="desk_view"><img src="images/new_img/DEALS_desktop.jpg" alt="gandhi fabrics" className="img-fluid" /></a>
+                  <a href="#" className="mob_view"><img src="images/new_img/Deals_mobile.jpg" alt="gandhi fabrics" className="img-fluid" /></a>
                 </div>
               </div>
             </div>
