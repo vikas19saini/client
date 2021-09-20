@@ -46,8 +46,9 @@ export default function Header(props) {
         });
     }
 
+
     return (
-        <header className={props.shadow ? "header_area head_shedow" : "header_area"}>
+        <header className="header_area head_shedow">
             <div className="main_header_area animated">
                 <div className="container-fluid">
                     <nav id="navigation1" className="navigation_1 row">
@@ -83,62 +84,25 @@ export default function Header(props) {
                                                 <div className="card-header" id="heading_1">
                                                     <h2 className="mb-0">
                                                         <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_1">
-                                                            <p>My Accounts</p>
-                                                            <i className="fa fa-plus" />
+                                                            <p>My Accounts</p> <i className="fa fa-plus" />
                                                         </button>
                                                     </h2>
                                                 </div>
                                                 <div id="collapse_1" className="collapse" aria-labelledby="heading_1" data-parent="#accordionExample">
                                                     <div className="card-body">
-                                                        {
-                                                            config.auth ?
-                                                                <ul>
-                                                                    <li>
-                                                                        <Link href="/account?tab=1">
-                                                                            <a className="mobileMenuIcon">Profile</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=2">
-                                                                            <a className="mobileMenuIcon">Orders</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=4">
-                                                                            <a className="mobileMenuIcon">Address</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-                                                                        <Link href="/account?tab=5">
-                                                                            <a className="mobileMenuIcon">Wishlist</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                    <li>
-
-                                                                        <a onClick={() => dispatch({ type: "SIGN_OUT" })}>Log Out</a>
-
-                                                                    </li>
-                                                                </ul>
-                                                                :
-                                                                <ul>
-                                                                    <li>
-                                                                        <Link href="/account">
-                                                                            <a className="mobileMenuIcon">Login</a>
-                                                                        </Link>
-                                                                    </li>
-                                                                </ul>
-                                                        }
+                                                        <ul>
+                                                            <li>Login</li>
+                                                            <li>Ragister</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><Link href="/contact"><a>Enquire</a></Link></li>
-                                <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
                                 <li className="tp_bd_no">
-                                    <a className="show_sub" href="#menu">All Fabric</a>
-                                    <div className="megamenu-panel">
+                                    <a className="show_sub" href="#">All Fabric</a>
+                                    <div className="megamenu-panel" id="close_menu">
                                         <div className="nav_head">
                                             <div className="tabs_veiw_s">
                                                 <div className="row">
@@ -151,23 +115,34 @@ export default function Header(props) {
                                                                             <span>Cottons</span>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton Shirting</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton Blends</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain
+                                                                                        Cotton</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed
+                                                                                        Cotton</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton
+                                                                                        Shirting</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton
+                                                                                        Blends</a></li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/cotton/cotton-embroideries">Cotton Embroideries</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton Twill</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton Jacquard</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-lace">Cotton Lace</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton
+                                                                                        Twill</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton
+                                                                                        Jacquard</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-lace">Cotton
+                                                                                        Lace</a></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Satin</span>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin Blends</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed Satins</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man Made Satins</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-silk">Silk Satin</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin
+                                                                                                Blends</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed
+                                                                                                Satins</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man
+                                                                                                Made Satins</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-silk">Silk
+                                                                                                Satin</a></li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
@@ -177,20 +152,28 @@ export default function Header(props) {
                                                                             <span>Lace</span>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/sequin-laces">Sequin Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/french-laces">French Laces</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/sequin-laces">Sequin
+                                                                                        Laces</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/french-laces">French
+                                                                                        Laces</a></li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/lace/3d-laces">3D Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/cotton-laces">Cotton Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic Laces</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/cotton-laces">Cotton
+                                                                                        Laces</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic
+                                                                                        Laces</a></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Linen</span>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain Linen</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed Linen</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-wool">Linen Wool</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen Viscose</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain
+                                                                                                Linen</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed
+                                                                                                Linen</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-wool">Linen
+                                                                                                Wool</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen
+                                                                                                Viscose</a></li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
@@ -200,14 +183,22 @@ export default function Header(props) {
                                                                             <span>Silk</span>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/printed-silk">Printed Silk</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-satin">Silk Satin</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk Chiffon and Tulle</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-blends">Silk Blends</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-brocade">Silk Brocade</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk Jacquard</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-lace">Silk Lace</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a>
+                                                                                    </li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/printed-silk">Printed
+                                                                                        Silk</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-satin">Silk Satin</a>
+                                                                                    </li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk
+                                                                                        Chiffon and Tulle</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-blends">Silk Blends</a>
+                                                                                    </li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-brocade">Silk
+                                                                                        Brocade</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk
+                                                                                        Jacquard</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-lace">Silk Lace</a>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Shirting</span>
@@ -226,19 +217,24 @@ export default function Header(props) {
                                                                             <span>Bestsellers</span>
                                                                             <div id="some-element" className=" sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a>
+                                                                                    </li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/plain-dyed-best">Plain Dyed</a></li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/prints-best">Prints</a></li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/brocade-best">Brocade</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/satin-best">Satin</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/satin-best">Satin</a>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Wool</span>
                                                                                     <div id="some-element" className=" sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure Wool Fabrics</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-blends">Wool Blends</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-gauze">Wool Gauze</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure
+                                                                                                Wool Fabrics</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-blends">Wool
+                                                                                                Blends</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-gauze">Wool
+                                                                                                Gauze</a></li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
@@ -248,8 +244,10 @@ export default function Header(props) {
                                                                             <span>Trends</span>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/prints-trends">Prints</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/satin-trends">Satin</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/prints-trends">Prints</a>
+                                                                                    </li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/satin-trends">Satin</a>
+                                                                                    </li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/trends/lace-trends">Lace</a></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
@@ -272,10 +270,13 @@ export default function Header(props) {
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/natural/cotton-natural">Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/silk-natural">Silk</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/silk-natural">Silk</a>
+                                                                                    </li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/natural/viscose-natural">Viscose</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/linen-natural">Linen</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/wool-natural">Wool</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/linen-natural">Linen</a>
+                                                                                    </li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/wool-natural">Wool</a>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Man Made</span>
@@ -303,17 +304,20 @@ export default function Header(props) {
                                                                             <span>Prints</span>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/cotton-prints">Cotton</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/cotton-prints">Cotton</a>
+                                                                                    </li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/prints/silk-prints">Silk</a></li>
                                                                                     <li><a className="menuLinkDesktop" href="/category/prints/chiffon-prints">Chiffon</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/linen-prints">Linen</a></li>
+                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/linen-prints">Linen</a>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Jacquards</span>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/jacquards/cotton-jaq">Cotton</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/silk-jac">Silk</a></li>
+                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/silk-jac">Silk</a>
+                                                                                            </li>
                                                                                             <li><a className="menuLinkDesktop" href="/category/jacquards/blends-jac">Blends</a></li>
                                                                                             <li><a className="menuLinkDesktop" href="/category/jacquards/prints-jac">Prints</a></li>
                                                                                             <li><a className="menuLinkDesktop" href="/category/jacquards/embroideries-jac">Embroideries</a></li>
@@ -341,7 +345,7 @@ export default function Header(props) {
                                                 </div>
                                             </div>
                                             <div className="bs-example tabs_veiw">
-                                                <div className="accordion acco_after" id="accordionExample">
+                                                <div className="accordion acco_after over_flow" id="accordionExample">
                                                     <div className="card">
                                                         <div className="card-header" id="headingOne">
                                                             <h2 className="mb-0">
@@ -352,13 +356,20 @@ export default function Header(props) {
                                                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton Shirting</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton Blends</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-embroideries">Cotton Embroideries</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton Twill</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton Jacquard</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain Cotton</a>
+                                                                    </li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed Cotton</a>
+                                                                    </li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton
+                                                                        Shirting</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton Blends</a>
+                                                                    </li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-embroideries">Cotton
+                                                                        Embroideries</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton Twill</a>
+                                                                    </li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton
+                                                                        Jacquard</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/cotton/cotton-lace">Cotton Lace</a></li>
                                                                 </ul>
                                                             </div>
@@ -375,8 +386,10 @@ export default function Header(props) {
                                                             <div className="card-body">
                                                                 <ul>
                                                                     <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin Blends</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed Satins</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man Made Satins</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed Satins</a>
+                                                                    </li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man Made
+                                                                        Satins</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/satin/satin-silk">Silk Satin</a></li>
                                                                 </ul>
                                                             </div>
@@ -396,7 +409,26 @@ export default function Header(props) {
                                                                     <li><a className="menuLinkDesktop" href="/category/lace/french-laces">French Laces</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/lace/3d-laces">3D Laces</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/lace/cotton-laces">Cotton Laces</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic Laces</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic Laces</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="card">
+                                                        <div className="card-header" id="headingseventy">
+                                                            <h2 className="mb-0">
+                                                                <a href="#">Suiting</a>
+                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseventy"><i className="fa fa-plus" /></button>
+                                                            </h2>
+                                                        </div>
+                                                        <div id="collapseseventy" className="collapse" aria-labelledby="headingseventy" data-parent="#accordionExample">
+                                                            <div className="card-body">
+                                                                <ul>
+                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/cotton-suiting">Cotton</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/blend-suiting">Blend</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/wool-suiting">Wool</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/linen-suiting">Linen</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -412,9 +444,11 @@ export default function Header(props) {
                                                             <div className="card-body">
                                                                 <ul>
                                                                     <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain Linen</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed Linen</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed Linen</a>
+                                                                    </li>
                                                                     <li><a className="menuLinkDesktop" href="/category/linen/linen-wool">Linen Wool</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen Viscose</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen Viscose</a>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -432,10 +466,12 @@ export default function Header(props) {
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/printed-silk">Printed Silk</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/silk-satin">Silk Satin</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk Chiffon and Tulle</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk Chiffon
+                                                                        and Tulle</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/silk-blends">Silk Blends</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/silk-brocade">Silk Brocade</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk Jacquard</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk Jacquard</a>
+                                                                    </li>
                                                                     <li><a className="menuLinkDesktop" href="/category/silk/silk-lace">Silk Lace</a></li>
                                                                 </ul>
                                                             </div>
@@ -470,9 +506,11 @@ export default function Header(props) {
                                                             <div className="card-body">
                                                                 <ul>
                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/plain-dyed-best">Plain Dyed</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/plain-dyed-best">Plain
+                                                                        Dyed</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/prints-best">Prints</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/brocade-best">Brocade</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/brocade-best">Brocade</a>
+                                                                    </li>
                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/satin-best">Satin</a></li>
                                                                 </ul>
                                                             </div>
@@ -488,7 +526,8 @@ export default function Header(props) {
                                                         <div id="collapsenine" className="collapse" aria-labelledby="headingnine" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure Wool Fabrics</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure Wool
+                                                                        Fabrics</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/wool/wool-blends">Wool Blends</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/wool/wool-gauze">Wool Gauze</a></li>
                                                                 </ul>
@@ -522,11 +561,13 @@ export default function Header(props) {
                                                         <div id="collapseeleven" className="collapse" aria-labelledby="headingeleven" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/silk-traditional">Silk</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/silk-traditional">Silk</a>
+                                                                    </li>
                                                                     <li><a className="menuLinkDesktop" href="/category/traditional/brocades-traditional">Brocades</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/traditional/prints-traditional">Prints</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/traditional/jacquard-traditional">Jacquard</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/satin-traditional">Satin</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/satin-traditional">Satin</a>
+                                                                    </li>
                                                                     <li><a className="menuLinkDesktop" href="/category/traditional/cotton-traditional">Cotton</a></li>
                                                                 </ul>
                                                             </div>
@@ -563,7 +604,8 @@ export default function Header(props) {
                                                                 <ul>
                                                                     <li><a className="menuLinkDesktop" href="/category/man-made/polyester-man-made">Polyester</a></li>
                                                                     <li><a className="menuLinkDesktop" href="/category/man-made/nylon-man-made">Nylon</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/man-made/acetates-man-made">Acetates</a></li>
+                                                                    <li><a className="menuLinkDesktop" href="/category/man-made/acetates-man-made">Acetates</a>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -620,29 +662,14 @@ export default function Header(props) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="card">
-                                                        <div className="card-header" id="headingseventy">
-                                                            <h2 className="mb-0">
-                                                                <a href="#">Suiting</a>
-                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseventy"><i className="fa fa-plus" /></button>
-                                                            </h2>
-                                                        </div>
-                                                        <div id="collapseseventy" className="collapse" aria-labelledby="headingseventy" data-parent="#accordionExample">
-                                                            <div className="card-body">
-                                                                <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/cotton-suiting">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/blend-suiting">Blend</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/wool-suiting">Wool</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/linen-suiting">Linen</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
+                                <li><Link href="/sale"><a>On Sale</a></Link></li>
+                                <li><Link href="/contact"><a>Enquire</a></Link></li>
+                                <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
                                 <div className>
                                     <div className="nav-search tabs_veiw_s">
                                         <div className="example">
@@ -678,7 +705,7 @@ export default function Header(props) {
                                         <Link href="/cart">
                                             <a>
                                                 <img src="/images/address_icon/card.svg" alt="cart" />
-                                                <span className="badge" id="cartItems">{cartItemCount}</span>
+                                                <span className="badge">{cartItemCount}</span>
                                             </a>
                                         </Link>
                                     </div>

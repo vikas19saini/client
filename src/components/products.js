@@ -57,7 +57,16 @@ export default function Products(props) {
         queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
         queryParams = new URLSearchParams(queryParams)
 
-        axios.get(`${process.env.API_URL}category/products/${category.isSearch ? "search" : category.slug}?${queryParams}`).then((response) => {
+        let queryText = '';
+        if (category.isSearch) {
+            queryText = 'search';
+        } else if (category.isSale) {
+            queryText = 'sale';
+        } else {
+            queryText = category.slug;
+        }
+
+        axios.get(`${process.env.API_URL}category/products/${queryText}?${queryParams}`).then((response) => {
             if (page === 1) {
                 setProducts(response.data.rows);
             } else {
@@ -90,6 +99,8 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale?${queryParams}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
@@ -103,6 +114,8 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale?${queryParams}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
@@ -127,6 +140,8 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale?${queryParams}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
@@ -178,6 +193,8 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale?${queryParams}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }
@@ -188,6 +205,8 @@ export default function Products(props) {
         setMobileSelectedPriceFilter({});
         if (router.pathname === "/search") {
             router.push(`/search/?query=${category.name}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale/?query=${category.name}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}`);
         }
@@ -206,6 +225,8 @@ export default function Products(props) {
         let queryParams = new URLSearchParams(appliedFiltersTemp);
         if (router.pathname === "/search") {
             router.push(`/search?${queryParams}`);
+        } else if (router.pathname === "/sale") {
+            router.push(`/sale?${queryParams}`);
         } else {
             router.push(`/category/${category.parentCat.slug}/${category.slug}?${queryParams}`);
         }

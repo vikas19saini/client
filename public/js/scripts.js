@@ -1,4 +1,4 @@
-$(window).scroll(function () {
+/* $(window).scroll(function () {
     var sticky = $('.header_area'),
         scroll = $(window).scrollTop();
 
@@ -16,7 +16,7 @@ $(window).scroll(function () {
         $("#navigation1").show();
         $("form.example.mob_view").removeClass("p-3")
     }
-});
+}); */
 
 !(function (n, i, e, a) {
     ; (n.navigation = function (t, s) {

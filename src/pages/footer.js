@@ -26,7 +26,6 @@ export default function Footer() {
                                     <div className="col-md-6">
                                         <div className="social_icons" style={{ display: "flex" }}>
                                             <span><img src="/images/new_img/paypal.png" /></span>
-                                            <span><img src="/images/new_img/payu.png" /></span>
                                             <span><img src="/images/new_img/visa.png" /></span>
                                             <span><img src="/images/new_img/mastercard.png" /></span>
                                             <span><img src="/images/new_img/dbd.png" /></span>
@@ -101,7 +100,6 @@ export default function Footer() {
                                         </div>
                                         <div className="social_icons mob_view">
                                             <span><img src="/images/new_img/paypal.png" /></span>
-                                            <span><img src="/images/new_img/payu.png" /></span>
                                             <span><img src="/images/new_img/visa.png" /></span>
                                             <span><img src="/images/new_img/mastercard.png" /></span>
                                             <span><img src="/images/new_img/dbd.png" /></span>

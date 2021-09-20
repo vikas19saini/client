@@ -85,11 +85,11 @@ export default function SubCategory(props) {
                         </div>
                         <div className="row">
                             <div className="col-md-12 wow fadeInUp">
-                                <div id="best_sellers" className="custom_icon owl-carousel mrg_113 owl-theme wow fadeInUp">
+                                <div id="best_sellers" className="custom_icon subCategoryCrousel owl-carousel mrg_113 owl-theme wow fadeInUp">
                                     {slider.map((s) => {
                                         return (
                                             <div className="item">
-                                                <img src={s.subCategory ? s.subCategory.fullUrl : "//images/placeholder.png"} alt={s.name} className="img-fluid" />
+                                                <img src={s.subCategory ? s.subCategory.fullUrl : "/images/placeholder.png"} alt={s.name} className="img-fluid subCategoryCrousel" />
                                                 <div className="top_space">
                                                     <div className="sld_bttm_tx">
                                                         <Link href={`/category/${category.slug}/${s.slug}`}>
@@ -122,7 +122,7 @@ export default function SubCategory(props) {
                                     return (
                                         <div className="col-md-6">
                                             <div className="cotton_feb">
-                                                <img src={s.subCategory ? s.subCategory.fullUrl : "//images/placeholder.png"} alt={s.name} className="img-fluid" />
+                                                <img src={s.subCategory ? s.subCategory.fullUrl : "/images/placeholder.png"} alt={s.name} className="img-fluid subCategoryCrousel" />
                                                 <div className="top_space">
                                                     <div className="sld_bttm_tx">
                                                         <Link href={`/category/${category.slug}/${s.slug}`}>
