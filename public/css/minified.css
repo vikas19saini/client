@@ -6865,7 +6865,7 @@ section.empty-cart {
 .appy_sec,
 .cartProduct,
 .selectedAdd {
-	box-shadow: 0 0 0 1px #dcdcde;
+	/* box-shadow: 0 0 0 1px #dcdcde; */
 	background: #fff
 }
 

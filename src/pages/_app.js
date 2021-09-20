@@ -52,7 +52,6 @@ function MyApp({ Component, pageProps }) {
         <script src="/js/jquery.min.js" crossOrigin="anonymous"></script>
         <script src="/js/bootstrap.min.js" crossOrigin="anonymous"></script>
         <script src="/js/owl.carousel.js" crossOrigin="anonymous"></script>
-        {/* <script src="/js/tabheader.js"></script> */}
         <script src="/js/wow.js" crossOrigin="anonymous"></script>
         <script src="/js/scripts.js" crossOrigin="anonymous"></script>
 
@@ -66,11 +65,8 @@ function MyApp({ Component, pageProps }) {
         </script>
         <link type="text/css" rel="stylesheet" href="/css/bootstrapv4.5.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
-        {/* <link type="text/css" rel="stylesheet" href="/css/style.css" /> */}
         <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
-        {/* <link type="text/css" rel="stylesheet" href="/css/responsive.css" />
-        <link type="text/css" rel="stylesheet" href="/css/additional.css" /> */}
         <link type="text/css" rel="stylesheet" href="/css/minified.css" />
         <link rel="icon" href="/logo.png" />
       </Head>

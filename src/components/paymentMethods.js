@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from 'react-nextjs-toast';
 import { useRouter } from 'next/router'
 import { PayPalButton } from "react-paypal-button-v2";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function PaymentMethod() {
     let currency = useSelector(state => state.config.currency);
@@ -12,22 +13,32 @@ export default function PaymentMethod() {
     const router = useRouter();
     const cartData = useSelector(state => state.config.cartData);
     const amountToPay = parseFloat((cartData.total * currency.value).toFixed(2))
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setPaymentMethod(null);
     }, [currency])
 
     useEffect(() => {
-        if (paymentMethod === "bank" && document.getElementById("cardForm")) {
-            document.getElementById("cardForm").scrollIntoView({
-                behavior: "smooth"
-            })
+        if (paymentMethod && paymentMethod.name === "2c2p") {
+            setLoading(true);
+            axios.post(`${process.env.API_URL}payments/paymentToken`, {
+                cartId: cartData.id,
+                currencyId: currency.id
+            }).then((res) => {
+                if(res.data && res.data.webPaymentUrl){
+                    router.push(res.data.webPaymentUrl)
+                }
+                setLoading(false)
+            });
         }
+
     }, [paymentMethod]);
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}payments/config`).then((res) => {
             setAllPaymentMethods(res.data);
+            setLoading(false)
         });
     }, [])
 
@@ -60,6 +71,13 @@ export default function PaymentMethod() {
             <div className="center-block">
                 <div className="row">
                     <div className="col-md-12 col-12">
+                        <ClipLoader color="#417505" css={{
+                            display: "block",
+                            margin: "0 auto",
+                            position: "absolute",
+                            top: "50%",
+                            right: "50%"
+                        }} loading={loading} />
                         <PaymentOptions paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} paymentOptions={allPaymentMethods} />
                         {
                             (paymentMethod && paymentMethod.name === "bank") &&
@@ -82,7 +100,7 @@ export default function PaymentMethod() {
                                 </form>
                             </div>)
                         }
-                        {console.log(currency.code)}
+
                         {
                             (paymentMethod && paymentMethod.name === "paypal") && (<PayPalButton options={{
                                 clientId: paymentMethod.key,
@@ -130,13 +148,13 @@ function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
         if (pm.currencies.includes(currency.code.toLowerCase())) {
             return (
                 <div key={index} className="paymentMethod m-1" onClick={() => setPaymentMethod(pm)}>
-                    <span className="radio-item p-2" style={{ display: "flex", alignItems: "center" }}>
-                        <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
-                            <span className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></span>
-                        </span>
+                    <div className="radio-item" style={{ display: "flex", alignItems: "center" }}>
+                        <div className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
+                            <div className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></div>
+                        </div>
                         <label style={{ cursor: "pointer" }}>Pay By - {pm.title}</label>
-                    </span>
-                    <p className="small mt-1" style={{textTransform: "none"}}>Click here to choose this payment method and Please wait until you see payment options.</p>
+                    </div>
+                    <p className="small mt-3" style={{ textTransform: "none" }}>{pm.description}</p>
                 </div>
             );
         }

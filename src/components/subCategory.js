@@ -95,7 +95,6 @@ export default function SubCategory(props) {
                                                         <Link href={`/category/${category.slug}/${s.slug}`}>
                                                             <a>
                                                                 <h3>{s.name}</h3>
-                                                                <p>{s.description}</p>
                                                                 <p>{s.products.length} products</p>
                                                             </a>
                                                         </Link>
@@ -128,7 +127,6 @@ export default function SubCategory(props) {
                                                         <Link href={`/category/${category.slug}/${s.slug}`}>
                                                             <a>
                                                                 <h3>{s.name}</h3>
-                                                                <p>{s.description}</p>
                                                                 <p>{s.products.length} products</p>
                                                             </a>
                                                         </Link>

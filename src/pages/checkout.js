@@ -46,7 +46,7 @@ function Checkout() {
             <ToastContainer />
             <div style={{ background: "#fafafa" }}>
                 <div className="checkoutPage">
-                    <div className="row m-0">
+                    <div style={{minHeight: "100vh"}} className="row m-0">
                         <div className="col-md-5 order-md-2 p-0 pl-md-5">
                             <div className="pr-md-5 mt-md-5">
                                 <div className="py-2 text-center d-block d-md-none border-bottom" style={{ background: "#fafafa" }}>

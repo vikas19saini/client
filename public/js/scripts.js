@@ -1389,7 +1389,7 @@ $(document).on('click', '.mobileMenuIcon', function () {
     $(".sideMenu").css("transition-property", "none");
 });
 
-$(window).scroll(function () {
+/* $(window).scroll(function () {
     var top_of_element = $("footer").offset().top;
     var bottom_of_element = $("footer").offset().top + $("footer").outerHeight();
     var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
@@ -1402,7 +1402,7 @@ $(window).scroll(function () {
             $(".mob_view_filter.filter_cs").css("display", "block");
         }
     }
-});
+}); */
 
 $(document).on('click', "#showCartMobile", function () {
     $(".appy_sec.cart-details").toggleClass("d-none");
