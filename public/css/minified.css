@@ -6187,7 +6187,7 @@ header {
 
 .clse_bttn {
 	background: 0 0;
-	width: 50%;
+	width: 40%;
 	border: none;
 	color: #1d1d1d;
 	font-size: 14px;
@@ -6198,7 +6198,7 @@ header {
 }
 
 .ft_btn_lft {
-	justify-content: inherit;
+	justify-content: space-between;
 	text-align: left;
 	position: fixed;
 	bottom: 0;
@@ -6831,6 +6831,9 @@ section.empty-cart {
 	.megamenu-list>li>a,
 	.nav-dropdown>li>a {
 		width: 65%
+	}
+	.paymentConf{
+		width: 96% !important;
 	}
 	.con_tp .container {
 		width: 100%

@@ -57,7 +57,7 @@ export default function PaymentMethod() {
                     payerId: payment.payer.payer_id
                 })
             });
-            router.push(`thankyou?orderId=${order.order.id}`);
+            router.push(`/thankyou?orderId=${order.order.id}`);
         } catch (err) {
             toast.notify("Unable to place order please contact us!", {
                 type: "error",

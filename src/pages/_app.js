@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }) {
         <link type="text/css" rel="stylesheet" href="/css/owl.carousel.css" />
         <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="/css/animate.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/minified.css" />
+        <link type="text/css" rel="preload" rel="stylesheet" href="/css/minified.css" />
         <link rel="icon" href="/logo.png" />
       </Head>
       <noscript>

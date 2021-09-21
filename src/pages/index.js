@@ -229,7 +229,7 @@ export default function Home(props) {
                         </a>
                       </Link>
                     </div>
-                    <button type="button" className="shop_bttn">Explore</button>
+                    <button onClick={() => route.push("/category/jacquards")} type="button" className="shop_bttn">Explore</button>
                   </div>
                 </div>
                 <div className="item">
@@ -244,7 +244,7 @@ export default function Home(props) {
                         </a>
                       </Link>
                     </div>
-                    <button type="button" className="shop_bttn">Explore</button>
+                    <button type="button" onClick={() => route.push("/category/satin")} className="shop_bttn">Explore</button>
                   </div>
                 </div>
                 <div className="item">
@@ -258,7 +258,7 @@ export default function Home(props) {
                         </a>
                       </Link>
                     </div>
-                    <button type="button" className="shop_bttn">Explore</button>
+                    <button onClick={() => route.push("/category/prints/silk-prints")} type="button" className="shop_bttn">Explore</button>
                   </div>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function Home(props) {
                 <img src="/images/new_img/mob_1.png" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="banner_overlay_tx">
                   <h3>Experience our exclusive <span>Best-selling fabrics.</span></h3>
-                  <button onClick={() => history.push("/category/bestsellers")} type="button" className="shop_bttn flt_none">View all Products</button>
+                  <button onClick={() => route.push("/category/bestsellers")} type="button" className="shop_bttn flt_none">View all Products</button>
                 </div>
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function Home(props) {
                   <div className="trans_bg_clr">
                     <h3>Laces</h3>
                     <p>Delicate and Intricate Lace fabrics <span>from all over the world.</span></p>
-                    <button onClick={() => history.push("/category/lace")} type="button" className="shop_bttn flt_none">View all Products</button>
+                    <button onClick={() => route.push("/category/lace")} type="button" className="shop_bttn flt_none">View all Products</button>
                   </div>
                 </div>
               </div>
@@ -350,7 +350,7 @@ export default function Home(props) {
                       </a>
                     </Link>
                   </div>
-                  <button onClick={() => history.push("/category/lace/french-laces")} type="button" className="shop_bttn">Explore</button>
+                  <button onClick={() => route.push("/category/lace/french-laces")} type="button" className="shop_bttn">Explore</button>
                 </div>
               </div>
               <div className="item">
@@ -365,7 +365,7 @@ export default function Home(props) {
                       </a>
                     </Link>
                   </div>
-                  <button onClick={() => history.push("/category/lace/3d-laces")} type="button" className="shop_bttn">Explore</button>
+                  <button onClick={() => route.push("/category/lace/3d-laces")} type="button" className="shop_bttn">Explore</button>
                 </div>
               </div>
               <div className="item">
@@ -380,7 +380,7 @@ export default function Home(props) {
                       </a>
                     </Link>
                   </div>
-                  <button onClick={() => history.push("/category/lace/metallic-laces")} type="button" className="shop_bttn">Explore</button>
+                  <button onClick={() => route.push("/category/lace/metallic-laces")} type="button" className="shop_bttn">Explore</button>
                 </div>
               </div>
             </div>
@@ -428,7 +428,7 @@ export default function Home(props) {
                     <div className="bg_overlay">
                       <h4>The Suiting Collection</h4>
                       <p>Our Collection of the world's finest fabrics For suiting and shirting</p>
-                      <button onClick={() => history.push("/category/suiting")} type="button" className="shop_bttn flt_none">Discover More</button>
+                      <button onClick={() => route.push("/category/suiting")} type="button" className="shop_bttn flt_none">Discover More</button>
                     </div>
                   </div>
                 </div>
@@ -442,7 +442,7 @@ export default function Home(props) {
                       <div className="bg_overlay">
                         <h4>Our Plain Dyed Fabric Collection</h4>
                         <p>A Vast Selection Of Solid, Plain Dyed Fabrics In Cotton,Silk and Blends</p>
-                        <button onClick={() => history.push("/category/bestsellers/plain-dyed-best")} type="button" className="shop_bttn flt_none">Discover More</button>
+                        <button onClick={() => route.push("/category/bestsellers/plain-dyed-best")} type="button" className="shop_bttn flt_none">Discover More</button>
                       </div>
                     </div>
                   </div>
@@ -456,7 +456,7 @@ export default function Home(props) {
                     <div className="bg_overlay">
                       <h4>Our Natural Fabrics</h4>
                       <p>Beautiful Fabrics made from 100% Natural Fibres.</p>
-                      <button onClick={() => history.push("/category/natural")} type="button" className="shop_bttn flt_none">Discover More</button>
+                      <button onClick={() => route.push("/category/natural")} type="button" className="shop_bttn flt_none">Discover More</button>
                     </div>
                   </div>
                 </div>
