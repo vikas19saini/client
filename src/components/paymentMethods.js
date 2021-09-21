@@ -26,7 +26,7 @@ export default function PaymentMethod() {
                 cartId: cartData.id,
                 currencyId: currency.id
             }).then((res) => {
-                if(res.data && res.data.webPaymentUrl){
+                if (res.data && res.data.webPaymentUrl) {
                     router.push(res.data.webPaymentUrl)
                 }
                 setLoading(false)
@@ -79,27 +79,6 @@ export default function PaymentMethod() {
                             right: "50%"
                         }} loading={loading} />
                         <PaymentOptions paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} paymentOptions={allPaymentMethods} />
-                        {
-                            (paymentMethod && paymentMethod.name === "bank") &&
-                            (<div className="payViaBank">
-                                <p>You'll be redirected to payment page, where you can pay via credit/debit card</p>
-                                <form name="payFormCcard" method="post" action={paymentMethod.url}>
-                                    <input type="hidden" name="merchantId" value={paymentMethod.merchantId} />
-                                    <input type="hidden" name="amount" value={(cartData.total * currency.value).toFixed(2)} />
-                                    <input type="hidden" name="orderRef" value={cartData.id} />
-                                    <input type="hidden" name="currCode" value={paymentMethod.currencyCode} />
-                                    <input type="hidden" name="successUrl" value={`${process.env.WEB_URL}placeorder?cartId=${cartData.id}&currencyCode=${currency.code}`} />
-                                    <input type="hidden" name="failUrl" value={`${process.env.WEB_URL}checkout`} />
-                                    <input type="hidden" name="cancelUrl" value={`${process.env.WEB_URL}checkout`} />
-                                    <input type="hidden" name="payType" value="N" />
-                                    <input type="hidden" name="payMethod" value="ALL" />
-                                    <input type="hidden" name="lang" value="E" />
-                                    <input type="hidden" name="remark" value="-" />
-                                    <input type="hidden" name="redirect" value="30" />
-                                    <input type="submit" value="Pay Now" className="bag_bttn check_out_bttn" />
-                                </form>
-                            </div>)
-                        }
 
                         {
                             (paymentMethod && paymentMethod.name === "paypal") && (<PayPalButton options={{
