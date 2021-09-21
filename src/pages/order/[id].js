@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "../footer";
+import Header from "../header";
 import { useRouter } from "next/router";
-import { Fragment, useEffect } from "react";
-import { formatCurrency, useCart } from "../components/helpers";
+import { Fragment, useEffect, useState } from "react";
+import { formatCurrency, useCart } from "../../components/helpers";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useState } from "react/cjs/react.development";
 
 export default function ValidatePayment() {
     const router = useRouter();
@@ -16,11 +15,12 @@ export default function ValidatePayment() {
     const [color, setColor] = useState("bg-info");
 
     useEffect(() => {
-        if (id)
-            validatePayment()
+        if (id) {
+            validatePaymentHandler()
+        }
     }, [id]);
 
-    const validatePayment = async () => {
+    const validatePaymentHandler = async () => {
         try {
             let paymentResponse = await axios.post(`${process.env.API_URL}payments/validate`, {
                 cartId: parseInt(id)
