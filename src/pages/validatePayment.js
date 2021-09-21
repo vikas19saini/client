@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Footer from "../footer";
-import Header from "../header";
+import Footer from "./footer";
+import Header from "./header";
 import { useRouter } from "next/router";
 import { Fragment, useEffect } from "react";
-import { formatCurrency, useCart } from "../../components/helpers";
+import { formatCurrency, useCart } from "../components/helpers";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react/cjs/react.development";
