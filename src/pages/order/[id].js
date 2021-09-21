@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react/cjs/react.development";
 
-export default function About() {
+export default function ValidatePayment() {
     const router = useRouter();
     const id = router.query.id;
     const { customerCartData } = useCart()

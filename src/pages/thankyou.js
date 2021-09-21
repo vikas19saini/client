@@ -7,7 +7,7 @@ import axios from "axios";
 import { formatAddress, formatCurrency } from "../components/helpers";
 import { useDispatch } from "react-redux";
 
-export default function About() {
+export default function ThankYou() {
     const router = useRouter();
     const orderId = router.query.orderId;
     const [order, setOrder] = useState(null);
