@@ -90,10 +90,44 @@ export default function Header(props) {
                                                 </div>
                                                 <div id="collapse_1" className="collapse" aria-labelledby="heading_1" data-parent="#accordionExample">
                                                     <div className="card-body">
-                                                        <ul>
-                                                            <li>Login</li>
-                                                            <li>Ragister</li>
-                                                        </ul>
+                                                        {
+                                                            config.auth ?
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/account?tab=1">
+                                                                            <a className="mobileMenuIcon">Profile</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=2">
+                                                                            <a className="mobileMenuIcon">Orders</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=4">
+                                                                            <a className="mobileMenuIcon">Address</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/account?tab=5">
+                                                                            <a className="mobileMenuIcon">Wishlist</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+
+                                                                        <a onClick={() => dispatch({ type: "SIGN_OUT" })}>Log Out</a>
+
+                                                                    </li>
+                                                                </ul>
+                                                                :
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/account">
+                                                                            <a className="mobileMenuIcon">Login</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
