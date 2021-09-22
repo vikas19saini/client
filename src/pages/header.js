@@ -8,8 +8,8 @@ import useSWR from "swr";
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
     const config = useSelector(state => state.config)
-    const [showSearchMenu, setShowSearchMenu] = useState(false);
-    const [categories, setCategories] = useState([]);
+    /* const [showSearchMenu, setShowSearchMenu] = useState(false); */
+    /* const [categories, setCategories] = useState([]); */
     const router = useRouter();
     const dispatch = useDispatch();
 
@@ -21,11 +21,11 @@ export default function Header(props) {
         }
     })
 
-    useEffect(() => {
+    /* useEffect(() => {
         axios.get(`${process.env.API_URL}category`).then(response => {
             setCategories(response.data.rows);
         });
-    }, []);
+    }, []); */
 
     const storeConfig = useSelector(state => state.config);
 
@@ -102,7 +102,7 @@ export default function Header(props) {
                                 </li>
                                 <li className="tp_bd_no">
                                     <a className="show_sub" href="#">All Fabric</a>
-                                    <div className="megamenu-panel" id="close_menu">
+                                    <div className="megamenu-panel" id="close_menu" style={{ display: "none" }}>
                                         <div className="nav_head">
                                             <div className="tabs_veiw_s">
                                                 <div className="row">
@@ -670,45 +670,43 @@ export default function Header(props) {
                                 <li><Link href="/sale"><a>On Sale</a></Link></li>
                                 <li><Link href="/contact"><a>Enquire</a></Link></li>
                                 <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
-                                <div className>
-                                    <div className="nav-search tabs_veiw_s">
-                                        <div className="example">
-                                            <form action="/search" autoComplete="off">
-                                                <input type="text" placeholder="Search for product, code, or collection." name="query" defaultValue={router.query.query ? router.query.query : ""} />
-                                                <button type="submit">
-                                                    <img src="/images/address_icon/search.svg" alt="search-icon" />
-                                                </button>
-                                            </form>
-                                        </div>
-                                        <li className="desk_view">
-                                            <div className="currencySwitch">{
-                                                data &&
-                                                <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
-                                                    {
-                                                        data.map(d => {
-                                                            return (<option value={d.id} key={d.id}>{d.code}</option>)
-                                                        })
-                                                    }
-                                                </select>
-                                            }</div>
-                                        </li>
-                                        <Link href="/account?tab=5">
-                                            <a>
-                                                <img src="/images/address_icon/heart.svg" alt="cart" />
-                                            </a>
-                                        </Link>
-                                        <Link href="/account">
-                                            <a>
-                                                <img src="/images/address_icon/user.svg" alt="account" />
-                                            </a>
-                                        </Link>
-                                        <Link href="/cart">
-                                            <a>
-                                                <img src="/images/address_icon/card.svg" alt="cart" />
-                                                <span className="badge">{cartItemCount}</span>
-                                            </a>
-                                        </Link>
+                                <div className="nav-search tabs_veiw_s">
+                                    <div className="example">
+                                        <form action="/search" autoComplete="off">
+                                            <input required type="text" placeholder="Search for product, code, or collection." name="query" defaultValue={router.query.query ? router.query.query : ""} />
+                                            <button type="submit">
+                                                <img src="/images/address_icon/search.svg" alt="search-icon" />
+                                            </button>
+                                        </form>
                                     </div>
+                                    <li className="desk_view">
+                                        <div className="currencySwitch">{
+                                            data &&
+                                            <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
+                                                {
+                                                    data.map(d => {
+                                                        return (<option value={d.id} key={d.id}>{d.code}</option>)
+                                                    })
+                                                }
+                                            </select>
+                                        }</div>
+                                    </li>
+                                    <Link href="/account?tab=5">
+                                        <a>
+                                            <img src="/images/address_icon/heart.svg" alt="cart" />
+                                        </a>
+                                    </Link>
+                                    <Link href="/account">
+                                        <a>
+                                            <img src="/images/address_icon/user.svg" alt="account" />
+                                        </a>
+                                    </Link>
+                                    <Link href="/cart">
+                                        <a>
+                                            <img src="/images/address_icon/card.svg" alt="cart" />
+                                            <span className="badge">{cartItemCount}</span>
+                                        </a>
+                                    </Link>
                                 </div>
                             </ul>
                         </div>

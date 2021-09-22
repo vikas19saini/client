@@ -690,7 +690,7 @@ a>img.desk_view {
 	background: #fff;
 	z-index: 2;
 	animation: smoothScroll 1s forwards;
-	padding: 10px 0;
+	padding: 10px 0 0;
 	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important
 }
 
@@ -707,7 +707,7 @@ a>img.desk_view {
 	padding: 0 30px 0 0
 }
 
-.fixed .currencySwitch,
+/* .fixed .currencySwitch, */
 .fixed .nav-menu>li>a {
 	color: #646464;
 	padding: 27px 15px!important
@@ -6187,7 +6187,7 @@ header {
 
 .clse_bttn {
 	background: 0 0;
-	width: 40%;
+	width: 50%;
 	border: none;
 	color: #1d1d1d;
 	font-size: 14px;
@@ -6198,7 +6198,7 @@ header {
 }
 
 .ft_btn_lft {
-	justify-content: space-between;
+	justify-content: inherit;
 	text-align: left;
 	position: fixed;
 	bottom: 0;
@@ -6832,9 +6832,6 @@ section.empty-cart {
 	.nav-dropdown>li>a {
 		width: 65%
 	}
-	.paymentConf{
-		width: 96% !important;
-	}
 	.con_tp .container {
 		width: 100%
 	}
@@ -6868,7 +6865,7 @@ section.empty-cart {
 .appy_sec,
 .cartProduct,
 .selectedAdd {
-	/* box-shadow: 0 0 0 1px #dcdcde; */
+	box-shadow: 0 0 0 1px #dcdcde;
 	background: #fff
 }
 
@@ -8132,9 +8129,6 @@ section.empty-cart {
 	.mob_view {
 		display: block!important
 	}
-	.social_icons.footer_pay{
-		display: flex;
-	}
 	.desk_view {
 		display: none!important
 	}
@@ -9176,9 +9170,7 @@ section.empty-cart {
 		padding: 0;
 		border: none
 	}
-	.fixed {
-		padding: 0
-	}
+	
 	.head_shedow {
 		background: #f8f8f8;
 		margin: 0 0 1.2rem
@@ -9205,7 +9197,7 @@ section.empty-cart {
 		padding: 0
 	}
 	.main_header_area {
-		padding: 0 0 1.6rem
+		padding: 0 0 1rem
 	}
 	.learn_bttn {
 		font-size: 12px;
@@ -10651,7 +10643,7 @@ footer_form input:-moz-placeholder {
 	}
 	.social_icons>a>img {
 		padding: 0 10px 0 0;
-		width: 70px
+		width: 65px
 	}
 	.social_icons>a>img:last-child {
 		padding: 0
@@ -10681,9 +10673,9 @@ footer_form input:-moz-placeholder {
 		position: relative;
 		top: 2rem
 	}
-	.acco_after .ft_acco_bg.border_tp .card-header {
+	/* .acco_after .ft_acco_bg.border_tp .card-header {
 		border-top: 1px solid #cfced2
-	}
+	} */
 	.acco_after .ft_acco_bg .card-body ul li a {
 		color: #fff
 	}
@@ -10751,21 +10743,22 @@ footer_form input:-moz-placeholder {
 	.over_flow{max-height: 440px;
 	width: 100%;
 	overflow-y: scroll;
-	margin-bottom: 25px;}
+	scroll-padding: 50px 0 0 50px;
+	}
 	
 	
 
 /* Let's get this party started */
 .over_flow::-webkit-scrollbar {
     width: 10px;
-	margin-right: 10px
+	
 }
  
 /* Track */
 .over_flow::-webkit-scrollbar-track {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-	margin-right: 10px
+	
 }
  
 /* Handle */
@@ -10773,13 +10766,12 @@ footer_form input:-moz-placeholder {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background:#be8f45; 
-	margin-right: 10px
     
 }
 .over_flow::-webkit-scrollbar-thumb:window-inactive {
 	background:#be8f45; 
-	margin-right: 10px
 }
+	
 }
 
 @media only screen and (max-width:411px) {
@@ -10824,4 +10816,13 @@ footer_form input:-moz-placeholder {
 img.subCategoryCrousel{
 	height: 500px;
     object-fit: cover;
+}
+.social_icons.pay{
+	display: flex;
+    align-items: center;
+    width: 350px;
+    justify-content: space-between;
+}
+.social_icons .img{
+	height: 25px;
 }

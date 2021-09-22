@@ -70,12 +70,12 @@ export default function Home(props) {
         <div className="sec_padd mob_padd_0">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>What do you want to make?</h4>
               </div>
             </div>
           </div>
-          <div className="row wow fadeInUp">
+          <div className="row">
             <div className="col-md-10 mrg_0">
               <div id="looking_make" className="flx_delection custom_icon owl-carousel owl-theme">
                 <div className="item">
@@ -113,7 +113,7 @@ export default function Home(props) {
                     <Link href="/search?query=jackts">
                       <a>
                         <img src="images/icon_menu/jackts.svg" alt="gandhi fabrics" />
-                        <p>Jackts</p>
+                        <p>Jackets</p>
                       </a>
                     </Link>
                   </div>
@@ -209,14 +209,14 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Bestseller Categories</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div id="best_sellers" className="custom_icon owl-carousel owl-theme mrg_200 wow fadeInUp">
+              <div id="best_sellers" className="custom_icon owl-carousel owl-theme mrg_200">
                 <div className="item">
                   <img src="images/new_img/20210918_141109_0000.jpg" alt="Gandhi Fabrics" className="img-fluid" />
                   <div className="top_space">
@@ -266,14 +266,14 @@ export default function Home(props) {
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Explore Our Favourites</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="banner_sec_md mrg_85 wow fadeInUp">
+              <div className="banner_sec_md mrg_85">
                 <img src="/images/new_img/img_3.png" alt="Gandhi Fabrics" className="img-fluid desk_view" />
                 <img src="/images/new_img/mob_1.png" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="banner_overlay_tx">
@@ -285,14 +285,14 @@ export default function Home(props) {
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Recommended For You</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div id="fabric" className="custom_icon mrg_113 cus_icon_size owl-carousel owl-theme wow fadeInUp">
+              <div id="fabric" className="custom_icon mrg_113 cus_icon_size owl-carousel owl-theme">
                 <Products products={props.products} />
               </div>
             </div>
@@ -305,12 +305,12 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding sec_padd wow fadeInUp">
+              <div className="inner_main_hadding sec_padd">
                 <h4>All About Laces</h4>
               </div>
             </div>
             <div className="col-md-12">
-              <div className="banner_sec_md mrg_63 wow fadeInUp">
+              <div className="banner_sec_md mrg_63">
                 <img src="/images/new_img/20210918_142501_0000.jpg" alt="Gandhi Fabrics" className="img-fluid desk_view" />
                 <img src="/images/new_img/20210918_142559_0000.jpg" alt="Gandhi Fabrics" className="img-fluid mob_view mob_curb" />
                 <div className="clr_tx_img">
@@ -330,14 +330,14 @@ export default function Home(props) {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="inner_main_hadding sec_padd wow fadeInUp">
+            <div className="inner_main_hadding sec_padd">
               <h4>Trending in Laces</h4>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div id="best_sellers_1" className="custom_icon mrg_113 owl-carousel owl-theme wow fadeInUp">
+            <div id="best_sellers_1" className="custom_icon mrg_113 owl-carousel owl-theme">
               <div className="item">
                 <img src="images/new_img/20210918_143051_0000.jpg" alt="Gandhi Fabrics" className="img-fluid" />
                 <div className="top_space">
@@ -393,14 +393,14 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Latest in Laces</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div id="fabric_1" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme wow fadeInUp">
+              <div id="fabric_1" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme">
                 <Products products={props.lace} />
               </div>
             </div>
@@ -413,14 +413,14 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Popular Fabrics</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="main_flx mrg_top_113 wow fadeInUp">
+              <div className="main_flx mrg_top_113">
                 <div className><img src="images/new_img/20210918_144728_0000.jpg" className="img-fluid desk_view" /></div>
                 <div className="mob_curb"><img src="images/new_img/20210918_144800_0000.jpg" className="img-fluid mob_view" /></div>
                 <div className="align_c">
@@ -433,7 +433,7 @@ export default function Home(props) {
                   </div>
                 </div>
               </div>
-              <div className="main_flx mrg_top_113 wow fadeInUp">
+              <div className="main_flx mrg_top_113">
                 <div className="align_c">
                   <div className><img src="images/new_img/20210918_145302_0000.jpg" className="img-fluid desk_view" /></div>
                   <div className="mob_curb"><img src="images/new_img/20210918_145340_0000.jpg" className="img-fluid mob_view" /></div>
@@ -448,7 +448,7 @@ export default function Home(props) {
                   </div>
                 </div>
               </div>
-              <div className="main_flx mrg_top_113 wow fadeInUp">
+              <div className="main_flx mrg_top_113">
                 <div className><img src="images/new_img/20210918_145022_0000.jpg" className="img-fluid desk_view" /></div>
                 <div className="mob_curb"><img src="images/new_img/20210918_145115_0000.jpg" className="img-fluid mob_view" /></div>
                 <div className="align_c">
@@ -471,13 +471,13 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Special Deals</h4>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-12 mob_padd_0 wow fadeInUp">
+            <div className="col-md-12 mob_padd_0">
               <div className="banner_sec_md">
                 <Link href="/sale">
                   <a className="desk_view">
@@ -498,7 +498,7 @@ export default function Home(props) {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div id="fabric_2" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme wow fadeInUp">
+            <div id="fabric_2" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme">
               <Products products={props.sale} />
             </div>
           </div>
@@ -510,14 +510,14 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding wow fadeInUp">
+              <div className="inner_main_hadding">
                 <h4>Wedding Fabrics</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="banner_sec_md wow fadeInUp">
+              <div className="banner_sec_md">
                 <img src="/images/new_img/img_9.png" alt="Gandhi Fabrics" className="img-fluid desk_view" />
                 <img src="/images/new_img/bg_slide.png" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="clr_tx_img">
@@ -538,14 +538,14 @@ export default function Home(props) {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="inner_main_hadding sec_padd wow fadeInUp">
+              <div className="inner_main_hadding sec_padd">
                 <h4>Seasons</h4>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12">
-              <div className="main_flx wow fadeInUp">
+              <div className="main_flx">
                 <div className="col_6 width_full_mob mob_view"><img src="images/new_img/img_13.png" className="img-fluid" /></div>
                 <div className="align_c col_6 width_full_mob bg_full bttm_sping_space">
                   <div className="sub_natural sping_autumm sld_bttm_tx">
@@ -558,7 +558,7 @@ export default function Home(props) {
                 </div>
                 <div className="col_6 width_full_mob desk_view"><img src="images/new_img/img_13.png" className="img-fluid" /></div>
               </div>
-              <div className="main_flx seasons wow fadeInUp">
+              <div className="main_flx seasons">
                 <div className="col_6 width_full_mob mob_view"><img src="images/new_img/image_9.png" className="img-fluid" /></div>
                 <div className="align_c col_6 width_full_mob bg_full">
                   <div className="sub_natural sping_autumm sld_bttm_tx">
@@ -582,14 +582,14 @@ export default function Home(props) {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="inner_main_hadding wow fadeInUp">
+                <div className="inner_main_hadding">
                   <h4>Just Arrived</h4>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <div id="just" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme wow fadeInUp">
+                <div id="just" className="custom_icon cus_icon_size cus_dots mrg_113 owl-carousel owl-theme">
                   <Products products={props.products} />
                 </div>
               </div>
@@ -601,14 +601,14 @@ export default function Home(props) {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="inner_main_hadding insta_head wow fadeInUp">
-              <h4>Insta feed</h4>
+            <div className="inner_main_hadding insta_head">
+              <h4>Instafeed</h4>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
-            <div className="section-padding mrg_113 wow fadeInUp">
+            <div className="section-padding mrg_113">
               <div id="screenshot_slider" className="screenshot_slider owl-carousel owl-theme">
                 <div className="item">
                   <img src="/images/new_img/img_14.png" alt="Gandhi Fabrics" />

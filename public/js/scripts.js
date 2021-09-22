@@ -1,4 +1,4 @@
-/* $(window).scroll(function () {
+$(window).scroll(function () {
     var sticky = $('.header_area'),
         scroll = $(window).scrollTop();
 
@@ -10,13 +10,13 @@
     }
 
     if ($(window).width() < 750 && scroll >= 40) {
-        $("#navigation1").hide();
-        $("form.example.mob_view").addClass("p-3")
+        //$("#navigation1").hide();
+        //$("form.example.mob_view").addClass("p-3")
     } else {
-        $("#navigation1").show();
-        $("form.example.mob_view").removeClass("p-3")
+        //$("#navigation1").show();
+        //$("form.example.mob_view").removeClass("p-3")
     }
-}); */
+});
 
 !(function (n, i, e, a) {
     ; (n.navigation = function (t, s) {
