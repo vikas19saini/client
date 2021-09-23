@@ -8126,6 +8126,12 @@ section.empty-cart {
 		padding: 15px;
 		background: #fff
 	}
+	.mob_view.pay{
+		display: flex !important;
+	}
+	.main_flx_f{
+		text-align: -webkit-center;
+	}
 	.mob_view {
 		display: block!important
 	}

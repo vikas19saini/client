@@ -39,9 +39,16 @@ export default function SubCategory(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-md-12">
                                 <div className="cotton_main_banner">
-                                    <img src={category.media ? category.media.fullUrl : "//images/placeholder.png"} alt={category.name} className="img-fluid desk_view" />
+                                    <div className="cotton_flx_row">
+                                        <div className="cotton_mainHead">
+                                            <h3>{category.name}</h3>
+                                            <p>{category.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <img src={category.media ? category.media.fullUrl : "/images/placeholder.png"} alt={category.name} className="img-fluid desk_view" />
                                 </div>
                             </div>
                         </div>

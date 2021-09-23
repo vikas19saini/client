@@ -20,7 +20,7 @@ export default function Footer() {
                             <div className="desk_view">
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <img src="images/logo.png" alt="gandhi fabrics" />
+                                        <img src="/images/logo.png" alt="gandhi fabrics" />
                                     </div>
                                     <div className="col-md-6">
                                         <div className="social_icons pay">
