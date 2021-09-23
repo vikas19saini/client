@@ -30,24 +30,13 @@ export default function SubCategory(props) {
                 <div className="inner_cotton_main wow fadeInUp">
                     <div className="desk_view">
                         <div className="row">
-                            <div className="col-md-4">
-                                <div className="cotton_flx_row">
-                                    <div className="cotton_mainHead">
-                                        <h3>{category.name}</h3>
-                                        <p>{category.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
                             <div className="col-md-12">
+                                <div className="cotton_mainHead">
+                                    <h3>{category.name}</h3>
+                                    <p>{category.description}
+                                    </p>
+                                </div>
                                 <div className="cotton_main_banner">
-                                    <div className="cotton_flx_row">
-                                        <div className="cotton_mainHead">
-                                            <h3>{category.name}</h3>
-                                            <p>{category.description}
-                                            </p>
-                                        </div>
-                                    </div>
                                     <img src={category.media ? category.media.fullUrl : "/images/placeholder.png"} alt={category.name} className="img-fluid desk_view" />
                                 </div>
                             </div>
@@ -55,18 +44,14 @@ export default function SubCategory(props) {
                     </div>
                     <div className="mob_view">
                         <div className="row">
-                            <div className="col-md-8">
-                                <div className="cotton_main_banner">
-                                    <img src={category.subCategory ? category.subCategory.fullUrl : "//images/placeholder.png"} alt={category.name} className="img-fluid mob_view" />
+                            <div className="col-md-12">
+                                <div className="cotton_mainHead">
+                                    <h3>{category.name}</h3>
+                                    <p>{category.description}
+                                    </p>
                                 </div>
-                            </div>
-                            <div className="col-md-4 mob_padd_0">
-                                <div className="cotton_flx_row">
-                                    <div className="cotton_mainHead">
-                                        <h3>{category.name}</h3>
-                                        <p>{category.description}
-                                        </p>
-                                    </div>
+                                <div className="cotton_main_banner">
+                                    <img src={category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"} alt={category.name} className="img-fluid mob_view" />
                                 </div>
                             </div>
                         </div>
