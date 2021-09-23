@@ -10816,6 +10816,7 @@ footer_form input:-moz-placeholder {
 img.subCategoryCrousel{
 	height: 350px;
     object-fit: cover;
+	width: 100% !important;
 }
 .social_icons.pay{
 	display: flex;
