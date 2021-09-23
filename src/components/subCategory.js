@@ -51,7 +51,7 @@ export default function SubCategory(props) {
                                     </p>
                                 </div>
                                 <div className="cotton_main_banner">
-                                    <img src={category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"} alt={category.name} className="img-fluid mob_view" />
+                                    <img src={category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"} alt={category.name} width="100%" className="img-fluid mob_view" />
                                 </div>
                             </div>
                         </div>
