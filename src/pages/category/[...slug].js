@@ -29,24 +29,28 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     try {
         let contextParams = context.params.slug;
         let category = null;
-        let layout = "subcategory";
 
         category = await axios.get(`${process.env.API_URL}category/${contextParams[0]}`);
         category = category.data;
-        category.layout = layout
+        category.layout = 'subcategory'
+
+        let queryParams = context.query;
+        let offset = (page - 1) * limit
+
+        if (contextParams.length === 1) {
+            queryParams['includeChild'] = true;
+        }
+
+        queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
+        queryParams = new URLSearchParams(queryParams)
+
+        let productCate = contextParams[1] || contextParams[0];
+        let responseData = await axios.get(`${process.env.API_URL}category/products/${productCate}?${queryParams}`);
+
+        let data = responseData.data.category;
 
         if (contextParams.length === 2 || category.descendents.length === 0) {
-            let queryParams = context.query;
-            let offset = (page - 1) * limit
 
-            queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
-            queryParams = new URLSearchParams(queryParams)
-
-            let productCate = contextParams[1] || contextParams[0];
-
-            let responseData = await axios.get(`${process.env.API_URL}category/products/${productCate}?${queryParams}`);
-
-            let data = responseData.data.category;
             data.products = responseData.data.rows;
             data.totalCount = responseData.data.count;
             data.limit = limit;
@@ -60,6 +64,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
             }
         }
 
+        category.products = responseData.data.rows;
         return {
             props: category,
         }

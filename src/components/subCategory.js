@@ -1,11 +1,11 @@
 import { Fragment, useEffect, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router";
+import Products from "./productCrousel";
+import OwlCarousel from 'react-owl-carousel2';
 
 export default function SubCategory(props) {
     const [subCategories, setSubCategories] = useState([]);
-    const [slider, setSlider] = useState([]);
     const [grid, setGrid] = useState([]);
     const history = useRouter();
     const category = props.category;
@@ -16,12 +16,7 @@ export default function SubCategory(props) {
 
     useEffect(() => {
         if (subCategories.length > 0) {
-            if (subCategories.length >= 4) {
-                setSlider(subCategories.splice(0, 3));
-                setGrid(subCategories.splice(3, subCategories.length - 1));
-            } else {
-                setGrid(subCategories);
-            }
+            setGrid(subCategories); setGrid(subCategories);
         }
     }, [subCategories])
 
@@ -73,45 +68,6 @@ export default function SubCategory(props) {
             </div>
 
             {
-                slider.length > 0 &&
-                <section className="sec_padd">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="inner_main_hadding wow fadeInUp">
-                                    <h4>Exclusive {category.name}</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12 wow fadeInUp">
-                                <div id="best_sellers" className="custom_icon subCategoryCrousel owl-carousel mrg_113 owl-theme wow fadeInUp">
-                                    {slider.map((s) => {
-                                        return (
-                                            <div className="item">
-                                                <img src={s.subCategory ? s.subCategory.fullUrl : "/images/placeholder.png"} alt={s.name} className="img-fluid subCategoryCrousel" />
-                                                <div className="top_space">
-                                                    <div className="sld_bttm_tx">
-                                                        <Link href={`/category/${category.slug}/${s.slug}`}>
-                                                            <a>
-                                                                <h3>{s.name}</h3>
-                                                                <p>{s.products.length} products</p>
-                                                            </a>
-                                                        </Link>
-                                                    </div>
-                                                    <button onClick={() => history.push(`/category/${category.slug}/${s.slug}`)} type="button" className="shop_bttn">Shop Now</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            }
-
-            {
                 grid.length > 0 &&
                 <section className="sub_cotton_sec">
                     <div className="container">
@@ -119,7 +75,7 @@ export default function SubCategory(props) {
                             {
                                 grid.map((s) => {
                                     return (
-                                        <div className="col-md-6">
+                                        <div className="col-md-6" key={s.id}>
                                             <div className="cotton_feb">
                                                 <img src={s.subCategory ? s.subCategory.fullUrl : "/images/placeholder.png"} alt={s.name} className="img-fluid subCategoryCrousel" />
                                                 <div className="top_space">
@@ -138,6 +94,52 @@ export default function SubCategory(props) {
                                     )
                                 })
                             }
+                        </div>
+                    </div>
+                </section>
+            }
+
+            {
+                props.category.products.length > 0 &&
+                <section className="sec_padd sec_arrivals">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="secound_hadd_pr inner_main_hadding wow fadeInUp">
+                                    <h4>Exclusive {category.name}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <div className="row wow fadeInUp">
+                            <div className="col-md-12 padd_0_all">
+                                <OwlCarousel options={{
+                                    responsive: {
+                                        0: {
+                                            items: 1.1,
+                                            nav: false,
+                                        },
+                                        568: {
+                                            items: 1.1,
+                                        },
+                                        667: {
+                                            items: 3.1,
+                                        },
+                                        1170: {
+                                            items: 3.1
+                                        }
+                                    },
+                                    loop: true,
+                                    autoplay: false,
+                                    dots: false,
+                                    nav: true,
+                                    navText: ['<span aria-label="Previous">‹</span>', '<span aria-label="Next">›</span>'],
+                                    margin: 10,
+                                }} id="arrivals" className="owl-carousel relativeProducts" >
+                                    <Products products={props.category.products} />
+                                </OwlCarousel>
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -146,7 +146,7 @@ export default function Header(props) {
                                                                 <div className="cus_nv ac-menu">
                                                                     <div className="row cus_nv_m ac-list">
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Cottons</span>
+                                                                            <a href="/category/cotton"><span>Cottons</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain
@@ -166,7 +166,7 @@ export default function Header(props) {
                                                                                         Lace</a></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Satin</span>
+                                                                                    <a href="/category/satin"><span>Satin</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin
@@ -183,7 +183,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Lace</span>
+                                                                            <a href="/category/lace"><span>Lace</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/lace/sequin-laces">Sequin
@@ -197,7 +197,7 @@ export default function Header(props) {
                                                                                         Laces</a></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Linen</span>
+                                                                                    <a href="/category/linen"><span>Linen</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain
@@ -214,7 +214,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Silk</span>
+                                                                            <a href="/category/silk"><span>Silk</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a>
@@ -235,7 +235,7 @@ export default function Header(props) {
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Shirting</span>
+                                                                                    <a href="/category/shirting"><span>Shirting</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/shirting/shirting-cotton">Cotton</a></li>
@@ -248,7 +248,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Bestsellers</span>
+                                                                            <a href="/category/bestsellers"><span>Bestsellers</span></a>
                                                                             <div id="some-element" className=" sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a>
@@ -260,7 +260,7 @@ export default function Header(props) {
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Wool</span>
+                                                                                    <a href="/category/wool"><span>Wool</span></a>
                                                                                     <div id="some-element" className=" sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure
@@ -275,7 +275,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Trends</span>
+                                                                            <a href="/category/trends"><span>Trends</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/trends/prints-trends">Prints</a>
@@ -300,7 +300,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Natural</span>
+                                                                            <a href="/category/natural"><span>Natural</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/natural/cotton-natural">Cotton</a></li>
@@ -313,7 +313,7 @@ export default function Header(props) {
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Man Made</span>
+                                                                                    <a href="/category/man-made"><span>Man Made</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/man-made/polyester-man-made">Polyester</a></li>
@@ -323,7 +323,7 @@ export default function Header(props) {
                                                                                     </div>
                                                                                 </div>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Embroideries</span>
+                                                                                    <a href="/category/embroideries"><span>Embroideries</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/embroideries/cotton-em">Cotton</a></li>
@@ -335,7 +335,7 @@ export default function Header(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <span>Prints</span>
+                                                                            <a href="/category/prints"><span>Prints</span></a>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
                                                                                     <li><a className="menuLinkDesktop" href="/category/prints/cotton-prints">Cotton</a>
@@ -346,7 +346,7 @@ export default function Header(props) {
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Jacquards</span>
+                                                                                    <a href="/category/jacquards"><span>Jacquards</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/jacquards/cotton-jaq">Cotton</a></li>
@@ -359,7 +359,7 @@ export default function Header(props) {
                                                                                     </div>
                                                                                 </div>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <span>Suiting</span>
+                                                                                    <a href="/category/suiting"><span>Suiting</span></a>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
                                                                                             <li><a className="menuLinkDesktop" href="/category/suiting/cotton-suiting">Cotton</a></li>
