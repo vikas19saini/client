@@ -10506,7 +10506,12 @@ footer_form input:-moz-placeholder {
 		font-size: 16px
 	}
 	img.subCategoryCrousel{
-		height: 258px;
+		height: 258px !important;
+	}
+	.mainCatMob img{
+		height: 440px;
+    width: 100%;
+    object-fit: cover;
 	}
 	.sld_bttm_tx a p {
 		font-size: 11px;
