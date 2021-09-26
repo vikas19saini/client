@@ -31,7 +31,13 @@ export default function SubCategory(props) {
                     <div className="desk_view">
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="cotton_mainHead">
+                                <div className="cotton_mainHead" style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    background: '#f8f8f894'
+                                }}>
                                     <h3>{category.name}</h3>
                                     <p>{category.description}
                                     </p>
