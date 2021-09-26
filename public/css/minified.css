@@ -10504,7 +10504,7 @@ footer_form input:-moz-placeholder {
 		height: 258px !important;
 	}
 	.mainCatMob img{
-		height: 440px;
+		height: 440px !important;
     width: 100%;
     object-fit: cover;
 	}

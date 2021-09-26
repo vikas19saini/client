@@ -49,7 +49,7 @@ export default function SubCategory(props) {
                                     <img src={category.subCategory ? category.subCategory.fullUrl : "/images/placeholder.png"} alt={category.name} width="100%" className="img-fluid mob_view" />
                                 </div>
                             </div>
-                            <div className="col-12 cotton_mainHead">
+                            <div className="col-12 cotton_mainHead" style={{ textAlign: "center" }}>
                                 <h3>{category.name}</h3>
                                 <p>{category.description}
                                 </p>
