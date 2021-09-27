@@ -7734,7 +7734,8 @@ section.empty-cart {
 		font-size: 12px
 	}
 	.btnFilter {
-		font-size: 12px!important
+		font-size: 10.3px!important;
+		padding: 12px 6px 12px 0;
 	}
 	.mob_view_filter {
 		display: block
@@ -9838,7 +9839,7 @@ span.eat {
 	font-size: 15px;
 	text-transform: capitalize;
 	font-weight: 600;
-	font-family: inherit
+	font-family: inherit;
 }
 
 .btnFilter:hover {
