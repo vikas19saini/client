@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="google-site-verification" content="xvj66e2ya5woglN4ZKsFqBFeXewEgvx5jpYh0gB2r-M" />
         <script src="/js/jquery.min.js" crossOrigin="anonymous"></script>

@@ -7928,12 +7928,19 @@ section.empty-cart {
 	.silk_sub {
 		background: url(../images/sub_img/silk_mob.jpg) no-repeat center
 	}
-	#big .owl-dots {
+
+	@media only screen and (max-width: 767px) {
+		 #big .owl-dots{
+			 height: 30px;
+		}
+	}
+
+	/* #big .owl-dots {
 		position: absolute;
 		top: .6rem;
 		left: auto;
 		z-index: 9
-	}
+	} */
 	#thumbs {
 		display: none
 	}
