@@ -274,8 +274,8 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="banner_sec_md mrg_85">
-                <img src="/images/new_img/img_3.png" alt="Gandhi Fabrics" className="img-fluid desk_view" />
-                <img src="/images/new_img/mob_1.png" alt="Gandhi Fabrics" className="img-fluid mob_view" />
+                <img src="/images/new_img/img_3.jpg" alt="Gandhi Fabrics" className="img-fluid desk_view" />
+                <img src="/images/new_img/mob_1.jpg" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="banner_overlay_tx">
                   <h3>Experience our exclusive <span>Best-selling fabrics.</span></h3>
                   <button onClick={() => route.push("/category/bestsellers")} type="button" className="shop_bttn flt_none">View all Products</button>
