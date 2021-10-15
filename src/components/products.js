@@ -337,12 +337,12 @@ export default function Products(props) {
                         <div className="col-md-9">
                             <div className="inner_right_prodct">
                                 <div className="sortDesktop">
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-primary btnFilter" style={{ pointerEvents: "none" }}>Sort By:</button>
-                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("clear")}>Relevance</button>
-                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("ragularPriceAsc")} >Price--Low to high</button>
-                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("ragularPriceDesc")}>Price--High to Low</button>
-                                        <button type="button" className="btn btn-primary btnFilter" onClick={() => sortBy("createdAtDesc")}>Newest First</button>
+                                    <div className="btnCFilter">
+                                        <button type="button" className="btnFilter" style={{ pointerEvents: "none" }}>Sort By:</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("clear")}>Relevance</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceAsc")} >Price--Low to high</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceDesc")}>Price--High to Low</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("createdAtDesc")}>Newest First</button>
                                     </div>
                                 </div>
                                 <div className="mob_view_filter filter_cs">

@@ -7733,9 +7733,8 @@ section.empty-cart {
 		margin-bottom: 5px;
 		font-size: 12px
 	}
-	.btnFilter {
-		font-size: 10.3px!important;
-		padding: 12px 6px 12px 0;
+	.btnCFilter {
+		overflow-x: scroll;
 	}
 	.mob_view_filter {
 		display: block
@@ -9841,12 +9840,14 @@ span.eat {
 
 .btnFilter {
 	background: 0 0;
-	color: #000;
-	border: 0;
-	font-size: 15px;
-	text-transform: capitalize;
-	font-weight: 600;
-	font-family: inherit;
+    color: #000;
+    border: 0;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: inherit;
+    flex: none;
+    padding: 0px 10px;
 }
 
 .btnFilter:hover {
@@ -10845,4 +10846,10 @@ img.subCategoryCrousel{
 }
 .social_icons .img{
 	height: 25px;
+}
+
+.btnCFilter{
+    display: inline-flex;
+    /* overflow-x: scroll; */
+    padding: 9px 0px 15px 0px;
 }

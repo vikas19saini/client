@@ -293,7 +293,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div id="fabric" className="custom_icon mrg_113 cus_icon_size owl-carousel owl-theme">
-                <Products products={props.products} />
+                <Products products={props.recomm} />
               </div>
             </div>
           </div>
@@ -642,10 +642,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
     let laceResponse = await axios.get(`${process.env.API_URL}category/products/lace-trends?limit=30&offset=0&sort=createdAtDesc`);
     let discountedProducts = await axios.get(process.env.API_URL + "products/new?filterBy=discounted");
+    let recommendedProducts = await axios.get(process.env.API_URL + "products/new?sort=ragularPriceAsc");
 
     data.products = products;
     data.lace = laceResponse.data.rows;
     data.sale = discountedProducts.data;
+    data.recomm = recommendedProducts.data
 
     return {
       props: data
