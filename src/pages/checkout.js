@@ -17,7 +17,15 @@ function Checkout() {
     const router = useRouter();
     const isLoggedIn = useSelector(state => state.config.auth ? state.config.auth : false);
     const [isLoading, setIsLoading] = useState(false);
+    const [storePickup, setStorePickup] = useState(false);
 
+    useEffect(() => {
+        if (customerCartData && customerCartData.shippingMethod && customerCartData.shippingMethod === "Store_Pickup") {
+            setStorePickup(true)
+        } else {
+            setStorePickup(false)
+        }
+    }, [customerCartData])
 
     if (disableCheckout) {
         return (
@@ -46,7 +54,7 @@ function Checkout() {
             <ToastContainer />
             <div style={{ background: "#fafafa" }}>
                 <div className="checkoutPage">
-                    <div style={{minHeight: "100vh"}} className="row m-0">
+                    <div style={{ minHeight: "100vh" }} className="row m-0">
                         <div className="col-md-5 order-md-2 p-0 pl-md-5">
                             <div className="pr-md-5 mt-md-5">
                                 <div className="py-2 text-center d-block d-md-none border-bottom" style={{ background: "#fafafa" }}>
@@ -72,7 +80,7 @@ function Checkout() {
                                     </div>
                                 </div>
                                 <div className="pr-md-5 mt-md-5">
-                                    <CheckoutSidebar setReload={setReload} hideCheckoutBtn isCheckoutPage />
+                                    <CheckoutSidebar storePickup={storePickup} setReload={setReload} hideCheckoutBtn isCheckoutPage />
                                 </div>
                             </div>
                         </div>
@@ -97,7 +105,7 @@ function Checkout() {
                                     </div>
                                     {
                                         isLoggedIn &&
-                                        <CustomerAddresses cartId={cartId} customerCartData={customerCartData} setReload={setReload} calcShiping={calcShiping} setIsLoading={setIsLoading} />
+                                        <CustomerAddresses storePickup={storePickup} setStorePickup={setStorePickup} cartId={cartId} customerCartData={customerCartData} setReload={setReload} calcShiping={calcShiping} setIsLoading={setIsLoading} />
                                     }
                                     {
                                         !isLoggedIn && <ShippingAddress calcShiping={calcShiping} setReload={setReload} cartId={cartId} />
@@ -133,7 +141,9 @@ function CustomerAddresses({
     setIsLoading,
     calcShiping,
     customerCartData,
-    cartId
+    cartId,
+    storePickup,
+    setStorePickup
 }) {
 
     const [addresses, setAddresses] = useState([]);
@@ -151,7 +161,7 @@ function CustomerAddresses({
             setShowAddresses(false);
         }
 
-        if (customerCartData && customerCartData.address && (customerCartData.shippingCost > 0)) {
+        if (customerCartData && customerCartData.address && ((customerCartData.shippingCost > 0) || storePickup)) {
             setShowPaymentMethod(true);
         } else {
             setShowPaymentMethod(false);
@@ -174,7 +184,7 @@ function CustomerAddresses({
     const calcShippingCost = (shippingAddress) => {
         setCalcShipping(shippingAddress.id);
         setShowPaymentMethod(false);
-        calcShiping(shippingAddress.id).then((d) => {
+        calcShiping(shippingAddress.id, storePickup).then((d) => {
             setCalcShipping(false);
             setReload(new Date().getTime());
             setChangeAddress(false);
@@ -196,8 +206,15 @@ function CustomerAddresses({
                 (showAddresses || changeAddress) &&
                 <Fragment>
                     <div className="col-md-12 col-sm-12 col-xs-12 p-0">
-                        <div className="card p-3 mb-2 mt-2" style={{display: "flex", flexDirection: "inherit", alignItems: "center", justifyContent: "space-between"}}>
-                            <p className="heading m-0">Shipping Address
+                        <div className="card p-3 mb-2 mt-2">
+                            <div className="custom-control custom-switch">
+                                <input type="checkbox" className="custom-control-input" defaultChecked={storePickup} id="customSwitch1" />
+                                <label onClick={() => setStorePickup(!storePickup)} className="custom-control-label" htmlFor="customSwitch1">Want to pick my order from store</label>
+                            </div>
+                            <p className="mt-2 text-muted"><small><b>Gandhi 1944</b>, 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</small></p>
+                        </div>
+                        <div className="card p-3 mb-2 mt-2" style={{ display: "flex", flexDirection: "inherit", alignItems: "center", justifyContent: "space-between" }}>
+                            <p className="heading m-0">{storePickup ? "Billing" : "Delivery"} Address
                             </p>
                             <button type="button" className="btn btn-light" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#addNewAddress">Add New</button>
                         </div>
@@ -211,7 +228,7 @@ function CustomerAddresses({
                                             <p><span>{add.name}</span> {formatAddress(add)}</p>
                                             <p><span>Phone: {add.phone}</span></p>
                                             <button disabled={calculatinShipping} title="Click to select address" className="btn btn-secondary checkoutBtn" type="button" onClick={() => calcShippingCost(add)}>
-                                                {calculatinShipping === add.id ? <span className="spinner-border spinner-border-sm"></span> : "Deliver Here"}
+                                                {calculatinShipping === add.id ? <span className="spinner-border spinner-border-sm"></span> : storePickup ? "Select" : "Deliver Here"}
                                             </button>
                                         </div>
                                     </div>
@@ -228,7 +245,7 @@ function CustomerAddresses({
                     <div className="col-12 p-0">
                         <div className="dis_detail selectedAdd mt-2 card">
                             <div>
-                                <h4>Delivery Address</h4>
+                                <h4>{storePickup ? "Billing" : "Delivery"} Address</h4>
                                 <div className="seperator" />
                                 <p>Name: <span>{customerCartData.address.name}</span></p>
                                 <p>Addreess: {customerCartData.address.completeAddress}</p>
@@ -249,7 +266,7 @@ function CustomerAddresses({
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-body">
-                            <CreateNewAddress setAddedAddress={setAddedAddress} />
+                            <CreateNewAddress storePickup={storePickup} setAddedAddress={setAddedAddress} />
                         </div>
                     </div>
                 </div>
@@ -483,7 +500,8 @@ function ShippingAddress({
 }
 
 function CreateNewAddress({
-    setAddedAddress
+    setAddedAddress,
+    storePickup
 }) {
 
     const [countries, setCountries] = useState([]);
@@ -553,7 +571,7 @@ function CreateNewAddress({
     return (
         <form onSubmit={saveAddress}>
             <div className="p-2 mt-4">
-                <p className="heading">Shipping Address</p>
+                <p className="heading">{storePickup ? "Billing" : "Delivery"} Address</p>
                 <div className="row padding_0">
                     <div className="col-12">
                         <div className="input-group">

@@ -114,14 +114,14 @@ export default function PaymentMethod() {
 function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
     let currency = useSelector(state => state.config.currency);
 
-    let isOptionAvail = false;
+    /* let isOptionAvail = false;
     for (let pm of paymentOptions) {
         if (pm.currencies.includes(currency.code.toLowerCase())) {
             isOptionAvail = true;
         }
-    }
+    } */
 
-    if (!isOptionAvail) return (<p className="deliveryErr"><u>We are sorry!</u> We are currently not accepting payments in (<strong>{currency.code.toUpperCase()}</strong>) currency. Please choose another currency to continue checkout. </p>);
+    /* if (!isOptionAvail) return (<p className="deliveryErr"><u>We are sorry!</u> We are currently not accepting payments in (<strong>{currency.code.toUpperCase()}</strong>) currency. Please choose another currency to continue checkout. </p>); */
 
     return paymentOptions.map((pm, index) => {
         if (pm.currencies.includes(currency.code.toLowerCase())) {

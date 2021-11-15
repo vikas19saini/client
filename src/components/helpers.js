@@ -145,9 +145,9 @@ export function useCart() {
         if (cartId) return axios.post(`${process.env.API_URL}cart/calculateCart`, { cartId: cartId });
     }
 
-    const calcShiping = async (addressId) => {
+    const calcShiping = async (addressId, storePickup) => {
         try {
-            await axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: addressId });
+            await axios.post(`${process.env.API_URL}cart/calculateShipping`, { cartId: cartId, addressId: addressId, storePickup });
             await axios.post(`${process.env.API_URL}cart/allocateStock`, { cartId: cartId });
             await calculateCart();
             setReload(reload + 1);
