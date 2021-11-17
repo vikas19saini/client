@@ -1404,6 +1404,6 @@ $(document).on('click', '.mobileMenuIcon', function () {
     }
 }); */
 
-$(document).on('click', "#showCartMobile", function () {
+/* $(document).on('click', "#showCartMobile", function () {
     $(".appy_sec.cart-details").toggleClass("d-none");
-});
+}); */

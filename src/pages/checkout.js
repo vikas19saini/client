@@ -73,11 +73,11 @@ function Checkout() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="checkoutInfo mt-0 mt-1">
-                                    <div className="alert alert-warning">
+                                <div className="checkoutInfo mt-0 mt-1 d-none d-sm-block" style={{height: "70px"}}>
+                                    {/* <div className="alert alert-warning">
                                         <p>Due to the current lockdown situation, please expect a delay of 7-10 days in the delivery times for your orders.</p>
                                         <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="pr-md-5 mt-md-5">
                                     <CheckoutSidebar storePickup={storePickup} setReload={setReload} hideCheckoutBtn isCheckoutPage />
@@ -103,12 +103,22 @@ function Checkout() {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="card p-3 mb-2 mt-2">
+                                        <div class="form-check" style={{display: "flex", alignItems: "center"}}>
+                                            <input style={{ height: "20px", width: "20px" }} onChange={() => setStorePickup(!storePickup)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                            <label className="form-check-label ml-2" for="flexCheckDefault" style={{fontSize: "13px", textTransform: "none"}}>
+                                                Want to pick my order from store
+                                            </label>
+                                        </div>
+                                        <p className="mt-2 text-muted"><small><b>Gandhi 1944</b>, 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</small></p>
+
+                                    </div>
                                     {
                                         isLoggedIn &&
                                         <CustomerAddresses storePickup={storePickup} setStorePickup={setStorePickup} cartId={cartId} customerCartData={customerCartData} setReload={setReload} calcShiping={calcShiping} setIsLoading={setIsLoading} />
                                     }
                                     {
-                                        !isLoggedIn && <ShippingAddress calcShiping={calcShiping} setReload={setReload} cartId={cartId} />
+                                        !isLoggedIn && <ShippingAddress storePickup={storePickup} calcShiping={calcShiping} setReload={setReload} cartId={cartId} />
                                     }
                                     <div className="mt-5 border-top">
                                         <ul className="mt-2" style={{ listStyle: "none", fontSize: "12px", textAlign: "center" }}>
@@ -143,7 +153,6 @@ function CustomerAddresses({
     customerCartData,
     cartId,
     storePickup,
-    setStorePickup
 }) {
 
     const [addresses, setAddresses] = useState([]);
@@ -206,13 +215,6 @@ function CustomerAddresses({
                 (showAddresses || changeAddress) &&
                 <Fragment>
                     <div className="col-md-12 col-sm-12 col-xs-12 p-0">
-                        <div className="card p-3 mb-2 mt-2">
-                            <div className="custom-control custom-switch">
-                                <input type="checkbox" className="custom-control-input" defaultChecked={storePickup} id="customSwitch1" />
-                                <label onClick={() => setStorePickup(!storePickup)} className="custom-control-label" htmlFor="customSwitch1">Want to pick my order from store</label>
-                            </div>
-                            <p className="mt-2 text-muted"><small><b>Gandhi 1944</b>, 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</small></p>
-                        </div>
                         <div className="card p-3 mb-2 mt-2" style={{ display: "flex", flexDirection: "inherit", alignItems: "center", justifyContent: "space-between" }}>
                             <p className="heading m-0">{storePickup ? "Billing" : "Delivery"} Address
                             </p>
@@ -278,7 +280,8 @@ function CustomerAddresses({
 function ShippingAddress({
     cartId,
     calcShiping,
-    setReload
+    setReload,
+    storePickup
 }) {
 
     const [countries, setCountries] = useState([]);
@@ -335,7 +338,7 @@ function ShippingAddress({
 
             let res = await axios.post(`${process.env.API_URL}customer/guestCheckout`, request);
             dispatch({ type: "USER_LOGIN", payload: res.data.auth });
-            await calcShiping(res.data.addressId);
+            await calcShiping(res.data.addressId, storePickup);
             setReload(new Date().getTime());
             setIsSaving(false);
         } catch (err) {
@@ -436,7 +439,7 @@ function ShippingAddress({
                     </div>
                 </div>
                 <div className="p-2 mt-4">
-                    <p className="heading">Shipping Address</p>
+                    <p className="heading">{storePickup ? "Billing" : "Shipping"} Address</p>
                     <div className="row padding_0">
                         <div className="col-12">
                             <div className="input-group">

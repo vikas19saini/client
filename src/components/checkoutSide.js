@@ -2,13 +2,14 @@ import { useSelector } from "react-redux";
 import { formatPrice, useCart } from "../components/helpers";
 import { useRouter } from "next/router";
 import { toast } from 'react-nextjs-toast';
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 export default function CheckoutSidebar(props) {
     const router = useRouter();
     let currency = useSelector(state => state.config.currency);
     const cartData = useSelector(state => state.config.cartData);
     const { applyCoupon, isApplyingCoupon, removeCoupon } = useCart();
+    const [expend, setExpend] = useState(false)
 
     const applyCouponCode = async (couponCode) => {
         try {
@@ -39,15 +40,15 @@ export default function CheckoutSidebar(props) {
                 <div className="d-block d-sm-none">
                     <div className="dis_detail card m-0">
                         <div>
-                            <h6 className="pl-4 pr-4 pb-2 pt-2 m-0">
-                                <span id="showCartMobile">Show order summary <i className="fa fa-chevron-down"></i></span>
+                            <h6 className="pl-4 pr-4 pb-2 pt-2 m-0" onClick={() => setExpend(!expend)}>
+                                <span id="showCartMobile">Show order summary {expend ? <i className="fa fa-chevron-down" /> : <i className="fa fa-chevron-up" />}</span>
                                 <span className="pull-right">{formatPrice(cartData ? cartData.total : 0)}</span>
                             </h6>
                         </div>
                     </div>
                 </div>
             }
-            <div className={router.pathname === "/checkout" ? "appy_sec cart-details d-none d-sm-block card" : "appy_sec cart-details card"}>
+            <div className={router.pathname === "/checkout" ? expend ? "appy_sec cart-details d-sm-block card" : "appy_sec cart-details d-none d-sm-block card" : "appy_sec cart-details card"}>
                 <div className="input-group">
                     {
                         cartData && cartData.coupon ?
