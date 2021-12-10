@@ -10853,3 +10853,51 @@ img.subCategoryCrousel{
     /* overflow-x: scroll; */
     padding: 9px 0px 15px 0px;
 }
+
+.talk-bubble {
+	margin: 40px;
+    display: inline-block;
+    height: auto;
+    background-color: #343a40;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999999;
+    color: #fff;
+	margin-bottom: 10px;
+	box-shadow: 0 0px 11px 0 #be8f45;
+    -webkit-box-shadow: 0 0px 11px 0 #be8f45;
+    -moz-box-shadow: 0 0px 11px 0 #be8f45
+}
+.tri-right.right-in:after{
+	content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -13px;
+    top: 1px;
+    bottom: auto;
+    border: 7px solid;
+    border-color: #343a40 transparent transparent #343a40;
+}
+.round{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+	border-top-right-radius: 2px;
+  }
+  .talktext{
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .talktext p{
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+	font-weight: 500;
+  }
+  .talktext p a{
+	  color: inherit;
+  }

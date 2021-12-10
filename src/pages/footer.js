@@ -194,6 +194,16 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+            <div style={{ marginBottom: "60px" }} className="talk-bubble tri-right round right-in">
+                <div className="talktext">
+                    <p><a target="_blank" href="https://api.whatsapp.com/send?phone=+66629016292">Trò chuyện bằng Tiếng Việt</a></p>
+                </div>
+            </div>
+            <div className="talk-bubble tri-right round right-in">
+                <div className="talktext">
+                    <p><a target="_blank" href="https://lin.ee/eWAQkAx">ติดต่อแอดมินผ่านไลน์</a></p>
+                </div>
+            </div>
         </footer>
     );
 }
