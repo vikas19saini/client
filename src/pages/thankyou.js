@@ -6,6 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { formatAddress, formatCurrency } from "../components/helpers";
 import { useDispatch } from "react-redux";
+import useTranslation from "next-translate/useTranslation"
 
 export default function ThankYou() {
     const router = useRouter();
@@ -14,6 +15,8 @@ export default function ThankYou() {
     const dispatch = useDispatch();
     dispatch({ type: "CLEART_CART", payload: 0 });
     dispatch({ type: "SET_CART_DATA", payload: null });
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,24 +41,24 @@ export default function ThankYou() {
                             <div className="mrg_desk">
                                 <div className="or_placed" style={{ marginTop: "0px" }}>
                                     <img src="/images/place_img.png" style={{ marginBottom: "20px" }} />
-                                    <h4>Order Placed</h4>
-                                    <p>Your Gandhi order was placed successfully & will be delivered shortly!</p>
+                                    <h4>{t("cart:order_placed")}</h4>
+                                    <p>{t("cart:success_message")}</p>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="dele_add">
-                                                <h4>Order Details</h4>
-                                                <p>Order Value: {order && formatCurrency(order.total, { code: order.currencyCode, value: order.currencyValue })}</p>
-                                                <p>Shipping Method: {order && order.shippingMethod}</p>
-                                                <p>Payment Method: {order && order.payments.length > 0 && order.payments[0].method}</p>
+                                                <h4>{t("cart:order_details")}</h4>
+                                                <p>{t("cart:order_value")}: {order && formatCurrency(order.total, { code: order.currencyCode, value: order.currencyValue })}</p>
+                                                <p>{t("cart:shipping_method")}: {order && order.shippingMethod}</p>
+                                                <p>{t("cart:payment_method")}: {order && order.payments.length > 0 && order.payments[0].method}</p>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="dele_add">
-                                                <h4>Delivery Address</h4>
+                                                <h4>{t("cart:shipping_address")}</h4>
                                                 <p>{order && formatAddress(order.shippingAddress, true)}</p>
                                                 {
                                                     order && order.shippingAddress.phone &&
-                                                    <p>Phone: {order.shippingAddress.phone}</p>
+                                                    <p>{t("cart:contact_no")}: {order.shippingAddress.phone}</p>
                                                 }
                                             </div>
                                         </div>

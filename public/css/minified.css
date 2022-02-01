@@ -3582,7 +3582,7 @@ button:focus {
 	display: block
 }
 
-#luggage {
+#luggage, #language {
 	cursor: pointer;
 	color: #707070;
 	text-transform: uppercase;
@@ -3594,11 +3594,12 @@ button:focus {
 	position: relative;
 	z-index: 999;
 	height: 28px;
-	background: url(../images/down_2.png) no-repeat 91%;
-	-webkit-appearance: none;
 	padding-left: 8px
 }
-
+#language{
+	width: auto !important;
+	text-transform: capitalize !important;
+}
 #luggage option {
 	cursor: pointer
 }
@@ -9370,7 +9371,6 @@ section.empty-cart {
 }
 
 .disPer {
-	text-transform: uppercase;
 	color: #dc143c;
 	font-size: 12px
 }

@@ -5,6 +5,7 @@ import { toast } from 'react-nextjs-toast';
 import { useRouter } from 'next/router'
 import { PayPalButton } from "react-paypal-button-v2";
 import ClipLoader from "react-spinners/ClipLoader";
+import useTranslation from "next-translate/useTranslation";
 
 export default function PaymentMethod() {
     let currency = useSelector(state => state.config.currency);
@@ -123,6 +124,8 @@ function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
 
     /* if (!isOptionAvail) return (<p className="deliveryErr"><u>We are sorry!</u> We are currently not accepting payments in (<strong>{currency.code.toUpperCase()}</strong>) currency. Please choose another currency to continue checkout. </p>); */
 
+    const { t } = useTranslation()
+
     return paymentOptions.map((pm, index) => {
         if (pm.currencies.includes(currency.code.toLowerCase())) {
             return (
@@ -131,9 +134,16 @@ function PaymentOptions({ paymentOptions, setPaymentMethod, paymentMethod }) {
                         <div className={(paymentMethod && (paymentMethod.name === pm.name)) ? "outerDot active" : "outerDot"}>
                             <div className={(paymentMethod && (paymentMethod.name === pm.name)) ? "innerDot active" : "innerDot"}></div>
                         </div>
-                        <label style={{ cursor: "pointer" }}>Pay By - {pm.title}</label>
+
+                        <label style={{ cursor: "pointer" }}>
+                            {pm.name === "paypal" && t("cart:paypal")}
+                            {pm.name === "2c2p" && t("cart:card")}
+                        </label>
                     </div>
-                    <p className="small mt-3" style={{ textTransform: "none" }}>{pm.description}</p>
+                    <p className="small mt-3" style={{ textTransform: "none" }}>
+                        {pm.name === "paypal" && t("cart:paypal_description")}
+                        {pm.name === "2c2p" && t("cart:card_description")}
+                    </p>
                 </div>
             );
         }

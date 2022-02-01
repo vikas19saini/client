@@ -7,14 +7,17 @@ import { wrapper } from '../redux/store';
 import Products from "../components/productCrousel"
 import { useRouter } from "next/router";
 import Link from 'next/dist/client/link';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Home(props) {
 
   const route = useRouter();
+  const { pathname } = route
+  const { t } = useTranslation()
 
   useEffect(() => {
     homePageInit() // defined in script.js
-  })
+  }, [pathname])
 
   return (
     <Fragment>
@@ -39,7 +42,7 @@ export default function Home(props) {
                           <div className="inner_txt">
                             <h1>{slider.heading}</h1>
                             <p>{slider.description}</p>
-                            <button type="button" onClick={() => route.push(slider.uri)} className="learn_bttn">Learn more</button>
+                            <button type="button" onClick={() => route.push(slider.uri)} className="learn_bttn">{t("common:learn_more")}</button>
                           </div>
                         </div>
                       );
@@ -71,7 +74,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>What do you want to make?</h4>
+                <h4>{t("home:what_you_wanna_make")}</h4>
               </div>
             </div>
           </div>
@@ -83,7 +86,7 @@ export default function Home(props) {
                     <Link href="/search?query=dresses">
                       <a>
                         <img src="images/icon_menu/dresses.svg" alt="gandhi fabrics" />
-                        <p>Dresses</p>
+                        <p>{t("common:dresses")}</p>
                       </a>
                     </Link>
                   </div>
@@ -93,7 +96,7 @@ export default function Home(props) {
                     <Link href="/search?query=blouses">
                       <a>
                         <img src="images/icon_menu/blouses.svg" alt="gandhi fabrics" />
-                        <p>Blouses</p>
+                        <p>{t("common:blouses")}</p>
                       </a>
                     </Link>
                   </div>
@@ -103,7 +106,7 @@ export default function Home(props) {
                     <Link href="/search?query=skirts">
                       <a>
                         <img src="images/icon_menu/skirts.svg" alt="gandhi fabrics" />
-                        <p>Skirts</p>
+                        <p>{t("common:skirts")}</p>
                       </a>
                     </Link>
                   </div>
@@ -113,7 +116,7 @@ export default function Home(props) {
                     <Link href="/search?query=jackts">
                       <a>
                         <img src="images/icon_menu/jackts.svg" alt="gandhi fabrics" />
-                        <p>Jackets</p>
+                        <p>{t("common:jackets")}</p>
                       </a>
                     </Link>
                   </div>
@@ -123,7 +126,7 @@ export default function Home(props) {
                     <Link href="/search?query=suiting">
                       <a>
                         <img src="images/icon_menu/suiting.svg" alt="gandhi fabrics" />
-                        <p>Suiting</p>
+                        <p>{t("common:suiting")}</p>
                       </a>
                     </Link>
                   </div>
@@ -134,7 +137,7 @@ export default function Home(props) {
                     <Link href="/search?query=bridal">
                       <a>
                         <img src="images/icon_menu/bridal.svg" alt="gandhi fabrics" />
-                        <p>Bridal</p>
+                        <p>{t("common:bridal")}</p>
                       </a>
                     </Link>
                   </div>
@@ -144,7 +147,7 @@ export default function Home(props) {
                     <Link href="/search?query=trousers">
                       <a>
                         <img src="images/icon_menu/trousers.svg" alt="gandhi fabrics" />
-                        <p>Trousers</p>
+                        <p>{t("common:trousers")}</p>
                       </a>
                     </Link>
                   </div>
@@ -154,7 +157,7 @@ export default function Home(props) {
                     <Link href="/search?query=shirts">
                       <a>
                         <img src="images/icon_menu/shirts.svg" alt="gandhi fabrics" />
-                        <p>Shirts</p>
+                        <p>{t("common:shirts")}</p>
                       </a>
                     </Link>
                   </div>
@@ -164,7 +167,7 @@ export default function Home(props) {
                     <Link href="/search?query=scarves">
                       <a>
                         <img src="images/icon_menu/scarves.svg" alt="gandhi fabrics" />
-                        <p>Scarves</p>
+                        <p>{t("common:scarves")}</p>
                       </a>
                     </Link>
                   </div>
@@ -174,7 +177,7 @@ export default function Home(props) {
                     <Link href="/search?query=kids">
                       <a>
                         <img src="images/icon_menu/kids.svg" alt="gandhi fabrics" />
-                        <p>Kids</p>
+                        <p>{t("common:kids")}</p>
                       </a>
                     </Link>
                   </div>
@@ -184,7 +187,7 @@ export default function Home(props) {
                     <Link href="/search?query=women">
                       <a>
                         <img src="images/icon_menu/women.svg" alt="gandhi fabrics" />
-                        <p>Women</p>
+                        <p>{t("common:women")}</p>
                       </a>
                     </Link>
                   </div>
@@ -194,7 +197,7 @@ export default function Home(props) {
                     <Link href="/search?query=men">
                       <a>
                         <img src="images/icon_menu/men.svg" alt="gandhi fabrics" />
-                        <p>Men</p>
+                        <p>{t("common:men")}</p>
                       </a>
                     </Link>
                   </div>
@@ -210,7 +213,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Bestseller Categories</h4>
+                <h4>{t("home:bestseller_categories")}</h4>
               </div>
             </div>
           </div>
@@ -223,9 +226,8 @@ export default function Home(props) {
                     <div className="sld_bttm_tx">
                       <Link href="/category/jacquards">
                         <a>
-                          <h3>Jacquard Fabrics</h3>
-                          <p>Intricately patterned fabrics in silk and blends. <span>A beautiful selection for special
-                            occasions.</span></p>
+                          <h3>{t("home:jacquard_fabrics")}</h3>
+                          <p>{t("home:jacquard_fabrics_description")}</p>
                         </a>
                       </Link>
                     </div>
@@ -238,9 +240,8 @@ export default function Home(props) {
                     <div className="sld_bttm_tx">
                       <Link href="/category/satin">
                         <a>
-                          <h3>Satin Fabrics</h3>
-                          <p>Popular fabrics for all occasions, our range has <span>a wide variety in silk, blends and
-                            more.</span></p>
+                          <h3>{t("home:satin_fabrics")}</h3>
+                          <p>{t("home:satin_fabrics_description")}</p>
                         </a>
                       </Link>
                     </div>
@@ -253,8 +254,8 @@ export default function Home(props) {
                     <div className="sld_bttm_tx">
                       <Link href="/category/prints/silk-prints">
                         <a>
-                          <h3>Silk Prints</h3>
-                          <p>The trendiest prints you can find anywhere! <span>Browse our collection today.</span></p>
+                          <h3>{t("home:silk_prints")}</h3>
+                          <p>{t("home:silk_prints_description")}</p>
                         </a>
                       </Link>
                     </div>
@@ -267,7 +268,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Explore Our Favourites</h4>
+                <h4>{t("home:explore_favourites")}</h4>
               </div>
             </div>
           </div>
@@ -277,8 +278,8 @@ export default function Home(props) {
                 <img src="/images/new_img/img_3.jpg" alt="Gandhi Fabrics" className="img-fluid desk_view" />
                 <img src="/images/new_img/mob_1.jpg" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="banner_overlay_tx">
-                  <h3>Experience our exclusive <span>Best-selling fabrics.</span></h3>
-                  <button onClick={() => route.push("/category/bestsellers")} type="button" className="shop_bttn flt_none">View all Products</button>
+                  <h3>{t("home:explore_favourites_description")}</h3>
+                  <button onClick={() => route.push("/category/bestsellers")} type="button" className="shop_bttn flt_none">{t("home:view_all_products")}</button>
                 </div>
               </div>
             </div>
@@ -286,7 +287,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Recommended For You</h4>
+                <h4>{t("home:recommended_for_you")}</h4>
               </div>
             </div>
           </div>
@@ -306,7 +307,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding sec_padd">
-                <h4>All About Laces</h4>
+                <h4>{t("home:all_about_laces")}</h4>
               </div>
             </div>
             <div className="col-md-12">
@@ -315,9 +316,9 @@ export default function Home(props) {
                 <img src="/images/new_img/20210918_142559_0000.jpg" alt="Gandhi Fabrics" className="img-fluid mob_view mob_curb" />
                 <div className="clr_tx_img">
                   <div className="trans_bg_clr">
-                    <h3>Laces</h3>
-                    <p>Delicate and Intricate Lace fabrics <span>from all over the world.</span></p>
-                    <button onClick={() => route.push("/category/lace")} type="button" className="shop_bttn flt_none">View all Products</button>
+                    <h3>{t("home:laces")}</h3>
+                    <p>{t("home:laces_description")}</p>
+                    <button onClick={() => route.push("/category/lace")} type="button" className="shop_bttn flt_none">{t("home:view_all_products")}</button>
                   </div>
                 </div>
               </div>
@@ -331,7 +332,7 @@ export default function Home(props) {
         <div className="row">
           <div className="col-md-12">
             <div className="inner_main_hadding sec_padd">
-              <h4>Trending in Laces</h4>
+              <h4>{t("home:trending_in_laces")}</h4>
             </div>
           </div>
         </div>
@@ -344,9 +345,8 @@ export default function Home(props) {
                   <div className="sld_bttm_tx">
                     <Link href="/category/lace/french-laces">
                       <a>
-                        <h3>French Laces</h3>
-                        <p>Famous for their delicacy and craftsmanship, <span>with different patterns,techniques and
-                          fibres.</span></p>
+                        <h3>{t("home:french_laces")}</h3>
+                        <p>{t("home:french_laces_description")}</p>
                       </a>
                     </Link>
                   </div>
@@ -359,9 +359,8 @@ export default function Home(props) {
                   <div className="sld_bttm_tx">
                     <Link href="/category/lace/3d-laces">
                       <a>
-                        <h3>3D Laces</h3>
-                        <p>Laces with beads, sequins, appliques and many <span>more interesting embellishments, these laces
-                          are</span><span> decadent in their beauty.</span></p>
+                        <h3>{t("home:3D_laces")}</h3>
+                        <p>{t("home:3D_laces_description")}</p>
                       </a>
                     </Link>
                   </div>
@@ -374,9 +373,8 @@ export default function Home(props) {
                   <div className="sld_bttm_tx">
                     <Link href="/category/lace/metallic-laces">
                       <a>
-                        <h3>Metallic Laces</h3>
-                        <p>Made with metallic thread in the base or as <span>embroidery, these laces are always in
-                          trend.</span></p>
+                        <h3>{t("home:metallic_laces")}</h3>
+                        <p>{t("home:metallic_laces_description")}</p>
                       </a>
                     </Link>
                   </div>
@@ -394,7 +392,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Latest in Laces</h4>
+                <h4>{t("home:latest_in_laces")}</h4>
               </div>
             </div>
           </div>
@@ -414,7 +412,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Popular Fabrics</h4>
+                <h4>{t("home:popular_fabrics")}</h4>
               </div>
             </div>
           </div>
@@ -426,9 +424,9 @@ export default function Home(props) {
                 <div className="align_c">
                   <div className="sub_natural sld_bttm_tx">
                     <div className="bg_overlay">
-                      <h4>The Suiting Collection</h4>
-                      <p>Our Collection of the world's finest fabrics For suiting and shirting</p>
-                      <button onClick={() => route.push("/category/suiting")} type="button" className="shop_bttn flt_none">Discover More</button>
+                      <h4>{t("home:the_suiting_collection")}</h4>
+                      <p>{t("home:the_suiting_collection_description")}</p>
+                      <button onClick={() => route.push("/category/suiting")} type="button" className="shop_bttn flt_none">{t("common:discover_more")}</button>
                     </div>
                   </div>
                 </div>
@@ -440,9 +438,9 @@ export default function Home(props) {
                   <div className="align_c">
                     <div className="sub_natural sld_bttm_tx">
                       <div className="bg_overlay">
-                        <h4>Our Plain Dyed Fabric Collection</h4>
-                        <p>A Vast Selection Of Solid, Plain Dyed Fabrics In Cotton,Silk and Blends</p>
-                        <button onClick={() => route.push("/category/bestsellers/plain-dyed-best")} type="button" className="shop_bttn flt_none">Discover More</button>
+                        <h4>{t("home:plain_dyed_fabric_collection")}</h4>
+                        <p>{t("home:plain_dyed_fabric_collection_description")}</p>
+                        <button onClick={() => route.push("/category/bestsellers/plain-dyed-best")} type="button" className="shop_bttn flt_none">{t("common:discover_more")}</button>
                       </div>
                     </div>
                   </div>
@@ -454,9 +452,9 @@ export default function Home(props) {
                 <div className="align_c">
                   <div className="sub_natural sld_bttm_tx">
                     <div className="bg_overlay">
-                      <h4>Our Natural Fabrics</h4>
-                      <p>Beautiful Fabrics made from 100% Natural Fibres.</p>
-                      <button onClick={() => route.push("/category/natural")} type="button" className="shop_bttn flt_none">Discover More</button>
+                      <h4>{t("home:natural_fabrics")}</h4>
+                      <p>{t("home:natural_fabrics_description")}</p>
+                      <button onClick={() => route.push("/category/natural")} type="button" className="shop_bttn flt_none">{t("common:discover_more")}</button>
                     </div>
                   </div>
                 </div>
@@ -472,7 +470,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Special Deals</h4>
+                <h4>{t("home:special_deals")}</h4>
               </div>
             </div>
           </div>
@@ -511,7 +509,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding">
-                <h4>Wedding Fabrics</h4>
+                <h4>{t("home:wedding_fabrics")}</h4>
               </div>
             </div>
           </div>
@@ -522,9 +520,9 @@ export default function Home(props) {
                 <img src="/images/new_img/bg_slide.png" alt="Gandhi Fabrics" className="img-fluid mob_view" />
                 <div className="clr_tx_img">
                   <div className="trans_bg_clr">
-                    <h3>Wedding Fabric Collection</h3>
-                    <p>A collection to make your day beautiful <span>and fulfill your dreams.</span></p>
-                    <button onClick={() => route.push("/search?query=wedding")} type="button" className="shop_bttn flt_none">Discover Collection</button>
+                    <h3>{t("home:wedding_fabrics_heading")}</h3>
+                    <p>{t("home:wedding_fabrics_description")}</p>
+                    <button onClick={() => route.push("/search?query=wedding")} type="button" className="shop_bttn flt_none">{t("home:discover_collection")}</button>
                   </div>
                 </div>
               </div>
@@ -539,7 +537,7 @@ export default function Home(props) {
           <div className="row">
             <div className="col-md-12">
               <div className="inner_main_hadding sec_padd">
-                <h4>Seasons</h4>
+                <h4>{t("common:seasons")}</h4>
               </div>
             </div>
           </div>
@@ -549,11 +547,9 @@ export default function Home(props) {
                 <div className="col_6 width_full_mob mob_view"><img src="images/new_img/img_13.png" className="img-fluid" /></div>
                 <div className="align_c col_6 width_full_mob bg_full bttm_sping_space">
                   <div className="sub_natural sping_autumm sld_bttm_tx">
-                    <h4>Spring / Summer</h4>
-                    <p>Our collection of fabrics for Spring/Summer feature the very best in sheer fabrics. Our collection of
-                      cotton and other natural fabrics is unsurpassed. We bring to you the best in innovative and trending
-                      fabrics from all over the world.</p>
-                    <button onClick={() => route.push("/search?query=Summer")} type="button" className="shop_bttn flt_none">View Collection</button>
+                    <h4>{t("home:spring_summer")}</h4>
+                    <p>{t("home:spring_summer_description")}</p>
+                    <button onClick={() => route.push("/search?query=Summer")} type="button" className="shop_bttn flt_none">{t("home:discover_collection")}</button>
                   </div>
                 </div>
                 <div className="col_6 width_full_mob desk_view"><img src="images/new_img/img_13.png" className="img-fluid" /></div>
@@ -562,11 +558,9 @@ export default function Home(props) {
                 <div className="col_6 width_full_mob mob_view"><img src="images/new_img/image_9.png" className="img-fluid" /></div>
                 <div className="align_c col_6 width_full_mob bg_full">
                   <div className="sub_natural sping_autumm sld_bttm_tx">
-                    <h4>Autumn / Winter</h4>
-                    <p>Our collection of fabrics for Autumn/Winter, showcase some of the very finest wool fabrics; the very
-                      latest in fashionable jacquards and textured fabrics as well as other luxurious and exclusive fabrics.
-                      All these and much more.</p>
-                    <button onClick={() => route.push("/search?query=Autumn")} type="button" className="shop_bttn flt_none">View Collection</button>
+                    <h4>{t("home:autumn_winter")}</h4>
+                    <p>{t("home:autumn_winter_description")}</p>
+                    <button onClick={() => route.push("/search?query=Autumn")} type="button" className="shop_bttn flt_none">{t("home:discover_collection")}</button>
                   </div>
                 </div>
                 <div className="col_6 width_full_mob desk_view"><img src="images/new_img/image_9.png" className="img-fluid" /></div>
@@ -583,7 +577,7 @@ export default function Home(props) {
             <div className="row">
               <div className="col-md-12">
                 <div className="inner_main_hadding">
-                  <h4>Just Arrived</h4>
+                  <h4>{t("home:just_arrived")}</h4>
                 </div>
               </div>
             </div>
@@ -602,7 +596,7 @@ export default function Home(props) {
         <div className="row">
           <div className="col-md-12">
             <div className="inner_main_hadding insta_head">
-              <h4>Instafeed</h4>
+              <h4>{t("home:instafeed")}</h4>
             </div>
           </div>
         </div>

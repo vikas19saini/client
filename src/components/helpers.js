@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../pages/footer";
 import Header from "../pages/header";
 import Login from "./login";
+import useTranslation from "next-translate/useTranslation";
 
 export function getProductPrice(product) {
     if (product.salePrice !== 0) {
@@ -27,17 +28,18 @@ export function formatCurrency(val, currency) {
 
 export function GetPriceHtml(props) {
     let quantity = props.quantity ? props.quantity : props.product.minOrderQuantity
+    const { t } = useTranslation()
 
     if (props.product.salePrice === 0) {
         formatPrice(1) // dummy call
-        return (formatPrice(props.product.ragularPrice * quantity)) + "/Metre"
+        return (formatPrice(props.product.ragularPrice * quantity)) + "/" + t("common:meter")
     }
 
     let discountPer = 100 * ((props.product.ragularPrice * quantity) - (props.product.salePrice * quantity)) / (props.product.ragularPrice * quantity);
 
     return (
         <Fragment>
-            {formatPrice(props.product.salePrice * quantity)} <del style={{ color: "#bfbfbf" }}>{formatPrice(props.product.ragularPrice * quantity)} </del>/ Metre <i className="disPer">({Math.round(discountPer)}% Off)</i>
+            {formatPrice(props.product.salePrice * quantity)} <del style={{ color: "#bfbfbf" }}>{formatPrice(props.product.ragularPrice * quantity)} </del>/ {t("common:meter")} <i className="disPer">({Math.round(discountPer)}% {t("common:off")})</i>
         </Fragment>
     )
 }

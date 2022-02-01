@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { toast, ToastContainer } from 'react-nextjs-toast';
 import { useSelector } from "react-redux";
 import { GetPriceHtml, stockStatus, useCart } from "../components/helpers";
+import useTranslation from "next-translate/useTranslation";
 
 export default function CartButton(props) {
     const [product, setProduct] = useState(null);
@@ -12,6 +13,8 @@ export default function CartButton(props) {
     const { addToCart, isAdding, addtoWishList, isAddingToWishlist } = useCart();
     const cartData = useSelector(state => state.config.cartData);
     const [cartProductId, setCartProductId] = useState(null);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         setProduct(props.product);
@@ -103,7 +106,7 @@ export default function CartButton(props) {
                                 </div>
                                 {
                                     stockStatus(product) ? (<div className="number-input md-number-input" key={product.id}>
-                                        <p>Quantity</p>
+                                        <p>{t("product:quantity")}</p>
                                         <div className="dlx_main">
                                             <button className="minus" onClick={() => setQuantity(qty - step)}></button>
                                             <input className="quantity" value={qty} onChange={(e) => setQuantity(e.target.value)} type="number" />
@@ -119,7 +122,7 @@ export default function CartButton(props) {
                                     product.stockStatus !== 0 &&
                                     <div className="cartButtonProduct">
                                         <button type="button" className="bag_bttn" disabled={isAdding} onClick={() => addProductToCart(qty)}>{
-                                            isAdding ? <div className="loader" /> : "Add to Bag"
+                                            isAdding ? <div className="loader" /> : t("product:add_to_cart")
                                         }</button>
                                         <button className="hard_icon" disabled={isAddingToWishlist} onClick={addToWishlist}>
                                             {

@@ -15,6 +15,7 @@ import { PhotoSwipe } from 'react-photoswipe';
 import {
     isMobile
 } from "react-device-detect";
+import useTranslation from "next-translate/useTranslation"
 
 export default function Product(product) {
 
@@ -22,6 +23,7 @@ export default function Product(product) {
     const [openZoom, setOpenZoom] = useState(false);
 
     const [relativeProducts, setRelativeProducts] = useState([]);
+    const { t } = useTranslation()
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}products/relative/${product.id}`)
@@ -102,7 +104,7 @@ export default function Product(product) {
                                 <div className="main_pd_dis wow fadeInUp">
                                     <CartButton product={product} />
                                     <div className="product_details_right">
-                                        <p className="product_details_right_p5">Product Specification / Details</p>
+                                        <p className="product_details_right_p5">{t("product:product_specification")}</p>
                                         <ul className="product_details_right_p6">
                                             {
                                                 product.attributes.map((a) => {
@@ -122,15 +124,15 @@ export default function Product(product) {
                                         <div className="row">
                                             <div className="col-md-5">
                                                 <div className="order_s_1 right_s_1">
-                                                    <p>Looking for order Bulk?</p>
-                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>Bulk Order</a></Link></h6>
+                                                    <p>{t("product:bulk")}</p>
+                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>{t("product:bulk_order")}</a></Link></h6>
                                                 </div>
                                             </div>
 
                                             <div className="col-md-5">
                                                 <div className="order_s_1">
-                                                    <p>Want to order sample ?</p>
-                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>Order Swatch</a></Link></h6>
+                                                    <p>{t("product:sample")}</p>
+                                                    <h6><Link href={`/bulk?productId=${product.id}`}><a style={{ color: "inherit" }}>{t("product:swatch")}</a></Link></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -149,14 +151,14 @@ export default function Product(product) {
                         {
                             product.longDescription &&
                             <div className="product_dis_1 wow fadeInUp">
-                                <h1>Product Description</h1>
+                                <h1>{t("product:description")}</h1>
                                 <p>{product.longDescription}</p>
                             </div>
                         }
                         {
                             product.shortDescription &&
                             <div className="product_dis_1 wow fadeInUp">
-                                <h1>Applications</h1>
+                                <h1>{t("product:applications")}</h1>
                                 <p>{product.shortDescription}</p>
                             </div>
                         }
@@ -165,7 +167,7 @@ export default function Product(product) {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="dis_help wow fadeInUp">
-                            <p>Need help with this product?</p>
+                            <p>{t("product:help")}</p>
                         </div>
                     </div>
                 </div>
@@ -175,7 +177,7 @@ export default function Product(product) {
                             <div className="deli_info info_right">
                                 <a href="tel:+66-947741515" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/mob_i.svg" alt="mobile" />
-                                    <p><strong>Give us a call</strong> Mon - Sun 9AM to 6PM</p>
+                                    <p><strong>{t("product:call")}</strong> {t("mon_sun")}</p>
                                 </a>
                             </div>
                         </div>
@@ -184,7 +186,7 @@ export default function Product(product) {
                             <div className="deli_info info_right">
                                 <a href="https://api.whatsapp.com/send?phone=+66947741515" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/whatsapp.svg" alt="whatsapp" />
-                                    <p><strong>Chat with us on Whatsapp</strong> Mon - Sun 9AM to 6PM</p>
+                                    <p><strong>{t("product:chat")}</strong> {t("mon_sun")}</p>
                                 </a>
                             </div>
                         </div>
@@ -193,7 +195,7 @@ export default function Product(product) {
                             <div className="deli_info bdr_message">
                                 <a href="mailto:support@gandhifabrics.com" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/message.svg" alt="message" />
-                                    <p><strong>Drop us an email</strong></p>
+                                    <p><strong>{t("drop_email")}</strong></p>
                                 </a>
                             </div>
                         </div>
@@ -208,7 +210,7 @@ export default function Product(product) {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="secound_hadd_pr inner_main_hadding wow fadeInUp">
-                                    <h4>You May Also Like</h4>
+                                    <h4>{t("product:related")}</h4>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,41 @@
+{
+  "locales": [
+    "en",
+    "th",
+    "vi"
+  ],
+  "defaultLocale": "en",
+  "pages": {
+    "*": [
+      "common"
+    ],
+    "/": [
+      "home"
+    ],
+    "/contact": [
+      "contact"
+    ],
+    "/browsing": [
+      "contact",
+      "browsing"
+    ],
+    "/sale": [
+      "products"
+    ],
+    "/category/[...slug]": [
+      "products"
+    ],
+    "/cart": [
+      "cart"
+    ],
+    "/checkout": [
+      "cart"
+    ],
+    "/thankyou": [
+      "cart"
+    ],
+    "/product/[slug]": [
+      "product"
+    ]
+  }
+}

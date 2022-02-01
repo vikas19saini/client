@@ -4,9 +4,11 @@ import Footer from "./footer";
 import Header from "./header";
 import { toast, ToastContainer } from 'react-nextjs-toast';
 import { useState } from "react";
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Contact() {
     const [tools, setTools] = useState([]);
+    const { t } = useTranslation();
 
     const submit = async (e) => {
         e.preventDefault();
@@ -49,8 +51,8 @@ export default function Contact() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="contact_head wow fadeInUp">
-                                <h4>Browse Our Store</h4>
-                                <p><span>Questions? Concerns? We're ready to help! Experience our world-class</span> support by sending us a message today.</p>
+                                <h4>{t("browsing:heading")}</h4>
+                                <p>{t("contact:description")}</p>
                             </div>
                         </div>
                     </div>
@@ -60,24 +62,24 @@ export default function Contact() {
                             <div className="col-md-4">
                                 <div className="floating-label">
                                     <input className="floating-input" type="text" name="name" placeholder=" " required={true} />
-                                    <label>Name</label>
+                                    <label>{t("contact:name")}</label>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="floating-label">
                                     <input className="floating-input" type="email" name="email" placeholder=" " required={true} />
-                                    <label>Email Address</label>
+                                    <label>{t("contact:email")}</label>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="floating-label">
                                     <input className="floating-input" type="text" name="phone" placeholder=" " required={true} />
-                                    <label>Mobile Number</label>
+                                    <label>{t("contact:phone")}</label>
                                 </div>
                             </div>
                             <div className="col-md-12">
                                 <div className="custom_add">
-                                    <h2>Preffered Browsing Tool :</h2>
+                                    <h2>{t("browsing:tools")}</h2>
                                     <div className="categories_bx">
                                         <label className="check_cus">Whatsapp Video Call
                                             <input type="checkbox" onClick={() => toolSelection("Whatsapp")} />
@@ -106,43 +108,43 @@ export default function Contact() {
                             <input type="hidden" name="type" defaultValue="live" />
                             <div className="col-md-4">
                                 <div className="custom_add">
-                                    <p>Preferred  date:</p>
+                                    <p>{t("browsing:date")}</p>
                                     <input type="datetime-local" name="dateTime" placeholder="Select date" />
                                 </div>
                             </div>
                             <div className="col-md-12">
                                 <div className="floating-label live_txt">
                                     <textarea className="floating-input floating-textarea" name="message" placeholder=" " required={true}></textarea>
-                                    <label>Details</label>
+                                    <label>{t("browsing:details")}</label>
                                 </div>
                             </div>
                             <div className="col-md-12">
                                 <div className="custom_add terms_bttm">
-                                    <p>Terms and conditions :</p>
+                                    <p>{t("browsing:toc")}</p>
                                     <div className="w_check">
-                                        <p><input type="checkbox" style={{ width: "auto" }} required={true} /> We hereby agree to get on a call with the team at Gandhi Fabrics.</p>
+                                        <p><input type="checkbox" style={{ width: "auto" }} required={true} /> {t("browsing:checkbox")}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-12">
-                                <button type="submit" className="bag_bttn align_cntr">Send Message</button>
+                                <button type="submit" className="bag_bttn align_cntr">{t("contact:button")}</button>
                             </div>
                         </div>
 
                         <div className="row wow fadeInUp">
                             <div className="col-md-12">
                                 <div className="inner_con_head">
-                                    <h5>Customer Service</h5>
+                                    <h5>{t("contact:customer_service")}</h5>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Official Email <span><a style={{ color: "inherit" }} href="mailto:ken@gandhifabrics.com">ken@gandhifabrics.com</a></span></p>
+                                    <p>{t("contact:official_email")} <span><a style={{ color: "inherit" }} href="mailto:ken@gandhifabrics.com">ken@gandhifabrics.com</a></span></p>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Contact Us At <span>
+                                    <p>{t("contact:contact_phone")}<span>
                                         <a style={{ color: "inherit" }} href="tel:+660947741515">+66 (0) 94774 1515</a><br />
                                         <a style={{ color: "inherit" }} href="tel:+66022252001">+66 (0) 2225 2001</a>
                                     </span></p>
@@ -150,9 +152,9 @@ export default function Contact() {
                             </div>
                             <div className="col-md-4">
                                 <div className="con_detail_form">
-                                    <p>Showroom Address <span><strong>Gandhi 1944,</strong> 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
-                                    <p><span><strong>Gandhi Tessuti,</strong> 205-207 Phahurat Road, Bangkok 10200, Thailand. T+66 (0) 2222 7798, +66 (0) 2623 9208 H 08:45 - 18:00 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
-                                    <p><span><strong>The Cynosure Bangkok,</strong> A002-A005 1 Floor China World, 677-681 Chakraphet Road, Bangkok 10200, Thailand T+66 (0) 2225 2001-3 H 09:30 - 18:30 (Mon-Sun) <i style={{color: "brown"}}>(Current effected due to COVID19 situation)</i></span></p>
+                                    <p>{t("contact:showroom_address")} {t("contact:address1")}</p>
+                                    <p>{t("contact:address2")}</p>
+                                    <p>{t("contact:address2")}</p>
                                 </div>
                             </div>
                         </div>

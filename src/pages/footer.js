@@ -1,6 +1,9 @@
 import Link from "next/link"
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Footer() {
+
+    const { t } = useTranslation()
 
     return (
         <footer>
@@ -11,7 +14,7 @@ export default function Footer() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="mob_social_icons mob_view">
-                                        <h5>KEEP IN TOUCH WITH US</h5>
+                                        <h5>{t("common:keep_in_touch")}</h5>
                                         <a href="https://www.instagram.com/gandhi_fabrics" target="_blank"><img src="/images/new_img/insta_icon.png" alt="gandhi fabrics" /></a>
                                         <a href="https://www.facebook.com/gandhifabrics.th" target="_blank"><img src="/images/new_img/facebook_icon.png" alt="gandhi fabrics" /></a>
                                         <a href="https://api.whatsapp.com/send?phone=+66947741515" target="_blank">
@@ -44,46 +47,44 @@ export default function Footer() {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="inner_ftt">
-                                    <h5>Subscribe to Our Newsletter</h5>
-                                    <p>Enjoy our newsletter to stay updated with <span>the latest news and special
-                                        sales.</span>
-                                    </p>
+                                    <h5>{t("common:subscribe_newsletter")}</h5>
+                                    <p>{t("common:newsletter_description")}</p>
                                     <form className="footer_form">
                                         <div className="form-group">
-                                            <input type="name" className="form-control" placeholder="Name" id="name" required />
+                                            <input type="name" className="form-control" placeholder={t("common:name")} id="name" required />
                                         </div>
                                         <div className="form-group">
-                                            <input type="email" className="form-control" placeholder="Email Address" id="email" required />
+                                            <input type="email" className="form-control" placeholder={t("common:email")} id="email" required />
                                         </div>
-                                        <button type="submit" className="btn custom_sub">Subscribe</button>
+                                        <button type="submit" className="btn custom_sub">{t("common:subscribe")}</button>
                                     </form>
                                 </div>
                             </div>
                             <div className="col-md-8">
                                 <div className="desk_view">
                                     <div className="ftt_menu">
-                                        <h5>Useful Links</h5>
+                                        <h5>{t("common:useful_links")}</h5>
                                         <ul>
                                             <li>
                                                 <Link href="/contact">
-                                                    <a>Contact</a>
+                                                    <a>{t("common:contact")}</a>
                                                 </Link>
                                             </li>
-                                            <li><Link href="/about"><a>About Us</a></Link></li>
-                                            <li><Link href="/faq"><a>Faq</a></Link></li>
+                                            <li><Link href="/about"><a>{t("common:about_us")}</a></Link></li>
+                                            <li><Link href="/faq"><a>{t("common:faq")}</a></Link></li>
                                         </ul>
                                     </div>
                                     <div className="ftt_menu">
                                         <h5>Our Policies</h5>
                                         <ul>
-                                            <li><Link href="/toc"><a>Terms and conditions</a></Link></li>
-                                            <li><Link href="/privacy"><a>Privacy Policy</a></Link></li>
+                                            <li><Link href="/toc"><a>{t("common:toc")}</a></Link></li>
+                                            <li><Link href="/privacy"><a>{t("common:privacy_policy")}</a></Link></li>
                                         </ul>
                                     </div>
                                     <div className="ftt_menu flt_inhrit social_icon">
-                                        <h5>Contact Info</h5>
+                                        <h5>{t("common:contact_info")}</h5>
                                         <ul>
-                                            <li><p className="text-white"><span><strong>Gandhi 1944,</strong> 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</span></p>
+                                            <li><p className="text-white">{t("common:footer_address")}</p>
                                             </li>
                                             <li>
                                                 <p className="text-white"> Phone: <a href="tel:+660947741515">+66 (0) 94774 1515 </a><br />
@@ -134,17 +135,17 @@ export default function Footer() {
                                         <div className="card ft_acco_bg">
                                             <div className="card-header" id="headingTwel">
                                                 <h2 className="mb-0 border-top">
-                                                    <a href="#">Our Policy</a>
+                                                    <a href="#">{t("common:policies")}</a>
                                                     <button type="button" className="btn btn-link" data-toggle="collapse" data-target="#collapseTwel"><i className="fa fa-plus" /></button>
                                                 </h2>
                                             </div>
                                             <div id="collapseTwel" className="collapse" aria-labelledby="headingTwel" data-parent="#accordionExample">
                                                 <div className="card-body">
                                                     <ul>
-                                                        <li><Link href="/about"><a>About Us</a></Link></li>
-                                                        <li><Link href="/faq"><a>Faq</a></Link></li>
-                                                        <li><Link href="/toc"><a>Terms and conditions</a></Link></li>
-                                                        <li><Link href="/privacy"><a>Privacy Policy</a></Link></li>
+                                                        <li><Link href="/about"><a>{t("common:about_us")}</a></Link></li>
+                                                        <li><Link href="/faq"><a>{t("common:faq")}</a></Link></li>
+                                                        <li><Link href="/toc"><a>{t("common:toc")}</a></Link></li>
+                                                        <li><Link href="/privacy"><a>{t("common:privacy_policy")}</a></Link></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -152,13 +153,13 @@ export default function Footer() {
                                         <div className="card ft_acco_bg">
                                             <div className="card-header" id="headingTwel">
                                                 <h2 className="mb-0 border-top border-bottom">
-                                                    <a href="#">Contact Info</a>
+                                                    <a href="#">{t("common:contact_info")}</a>
                                                     <button type="button" className="btn btn-link" data-toggle="collapse" data-target="#collapseTwel1"><i className="fa fa-plus" /></button>
                                                 </h2>
                                             </div>
                                             <div id="collapseTwel1" className="collapse" aria-labelledby="headingTwel1" data-parent="#accordionExample">
                                                 <div className="card-body">
-                                                    <p className="text-white"><span><strong>Gandhi 1944,</strong> 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</span></p>
+                                                    <p className="text-white">{t("common:footer_address")}</p>
 
                                                     <p className="text-white"> Phone: <a className="text-white" href="tel:+660947741515">+66 (0) 94774 1515 </a>,
                                                         <a className="text-white" href="tel:+66022252001">+66 (0) 2225 2001</a></p>

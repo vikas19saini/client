@@ -5,6 +5,7 @@ import { formatCurrency, GetPriceHtml } from "./helpers"
 import { useRouter } from 'next/router'
 import { useSelector } from "react-redux"
 import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
 
 const priceFilters = [
     {
@@ -47,6 +48,8 @@ export default function Products(props) {
     const [mobileFiltersSelected, setMobileFiltersSelected] = useState();
     const [mobileSelectedPriceFilter, setMobileSelectedPriceFilter] = useState();
     const [isLoadiingMore, setIsloadingMore] = useState(false);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
 
@@ -270,7 +273,7 @@ export default function Products(props) {
                                                         <div className="card-header" id="priceFilterCard">
                                                             <h2 className="mb-0 left_fittr">
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#priceFilter">
-                                                                    <p>Price</p>
+                                                                    <p>{t("products:price")}</p>
                                                                     <i className="fa fa-plus"></i>
                                                                 </button>
                                                             </h2>
@@ -338,11 +341,11 @@ export default function Products(props) {
                             <div className="inner_right_prodct">
                                 <div className="sortDesktop">
                                     <div className="btnCFilter">
-                                        <button type="button" className="btnFilter" style={{ pointerEvents: "none" }}>Sort By:</button>
-                                        <button type="button" className="btnFilter" onClick={() => sortBy("clear")}>Relevance</button>
-                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceAsc")} >Price--Low to high</button>
-                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceDesc")}>Price--High to Low</button>
-                                        <button type="button" className="btnFilter" onClick={() => sortBy("createdAtDesc")}>Newest First</button>
+                                        <button type="button" className="btnFilter" style={{ pointerEvents: "none" }}>{t("products:sort")}</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("clear")}>{t("products:relevance")}</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceAsc")} >{t("products:price_low_high")}</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("ragularPriceDesc")}>{t("products:price_high_low")}</button>
+                                        <button type="button" className="btnFilter" onClick={() => sortBy("createdAtDesc")}>{t("products:new_first")}</button>
                                     </div>
                                 </div>
                                 <div className="mob_view_filter filter_cs">
@@ -356,7 +359,7 @@ export default function Products(props) {
                                     {
                                         (router.query.start && router.query.end) &&
                                         <div className="filter">
-                                            <span>Price {formatCurrency(parseInt(router.query.start), currency)} - {formatCurrency(parseInt(router.query.end), currency)}</span>
+                                            <span>{t("products:price")} {formatCurrency(parseInt(router.query.start), currency)} - {formatCurrency(parseInt(router.query.end), currency)}</span>
                                             <button type="button" onClick={() => removeFilter("price")}>X</button>
                                         </div>
                                     }
@@ -404,7 +407,7 @@ export default function Products(props) {
                                 {
                                     (total > products.length) && <button className="login_bttn go_bttn loadMore" disabled={isLoadiingMore} onClick={() => setPage(page + 1)}>
                                         {
-                                            isLoadiingMore ? <div className="loader" /> : "Load More Products"
+                                            isLoadiingMore ? <div className="loader" /> : t("products:load_more")
                                         }
                                     </button>
                                 }

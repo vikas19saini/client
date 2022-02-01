@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Header(props) {
     const [cartItemCount, setCartItemCount] = useState(0)
@@ -11,7 +12,9 @@ export default function Header(props) {
     /* const [showSearchMenu, setShowSearchMenu] = useState(false); */
     /* const [categories, setCategories] = useState([]); */
     const router = useRouter();
+    const { pathname, asPath, query, locale } = router
     const dispatch = useDispatch();
+    const { t } = useTranslation()
 
     useEffect(() => {
         navigation() // written in script.js
@@ -19,7 +22,7 @@ export default function Header(props) {
         if (config.cartItems) {
             setCartItemCount(config.cartItems);
         }
-    })
+    }, [pathname])
 
     /* useEffect(() => {
         axios.get(`${process.env.API_URL}category`).then(response => {
@@ -70,9 +73,11 @@ export default function Header(props) {
                                     </div>
                                 </div>
                             </div>
-                            <a className="nav-brand" href="/">
-                                <img src="/images/logo.png" alt="gandhi logo" />
-                            </a>
+                            <Link href="/" locale={locale} >
+                                <a className="nav-brand" href="/">
+                                    <img src="/images/logo.png" alt="gandhi logo" />
+                                </a>
+                            </Link>
                             <div className="nav-toggle" />
                         </div>
                         <div className="nav-menus-wrapper">
@@ -135,7 +140,7 @@ export default function Header(props) {
                                     </div>
                                 </li>
                                 <li className="tp_bd_no">
-                                    <a className="show_sub" href="#">All Fabric</a>
+                                    <a className="show_sub" href="#">{t("common:all_falbric")}</a>
                                     <div className="megamenu-panel" id="close_menu" style={{ display: "none" }}>
                                         <div className="nav_head">
                                             <div className="tabs_veiw_s">
@@ -383,7 +388,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingOne">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/cotton">Cotton</a>
+                                                                <a href="/category/cotton">Cotton</a>
                                                                 <button type="button" className="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -412,7 +417,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingTwo">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/satin">Satin</a>
+                                                                <a href="/category/satin">Satin</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -432,7 +437,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingThree">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/lace">Lace</a>
+                                                                <a href="/category/lace">Lace</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -452,7 +457,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingseventy">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/suiting">Suiting</a>
+                                                                <a href="/category/suiting">Suiting</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseventy"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -470,7 +475,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingfive">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/linen">Linen</a>
+                                                                <a href="/category/linen">Linen</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -490,7 +495,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingsix">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/silk">Silk</a>
+                                                                <a href="/category/silk">Silk</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsesix"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -514,7 +519,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingseven">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/shirting">Shirting</a>
+                                                                <a href="/category/shirting">Shirting</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseven"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -532,7 +537,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingeight">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/bestsellers">Bestsellers</a>
+                                                                <a href="/category/bestsellers">Bestsellers</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseeight"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -553,7 +558,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingnine">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/wool">Wool</a>
+                                                                <a href="/category/wool">Wool</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsenine"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -571,7 +576,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingten">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/trends">Trends</a>
+                                                                <a href="/category/trends">Trends</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseten"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -610,7 +615,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingtwel">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/natural">Natural</a>
+                                                                <a href="/category/natural">Natural</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetwel"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -647,7 +652,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingtherty">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/embroideries">Embroideries</a>
+                                                                <a href="/category/embroideries">Embroideries</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetherty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -664,7 +669,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingfifty">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/prints">Prints</a>
+                                                                <a href="/category/prints">Prints</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefifty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -681,7 +686,7 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingsixty">
                                                             <h2 className="mb-0">
-                                                            <a href="/category/jacquards">Jacquards</a>
+                                                                <a href="/category/jacquards">Jacquards</a>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsesixty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
@@ -701,20 +706,50 @@ export default function Header(props) {
                                         </div>
                                     </div>
                                 </li>
-                                <li><Link href="/sale"><a>On Sale</a></Link></li>
-                                <li><Link href="/contact"><a>Enquire</a></Link></li>
-                                <li><Link href="/browsing"><a>Live Browsing</a></Link></li>
+                                <li><Link href="/sale"><a>{t("common:on_sale")}</a></Link></li>
+                                <li className="d-block d-sm-none" style={{ padding: 20 }}>
+                                    <select defaultValue={locale} id="language" onChange={(e) => {
+                                        router.push({ pathname, query }, asPath, { locale: e.target.value })
+                                    }}>
+                                        <option value="en">English</option>
+                                        <option value="th">Thai</option>
+                                        <option value="vi">Vietnamese</option>
+                                    </select>
+
+                                    {data &&
+                                        <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
+                                            {
+                                                data.map(d => {
+                                                    return (<option value={d.id} key={d.id}>{d.code}</option>)
+                                                })
+                                            }
+                                        </select>
+                                    }
+                                </li>
+                                <li className="d-none"><Link href="/contact"><a>{t("common:enquire")}</a></Link></li>
+                                <li className="d-none"><Link href="/browsing"><a>{t("common:live_browsing")}</a></Link></li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="example">
                                         <form action="/search" autoComplete="off">
-                                            <input required type="text" placeholder="Search for product, code, or collection." name="query" defaultValue={router.query.query ? router.query.query : ""} />
+                                            <input required type="text" placeholder={t("common:search_placeholder")} name="query" defaultValue={router.query.query ? router.query.query : ""} />
                                             <button type="submit">
                                                 <img src="/images/address_icon/search.svg" alt="search-icon" />
                                             </button>
                                         </form>
                                     </div>
                                     <li className="desk_view">
-                                        <div className="currencySwitch">{
+                                        <div className="currencySwitch" style={{ paddingRight: 1 }}>{
+                                            <select defaultValue={locale} id="language" onChange={(e) => {
+                                                router.push({ pathname, query }, asPath, { locale: e.target.value })
+                                            }}>
+                                                <option value="en">English</option>
+                                                <option value="th">Thai</option>
+                                                <option value="vi">Vietnamese</option>
+                                            </select>
+                                        }</div>
+                                    </li>
+                                    <li className="desk_view">
+                                        <div className="currencySwitch" style={{ paddingLeft: 1 }}>{
                                             data &&
                                             <select id="luggage" defaultValue={selectedCurrency} onChange={setCurrency}>
                                                 {

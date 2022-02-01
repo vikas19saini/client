@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import { toast, ToastContainer } from 'react-nextjs-toast';
 import { useDispatch } from "react-redux"
+import useTranslation from "next-translate/useTranslation";
 
 function Checkout() {
     const [reload, setReload] = useState(1)
@@ -18,6 +19,8 @@ function Checkout() {
     const isLoggedIn = useSelector(state => state.config.auth ? state.config.auth : false);
     const [isLoading, setIsLoading] = useState(false);
     const [storePickup, setStorePickup] = useState(false);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         if (customerCartData && customerCartData.shippingMethod && customerCartData.shippingMethod === "Store_Pickup") {
@@ -37,8 +40,8 @@ function Checkout() {
                 <div className="mobile_hidden_vissible" id="cartProducts">
                     <section className="empty-cart">
                         <div className="empty-cart_main">
-                            <h2>Some item in your cart is out of stock.</h2>
-                            <button className="checkoutBtn" onClick={() => router.push("/cart")}>Go to cart</button>
+                            <h2>{t("cart:some_item_out_of_stock")}</h2>
+                            <button className="checkoutBtn" onClick={() => router.push("/cart")}>{t("cart:go_to_cart")}</button>
                         </div>
                     </section>
                 </div>
@@ -62,7 +65,7 @@ function Checkout() {
                                         <div className="col">
                                             <Link href="/cart">
                                                 <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
-                                                    <i className="fa fa-chevron-left" /> Cart
+                                                    <i className="fa fa-chevron-left" /> {t("cart:cart")}
                                                 </a>
                                             </Link>
                                         </div>
@@ -73,7 +76,7 @@ function Checkout() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="checkoutInfo mt-0 mt-1 d-none d-sm-block" style={{height: "70px"}}>
+                                <div className="checkoutInfo mt-0 mt-1 d-none d-sm-block" style={{ height: "70px" }}>
                                     {/* <div className="alert alert-warning">
                                         <p>Due to the current lockdown situation, please expect a delay of 7-10 days in the delivery times for your orders.</p>
                                         <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
@@ -92,7 +95,7 @@ function Checkout() {
                                             <div className="col">
                                                 <Link href="/cart">
                                                     <a style={{ color: "inherit" }} className="btn btn-outline-secondary pull-left">
-                                                        <i className="fa fa-chevron-left" /> Cart
+                                                        <i className="fa fa-chevron-left" /> {t("cart:cart")}
                                                     </a>
                                                 </Link>
                                             </div>
@@ -104,13 +107,13 @@ function Checkout() {
                                         </div>
                                     </div>
                                     <div className="card p-3 mb-2 mt-2">
-                                        <div class="form-check" style={{display: "flex", alignItems: "center"}}>
+                                        <div className="form-check" style={{ display: "flex", alignItems: "center" }}>
                                             <input style={{ height: "20px", width: "20px" }} onChange={() => setStorePickup(!storePickup)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                            <label className="form-check-label ml-2" for="flexCheckDefault" style={{fontSize: "13px", textTransform: "none"}}>
-                                                Want to pick my order from store
+                                            <label className="form-check-label ml-2" htmlFor="flexCheckDefault" style={{ fontSize: "13px", textTransform: "none" }}>
+                                                {t("cart:store_pickup")}
                                             </label>
                                         </div>
-                                        <p className="mt-2 text-muted"><small><b>Gandhi 1944</b>, 326 Phahurat Road, Bangkok 10200, Thailand T+66 (0) 2225 5997, +66 (0) 2225 5503 H 08:45 - 18:00 (Mon-Sun)</small></p>
+                                        <p className="mt-2 text-muted"><small>{t("cart:address")}</small></p>
 
                                     </div>
                                     {
@@ -123,16 +126,16 @@ function Checkout() {
                                     <div className="mt-5 border-top">
                                         <ul className="mt-2" style={{ listStyle: "none", fontSize: "12px", textAlign: "center" }}>
                                             <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
-                                                <Link href="/about"><a target="_blank" className="text-muted">About Us</a></Link>
+                                                <Link href="/about"><a target="_blank" className="text-muted">{t("common:about_us")}</a></Link>
                                             </li>
                                             <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
-                                                <Link href="/privacy"><a target="_blank" className="text-muted">Privacy Policy</a></Link>
+                                                <Link href="/privacy"><a target="_blank" className="text-muted">{t("common:policies")}</a></Link>
                                             </li>
                                             <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light text-muted">
-                                                <Link href="/toc"><a target="_blank" className="text-muted">Terms & Conditions</a></Link>
+                                                <Link href="/toc"><a target="_blank" className="text-muted">{t("common:toc")}</a></Link>
                                             </li>
                                             <li style={{ display: "inline-block" }} className="m-2 text-capitalize font-weight-light">
-                                                <Link href="/contact"><a target="_blank" className="text-muted">Contact</a></Link>
+                                                <Link href="/contact"><a target="_blank" className="text-muted">{t("common:contact")}</a></Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -161,6 +164,8 @@ function CustomerAddresses({
     const [showAddresses, setShowAddresses] = useState(false);
     const [showPaymentMethod, setShowPaymentMethod] = useState(false);
     const [addedAddress, setAddedAddress] = useState(1);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
 
@@ -216,9 +221,9 @@ function CustomerAddresses({
                 <Fragment>
                     <div className="col-md-12 col-sm-12 col-xs-12 p-0">
                         <div className="card p-3 mb-2 mt-2" style={{ display: "flex", flexDirection: "inherit", alignItems: "center", justifyContent: "space-between" }}>
-                            <p className="heading m-0">{storePickup ? "Billing" : "Delivery"} Address
+                            <p className="heading m-0">{storePickup ? t("cart:billing_address") : t("cart:shipping_address")}
                             </p>
-                            <button type="button" className="btn btn-light" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#addNewAddress">Add New</button>
+                            <button type="button" className="btn btn-light" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#addNewAddress">{t("cart:add")}</button>
                         </div>
                     </div>
                     {
@@ -228,9 +233,9 @@ function CustomerAddresses({
                                     <div className="check_add_3 checkout card m-md-1">
                                         <div>
                                             <p><span>{add.name}</span> {formatAddress(add)}</p>
-                                            <p><span>Phone: {add.phone}</span></p>
-                                            <button disabled={calculatinShipping} title="Click to select address" className="btn btn-secondary checkoutBtn" type="button" onClick={() => calcShippingCost(add)}>
-                                                {calculatinShipping === add.id ? <span className="spinner-border spinner-border-sm"></span> : storePickup ? "Select" : "Deliver Here"}
+                                            <p><span>{t("cart:phone")}: {add.phone}</span></p>
+                                            <button disabled={calculatinShipping} title={t("cart:")} className="btn btn-secondary checkoutBtn" type="button" onClick={() => calcShippingCost(add)}>
+                                                {calculatinShipping === add.id ? <span className="spinner-border spinner-border-sm"></span> : storePickup ? t("cart:select") : t("cart:deliver_here")}
                                             </button>
                                         </div>
                                     </div>
@@ -247,12 +252,12 @@ function CustomerAddresses({
                     <div className="col-12 p-0">
                         <div className="dis_detail selectedAdd mt-2 card">
                             <div>
-                                <h4>{storePickup ? "Billing" : "Delivery"} Address</h4>
+                                <h4>{storePickup ? t("cart:billing_address") : t("cart:shipping_address")}</h4>
                                 <div className="seperator" />
-                                <p>Name: <span>{customerCartData.address.name}</span></p>
-                                <p>Addreess: {customerCartData.address.completeAddress}</p>
-                                <h5>Contact No: {customerCartData.address.phone}</h5>
-                                <button className="checkoutBtn" onClick={() => setChangeAddress(true)} style={{ margin: 0 }}>Change address</button>
+                                <p>{t("cart:full_name")}: <span>{customerCartData.address.name}</span></p>
+                                <p>{t("cart:delivery_address_input")}: {customerCartData.address.completeAddress}</p>
+                                <h5>{t("cart:contact_no")}: {customerCartData.address.phone}</h5>
+                                <button className="checkoutBtn" onClick={() => setChangeAddress(true)} style={{ margin: 0 }}>{t("cart:change_address")}</button>
                             </div>
                         </div>
                     </div>
@@ -293,6 +298,8 @@ function ShippingAddress({
     const [emailAddress, setEmailAddress] = useState("");
     const [isLoggingIn, setIsLoggingIn] = useState(false);
     const [showEmailField, setShowEmailField] = useState(true);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/countries`).then(res => {
@@ -391,12 +398,12 @@ function ShippingAddress({
         return (
             <form onSubmit={checkIsRegisteredUser}>
                 <div className="p-2">
-                    <p className="heading">Contact Information</p>
+                    <p className="heading">{t("cart:contact_info")}</p>
                     <div className="input-group">
-                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder="Email Address" />
+                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder={t("common:email")} />
                         <div className="input-group-btn">
                             <button disabled={isValidating} className="btn btn-secondary text-uppercase p-3 r-0 rounded-right" type="submit">
-                                {isValidating ? <span className="spinner-border spinner-border-sm"></span> : "Continue"}
+                                {isValidating ? <span className="spinner-border spinner-border-sm"></span> : t("cart:continue")}
                             </button>
                         </div>
                     </div>
@@ -410,19 +417,19 @@ function ShippingAddress({
         return (
             <form onSubmit={login}>
                 <div className="p-2">
-                    <p className="heading">Please enter your password to login</p>
+                    <p className="heading">{t("cart:password_to_login")}</p>
                     <div className="form-group">
-                        <input type="email" name="email" required={true} defaultValue={emailAddress} className="form-control p-3" placeholder="Email Address" />
-                        <input type="password" name="password" required={true} autoFocus={true} className="form-control p-3 mt-2" placeholder="Password" />
-                        <a href="/forgotPassword" type="button" style={{ color: "inherit" }} className="textBtn ml-0">Forgot Password?</a>
+                        <input type="email" name="email" required={true} defaultValue={emailAddress} className="form-control p-3" placeholder={t("common:email")} />
+                        <input type="password" name="password" required={true} autoFocus={true} className="form-control p-3 mt-2" placeholder={t("common:password")} />
+                        <a href="/forgotPassword" type="button" style={{ color: "inherit" }} className="textBtn ml-0">{t("cart:forgot_password")}</a>
                     </div>
                     <div className="mt-4 mb-5">
                         <button disabled={isLoggingIn} type="submit" className="btn btn-secondary">{
-                            isLoggingIn ? <span className="spinner-border spinner-border-sm"></span> : "Continue"
+                            isLoggingIn ? <span className="spinner-border spinner-border-sm"></span> : t("cart:continue")
                         }</button>
                         <button onClick={() => {
                             setIsRegisteredUser(false);
-                        }} type="button" className="btn btn-outlined ml-2">Continue as Guest</button>
+                        }} type="button" className="btn btn-outlined ml-2">{t("cart:continue_as_guest")}</button>
                     </div>
                 </div>
             </form>
@@ -433,33 +440,33 @@ function ShippingAddress({
         return (
             <form onSubmit={guestCheckout}>
                 <div className="p-2">
-                    <p className="heading">Contact Information</p>
+                    <p className="heading">{t("cart:contact_info")}</p>
                     <div className="input-group">
-                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder="Email Address" />
+                        <input type="email" name="email" defaultValue={emailAddress} required={true} className="form-control p-3" placeholder={t("common.email")} />
                     </div>
                 </div>
                 <div className="p-2 mt-4">
-                    <p className="heading">{storePickup ? "Billing" : "Shipping"} Address</p>
+                    <p className="heading">{storePickup ? t("cart:billing_address") : t("cart:shipping_address")}</p>
                     <div className="row padding_0">
                         <div className="col-12">
                             <div className="input-group">
-                                <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder="Full Name" />
+                                <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder={t("cart:full_name")} />
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="input-group mt-3">
-                                <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
+                                <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder={t("cart:delivery_address_input")} />
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="input-group mt-3">
-                                <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
+                                <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder={t("cart:city")} />
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="input-group mt-3">
                                 <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
-                                    <option value="">-Select Country-</option>
+                                    <option value="">-{t("cart:country")}-</option>
                                     {
                                         countries.map(c => {
                                             return (<option value={c.id} key={c.id}>{c.name}</option>)
@@ -471,7 +478,7 @@ function ShippingAddress({
                         <div className="col-4">
                             <div className="input-group mt-3">
                                 <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
-                                    <option value="">-Select State-</option>
+                                    <option value="">-{t("cart:state")}-</option>
                                     {
                                         zones.map(z => {
                                             return (<option value={z.id} key={z.id}>{z.name}</option>)
@@ -482,17 +489,17 @@ function ShippingAddress({
                         </div>
                         <div className="col-4">
                             <div className="input-group mt-3">
-                                <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
+                                <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder={t("cart:postcode")} />
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="input-group mt-3">
-                                <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
+                                <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder={t("cart:phone")} />
                             </div>
                         </div>
                         <div className="col-12 mt-4 mb-5">
                             <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
-                                isSaving ? <span className="spinner-border spinner-border-sm"></span> : "Continue To Shipping"
+                                isSaving ? <span className="spinner-border spinner-border-sm"></span> : t("cart:continue_to_shipping")
                             }</button>
                         </div>
                     </div>
@@ -510,6 +517,8 @@ function CreateNewAddress({
     const [countries, setCountries] = useState([]);
     const [zones, setZones] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         axios.get(`${process.env.API_URL}static/countries`).then(res => {
@@ -574,27 +583,27 @@ function CreateNewAddress({
     return (
         <form onSubmit={saveAddress}>
             <div className="p-2 mt-4">
-                <p className="heading">{storePickup ? "Billing" : "Delivery"} Address</p>
+                <p className="heading">{storePickup ? t("cart:billing_address") : t("cart:shipping_address")}</p>
                 <div className="row padding_0">
                     <div className="col-12">
                         <div className="input-group">
-                            <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder="Full Name" />
+                            <input type="text" name="name" autoFocus={true} required={true} className="form-control p-3" placeholder={t("cart:full_name")} />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="input-group mt-3">
-                            <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder="Address" />
+                            <textarea name="address" required={true} className="form-control p-3 mt-2" placeholder={t("cart:delivery_address_input")} />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="input-group mt-3">
-                            <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder="City" />
+                            <input type="text" name="city" required={true} className="form-control p-3 mt-2" placeholder={t("cart:city")} />
                         </div>
                     </div>
                     <div className="col-4">
                         <div className="input-group mt-3">
                             <select className="form-control mt-2" required={true} onChange={fetchZones} name="countryId" defaultValue={1}>
-                                <option value="">-Select Country-</option>
+                                <option value="">-{t("cart:country")}-</option>
                                 {
                                     countries.map(c => {
                                         return (<option value={c.id} key={c.id}>{c.name}</option>)
@@ -606,7 +615,7 @@ function CreateNewAddress({
                     <div className="col-4">
                         <div className="input-group mt-3">
                             <select className="form-control mt-2" name="zoneId" required={false} defaultValue={1}>
-                                <option value="">-Select State-</option>
+                                <option value="">-{t("cart:state")}-</option>
                                 {
                                     zones.map(z => {
                                         return (<option value={z.id} key={z.id}>{z.name}</option>)
@@ -617,19 +626,19 @@ function CreateNewAddress({
                     </div>
                     <div className="col-4">
                         <div className="input-group mt-3">
-                            <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder="Postcode" />
+                            <input type="text" name="postcode" required={true} className="form-control mt-2" placeholder={t("cart:postcode")} />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="input-group mt-3">
-                            <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder="Phone" />
+                            <input type="text" name="phone" required={true} className="form-control p-3 mt-2" placeholder={t("cart:phone")} />
                         </div>
                     </div>
                     <div className="col-12 mt-4 mb-5">
                         <button disabled={isSaving} type="submit" className="btn btn-secondary processBtn">{
-                            isSaving ? <span className="spinner-border spinner-border-sm"></span> : "Save & Continue"
+                            isSaving ? <span className="spinner-border spinner-border-sm"></span> : t("cart:save_continue")
                         }</button>
-                        <button type="button" id="closeModal" data-dismiss="modal" className="btn btn btn-light processBtn ml-2">Cancel</button>
+                        <button type="button" id="closeModal" data-dismiss="modal" className="btn btn btn-light processBtn ml-2">{t("cart:cancel")}</button>
                     </div>
                 </div>
             </div>

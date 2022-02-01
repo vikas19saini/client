@@ -9,6 +9,7 @@ import Link from "next/link";
 import CartButton from "../components/cartButon";
 import CheckoutSidebar from "../components/checkoutSide";
 import { toast, ToastContainer } from 'react-nextjs-toast';
+import useTranslation from "next-translate/useTranslation";
 
 export default function Cart() {
     const { addtoWishList, remove } = useCart();
@@ -16,6 +17,7 @@ export default function Cart() {
     let currency = useSelector(state => state.config.currency);
     const [isLoading, setIsLoading] = useState(true);
     const cartData = useSelector(state => state.config.cartData);
+    const { t } = useTranslation()
 
     useEffect(() => {
         setCartProductDetails(cartData ? cartData.products : []);
@@ -52,9 +54,9 @@ export default function Cart() {
                     <section className="empty-cart">
                         <div className="empty-cart_main">
                             <img src="/images/cart.png" />
-                            <h2>Hey, it feels so light!</h2>
-                            <p>There is nothing in your cart, Let's add some items</p>
-                            <Link href="/account?tab=5"><a className="empty-button">Add From Wishlist</a></Link>
+                            <h2>{t("cart:empty_cart_heading")}</h2>
+                            <p>{t("cart:empty_cart_subheading")}</p>
+                            <Link href="/account?tab=5"><a className="empty-button">{t("cart:empty_cart_button")}</a></Link>
                         </div>
                     </section>
                 </div>
@@ -73,7 +75,7 @@ export default function Cart() {
                     <section className="empty-cart">
                         <div className="empty-cart_main">
                             <div className="loader" /><br />
-                            <h2>Loading your cart..</h2>
+                            <h2>{t("cart:loading_cart_items")}</h2>
                         </div>
                     </section>
                 </div>
@@ -93,7 +95,7 @@ export default function Cart() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="dis_detail wow fadeInUp">
-                                <h4>{cartProductDetails.length} Items in your bag</h4>
+                                <h4>{t("cart:total_items", { count: cartProductDetails.length })}</h4>
                             </div>
                         </div>
                     </div>
@@ -117,7 +119,7 @@ export default function Cart() {
                                                             {cp.name} - {cp.sku}
                                                         </a>
                                                     </Link>
-                                                    <p className="cartAdd">Quantity - {cp.cartProducts.quantity}</p>
+                                                    <p className="cartAdd">{t("cart:quantity")} - {cp.cartProducts.quantity}</p>
                                                     <CartButton product={cp} iscartpage />
                                                 </div>
                                             </div>
@@ -134,7 +136,7 @@ export default function Cart() {
                                                     <p><strong><GetPriceHtml product={cp} quantity={cp.cartProducts.quantity} /></strong></p>
                                                     {
                                                         cp.cartProducts.discount ?
-                                                            <p className="couponDiscountP">Discount {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(cp.cartProducts.discount * currency.value).replace("THB", "฿")}</p>
+                                                            <p className="couponDiscountP">{t("cart:discount")} {new Intl.NumberFormat('en-IN', { style: "currency", currency: currency.code }).format(cp.cartProducts.discount * currency.value).replace("THB", "฿")}</p>
                                                             : ""
                                                     }
                                                 </div>
