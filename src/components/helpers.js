@@ -6,6 +6,7 @@ import Footer from "../pages/footer";
 import Header from "../pages/header";
 import Login from "./login";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export function getProductPrice(product) {
     if (product.salePrice !== 0) {
@@ -120,9 +121,12 @@ export function useCart() {
     const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
     const [disableCheckout, setDisableCheckout] = useState(false);
     const [customerCartData, setCustomerCartData] = useState(null);
+    const { locale } = useRouter()
+
+    const headers = { headers: { lang: locale === "en" ? "" : locale } }
 
     useEffect(() => {
-        cartId && axios.get(`${process.env.API_URL}cart/${cartId}`).then((res) => {
+        cartId && axios.get(`${process.env.API_URL}cart/${cartId}`, headers).then((res) => {
             let disableCheckout = false;
             for (let cp of res.data.products) {
                 if (cp.cartProducts.status === 2) {
@@ -169,7 +173,6 @@ export function useCart() {
                 dispatch({ type: "ADD_TO_CART", payload: response.data.id });
             }
 
-            console.log("Called")
             await calculateCart();
             setIsAdding(false);
             setReload(reload + 1);

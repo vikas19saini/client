@@ -20,10 +20,18 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const store = useStore();
-  const route = useRouter();
+  const { locale } = useRouter()
 
   axios.interceptors.request.use((con) => {
     let config = store.getState().config;
+
+    if (!con.headers.lang && con.headers.lang) {
+      if (locale === "en") {
+        con.headers.lang = ""
+      } else {
+        con.headers.lang = locale;
+      }
+    }
 
     if (config.auth)
       if (config.auth.token)

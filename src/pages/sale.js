@@ -23,15 +23,17 @@ export default function Search(category) {
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
     const limit = 30;
     const page = parseInt(context.query.page || 1);
-
+    const { locale } = context
     try {
         let queryParams = context.query;
         let offset = (page - 1) * limit
 
+        const headers = { headers: { lang: locale === "en" ? "" : locale } }
+
         queryParams = { ...queryParams, ...{ limit: limit, offset: offset } }
         queryParams = new URLSearchParams(queryParams)
-        let products = await axios.get(`${process.env.API_URL}category/products/sale?${queryParams}`)
-        
+        let products = await axios.get(`${process.env.API_URL}category/products/sale?${queryParams}`, headers)
+
         let category = {
             name: "Items On Sale",
             description: "Discounted Products"

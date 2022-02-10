@@ -22,6 +22,9 @@
     "/sale": [
       "products"
     ],
+    "/search": [
+      "products"
+    ],
     "/category/[...slug]": [
       "products"
     ],

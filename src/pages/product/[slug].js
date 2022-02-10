@@ -16,6 +16,7 @@ import {
     isMobile
 } from "react-device-detect";
 import useTranslation from "next-translate/useTranslation"
+import { useRouter } from "next/router"
 
 export default function Product(product) {
 
@@ -24,19 +25,24 @@ export default function Product(product) {
 
     const [relativeProducts, setRelativeProducts] = useState([]);
     const { t } = useTranslation()
+    const { locale } = useRouter()
 
     useEffect(() => {
-        axios.get(`${process.env.API_URL}products/relative/${product.id}`)
+        axios.get(`${process.env.API_URL}products/relative/${product.id}`, {
+            headers: {
+                lang: locale === 'en' ? "" : locale
+            }
+        })
             .then((response) => {
                 setRelativeProducts(response.data);
             }).catch((err) => {
                 console.log(err);
             })
-    }, []);
+    }, [locale]);
 
     useEffect(() => {
         productPageInit() // defined in script.js
-    }, []);
+    }, [locale]);
 
     return (
         <Fragment>
@@ -177,7 +183,7 @@ export default function Product(product) {
                             <div className="deli_info info_right">
                                 <a href="tel:+66-947741515" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/mob_i.svg" alt="mobile" />
-                                    <p><strong>{t("product:call")}</strong> {t("mon_sun")}</p>
+                                    <p><strong>{t("product:call")}</strong> {t("product:mon_sun")}</p>
                                 </a>
                             </div>
                         </div>
@@ -186,7 +192,7 @@ export default function Product(product) {
                             <div className="deli_info info_right">
                                 <a href="https://api.whatsapp.com/send?phone=+66947741515" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/whatsapp.svg" alt="whatsapp" />
-                                    <p><strong>{t("product:chat")}</strong> {t("mon_sun")}</p>
+                                    <p><strong>{t("product:chat")}</strong> {t("product:mon_sun")}</p>
                                 </a>
                             </div>
                         </div>
@@ -195,7 +201,7 @@ export default function Product(product) {
                             <div className="deli_info bdr_message">
                                 <a href="mailto:support@gandhifabrics.com" style={{ color: "inherit", textDecoration: "unset" }}>
                                     <img src="/images/address_icon/message.svg" alt="message" />
-                                    <p><strong>{t("drop_email")}</strong></p>
+                                    <p><strong>{t("product:drop_email")}</strong></p>
                                 </a>
                             </div>
                         </div>
@@ -255,7 +261,10 @@ export default function Product(product) {
 
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
     try {
-        let product = await axios.get(`${process.env.API_URL}products/${context.params.slug}`)
+        const { locale } = context
+        let product = await axios.get(`${process.env.API_URL}products/${context.params.slug}`, {
+            headers: { lang: locale === "en" ? "" : locale }
+        })
         product = product.data;
         product.stockStatus = stockStatus(product)
         return {

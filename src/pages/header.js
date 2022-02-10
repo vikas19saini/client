@@ -151,226 +151,516 @@ export default function Header(props) {
                                                                 <div className="cus_nv ac-menu">
                                                                     <div className="row cus_nv_m ac-list">
                                                                         <div id="some-div" className="expanded">
-                                                                            <a href="/category/cotton"><span>Cottons</span></a>
+                                                                            <Link href="/category/cotton" locale={locale}>
+                                                                                <a><span>Cottons</span></a>
+                                                                            </Link>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain
-                                                                                        Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed
-                                                                                        Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton
-                                                                                        Shirting</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton
-                                                                                        Blends</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-embroideries">Cotton Embroideries</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton
-                                                                                        Twill</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton
-                                                                                        Jacquard</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-lace">Cotton
-                                                                                        Lace</a></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/plain-cotton" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Plain Cotton</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/printed-cotton" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Printed Cotton</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-shirting" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Shirting</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-blends" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Blends</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-embroideries" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Embroideries</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-twill" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Twill</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-jacquard" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Jacquard</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/cotton/cotton-lace" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton Lace</a>
+                                                                                        </Link>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/satin"><span>Satin</span></a>
+                                                                                    <Link href="/category/satin" locale={locale}>
+                                                                                        <a>
+                                                                                            <span>Satin</span>
+                                                                                        </a>
+                                                                                    </Link>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin
-                                                                                                Blends</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed
-                                                                                                Satins</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man
-                                                                                                Made Satins</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/satin/satin-silk">Silk
-                                                                                                Satin</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/satin/satin-blends" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Satin Blends</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/satin/printed-satins" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Printed Satins</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/satin/man-made-satins" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Man Made Satins</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/satin/satin-silk" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Silk
+                                                                                                        Satin</a>
+                                                                                                </Link>
+                                                                                            </li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <a href="/category/lace"><span>Lace</span></a>
+                                                                            <Link href="/category/lace" locale={locale}>
+                                                                                <a><span>Lace</span></a>
+                                                                            </Link>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/sequin-laces">Sequin
-                                                                                        Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/french-laces">French
-                                                                                        Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/3d-laces">3D Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/cotton-laces">Cotton
-                                                                                        Laces</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic
-                                                                                        Laces</a></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/lace/sequin-laces" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Sequin
+                                                                                                Laces</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/lace/french-laces" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">French
+                                                                                                Laces</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/lace/3d-laces" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">3D Laces</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/lace/cotton-laces" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton
+                                                                                                Laces</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/lace/metallic-laces" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Metallic
+                                                                                                Laces</a>
+                                                                                        </Link></li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/linen"><span>Linen</span></a>
+                                                                                    <Link href="/category/linen" locale={locale}>
+                                                                                        <a><span>Linen</span></a>
+                                                                                    </Link>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain
-                                                                                                Linen</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed
-                                                                                                Linen</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-wool">Linen
-                                                                                                Wool</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen
-                                                                                                Viscose</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/linen/plain-linen" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Plain
+                                                                                                        Linen</a>
+                                                                                                </Link></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/linen/printed-linen" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Printed
+                                                                                                        Linen</a>
+                                                                                                </Link></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/linen/linen-wool" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Linen
+                                                                                                        Wool</a>
+                                                                                                </Link></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/linen/linen-viscose" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Linen
+                                                                                                        Viscose</a>
+                                                                                                </Link></li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <a href="/category/silk"><span>Silk</span></a>
+                                                                            <Link href="/category/silk" locale={locale}>
+                                                                                <a><span>Silk</span></a>
+                                                                            </Link>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/plain-silk" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Plain Silk</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/printed-silk">Printed
-                                                                                        Silk</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-satin">Silk Satin</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/printed-silk" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Printed
+                                                                                                Silk</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-satin" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk Satin</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk
-                                                                                        Chiffon and Tulle</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-blends">Silk Blends</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-chiffon-and-tulle" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk
+                                                                                                Chiffon and Tulle</a>
+                                                                                        </Link></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-blends" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk Blends</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-brocade">Silk
-                                                                                        Brocade</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk
-                                                                                        Jacquard</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-lace">Silk Lace</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-brocade" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk
+                                                                                                Brocade</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-jacquard" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk
+                                                                                                Jacquard</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/silk/silk-lace" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk Lace</a>
+                                                                                        </Link>
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/shirting"><span>Shirting</span></a>
+                                                                                    <Link href="/category/shirting" locale={locale}>
+                                                                                        <a><span>Shirting</span></a>
+                                                                                    </Link>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/shirting/shirting-cotton">Cotton</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/shirting/shirting-blend">Blend</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/shirting/shirting-silk">Silk</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/shirting/shirting-linen">Linen</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/shirting/shirting-cotton" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Cotton</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/shirting/shirting-blend" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Blend</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/shirting/shirting-silk" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Silk</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/shirting/shirting-linen" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Linen</a>
+                                                                                                </Link>
+                                                                                            </li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <a href="/category/bestsellers"><span>Bestsellers</span></a>
+                                                                            <Link href="/category/bestsellers" locale={locale}>
+                                                                                <a><span>Bestsellers</span></a>
+                                                                            </Link>
                                                                             <div id="some-element" className=" sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/bestsellers/lace-best" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Lace</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/plain-dyed-best">Plain Dyed</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/prints-best">Prints</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/brocade-best">Brocade</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/satin-best">Satin</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/bestsellers/plain-dyed-best" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Plain Dyed</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/bestsellers/prints-best" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/bestsellers/brocade-best" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Brocade</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/bestsellers/satin-best" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Satin</a>
+                                                                                        </Link>
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/wool"><span>Wool</span></a>
+                                                                                    <Link href="/category/wool" locale={locale}>
+                                                                                        <a><span>Wool</span></a>
+                                                                                    </Link>
                                                                                     <div id="some-element" className=" sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure
-                                                                                                Wool Fabrics</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-blends">Wool
-                                                                                                Blends</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/wool/wool-gauze">Wool
-                                                                                                Gauze</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/wool/pure-wool-fabrics" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Pure Wool Fabrics</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/wool/wool-blends" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Wool
+                                                                                                        Blends</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/wool/wool-gauze" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Wool Gauze</a>
+                                                                                                </Link>
+                                                                                            </li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div id="some-div" className="expanded">
-                                                                            <a href="/category/trends"><span>Trends</span></a>
+                                                                            <Link href="/category/trends" locale={locale}>
+                                                                                <a><span>Trends</span></a>
+                                                                            </Link>
                                                                             <div id="some-element" className="sub-menu">
                                                                                 <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/prints-trends">Prints</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/trends/prints-trends" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/satin-trends">Satin</a>
+                                                                                    <li>
+                                                                                        <Link href="/category/trends/satin-trends" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Satin</a>
+                                                                                        </Link>
                                                                                     </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/trends/lace-trends">Lace</a></li>
+                                                                                    <li>
+                                                                                        <Link href="/category/trends/lace-trends" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Lace</a>
+                                                                                        </Link>
+                                                                                    </li>
                                                                                 </ul>
                                                                                 <div id="some-div" className="expanded chaild">
                                                                                     <span>Traditional </span>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/silk-traditional">Silk</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/brocades-traditional">Brocades</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/prints-traditional">Prints</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/jacquard-traditional">Jacquard</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/satin-traditional">Satin</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/traditional/cotton-traditional">Cotton</a></li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div id="some-div" className="expanded">
-                                                                            <a href="/category/natural"><span>Natural</span></a>
-                                                                            <div id="some-element" className="sub-menu">
-                                                                                <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/cotton-natural">Cotton</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/silk-natural">Silk</a>
-                                                                                    </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/viscose-natural">Viscose</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/linen-natural">Linen</a>
-                                                                                    </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/natural/wool-natural">Wool</a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                                <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/man-made"><span>Man Made</span></a>
-                                                                                    <div id="some-element" className="sub-menu">
-                                                                                        <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/man-made/polyester-man-made">Polyester</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/man-made/nylon-man-made">Nylon</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/man-made/acetates-man-made">Acetates</a></li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/embroideries"><span>Embroideries</span></a>
-                                                                                    <div id="some-element" className="sub-menu">
-                                                                                        <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/embroideries/cotton-em">Cotton</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/embroideries/silk-em">Silk</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/embroideries/sequins-em">Sequins</a></li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div id="some-div" className="expanded">
-                                                                            <a href="/category/prints"><span>Prints</span></a>
-                                                                            <div id="some-element" className="sub-menu">
-                                                                                <ul>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/cotton-prints">Cotton</a>
-                                                                                    </li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/silk-prints">Silk</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/chiffon-prints">Chiffon</a></li>
-                                                                                    <li><a className="menuLinkDesktop" href="/category/prints/linen-prints">Linen</a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                                <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/jacquards"><span>Jacquards</span></a>
-                                                                                    <div id="some-element" className="sub-menu">
-                                                                                        <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/cotton-jaq">Cotton</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/silk-jac">Silk</a>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/silk-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Silk</a>
+                                                                                                </Link>
                                                                                             </li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/blends-jac">Blends</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/prints-jac">Prints</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/jacquards/embroideries-jac">Embroideries</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/brocades-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Brocades</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/prints-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Prints</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/jacquard-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Jacquard</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/satin-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Satin</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/traditional/cotton-traditional" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Cotton</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div id="some-div" className="expanded">
+                                                                            <Link href="/category/natural" locale={locale}>
+                                                                                <a><span>Natural</span></a>
+                                                                            </Link>
+                                                                            <div id="some-element" className="sub-menu">
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <Link href="/category/natural/cotton-natural" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/natural/silk-natural" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/natural/viscose-natural" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Viscose</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/natural/linen-natural" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/natural/wool-natural" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Wool</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                </ul>
+                                                                                <div id="some-div" className="expanded chaild">
+                                                                                    <Link href="/category/man-made" locale={locale}>
+                                                                                        <a><span>Man Made</span></a>
+                                                                                    </Link>
+                                                                                    <div id="some-element" className="sub-menu">
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                <Link href="/category/man-made/polyester-man-made" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Polyester</a>
+                                                                                                </Link></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/man-made/nylon-man-made" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Nylon</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/man-made/acetates-man-made" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Acetates</a>
+                                                                                                </Link>
+                                                                                            </li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div id="some-div" className="expanded chaild">
-                                                                                    <a href="/category/suiting"><span>Suiting</span></a>
+                                                                                    <Link href="/category/embroideries" locale={locale}>
+                                                                                        <a><span>Embroideries</span></a>
+                                                                                    </Link>
                                                                                     <div id="some-element" className="sub-menu">
                                                                                         <ul>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/suiting/cotton-suiting">Cotton</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/suiting/blend-suiting">Blend</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/suiting/wool-suiting">Wool</a></li>
-                                                                                            <li><a className="menuLinkDesktop" href="/category/suiting/linen-suiting">Linen</a></li>
+                                                                                            <li>
+                                                                                                <Link href="/category/embroideries/cotton-em" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Cotton</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/embroideries/silk-em" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Silk</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/embroideries/sequins-em" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Sequins</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div id="some-div" className="expanded">
+                                                                            <Link href="/category/prints" locale={locale}>
+                                                                                <a><span>Prints</span></a>
+                                                                            </Link>
+                                                                            <div id="some-element" className="sub-menu">
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <Link href="/category/prints/cotton-prints" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/prints/silk-prints" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/prints/chiffon-prints" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Chiffon</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <Link href="/category/prints/linen-prints" locale={locale}>
+                                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                </ul>
+                                                                                <div id="some-div" className="expanded chaild">
+                                                                                    <Link href="/category/jacquards" locale={locale}>
+                                                                                        <a><span>Jacquards</span></a>
+                                                                                    </Link>
+                                                                                    <div id="some-element" className="sub-menu">
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                <Link href="/category/jacquards/cotton-jaq" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Cotton</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/jacquards/silk-jac" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Silk</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/jacquards/blends-jac" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Blends</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/jacquards/prints-jac" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Prints</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/jacquards/embroideries-jac" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Embroideries</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="some-div" className="expanded chaild">
+                                                                                    <Link href="/category/suiting" locale={locale}>
+                                                                                        <a><span>Suiting</span></a>
+                                                                                    </Link>
+                                                                                    <div id="some-element" className="sub-menu">
+                                                                                        <ul>
+                                                                                            <li>
+                                                                                                <Link href="/category/suiting/cotton-suiting" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Cotton</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/suiting/blend-suiting" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Blend</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/suiting/wool-suiting" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Wool</a>
+                                                                                                </Link>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <Link href="/category/suiting/linen-suiting" locale={locale}>
+                                                                                                    <a className="menuLinkDesktop">Linen</a>
+                                                                                                </Link>
+                                                                                            </li>
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
@@ -388,28 +678,55 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingOne">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/cotton">Cotton</a>
+                                                                <Link href="/category/cotton" locale={locale}>
+                                                                    <a>Cotton</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/plain-cotton">Plain Cotton</a>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/plain-cotton" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Plain Cotton</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/printed-cotton">Printed Cotton</a>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/printed-cotton" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Printed Cotton</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-shirting">Cotton
-                                                                        Shirting</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-blends">Cotton Blends</a>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-shirting" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Shirting</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-embroideries">Cotton
-                                                                        Embroideries</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-twill">Cotton Twill</a>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-blends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Blends</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-jacquard">Cotton
-                                                                        Jacquard</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/cotton/cotton-lace">Cotton Lace</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-embroideries" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Embroideries</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-twill" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Twill</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-jacquard" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Jacquard</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/cotton/cotton-lace" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton Lace</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -417,19 +734,36 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingTwo">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/satin">Satin</a>
+                                                                <Link href="/category/satin" locale={locale}>
+                                                                    <a>Satin</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/satin-blends">Satin Blends</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/printed-satins">Printed Satins</a>
+                                                                    <li>
+                                                                        <Link href="/category/satin/satin-blends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Satin Blends</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/man-made-satins">Man Made
-                                                                        Satins</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/satin/satin-silk">Silk Satin</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/satin/printed-satins" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Printed Satins</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/satin/man-made-satins" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Man Made Satins</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/satin/satin-silk" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk
+                                                                                Satin</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -437,19 +771,39 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingThree">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/lace">Lace</a>
+                                                                <Link href="/category/lace" locale={locale}>
+                                                                    <a>Lace</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/sequin-laces">Sequin Laces</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/french-laces">French Laces</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/3d-laces">3D Laces</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/cotton-laces">Cotton Laces</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/lace/metallic-laces">Metallic Laces</a>
-                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/lace/sequin-laces" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Sequin
+                                                                                Laces</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/lace/french-laces" locale={locale}>
+                                                                            <a className="menuLinkDesktop">French
+                                                                                Laces</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/lace/3d-laces" locale={locale}>
+                                                                            <a className="menuLinkDesktop">3D Laces</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/lace/cotton-laces" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton
+                                                                                Laces</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/lace/metallic-laces" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Metallic
+                                                                                Laces</a>
+                                                                        </Link></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -457,17 +811,35 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingseventy">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/suiting">Suiting</a>
+                                                                <Link href="/category/suiting" locale={locale}>
+                                                                    <a>Suiting</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseventy"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseseventy" className="collapse" aria-labelledby="headingseventy" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/cotton-suiting">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/blend-suiting">Blend</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/wool-suiting">Wool</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/suiting/linen-suiting">Linen</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/suiting/cotton-suiting" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/suiting/blend-suiting" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Blend</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/suiting/wool-suiting" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Wool</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/suiting/linen-suiting" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -475,19 +847,35 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingfive">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/linen">Linen</a>
+                                                                <Link href="/category/linen" locale={locale}>
+                                                                    <a>Linen</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsefive" className="collapse" aria-labelledby="headingfive" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/plain-linen">Plain Linen</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/printed-linen">Printed Linen</a>
-                                                                    </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/linen-wool">Linen Wool</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/linen/linen-viscose">Linen Viscose</a>
-                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/linen/plain-linen" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Plain
+                                                                                Linen</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/linen/printed-linen" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Printed
+                                                                                Linen</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/linen/linen-wool" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen
+                                                                                Wool</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/linen/linen-viscose" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen
+                                                                                Viscose</a>
+                                                                        </Link></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -495,23 +883,57 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingsix">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/silk">Silk</a>
+                                                                <Link href="/category/silk" locale={locale}>
+                                                                    <a>Silk</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsesix"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsesix" className="collapse" aria-labelledby="headingsix" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/plain-silk">Plain Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/printed-silk">Printed Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-satin">Silk Satin</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-chiffon-and-tulle">Silk Chiffon
-                                                                        and Tulle</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-blends">Silk Blends</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-brocade">Silk Brocade</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-jacquard">Silk Jacquard</a>
+                                                                    <li>
+                                                                        <Link href="/category/silk/plain-silk" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Plain Silk</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/silk/silk-lace">Silk Lace</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/printed-silk" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Printed
+                                                                                Silk</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-satin" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk Satin</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-chiffon-and-tulle" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk
+                                                                                Chiffon and Tulle</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-blends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk Blends</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-brocade" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk
+                                                                                Brocade</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-jacquard" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk
+                                                                                Jacquard</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/silk/silk-lace" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk Lace</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -519,17 +941,35 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingseven">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/shirting">Shirting</a>
+                                                                <Link href="/category/shirting" locale={locale}>
+                                                                    <a>Shirting</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseseven"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseseven" className="collapse" aria-labelledby="headingseven" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/shirting/shirting-cotton">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/shirting/shirting-blend">Blend</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/shirting/shirting-silk">Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/shirting/shirting-linen">Linen</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/shirting/shirting-cotton" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/shirting/shirting-blend" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Blend</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/shirting/shirting-silk" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/shirting/shirting-linen" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -537,20 +977,40 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingeight">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/bestsellers">Bestsellers</a>
+                                                                <Link href="/category/bestsellers" locale={locale}>
+                                                                    <a>Bestsellers</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseeight"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseeight" className="collapse" aria-labelledby="headingeight" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/lace-best">Lace</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/plain-dyed-best">Plain
-                                                                        Dyed</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/prints-best">Prints</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/brocade-best">Brocade</a>
+                                                                    <li>
+                                                                        <Link href="/category/bestsellers/lace-best" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Lace</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/bestsellers/satin-best">Satin</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/bestsellers/plain-dyed-best" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Plain Dyed</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/bestsellers/prints-best" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/bestsellers/brocade-best" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Brocade</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/bestsellers/satin-best" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Satin</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -558,17 +1018,31 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingnine">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/wool">Wool</a>
+                                                                <Link href="/category/wool" locale={locale}>
+                                                                    <a>Wool</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsenine"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsenine" className="collapse" aria-labelledby="headingnine" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/wool/pure-wool-fabrics">Pure Wool
-                                                                        Fabrics</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/wool/wool-blends">Wool Blends</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/wool/wool-gauze">Wool Gauze</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/wool/pure-wool-fabrics" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Pure Wool Fabrics</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/wool/wool-blends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Wool
+                                                                                Blends</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/wool/wool-gauze" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Wool Gauze</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -576,16 +1050,30 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingten">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/trends">Trends</a>
+                                                                <Link href="/category/trends" locale={locale}>
+                                                                    <a>Trends</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseten"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseten" className="collapse" aria-labelledby="headingten" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/trends/prints-trends">Prints</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/trends/satin-trends">Satin</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/trends/lace-trends">Lace</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/trends/prints-trends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/trends/satin-trends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Satin</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/trends/lace-trends" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Lace</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -593,21 +1081,45 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingeleven">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/traditional/">Traditional</a>
+                                                                <Link href="/category/traditional/" locale={locale}>
+                                                                    <a>Traditional</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseeleven"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapseeleven" className="collapse" aria-labelledby="headingeleven" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/silk-traditional">Silk</a>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/silk-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/brocades-traditional">Brocades</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/prints-traditional">Prints</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/jacquard-traditional">Jacquard</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/satin-traditional">Satin</a>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/brocades-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Brocades</a>
+                                                                        </Link>
                                                                     </li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/traditional/cotton-traditional">Cotton</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/prints-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/jacquard-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Jacquard</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/satin-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Satin</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/traditional/cotton-traditional" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -615,35 +1127,39 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingtwel">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/natural">Natural</a>
+                                                                <Link href="/category/natural" locale={locale}>
+                                                                    <a>Natural</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetwel"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsetwel" className="collapse" aria-labelledby="headingtwel" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/natural/cotton-natural">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/natural/silk-natural">Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/natural/viscose-natural">Viscose</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/natural/linen-natural">Linen</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/natural/wool-natural">Wool</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="card">
-                                                        <div className="card-header" id="headingtherty">
-                                                            <h2 className="mb-0">
-                                                                <a href="/category/man-made">Man Made</a>
-                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetherty"><i className="fa fa-plus" /></button>
-                                                            </h2>
-                                                        </div>
-                                                        <div id="collapsetherty" className="collapse" aria-labelledby="headingtherty" data-parent="#accordionExample">
-                                                            <div className="card-body">
-                                                                <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/man-made/polyester-man-made">Polyester</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/man-made/nylon-man-made">Nylon</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/man-made/acetates-man-made">Acetates</a>
+                                                                    <li>
+                                                                        <Link href="/category/natural/cotton-natural" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/natural/silk-natural" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/natural/viscose-natural" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Viscose</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/natural/linen-natural" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/natural/wool-natural" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Wool</a>
+                                                                        </Link>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -652,16 +1168,60 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingtherty">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/embroideries">Embroideries</a>
+                                                                <Link href="/category/man-made" locale={locale}>
+                                                                    <a>Man Made</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetherty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsetherty" className="collapse" aria-labelledby="headingtherty" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/cotton-em">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/silk-em">Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/sequins-em">Sequins</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/man-made/polyester-man-made" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Polyester</a>
+                                                                        </Link></li>
+                                                                    <li>
+                                                                        <Link href="/category/man-made/nylon-man-made" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Nylon</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/man-made/acetates-man-made" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Acetates</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="card">
+                                                        <div className="card-header" id="headingtherty">
+                                                            <h2 className="mb-0">
+                                                                <Link href="/category/embroideries" locale={locale}>
+                                                                    <a>Embroideries</a>
+                                                                </Link>
+                                                                <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetherty"><i className="fa fa-plus" /></button>
+                                                            </h2>
+                                                        </div>
+                                                        <div id="collapsetherty" className="collapse" aria-labelledby="headingtherty" data-parent="#accordionExample">
+                                                            <div className="card-body">
+                                                                <ul>
+                                                                    <li>
+                                                                        <Link href="/category/embroideries/cotton-em" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/embroideries/silk-em" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/embroideries/sequins-em" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Sequins</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -669,16 +1229,35 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingfifty">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/prints">Prints</a>
+                                                                <Link href="/category/prints" locale={locale}>
+                                                                    <a>Prints</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefifty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsefifty" className="collapse" aria-labelledby="headingfifty" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/cotton-em">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/silk-em">Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/embroideries/sequins-em">Sequins</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/prints/cotton-prints" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/prints/silk-prints" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/prints/chiffon-prints" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Chiffon</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/prints/linen-prints" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Linen</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -686,17 +1265,40 @@ export default function Header(props) {
                                                     <div className="card">
                                                         <div className="card-header" id="headingsixty">
                                                             <h2 className="mb-0">
-                                                                <a href="/category/jacquards">Jacquards</a>
+                                                                <Link href="/category/jacquards" locale={locale}>
+                                                                    <a>Jacquards</a>
+                                                                </Link>
                                                                 <button type="button" className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsesixty"><i className="fa fa-plus" /></button>
                                                             </h2>
                                                         </div>
                                                         <div id="collapsesixty" className="collapse" aria-labelledby="headingsixty" data-parent="#accordionExample">
                                                             <div className="card-body">
                                                                 <ul>
-                                                                    <li><a className="menuLinkDesktop" href="/category/prints/cotton-prints">Cotton</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/prints/silk-prints">Silk</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/prints/chiffon-prints">Chiffon</a></li>
-                                                                    <li><a className="menuLinkDesktop" href="/category/prints/linen-prints">Linen</a></li>
+                                                                    <li>
+                                                                        <Link href="/category/jacquards/cotton-jaq" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Cotton</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/jacquards/silk-jac" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Silk</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/jacquards/blends-jac" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Blends</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/jacquards/prints-jac" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Prints</a>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link href="/category/jacquards/embroideries-jac" locale={locale}>
+                                                                            <a className="menuLinkDesktop">Embroideries</a>
+                                                                        </Link>
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -706,7 +1308,7 @@ export default function Header(props) {
                                         </div>
                                     </div>
                                 </li>
-                                <li><Link href="/sale"><a>{t("common:on_sale")}</a></Link></li>
+                                <li><Link href="/sale" locale={locale}><a>{t("common:on_sale")}</a></Link></li>
                                 <li className="d-block d-sm-none" style={{ padding: 20 }}>
                                     <select defaultValue={locale} id="language" onChange={(e) => {
                                         router.push({ pathname, query }, asPath, { locale: e.target.value })
@@ -726,11 +1328,11 @@ export default function Header(props) {
                                         </select>
                                     }
                                 </li>
-                                <li className="d-none"><Link href="/contact"><a>{t("common:enquire")}</a></Link></li>
-                                <li className="d-none"><Link href="/browsing"><a>{t("common:live_browsing")}</a></Link></li>
+                                <li className="d-none"><Link locale={locale} href="/contact"><a>{t("common:enquire")}</a></Link></li>
+                                <li className="d-none"><Link locale={locale} href="/browsing"><a>{t("common:live_browsing")}</a></Link></li>
                                 <div className="nav-search tabs_veiw_s">
                                     <div className="example">
-                                        <form action="/search" autoComplete="off">
+                                        <form action={`/${locale}/search`} autoComplete="off">
                                             <input required type="text" placeholder={t("common:search_placeholder")} name="query" defaultValue={router.query.query ? router.query.query : ""} />
                                             <button type="submit">
                                                 <img src="/images/address_icon/search.svg" alt="search-icon" />
@@ -760,17 +1362,17 @@ export default function Header(props) {
                                             </select>
                                         }</div>
                                     </li>
-                                    <Link href="/account?tab=5">
+                                    <Link locale={locale} href="/account?tab=5">
                                         <a>
                                             <img src="/images/address_icon/heart.svg" alt="cart" />
                                         </a>
                                     </Link>
-                                    <Link href="/account">
+                                    <Link locale={locale} href="/account">
                                         <a>
                                             <img src="/images/address_icon/user.svg" alt="account" />
                                         </a>
                                     </Link>
-                                    <Link href="/cart">
+                                    <Link locale={locale} href="/cart">
                                         <a>
                                             <img src="/images/address_icon/card.svg" alt="cart" />
                                             <span className="badge">{cartItemCount}</span>
@@ -780,12 +1382,12 @@ export default function Header(props) {
                             </ul>
                         </div>
                     </nav>
-                    <form className="example mob_view" action="/search" autoComplete="off">
+                    <form className="example mob_view" action={`/${locale}/search`} autoComplete="off">
                         <input type="text" placeholder="Search for product, code, or collection." name="query" defaultValue={router.query.query ? router.query.query : ""} />
                         <button type="submit"><img src="/images/address_icon/search.svg" alt="search-icon" /></button>
                     </form>
-                </div>
-            </div>
-        </header>
+                </div >
+            </div >
+        </header >
     );
 }

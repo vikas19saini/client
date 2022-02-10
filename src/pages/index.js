@@ -627,16 +627,19 @@ export default function Home(props) {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
+    const { locale } = context
+
+    const config = { headers: { lang: locale === "en" ? "" : locale } }
 
     let response = await axios.get(process.env.API_URL + "static")
     let data = response.data;
 
-    let products = await axios.get(process.env.API_URL + "products/new");
+    let products = await axios.get(process.env.API_URL + "products/new", config);
     products = products.data;
 
-    let laceResponse = await axios.get(`${process.env.API_URL}category/products/lace-trends?limit=30&offset=0&sort=createdAtDesc`);
-    let discountedProducts = await axios.get(process.env.API_URL + "products/new?filterBy=discounted");
-    let recommendedProducts = await axios.get(process.env.API_URL + "products/new?sort=ragularPriceAsc");
+    let laceResponse = await axios.get(`${process.env.API_URL}category/products/lace-trends?limit=30&offset=0&sort=createdAtDesc`, config);
+    let discountedProducts = await axios.get(process.env.API_URL + "products/new?filterBy=discounted", config);
+    let recommendedProducts = await axios.get(process.env.API_URL + "products/new?sort=ragularPriceAsc", config);
 
     data.products = products;
     data.lace = laceResponse.data.rows;

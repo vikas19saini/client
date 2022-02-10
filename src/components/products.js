@@ -36,6 +36,7 @@ const priceFilters = [
 
 export default function Products(props) {
     const router = useRouter();
+    const { locale } = router
     let category = props.category;
     const [products, setProducts] = useState(props.category.products || null);
     const [filters, setFilters] = useState([]);
@@ -69,7 +70,9 @@ export default function Products(props) {
             queryText = category.slug;
         }
 
-        axios.get(`${process.env.API_URL}category/products/${queryText}?${queryParams}`).then((response) => {
+        axios.get(`${process.env.API_URL}category/products/${queryText}?${queryParams}`, {
+            headers: { lang: locale === "en" ? "" : locale }
+        }).then((response) => {
             if (page === 1) {
                 setProducts(response.data.rows);
             } else {
@@ -82,10 +85,14 @@ export default function Products(props) {
     }, [router, page]);
 
     useEffect(() => {
-        axios.get(`${process.env.API_URL}static/filters`).then((res) => {
+        axios.get(`${process.env.API_URL}static/filters`, {
+            headers: {
+                lang: router.locale !== "en" ? router.locale : ""
+            }
+        }).then((res) => {
             setFilters(res.data)
         });
-    }, []);
+    }, [router]);
 
     const applyFilter = (filterValue) => {
         let currentFilters = router.query.filters ? router.query.filters.split("|") : [];
