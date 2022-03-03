@@ -33,10 +33,12 @@ export default function Home(props) {
                   items: 1,
                   slideSpeed: 2000,
                   nav: false,
-                  autoplay: false,
+                  autoplay: true,
                   dots: true,
                   loop: true,
                   responsiveRefreshRate: 200,
+                }} events={{
+                  onChange: (el) => console.log(el.property.value)
                 }} id="big" className="owl-carousel owl-theme">
                   {
                     props.sliders.map((slider) => {
@@ -60,7 +62,7 @@ export default function Home(props) {
                 items: 1,
                 slideSpeed: 2000,
                 nav: false,
-                autoplay: false,
+                autoplay: true,
                 dots: true,
                 loop: true,
                 responsiveRefreshRate: 200,
