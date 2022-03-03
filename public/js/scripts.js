@@ -1128,35 +1128,7 @@ function homePageInit() {
         }
     });
 
-    $('#looking_make').owlCarousel({
-        loop: true,
-        autoplay: false,
-        dots: false,
-        nav: false,
-        margin: 0,
-        responsive: {
-            0: {
 
-                items: 3.6,
-
-            },
-
-            568: {
-                items: 3.2,
-
-            },
-
-            667: {
-                items: 4.2,
-            },
-
-            1170: {
-
-                items: 5,
-
-            }
-        }
-    });
 
     $('#best_sellers').owlCarousel({
         loop: true,
@@ -1286,35 +1258,7 @@ function homePageInit() {
             }
         }
     });
-    $('#screenshot_slider').owlCarousel({
-        loop: true,
-        nav: false,
-        dots: false,
-        margin: 10,
-        center: true,
-        responsive: {
-            0: {
 
-                items: 1.3,
-
-            },
-
-            568: {
-                items: 1.2,
-
-            },
-
-            667: {
-                items: 3,
-            },
-
-            1170: {
-
-                items: 3.2,
-
-            }
-        }
-    });
 }
 
 
