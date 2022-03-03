@@ -26,11 +26,15 @@ export default function Category(category) {
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
     const limit = 30;
     const page = parseInt(context.query.page || 1);
+    const { locale } = context
+
+    const headers = { headers: { lang: locale === "en" ? "" : locale } }
+
     try {
         let contextParams = context.params.slug;
         let category = null;
 
-        category = await axios.get(`${process.env.API_URL}category/${contextParams[0]}`);
+        category = await axios.get(`${process.env.API_URL}category/${contextParams[0]}`, headers);
         category = category.data;
         category.layout = 'subcategory'
 
