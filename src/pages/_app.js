@@ -48,7 +48,8 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="google-site-verification" content="xvj66e2ya5woglN4ZKsFqBFeXewEgvx5jpYh0gB2r-M" />
+        {/* <meta name="google-site-verification" content="xvj66e2ya5woglN4ZKsFqBFeXewEgvx5jpYh0gB2r-M" /> */}
+        <meta name="google-site-verification" content="JVfXZlIEXRPJ4rScsVGnYWYalyWxDn7B7DFys5HVyYg" />
         <script src="/js/jquery.min.js" crossOrigin="anonymous"></script>
         <script src="/js/bootstrap.min.js" crossOrigin="anonymous"></script>
         <script src="/js/owl.carousel.js" crossOrigin="anonymous"></script>
