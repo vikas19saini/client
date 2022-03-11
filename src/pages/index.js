@@ -13,7 +13,6 @@ import useTranslation from 'next-translate/useTranslation';
 export default function Home(props) {
 
   const route = useRouter();
-  const { pathname } = route
   const { t } = useTranslation()
 
   return (
@@ -38,7 +37,7 @@ export default function Home(props) {
                   loop: true,
                   responsiveRefreshRate: 200,
                 }} events={{
-                  onChange: (el) => console.log(el.property.value)
+                  /* onChange: (el) => console.log(el.property.value) */
                 }} id="big" className="owl-carousel owl-theme">
                   {
                     props.sliders.map((slider) => {

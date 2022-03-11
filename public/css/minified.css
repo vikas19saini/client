@@ -10856,6 +10856,7 @@ img.subCategoryCrousel{
 }
 
 .talk-bubble {
+	display: none !important;
 	margin: 40px;
     display: inline-block;
     height: auto;
