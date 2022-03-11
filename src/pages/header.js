@@ -23,7 +23,7 @@ export default function Header() {
         if (config.cartItems) {
             setCartItemCount(config.cartItems);
         }
-    }, [pathname])
+    }, [pathname, config])
 
     const storeConfig = useSelector(state => state.config);
     const [selectedCurrency, setSelectedCurrency] = useState(storeConfig.currency.id);
