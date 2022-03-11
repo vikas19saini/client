@@ -278,7 +278,7 @@ export default function Header() {
                                     </div>
                                 </li>
                                 <li><Link href="/sale" locale={locale}><a>{t("common:on_sale")}</a></Link></li>
-                                <li className="d-block d-sm-none" style={{ padding: 20, display: "flex !important", justifyContent: "space-between", alignItems: "center" }}>
+                                <li className="d-sm-none" style={{ padding: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                     <select defaultValue={locale} id="language" onChange={(e) => {
                                         router.push({ pathname, query }, asPath, { locale: e.target.value })
                                     }}>
