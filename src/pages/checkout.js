@@ -73,7 +73,7 @@ function Checkout() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="checkoutInfo mt-0 mt-1 d-none d-sm-block" style={{height: "70px"}}>
+                                <div className="checkoutInfo mt-0 mt-1 d-none d-sm-block" style={{ height: "70px" }}>
                                     {/* <div className="alert alert-warning">
                                         <p>Due to the current lockdown situation, please expect a delay of 7-10 days in the delivery times for your orders.</p>
                                         <p>เนื่องจากสถานการณ์ล็อกดาวน์ในปัจจุบัน อาจจะทำให้การขนส่งสินค้าเกิดความล่าช้า 7-10 วัน</p>
@@ -104,9 +104,9 @@ function Checkout() {
                                         </div>
                                     </div>
                                     <div className="card p-3 mb-2 mt-2">
-                                        <div class="form-check" style={{display: "flex", alignItems: "center"}}>
-                                            <input style={{ height: "20px", width: "20px" }} onChange={() => setStorePickup(!storePickup)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                            <label className="form-check-label ml-2" for="flexCheckDefault" style={{fontSize: "13px", textTransform: "none"}}>
+                                        <div className="form-check" style={{ display: "flex", alignItems: "center" }}>
+                                            <input style={{ height: "20px", width: "20px" }} checked={storePickup} onChange={() => setStorePickup(!storePickup)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                            <label className="form-check-label ml-2" htmlFor="flexCheckDefault" style={{ fontSize: "13px", textTransform: "none" }}>
                                                 Want to pick my order from store
                                             </label>
                                         </div>
@@ -176,7 +176,7 @@ function CustomerAddresses({
             setShowPaymentMethod(false);
         }
 
-    }, [customerCartData]);
+    }, [customerCartData, storePickup]);
 
     useEffect(() => {
         if (showAddresses || changeAddress) {

@@ -41,7 +41,7 @@ export default function CheckoutSidebar(props) {
                     <div className="dis_detail card m-0">
                         <div>
                             <h6 className="pl-4 pr-4 pb-2 pt-2 m-0" onClick={() => setExpend(!expend)}>
-                                <span id="showCartMobile">Show order summary {expend ? <i className="fa fa-chevron-down" /> : <i className="fa fa-chevron-up" />}</span>
+                                <span id="showCartMobile">Show order summary {expend ? <i className="fa fa-chevron-up" /> : <i className="fa fa-chevron-down" />}</span>
                                 <span className="pull-right">{formatPrice(cartData ? cartData.total : 0)}</span>
                             </h6>
                         </div>
