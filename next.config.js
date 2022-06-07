@@ -1,3 +1,5 @@
+const nextTranslate = require('next-translate')
+
 module.exports = {
   env: {
     API_URL: 'http://localhost:3010/',
@@ -6,4 +8,6 @@ module.exports = {
   images: {
     domains: ['localhost'],
   },
+  compress: true,
+  ...nextTranslate()
 }
